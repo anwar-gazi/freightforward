@@ -1,0 +1,22 @@
+{% extends 'intuit/fm/base.html' %}
+{% load i18n static %}
+{% block page_title %}
+    <title>Create Invoice</title>
+{% endblock %}
+{% block content %}
+    <div>
+        <div id="page_content">
+
+        </div>
+    </div>
+    <div id="bottom_info">
+
+    </div>
+{% endblock content %}
+{% block foot_includes %}
+    {{ block.super }}
+    <script>
+        window.urlfor_ = '';
+    </script>
+    <script type="text/babel" src="{% static 'forwarder/invoice/create_invoice.babel.js' %}"></script>
+{% endblock foot_includes %}

@@ -1,0 +1,62 @@
+{% extends 'seaimport/forwarder/base_template.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block page_title %}
+    SI- Search De-Console
+{% endblock %}
+{% block dashboard_body %}
+
+    <div class="container mt-4">
+
+        <div class="card">
+            <div class="card-header">
+                <h4>Search De-Console<a href="{% url 'seaimport:sea_import_create_new_job' %}"><span class="float-sm-right"><i
+                        class="fas fa-plus-square"></i></span></a></h4>
+            </div>
+
+            <form action="" method="get">
+                <div class="row p-3">
+                    <div class="col-3">
+                        {{ job_filters.form.public_key | as_crispy_field }}
+                    </div>
+
+                </div>
+                <button type="submit" class="btn btn-primary ml-3">Search</button>
+            </form>
+
+            <div class="card-body">
+                <table class="table table-borderless">
+                    <thead>
+                    <tr class="text-center" style="border-bottom: 1px solid rgba(14,14,14,0.5)">
+                        <th>JobID</th>
+                        <th>Created at</th>
+                        <th>Status</th>
+                        <th>Completed</th>
+                        <th>Click for Details</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for job in job_filters.qs %}
+                        {% if job.task.job_progress.progress == 100 %}
+                            <tr class="text-center bg-success" style="border-bottom: 1px solid rgba(14,14,14,0.2)">
+                                {% elif job.task.job_progress.progress > 0 %}
+                            <tr class="text-center bg-info" style="border-bottom: 1px solid rgba(14,14,14,0.2)">
+                                {% else %}
+                            <tr class="text-center bg-white" style="border-bottom: 1px solid rgba(14,14,14,0.2)">
+                        {% endif %}
+                    <td class="p-1"><b>{{ job.public_key }}</b></td>
+                    <td class="p-1"><b>{{ job.created_at | date:'Y-m-d' }}</b></td>
+                    <td class="p-1">{{ job.task.job_progress.status }}</td>
+                    <td class="p-1">{{ job.task.job_progress.progress }}%</td>
+                    <td class="text-center"><a class="text-white" href="{% url 'seaimport:sea_import_job_details' job.id %}"
+                                                            title="Click to see details of this job"><i
+                            class="fas fa-door-open"></i></a></td>
+
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

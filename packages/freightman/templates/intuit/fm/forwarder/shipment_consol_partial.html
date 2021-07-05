@@ -1,0 +1,151 @@
+<div class="">
+    <div class="card">
+        <div class="card-header py-4 text-center bg-success">
+            <h2>Shipment Consolidation</h2>
+        </div>
+        <div class="card-body">
+            <div class="mawb_selection_feedback"></div>
+            <table class="table table-bordered console_table" id="select_mawb">
+                <thead>
+                <tr>
+                    <th scope="col" style="width: 24%;">Master Bill no.</th>
+                    <th scope="col" style="width: 40%;">Shipper</th>
+                    <th scope="col" style="width: 20%;">Consignee</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><select id="mawb_public_id" class="form-control mawb_select">
+                        <option value="">--</option>
+                    </select></td>
+                    <td><input type="text" class="form-control shipper_company_name" readonly></td>
+                    <td><input type="text" class="form-control consignee_company_name" readonly></td>
+                </tr>
+                </tbody>
+            </table>
+
+            {#                    <label for="select_hawb">Select House Airway Bill </label>#}
+            <div class="hawb_selection_feedback"></div>
+            <table class="table table-bordered console_table" id="select_hawb">
+                <thead>
+                <tr>
+                    <th scope="col" style="width: 24%;"><span>House Bill no</span>
+                        <span class=""><i class="fa fa-plus-circle cursor-pointer text-dark" id="add_hawb"></i></span>
+                    </th>
+                    <th scope="col" style="width: 40%;">Shipper</th>
+                    <th scope="col" style="width: 20%;">Consignee</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="hawb_info">
+                    <td><select class="form-control hawb_select hawb_public_id">
+                        <option value="">--</option>
+                    </select></td>
+                    <td><input type="text" class="form-control shipper_company_name" readonly></td>
+                    <td><input type="text" class="form-control consignee_company_name" readonly></td>
+                </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
+    {#            <div class="card">#}
+    {#                <div class="card-header">#}
+    {#                    Flight Info <span class=""><i class="fa fa-plus-circle cursor-pointer" id="add_flight"></i></span>#}
+    {#                </div>#}
+    {#                <div class="card-body">#}
+    {#                    <div class="table-responsive text-nowrap">#}
+    {##}
+    {##}
+    {#                        <div class="">#}
+    {#                            <table class="table table-bordered air_transport_table container" id="select_flights">#}
+    {#                                <thead>#}
+    {#                                <tr>#}
+    {#                                    <th scope="col">Air Lines</th>#}
+    {#                                    <th scope="col">Co Loader</th>#}
+    {#                                    <th scope="col">Airway Number</th>#}
+    {#                                    <th scope="col">Flight number</th>#}
+    {#                                    <th scope="col">Date</th>#}
+    {#                                    <th scope="col">Departure Country</th>#}
+    {#                                    <th scope="col">Departure AirPort</th>#}
+    {#                                    <th scope="col">Departure Date</th>#}
+    {#                                    <th scope="col">Arrival Country</th>#}
+    {#                                    <th scope="col">Arrival AirPort</th>#}
+    {#                                    <th scope="col">Arrival Date</th>#}
+    {#                                </tr>#}
+    {#                                </thead>#}
+    {#                                <tbody id="select_flights_body">#}
+    {#                                <tr class="flight_info" data-uniqid="">#}
+    {#                                    <td style="min-width: 200px">#}
+    {#                                        <div class="flight_info_feedback"></div>#}
+    {#                                        <select class="form-control airline_select airline_id"></select>#}
+    {#                                    </td>#}
+    {#                                    <td style="min-width: 200px">#}
+    {#                                        <div class="flight_info_feedback"></div>#}
+    {#                                        <select class="form-control awb_agent_select co_loader_id"></select>#}
+    {#                                    </td>#}
+    {#                                    <td style="min-width: 200px">#}
+    {#                                        <div class="flight_info_feedback"></div>#}
+    {#                                        <select class="form-control awb_select airway_number"></select>#}
+    {#                                    </td>#}
+    {#                                    <td style="min-width: 200px">#}
+    {#                                        <div class="flight_info_feedback"></div>#}
+    {#                                        <input type="text" class="form-control flight_number"/>#}
+    {#                                    </td>#}
+    {#                                    <td style="min-width: 200px">#}
+    {#                                        <div class="flight_info_feedback"></div>#}
+    {#                                        <input type="date" class="form-control flight_date"/>#}
+    {#                                    </td>#}
+    {#                                    <td style="min-width: 200px">#}
+    {#                                        <div class="flight_info_feedback"></div>#}
+    {#                                        <div class="input-group">#}
+    {#                                            <select class="form-control country_select dept_country_id">#}
+    {#                                            </select>#}
+    {#                                        </div>#}
+    {#                                    </td>#}
+    {#                                    <td style="min-width: 200px">#}
+    {#                                        <div class="flight_info_feedback"></div>#}
+    {#                                        <div class="input-group">#}
+    {#                                            <select class="form-control airport_select dept_airport_id">#}
+    {#                                            </select>#}
+    {#                                        </div>#}
+    {#                                    </td>#}
+    {#                                    <td style="min-width: 200px">#}
+    {#                                        <div class="flight_info_feedback"></div>#}
+    {#                                        <input type="date" class="form-control dept_date">#}
+    {#                                    </td>#}
+    {#                                    <td style="min-width: 200px">#}
+    {#                                        <div class="flight_info_feedback"></div>#}
+    {#                                        <div class="input-group">#}
+    {#                                            <select class="form-control country_select arrival_country_id">#}
+    {#                                            </select>#}
+    {#                                        </div>#}
+    {#                                    </td>#}
+    {#                                    <td style="min-width: 200px">#}
+    {#                                        <div class="flight_info_feedback"></div>#}
+    {#                                        <div class="input-group">#}
+    {#                                            <select class="form-control airport_select arrival_airport_id">#}
+    {#                                            </select>#}
+    {#                                        </div>#}
+    {#                                    </td>#}
+    {#                                    <td style="min-width: 200px">#}
+    {#                                        <div class="flight_info_feedback"></div>#}
+    {#                                        <input type="date" class="form-control arrival_date">#}
+    {#                                    </td>#}
+    {#                                </tr>#}
+    {#                                </tbody>#}
+    {#                            </table>#}
+    {#                        </div>#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#            </div>#}
+    <div>
+        <div id="feedback_msg"></div>
+        <div id="feedback_errors"></div>
+    </div>
+    <div class="btn-group">
+        <button type="button" class="btn btn-info" id="submit_console_button">Submit</button>
+    </div>
+</div>
+{#<div id="shortcut_for_forms"></div>#}

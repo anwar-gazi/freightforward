@@ -1,0 +1,231 @@
+{% extends 'intuit/fm/base.html' %}
+{% load static %}
+{% block head_includes %}
+    {{ block.super }}
+{% endblock head_includes %}
+{% block left-nav %}
+    {% include 'intuit/fm/forwarder/left-nav/menu_grid_home_left_nav.html' %}
+{% endblock left-nav %}
+{% block breadcrumbs %}
+    <div class="row">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'forwarder_grid_menu_home' %}">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><a href="">Air Export</a></li>
+                    <li class="position-absolute" style="right: 100px"><a href="{% url 'forwarder_grid_menu_home' %}"><i class="fa fa-times-circle text-danger"></i></a></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+{% endblock breadcrumbs %}
+{% block content %}
+    <div>
+        <h4>Freight Booking</h4>
+        <hr/>
+    </div>
+    <div class="row" style="">
+        <div class="col-1"></div>
+        <div class="col-2">
+            <a href="{% url 'forwarder-freight_booking' %}">
+                <div class="menu-grid-item bg-lgreen " style="">
+                    <img class="menu-grid-icon" src="{% static 'icons/seaexport/booking.png' %}" alt="icon"/>
+                    <div>Freight Booking</div>
+                </div>
+            </a>
+        </div>
+        <div class="col-2">
+            <a href="{% url 'airexport_forwarder_freight_booking_list' %}">
+                <div class="menu-grid-item bg-lgreen " style="">
+                    <img class="menu-grid-icon" src="{% static 'icons/seaexport/bookinglist.png' %}" alt="icon"/>
+                    <div>Booking List</div>
+                </div>
+            </a>
+        </div>
+        <div class="col">
+        </div>
+    </div>
+    <div style="margin-top: 100px">
+        <h4>House and Master</h4>
+        <hr/>
+    </div>
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-2">
+            <a href="{% url 'forwarder-hawb-input' %}">
+                <div class="menu-grid-item bg-lgreen " style="">
+                    <img class="menu-grid-icon" src="{% static 'icons/add_hawb.png' %}" alt="icon"/>
+                    <div>Create HAWB</div>
+                </div>
+            </a>
+        </div>
+        <div class="col-2">
+            <a href="{% url 'airexport:hawb_listing' %}">
+                <div class="menu-grid-item bg-lgreen " style="">
+                    <img class="menu-grid-icon" src="{% static 'icons/hawb_list.png' %}" alt="icon"/>
+                    <div>HAWB Listing</div>
+                </div>
+            </a>
+        </div>
+        <div class="col-2">
+            <a href="{% url 'forwarder-mawb-input' %}">
+                <div class="menu-grid-item bg-lgreen " style="">
+                    <img class="menu-grid-icon" src="{% static 'icons/add_mawb.png' %}" alt="icon"/>
+                    <div>Create MAWB</div>
+                </div>
+            </a>
+        </div>
+        <div class="col-2">
+            <a href="{% url 'forwarder-mawb_listing_page' %}">
+                <div class="menu-grid-item bg-lgreen " style="">
+                    <img class="menu-grid-icon" src="{% static 'icons/mawb_list.png' %}" alt="icon"/>
+                    <div>MAWB Listing</div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div style="margin-top: 100px">
+        <h4>Consolidation</h4>
+        <hr/>
+    </div>
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-2">
+            <a href="{% url 'forwarder-shipment-consol' %}">
+                <div class="menu-grid-item bg-lgreen " style="">
+                    <img class="menu-grid-icon" src="{% static 'icons/plus.png' %}" alt="icon"/>
+                    <div>Shipment Consolidation</div>
+                </div>
+            </a>
+        </div>
+        <div class="col-2">
+            <a href="{% url 'airexport:consol_shipment_listing_page' %}">
+                <div class="menu-grid-item bg-lgreen " style="">
+                    <img class="menu-grid-icon" src="{% static 'icons/seaexport/shipment_list.png' %}" alt="icon"/>
+                    <div>Consolidated Shipment Listing</div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div style="margin-top: 100px">
+        <h4>Credit, Debit, Costing</h4>
+        <hr/>
+    </div>
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-2">
+            <a href="{% url 'airexport:creditnote_page' %}">
+                <div class="menu-grid-item bg-lgreen " style="">
+                    <img class="menu-grid-icon" src="{% static 'icons/c-plus.png' %}" alt="icon"/>
+                    <div>Add Credit Note</div>
+                </div>
+            </a>
+        </div>
+        <div class="col-2">
+            <a href="{% url 'airexport:creditnote_listing_page' %}">
+                <div class="menu-grid-item bg-lgreen ">
+                    <img class="menu-grid-icon" src="{% static 'icons/credit_list.png' %}" alt="icon"/>
+                    <div>Credit Note Listing</div>
+                </div>
+            </a>
+        </div>
+        <div class="col-2">
+            <a href="{% url 'forwarder-debit_note_page' %}">
+                <div class="menu-grid-item bg-lgreen ">
+                    <img class="menu-grid-icon" src="{% static 'icons/d-plus.png' %}" alt="icon"/>
+                    <div>Add Debit Note</div>
+                </div>
+            </a>
+        </div>
+        <div class="col-2">
+            <a href="{% url 'forwarder-debit_note_listing' %}">
+                <div class="menu-grid-item bg-lgreen ">
+                    <img class="menu-grid-icon" src="{% static 'icons/debit_list.png' %}" alt="icon"/>
+                    <div>Debit Note Listing</div>
+                </div>
+            </a>
+        </div>
+        <div class="col-2">
+            <a href="{% url 'forwarder-job_costing_page' %}">
+                <div class="menu-grid-item bg-lgreen ">
+                    <img class="menu-grid-icon" src="{% static 'icons/seaexport/accounting.png' %}" alt="icon"/>
+                    <div>Job Costing</div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div style="margin-top: 100px">
+        <h4>Documentation</h4>
+        <hr/>
+    </div>
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-2">
+            <a href="{% url 'airexport:cargo_manifest_listing_page' %}">
+                <div class="menu-grid-item bg-lgreen ">
+                    <img class="menu-grid-icon" src="{% static 'icons/cargo_manifest_listing.png' %}" alt="icon"/>
+                    <div>Cargo Manifest List</div>
+                </div>
+            </a>
+        </div>
+        <div class="col-2">
+            <a href="">
+                <div class="menu-grid-item bg-lgreen ">
+                    <img class="menu-grid-icon" src="{% static 'icons/cargo_manifest_listing.png' %}" alt="icon"/>
+                    <div>Goods Receive Report</div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div style="margin-top: 100px">
+        <h4>Report</h4>
+        <hr/>
+    </div>
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-2">
+            <a href="{% url 'airexport_report_dsr' %}">
+                <div class="menu-grid-item bg-lgreen ">
+                    <img class="menu-grid-icon" src="{% static 'icons/cargo_manifest_listing.png' %}" alt="icon"/>
+                    <div>DSR Report</div>
+                </div>
+            </a>
+        </div>
+        <div class="col-2">
+            <a href="{% url 'airexport-report-customer-gp-listing' %}">
+                <div class="menu-grid-item bg-lgreen ">
+                    <img class="menu-grid-icon" src="{% static 'icons/cargo_manifest_listing.png' %}" alt="icon"/>
+                    <div>GP Listing Report</div>
+                </div>
+            </a>
+        </div>
+        <div class="col-2">
+            <a href="{% url 'airexport-report-weight-lift-destination' %}">
+                <div class="menu-grid-item bg-lgreen ">
+                    <img class="menu-grid-icon" src="{% static 'icons/cargo_manifest_listing.png' %}" alt="icon"/>
+                    <div>Weight Lifting Report by destination</div>
+                </div>
+            </a>
+        </div>
+        <div class="col-2">
+            <a href="{% url 'airexport-report-weight-lift-agent' %}">
+                <div class="menu-grid-item bg-lgreen ">
+                    <img class="menu-grid-icon" src="{% static 'icons/cargo_manifest_listing.png' %}" alt="icon"/>
+                    <div>Weight Lifting Report by agent</div>
+                </div>
+            </a>
+        </div>
+        <div class="col-2">
+            <a href="{% url 'airexport-report-weight-lift-customer' %}">
+                <div class="menu-grid-item bg-lgreen ">
+                    <img class="menu-grid-icon" src="{% static 'icons/cargo_manifest_listing.png' %}" alt="icon"/>
+                    <div>Weight Lifting Report by customer</div>
+                </div>
+            </a>
+        </div>
+    </div>
+{% endblock content %}

@@ -1,0 +1,43 @@
+{% extends 'intuit/fm/base.html' %}
+{% load static %}
+{% block head_includes %}
+    {{ block.super }}
+{% endblock head_includes %}
+{% block left-nav %}
+    {% include 'intuit/fm/forwarder/left-nav/menu_grid_home_left_nav.html' %}
+{% endblock left-nav %}
+{% block breadcrumbs %}
+    <div class="row">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'forwarder_grid_menu_home' %}">Home</a></li>
+                    <li class="breadcrumb-item" aria-current="page"><a href="">Supplier Management</a></li>
+                    <li class="position-absolute" style="right: 100px"><a href="{% url 'forwarder_grid_menu_home' %}"><i class="fa fa-times-circle text-danger"></i></a></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+{% endblock breadcrumbs %}
+{% block content %}
+    <div class="row" style="">
+        <div class="col-2"></div>
+        <div class="col-2">
+            <a href="{% url 'add_factory_page' %}">
+                <div class="menu-grid-item" style="background-color: skyblue">
+                    <img class="menu-grid-icon" src="{% static 'icons/plus.png' %}" alt="icon"/>
+                    <div>Add Supplier</div>
+                </div>
+            </a>
+        </div>
+        <div class="col-2">
+            <a href="{% url 'shippers_listing_page' %}">
+                <div class="menu-grid-item" style="background-color: deepskyblue">
+                    <img class="menu-grid-icon" src="{% static 'icons/supplier.png' %}" alt="icon"/>
+                    <div>List Supplier</div>
+                </div>
+            </a>
+        </div>
+        <div class="col-2"></div>
+    </div>
+{% endblock content %}

@@ -1,0 +1,76 @@
+{% extends 'intuit/fm/base.html' %}
+{% load i18n static %}
+{% block page_title %}
+    <title>Create new HBL copying #{{ hbl_public_id }}</title>
+{% endblock %}
+{% block head_includes %}
+    {{ block.super }}
+    <style>
+        label {
+            text-transform: uppercase;
+        }
+
+        p {
+            text-align: justify;
+        }
+
+        .card {
+            padding: 10px;
+        }
+
+        .content {
+            padding-top: 0;
+        }
+    </style>
+{% endblock %}
+
+{% block left-nav %}
+    {% include 'intuit/fm/forwarder/left-nav/menu_grid_home_left_nav.html' %}
+{% endblock left-nav %}
+{% block breadcrumbs %}
+    <div class="row">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'forwarder_grid_menu_home' %}">Home</a></li>
+                    <li class="breadcrumb-item" aria-current="page"><a href="{% url 'seaexport:seaexport_apps_menu' %}">Ocean Export</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'seaexport:seaexport_forwarder_hbl_list_page' %}">HBL List</a>
+                    <li class="breadcrumb-item active" aria-current="page"><a href="">Copy HBL #{{ hbl_public_id }}</a>
+                    </li>
+                    <li class="position-absolute" style="right: 100px"><a href="{% url 'seaexport:seaexport_forwarder_hbl_list_page' %}"><i
+                            class="fa fa-times-circle text-danger"></i></a></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+{% endblock breadcrumbs %}
+
+{% block content %}
+    <div class="container">
+        <div class="bg-success py-4">
+            <h2 class="text-center">Copy {{ hbl_public_id }} and create new HBL</h2>
+        </div>
+        <div id="page_content">
+        </div>
+    </div>
+{% endblock content %}
+
+
+{% block foot_includes %}
+    {{ block.super }}
+    <script type="text/javascript">
+        window.urlfor_hbl_page_init_data = '{% url "seaexport:seaexport_forwarder_hbl_form_init_data" %}';
+        window.urlfor_get_hbl_info = '{% url "seaexport:seaexport_forwarder_get_hbl_info" %}';
+        window.urlfor_get_booking_dict = '{% url "seaexport:ajax_seaexport_forwarder_get_booking_dict_for_hbl_page" %}';
+        window.urlfor_get_container_serial_info = '{% url "seaexport:ajax_seaexport_forwarder_get_container_serial_info" %}';
+        window.urlfor_hbl_save = '{% url "seaexport:seaexport_forwarder_hbl_save" %}';
+        window.forwarder_org_edit_url = '{% url "view_company" forwarder.public_id %}';
+    </script>
+    <script type="text/babel" src="{% static 'seaexport/forwarder/seaexport_hbl_mixin.babel.js' %}"></script>
+    <script type="text/babel" src="{% static 'seaexport/forwarder/seaexport_hbl_state.babel.js' %}"></script>
+    <script type="text/babel" src="{% static 'seaexport/forwarder/seaexport_hbl_form.babel.js' %}"></script>
+    <script type="text/babel" src="{% static 'seaexport/forwarder/seaexport_hbl.babel.js' %}"></script>
+    <script type="text/babel">
+        ReactDOM.render(<SeaExportHBLForm public_id="{{ hbl_public_id }}" copy={true}/>, document.getElementById('page_content'));
+    </script>
+{% endblock foot_includes %}

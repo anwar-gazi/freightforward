@@ -1,0 +1,139 @@
+<div class="" role="dialog" id="airtransport_modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            {#            <button type="button" class="close" data-dismiss="modal">&times;</button>#}
+            <h4 class="modal-title"></h4>
+        </div>
+        <div class="modal-body">
+            <div class="">
+                <div class="">
+                    <!-- air transport part start -->
+                    <div class="col-md-12 order_notes">
+                        <div class="order_notescontain">
+                        </div>
+                        <div class="row air_transport">
+
+                            <div class="col-md-12">
+
+                                <div class="table-responsive text-nowrap">
+                                    <table class="table table-bordered air_transport_table" id="select_flights">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">Air Lines</th>
+                                            <th scope="col">Note</th>
+                                            <th scope="col">Co Loader</th>
+                                            <th scope="col">Airway Number</th>
+                                            <th scope="col">Flight number</th>
+                                            <th scope="col">Date</th>
+                                            <th scope="col">Auto</th>
+                                            <th scope="col">Departure Country</th>
+                                            <th scope="col">Departure AirPort</th>
+                                            <th scope="col">Departure Date</th>
+                                            <th scope="col">Departure Note</th>
+                                            <th scope="col">Arrival Country</th>
+                                            <th scope="col">Arrival AirPort</th>
+                                            <th scope="col">Arrival Date</th>
+                                            <th scope="col">Arrival Note</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="select_flights_body">
+                                        <tr class="flight_details">
+                                            <td><input type="number" class="form-control airline_id"></td>
+                                            <td><input type="text" class="form-control airline_note">
+                                            </td>
+                                            <td><input type="text" class="form-control co_loader_id"></td>
+                                            <td>
+                                                <div class="col-md-12 col-sm-12 col-xs-12 air_transport_select">
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control airway_number">
+                                                        <button type="button" class="btn btn-default symbol active">
+                                                            ASSING
+                                                        </button>
+
+
+                                                    </div>
+
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control flight_number"/>
+                                            </td>
+                                            <td><input type="date" class="form-control flight_date"/>
+                                            </td>
+                                            <td><input type="text" class="form-control flight_auto">
+                                            </td>
+                                            <td>
+                                                <div class="input-group">
+                                                    <select class="form-control dept_country_id">
+                                                        <option>CN</option>
+                                                        <option>CN 01</option>
+                                                        <option>CN 02</option>
+                                                        <option>CN 03</option>
+                                                        <option>Cn 04</option>
+                                                    </select>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="input-group">
+                                                    <select class="form-control dept_airport_id">
+                                                        <option>SHA</option>
+                                                        <option>SHA 01</option>
+                                                        <option>SHA 02</option>
+                                                        <option>SHA 03</option>
+                                                        <option>SHA 04</option>
+                                                    </select>
+                                                </div>
+
+
+                                            </td>
+                                            <td>
+                                                <input type="date" class="form-control dept_date">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control dept_note">
+                                            </td>
+                                            <td>
+                                                <div class="input-group">
+                                                    <select class="form-control arrival_country_id">
+                                                        <option>IT</option>
+                                                        <option>IT 01</option>
+                                                        <option>IT 02</option>
+                                                        <option>IT 03</option>
+                                                        <option>IT 04</option>
+                                                    </select>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="input-group">
+                                                    <select class="form-control arrival_airport_id">
+                                                        <option>MIL</option>
+                                                        <option>MIL 01</option>
+                                                        <option>MIL 02</option>
+                                                        <option>MIL 03</option>
+                                                        <option>MIL 04</option>
+                                                    </select>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <input type="date" class="form-control arrival_date">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control arrival_note">
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    <button type="button" class="btn btn-secondary" id="add_more_flight">Add More Flight</button>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                <!-- air transport part end -->
+
+            </div>
+        </div>
+    </div>
+</div>

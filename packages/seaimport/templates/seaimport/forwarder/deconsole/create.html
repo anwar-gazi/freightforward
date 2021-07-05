@@ -1,0 +1,101 @@
+{% extends 'seaimport/forwarder/base_template.html' %}
+{% block page_title %}Create New Job{% endblock %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block dashboard_body %}
+    <div class="container mt-4">
+        {% include 'seaimport/forwarder/partials/_alert_message.html' %}
+        {% include 'seaimport/forwarder/partials/_form_errors.html' with form=job_form %}
+        {% include 'seaimport/forwarder/partials/_form_errors.html' with form=doc_forms %}
+        <form action="{% url 'seaimport:sea_import_create_new_job' %}" method="post" enctype="multipart/form-data">
+            <div class="card">
+                <div class="card-header">
+                    <center><h3 class="text-uppercase">Create New Job - DeConsole</h3></center>
+                </div>
+                <div class="card-body">
+                    <div class="row p-3">
+                        <label for="select_mbl" class="col-12">Select an MBL <span class="text-danger">*</span></label>
+                        <select name="non_consoled_mbl" id="id_non_consoled_mbl" class="form-control col mr-2" required>
+                            <option value="">---------------------</option>
+                            {% for mbl in mbls %}
+                                <option value="{{ mbl.id }}">{{ mbl.mbl_number }} -
+                                    {{ mbl.mbl_shipper.name }} to {{ mbl.mbl_consignee.name }} (
+                                    {{ mbl.mbl_shipper.city }} to {{ mbl.mbl_consignee.city }}
+                                    )
+                                </option>
+                            {% endfor %}
+
+                        </select>
+                        <a href="{% url 'seaimport:sea_import_create_mbl' %}" target="_blank"
+                           class=" btn btn-primary float-right">+</a>
+                    </div>
+
+                    <div class="row p-3 mt-5">
+                        <label for="select_hbl">Select an HBL <span class="text-danger">*</span></label>
+                        <select name="non_consoled_hbls[]" id="id_non_consoled_hbls" class="form-control" required multiple>
+                            <option disabled>Press CTRL to select multiple HBLs below</option>
+                            <option disabled></option>
+                            {% for hbl in hbls %}
+                                <option value="{{ hbl.id }}">{{ hbl.hbl_number }} -
+                                    {{ hbl.hbl_consignor.name }} to {{ hbl.hbl_notifier.name }} (
+                                    {{ hbl.hbl_consignor.city }} to {{ hbl.hbl_notifier.city }}
+                                    )
+                                </option>
+                            {% endfor %}
+                        </select>
+                        <a href="{% url 'seaimport:sea_import_create_hbl' %}" target="_blank"
+                           class=" btn btn-primary float-right mt-2">Create New HBL</a>
+                    </div>
+
+                    <div class="row p-3 mt-3">
+                        {#                        <label for="dollar_rate">Enter Dollar Rate for the current Job <span class="text-danger">*</span></label>#}
+                        <div class="col-4">{{ job_form.dollar_rate| as_crispy_field }}</div>
+
+                    </div>
+
+                    <div class="row p-3 mt-3">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    Attach Documents
+                                </div>
+                                <div class="card-body">
+                                    <p>To add more document types <a href="{% url 'seaimport:sea_import_create_doctype' %}" target="_blank">Click Here</a></p>
+                                    {{ doc_forms.management_form }}
+                                    {% for doc_form in doc_forms %}
+                                        <div class="doc-form docs_form_set row">
+                                            <div class="col-4">
+                                                {{ doc_form.doc_type | as_crispy_field }}
+                                            </div>
+                                            <div class="col-4">
+                                                {{ doc_form.file | as_crispy_field }}
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row float-right p-2">
+                <button class="btn btn-primary mr-2" type="submit">DeConsole</button>
+                <button class="btn btn-warning mr-2" type="reset">Reset</button>
+                <a href="{% url 'seaimport:sea_import_admin_dashboard' %}" class="btn btn-danger mr-2">Cancel</a>
+            </div>
+        </form>
+
+    </div>
+
+{% endblock %}
+{% block extraJs %}
+    <script type="text/javascript" src="{% static 'js/sea_import_new_job_creation.jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/extras.js' %}"></script>
+
+{% endblock %}
+
+

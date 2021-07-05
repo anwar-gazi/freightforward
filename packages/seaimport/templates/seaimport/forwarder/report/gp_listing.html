@@ -1,0 +1,49 @@
+{% extends 'seaimport/forwarder/base_template.html' %}
+{% load static %}
+{% block page_title %}
+    SI- GP Listings
+{% endblock %}
+{% block dashboard_body %}
+
+    <div class="container mt-4">
+
+        <div class="card">
+            <div class="card-header">
+                <h4>Gross Profit Listings</h4>
+
+            </div>
+            <div class="card-body">
+                <table class="table table-borderless">
+                    <thead>
+                    <tr class="text-center" style="border-bottom: 1px solid rgba(14,14,14,0.5)">
+                        <th>De-Console</th>
+                        <th>Total Expenditure(USD)</th>
+                        <th>Total Income(USD)</th>
+                        <th>Total Profit(USD)</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for job in jobs %}
+
+                        <tr>
+                        <td><a href="{% url 'seaimport:sea_import_job_details' job.id %}">
+                            <center>{{ job.public_key }}</center>
+                        </a></td>
+                        <td>
+                            <center>$ {{ job.total_job_cost | floatformat:2 }}</center>
+                        </td>
+                        <td>
+                            <center>$ {{ job.total_hbl_income  | floatformat:2 }}</center>
+                        </td>
+                        <td>
+                            <center>$ {{ job.total_profit  | floatformat:2 }}</center>
+                        </td>
+                        </tr>
+
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

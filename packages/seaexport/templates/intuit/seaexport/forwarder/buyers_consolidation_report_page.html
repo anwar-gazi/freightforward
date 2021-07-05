@@ -1,0 +1,45 @@
+{% extends 'intuit/fm/base.html' %}
+{% load i18n static %}
+{% block page_title %}
+    <title>MBL</title>
+{% endblock %}
+{% block head_includes %}
+    {{ block.super }}
+    <style>
+        label {
+            text-transform: uppercase;
+        }
+
+        p {
+            text-align: justify;
+        }
+
+        .card {
+            padding: 10px;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+    <div>
+        <div id="page_content">
+            <span id="page_content_spinner"><i class="fa fa-spin fa-spinner"></i> Page Loading</span>
+            {% include 'intuit/seaexport/forwarder/mbl_create_page_partial.html' %}
+        </div>
+    </div>
+{% endblock content %}
+
+{% block foot_includes %}
+    {{ block.super }}
+    <script type="text/javascript">
+        window.urlfor_mbl_page_init_data = '{% url "seaexport:seaexport_forwarder_mbl_form_init_data" %}';
+        window.urlfor_get_container_serial_info = '{% url "seaexport:ajax_seaexport_forwarder_get_container_serial_info" %}';
+        window.urlfor_mbl_save = '{% url "seaexport:seaexport_forwarder_mbl_save" %}';
+    </script>
+    <script type="text/babel" src="{% static 'seaexport/forwarder/mbl/seaexport_mbl_mixin.babel.js' %}"></script>
+    <script type="text/babel" src="{% static 'seaexport/forwarder/mbl/seaexport_mbl_state.babel.js' %}"></script>
+    <script type="text/babel" src="{% static 'seaexport/forwarder/mbl/seaexport_mbl_form.babel.js' %}"></script>
+    <script type="text/babel" src="{% static 'seaexport/forwarder/mbl/seaexport_mbl.babel.js' %}"></script>
+    <script type="text/babel">
+        ReactDOM.render(<SeaExportMBLForm/>, document.getElementById('page_content'));
+    </script>
+{% endblock foot_includes %}

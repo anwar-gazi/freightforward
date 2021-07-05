@@ -1,0 +1,272 @@
+{% load static %}
+
+<div class="container-fluid mb-4">
+    <div class="row sea-import-navigations navigation-icon-set">
+        <h4><b>BOOKING</b></h4>
+
+        <div class="col-2">
+            <center>
+                <a href="{% url 'seaexport:seaexport_forwarder_freight_booking_page' %}">
+                    <img class="text-center"
+                         src="{% static 'seaexport/assets/images/icon/navicons/create.png' %}" alt="">
+                    <p>Create Booking</p>
+                </a>
+            </center>
+        </div>
+
+        <div class="col-2">
+            <center>
+                <a href="{% url 'seaexport:seaexport_forwarder_freight_bookinglist_page' %}">
+                    <img class="text-center"
+                         src="{% static 'seaexport/assets/images/icon/navicons/details.png' %}" alt="">
+                    <p>Booking List</p>
+                </a>
+            </center>
+        </div>
+    </div>
+
+    <div class="row sea-import-navigations navigation-icon-set mt-2">
+        <h4><b>HOUSE BILL OF LEADING</b></h4>
+
+        <div class="col-2">
+            <center>
+                <a href="{% url 'seaexport:seaexport_forwarder_create_hbl_page' %}">
+                    <img class="text-center"
+                         src="{% static 'seaexport/assets/images/icon/navicons/create.png' %}" alt="">
+                    <p>Create HBL</p>
+                </a>
+            </center>
+        </div>
+
+        <div class="col-2">
+            <center>
+                <a href="{% url 'seaexport:seaexport_forwarder_hbl_list_page' %}">
+                    <img class="text-center"
+                         src="{% static 'seaexport/assets/images/icon/navicons/details.png' %}" alt="">
+                    <p>HBL List</p>
+                </a>
+            </center>
+        </div>
+    </div>
+
+    <div class="row sea-import-navigations navigation-icon-set mt-2">
+        <h4><b>MASTER BILL OF LEADING</b></h4>
+
+        <div class="col-2">
+            <center>
+                <a href="{% url 'seaexport:seaexport_forwarder_add_mbl_page' %}">
+                    <img class="text-center"
+                         src="{% static 'seaexport/assets/images/icon/navicons/create.png' %}" alt="">
+                    <p>Create MBL</p>
+                </a>
+            </center>
+        </div>
+    </div>
+
+    <div class="row sea-import-navigations navigation-icon-set mt-2">
+        <h4><b>CONSOLIDATION</b></h4>
+
+        <div class="col-2">
+            <center>
+                <a href="{% url 'seaexport:seaexport_container_consol_page' %}">
+                    <img class="text-center"
+                         src="{% static 'seaexport/assets/images/icon/navicons/merge.png' %}" alt="">
+                    <p>Container Consolidation</p>
+                </a>
+            </center>
+        </div>
+
+        <div class="col-2">
+            <center>
+                <a href="{% url 'seaexport:seaexport_container_consol_listing_page' %}">
+                    <img class="text-center"
+                         src="{% static 'seaexport/assets/images/icon/navicons/details.png' %}" alt="">
+                    <p>Consolidated Shipment Listing</p>
+                </a>
+            </center>
+        </div>
+
+        <div class="col-2">
+            <center>
+                <a href="{% url 'seaexport:seaexport_consol_job_costing_page' %}">
+                    <img class="text-center"
+                         src="{% static 'seaexport/assets/images/icon/navicons/merge.png' %}" alt="">
+                    <p>Consolidation Job Costing</p>
+                </a>
+            </center>
+        </div>
+    </div>
+
+
+    <div class="row sea-import-navigations navigation-icon-set mt-2">
+        <h4><b>Others</b></h4>
+
+        <div class="col-2">
+            <center>
+                <a href="{% url 'seaexport:seaexport_invoice_create_page' %}">
+                    <img class="text-center"
+                         src="{% static 'seaexport/assets/images/icon/navicons/bill.png' %}" alt="">
+                    <p>Invoice</p>
+                </a>
+            </center>
+        </div>
+
+        <div class="col-2">
+            <center>
+                <a href="{% url 'seaexport:seaexport_gp_listing_page' %}">
+                    <img class="text-center"
+                         src="{% static 'seaexport/assets/images/icon/navicons/growth.png' %}" alt="">
+                    <p>GP Listing</p>
+                </a>
+            </center>
+        </div>
+
+    </div>
+
+
+{#    <div class="sea-import-navigations navigation-icon-set mt-4 navigation-icon-set-bg-dark ">#}
+{#        <h4><b>Quick Access</b></h4>#}
+{##}
+{#        <div class="navigation-icon-set-small row">#}
+{##}
+{#            <div class="col-1">#}
+{#                <center>#}
+{#                    <a href="{% url 'seaimport:sea_import_create_company' %}" target="_blank">#}
+{#                        <img class="text-center"#}
+{#                             src="{% static 'seaimport/assets/images/icon/navicons/factory.png' %}" alt="">#}
+{#                        <p>Add Company</p>#}
+{#                    </a>#}
+{#                </center>#}
+{#            </div>#}
+{##}
+{#            <div class="col-1">#}
+{#                <center>#}
+{#                    <a href="{% url 'seaimport:sea_import_create_agent' %}" target="_blank">#}
+{#                        <img class="text-center"#}
+{#                             src="{% static 'seaimport/assets/images/icon/navicons/factory.png' %}" alt="">#}
+{#                        <p>Add Company Branch</p>#}
+{#                    </a>#}
+{#                </center>#}
+{#            </div>#}
+{##}
+{#            <div class="col-1">#}
+{#                <center>#}
+{#                    <a href="{% url 'seaimport:sea_import_create_city' %}" target="_blank">#}
+{#                        <img class="text-center"#}
+{#                             src="{% static 'seaimport/assets/images/icon/navicons/cityscape.png' %}" alt="">#}
+{#                        <p>Add City</p>#}
+{#                    </a>#}
+{#                </center>#}
+{#            </div>#}
+{##}
+{#            <div class="col-1">#}
+{#                <center>#}
+{#                    <a href="{% url 'seaimport:sea_import_create_country' %}" target="_blank">#}
+{#                        <img class="text-center"#}
+{#                             src="{% static 'seaimport/assets/images/icon/navicons/flag.png' %}" alt="">#}
+{#                        <p>Add Country</p>#}
+{#                    </a>#}
+{#                </center>#}
+{#            </div>#}
+{##}
+{#            <div class="col-1">#}
+{#                <center>#}
+{#                    <a href="{% url 'seaimport:sea_import_create_expensetype' %}" target="_blank">#}
+{#                        <img class="text-center"#}
+{#                             src="{% static 'seaimport/assets/images/icon/navicons/expensive.png' %}" alt="">#}
+{#                        <p>Add New Expense Type</p>#}
+{#                    </a>#}
+{#                </center>#}
+{#            </div>#}
+{##}
+{#            <div class="col-1">#}
+{#                <center>#}
+{#                    <a href="{% url 'seaimport:sea_import_create_freighttype' %}" target="_blank">#}
+{#                        <img class="text-center"#}
+{#                             src="{% static 'seaimport/assets/images/icon/navicons/freight.png' %}" alt="">#}
+{#                        <p>Add New Freight Type</p>#}
+{#                    </a>#}
+{#                </center>#}
+{#            </div>#}
+{##}
+{#            <div class="col-1">#}
+{#                <center>#}
+{#                    <a href="{% url 'seaimport:sea_import_create_goodstype' %}" target="_blank">#}
+{#                        <img class="text-center"#}
+{#                             src="{% static 'seaimport/assets/images/icon/navicons/stock.png' %}" alt="">#}
+{#                        <p>Add New Goods Type</p>#}
+{#                    </a>#}
+{#                </center>#}
+{#            </div>#}
+{##}
+{#            <div class="col-1">#}
+{#                <center>#}
+{#                    <a href="{% url 'seaimport:sea_import_create_doctype' %}" target="_blank">#}
+{#                        <img class="text-center"#}
+{#                             src="{% static 'seaimport/assets/images/icon/navicons/office-material.png' %}" alt="">#}
+{#                        <p>Add New Document Type</p>#}
+{#                    </a>#}
+{#                </center>#}
+{#            </div>#}
+{##}
+{#            <div class="col-1">#}
+{#                <center>#}
+{#                    <a href="{% url 'seaimport:sea_import_create_seaport' %}" target="_blank">#}
+{#                        <img class="text-center"#}
+{#                             src="{% static 'seaimport/assets/images/icon/navicons/robotic-arm.png' %}" alt="">#}
+{#                        <p>Add New Sea Port</p>#}
+{#                    </a>#}
+{#                </center>#}
+{#            </div>#}
+{##}
+{#            <div class="col-1">#}
+{#                <center>#}
+{#                    <a href="{% url 'seaimport:sea_import_create_package_type' %}" target="_blank">#}
+{#                        <img class="text-center"#}
+{#                             src="{% static 'seaimport/assets/images/icon/navicons/box.png' %}" alt="">#}
+{#                        <p>Add New Package Type</p>#}
+{#                    </a>#}
+{#                </center>#}
+{#            </div>#}
+{##}
+{#            <div class="col-1">#}
+{#                <center>#}
+{#                    <a href="{% url 'seaimport:sea_import_create_container_type' %}" target="_blank">#}
+{#                        <img class="text-center"#}
+{#                             src="{% static 'seaimport/assets/images/icon/navicons/container-crane.png' %}" alt="">#}
+{#                        <p>Add New Container Type</p>#}
+{#                    </a>#}
+{#                </center>#}
+{#            </div>#}
+{##}
+{#        </div>#}
+{##}
+{##}
+        {#        Edit Forms#}
+{##}
+{#        <div class="navigation-icon-set-small row">#}
+{##}
+{#            <div class="col-1">#}
+{#                <center>#}
+{#                    <a href="{% url 'seaimport:sea_import_list_company' %}" target="_blank">#}
+{#                        <img class="text-center"#}
+{#                             src="{% static 'seaimport/assets/images/icon/navicons/factory.png' %}" alt="">#}
+{#                        <p>Edit Company</p>#}
+{#                    </a>#}
+{#                </center>#}
+{#            </div>#}
+{##}
+{#            <div class="col-1">#}
+{#                <center>#}
+{#                    <a href="{% url 'seaimport:sea_import_list_agent' %}" target="_blank">#}
+{#                        <img class="text-center"#}
+{#                             src="{% static 'seaimport/assets/images/icon/navicons/factory.png' %}" alt="">#}
+{#                        <p>Edit Company Branch</p>#}
+{#                    </a>#}
+{#                </center>#}
+{#            </div>#}
+{##}
+{#        </div>#}
+{#    </div>#}
+
+</div>

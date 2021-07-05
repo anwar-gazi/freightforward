@@ -1,0 +1,27 @@
+/*.superselect {*/
+/*position: relative;*/
+/*}*/
+
+/*.ss-search {*/
+
+/*}*/
+
+/*.ss-search-suggestion {*/
+/*position: absolute;*/
+/*background: greenyellow;*/
+/*z-index: 1000;*/
+/*border: 2px solid;*/
+/*}*/
+
+.ss-dropdown {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.ss-opt {
+    cursor: pointer;
+}
+
+.ss-opt-selected {
+    background-color: gray;
+}

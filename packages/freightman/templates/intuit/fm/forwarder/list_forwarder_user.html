@@ -1,0 +1,34 @@
+{% extends 'intuit/fm/base.html' %}
+{% load i18n static %}
+{% block page_title %}
+    <title>List User</title>
+{% endblock %}
+{% block left-nav %}
+    {% include 'intuit/fm/forwarder/left-nav/menu_grid_home_left_nav.html' %}
+{% endblock left-nav %}
+{% block breadcrumbs %}
+    <div class="row">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'forwarder_grid_menu_home' %}">Home</a></li>
+                    <li class="breadcrumb-item" aria-current="page"><a href="{% url 'user_menu' %}">User Management</a></li>
+                    <li class="breadcrumb-item" aria-current="page"><a href="">List Forwarder User</a></li>
+                    <li class="position-absolute" style="right: 100px"><a href="{% url 'user_menu' %}"><i class="fa fa-times-circle text-danger"></i></a></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+{% endblock breadcrumbs %}
+{% block content %}
+    <div id="page_content">
+        <i class="fa fa-spin fa-spinner"></i> Page Loading
+    </div>
+{% endblock content %}
+{% block foot_includes %}
+    {{ block.super }}
+    <script type="text/babel">
+        window.urlfor_init_data = "{% url 'ajax_forwarder_list_users_page_init_data' %}";
+    </script>
+    <script type="text/babel" src="{% static 'forwarder/user/list_users.babel.js' %}"></script>
+{% endblock foot_includes %}

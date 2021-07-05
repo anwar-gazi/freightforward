@@ -1,0 +1,77 @@
+{% extends 'seaimport/forwarder/base_template.html' %}
+{% load static %}
+{% block dashboard_body %}
+
+    <div class="container mt-4">
+
+{#        Air Export#}
+        <div class="row air-export-navigations navigation-icon-set">
+            <h4><b>AIR EXPORT</b></h4>
+
+            <div class="col-2">
+                <center>
+                    <a href="">
+                        <img class="text-center"
+                             src="{% static 'seaimport/assets/images/icon/navicons/dashboard/booking.png' %}" alt="">
+                        <p>Freight Booking</p>
+                    </a>
+                </center>
+            </div>
+
+            <div class="col-2">
+                <center>
+                    <a href="">
+                        <img class="text-center"
+                             src="{% static 'seaimport/assets/images/icon/navicons/dashboard/list.png' %}" alt="">
+                        <p>Registered Bookings</p>
+                    </a>
+                </center>
+            </div>
+
+            <div class="col-2">
+                <center>
+                    <a href="">
+                        <img class="text-center"
+                             src="{% static 'seaimport/assets/images/icon/navicons/dashboard/confirmed.png' %}" alt="">
+                        <p>Confirmed Bookings</p>
+                    </a>
+                </center>
+            </div>
+        </div>
+
+    {#        Air Import#}
+        <div class="row ocean-export-navigations navigation-icon-set mt-4">
+            <h4 class="text-uppercase"><b>Ocean Export Freight booking</b></h4>
+
+            <div class="col-2">
+                <center>
+                    <a href="">
+                        <img class="text-center"
+                             src="{% static 'seaimport/assets/images/icon/navicons/dashboard/booking.png' %}" alt="">
+                        <p>Freight Booking</p>
+                    </a>
+                </center>
+            </div>
+
+            <div class="col-2">
+                <center>
+                    <a href="">
+                        <img class="text-center"
+                             src="{% static 'seaimport/assets/images/icon/navicons/dashboard/list.png' %}" alt="">
+                        <p>Registered Bookings</p>
+                    </a>
+                </center>
+            </div>
+
+            <div class="col-2">
+                <center>
+                    <a href="">
+                        <img class="text-center"
+                             src="{% static 'seaimport/assets/images/icon/navicons/dashboard/confirmed.png' %}" alt="">
+                        <p>Confirmed Bookings</p>
+                    </a>
+                </center>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends 'intuit/fm/base.html' %}
+{% load i18n static %}
+{% block page_title %}
+    <title>Credit Note {{ public_id }}</title>
+{% endblock %}
+{% block head_includes %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/debit_note.css' %}">
+    <style type="text/css">
+        .content {
+            padding-top: 0;
+        }
+    </style>
+{% endblock head_includes %}
+{% block left-nav %}
+    {% include 'intuit/fm/forwarder/left-nav/menu_grid_home_left_nav.html' %}
+{% endblock left-nav %}
+{% block breadcrumbs %}
+    <div class="row">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'forwarder_grid_menu_home' %}">Home</a></li>
+                    <li class="breadcrumb-item" aria-current="page"><a href="{% url 'airexport_apps_menu' %}">Air Export</a></li>
+                    {% if public_id %}
+                        <li class="breadcrumb-item" aria-current="page"><a href="{% url 'airexport:creditnote_listing_page' %}">Credit Note Listing</a></li>
+                        <li class="breadcrumb-item active" aria-current="page"><a href="">View Credit Note {{ public_id }}</a></li>
+                        <li class="position-absolute" style="right: 100px"><a href="{% url 'airexport:creditnote_listing_page' %}">
+                            <i class="fa fa-times-circle text-danger"></i></a></li>
+                    {% else %}
+                        <li class="breadcrumb-item active" aria-current="page"><a href="">Add Credit Note</a></li>
+                        <li class="position-absolute" style="right: 100px"><a href="{% url 'airexport_apps_menu' %}"><i class="fa fa-times-circle text-danger"></i></a></li>
+                    {% endif %}
+                </ol>
+            </nav>
+        </div>
+    </div>
+{% endblock breadcrumbs %}
+{% block content %}
+    <div class="container">
+        <div class="text-center py-4 bg-success">
+            {% if public_id %}
+                <h2>View Credit Note {{ public_id }}</h2>
+            {% else %}
+                <h2>Add Credit Note</h2>
+            {% endif %}
+        </div>
+        <div id="page_content">
+            <i class="fa fa-spin fa-spinner"></i> Page Loading
+        </div>
+        <div>
+
+        </div>
+    </div>
+    {% include 'intuit/fm/forwarder/creditnote_page_partial.html' %}
+{% endblock content %}
+{% block foot_includes %}
+    {{ block.super }}
+    <script type="text/babel">
+        window.urlfor_creditnotepage_init_data = "{% url 'forwarder-debit_note_page_init_data' %}";
+        window.urlfor_get_mawb_info = "{% url 'forwarder_debit_note_get_mawb_info' %}";
+        window.urlfor_credit_note_save = "{% url 'airexport:creditnote_save' %}";
+
+        window.urlfor_get_creditnote_info = "{% url 'airexport:get_creditnote_info' %}";
+    </script>
+    <script type="text/babel" src="{% static 'forwarder/credit_note/credit_note_state.babel.js' %}"></script>
+    <script type="text/babel" src="{% static 'forwarder/credit_note/credit_note_form.babel.js' %}"></script>
+    <script type="text/babel" src="{% static 'forwarder/credit_note/credit_note.babel.js' %}"></script>
+
+    <script type="text/babel">
+        ReactDOM.render(<CreditNote public_id='{{ public_id }}'/>, document.getElementById('page_content'));
+    </script>
+{% endblock foot_includes %}

@@ -1,0 +1,76 @@
+{% extends 'intuit/fm/base.html' %}
+{% load static %}
+{% block head_includes %}
+    {{ block.super }}
+{% endblock head_includes %}
+{% block breadcrumbs %}
+    <div class="row">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+{% endblock breadcrumbs %}
+{% block content %}
+    <div class="row" style="">
+        <div class="col-2"></div>
+        <div class="col-2">
+            <a href="{% url 'airexport_apps_menu' %}">
+                <div class="menu-grid-item" style="background-color: skyblue">
+                    <img class="menu-grid-icon" src="{% static 'icons/air_export.png' %}" alt="icon"/>
+                    <div>Air Export</div>
+                </div>
+            </a>
+        </div>
+        <div class="col-2">
+            <a href="{% url 'seaexport:seaexport_apps_menu' %}">
+                <div class="menu-grid-item" style="background-color: aquamarine">
+                    <img class="menu-grid-icon" src="{% static 'icons/sea_export.png' %}" alt="icon"/>
+                    <div>Sea Export</div>
+                </div>
+            </a>
+        </div>
+        <div class="col-2">
+            <a href="{% url 'seaimport:sea_import_admin_dashboard' %}">
+                <div class="menu-grid-item" style="background-color: mediumaquamarine">
+                    <img class="menu-grid-icon" src="{% static 'icons/sea_import.png' %}" alt="icon"/>
+                    <div>Ocean Import</div>
+                </div>
+            </a>
+        </div>
+        <div class="col-2"></div>
+    </div>
+    <div class="row" style="margin-top: 100px;">
+        <div class="col-2"></div>
+        <div class="col-2">
+            <a href="{% url 'user_menu' %}">
+                <div class="menu-grid-item" style="background-color: #00E4FC">
+                    <img class="menu-grid-icon" src="{% static 'icons/user_management.png' %}" alt="icon"/>
+                    <div>User Management</div>
+                </div>
+            </a>
+        </div>
+        <div class="col-2">
+            <a href="{% url 'supplier_menu' %}">
+                <div class="menu-grid-item" style="background-color: #96D7EB">
+                    <img class="menu-grid-icon" src="{% static 'icons/factory.png' %}" alt="icon"/>
+                    <div>Supplier Management</div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 100px;">
+        <div class="col-2"></div>
+        <div class="col-2">
+            <a href="{% url 'forwarder-settings_page' %}">
+                <div class="menu-grid-item" style="background-color: #E6BE8A">
+                    <img class="menu-grid-icon" src="{% static 'icons/settings.png' %}" alt="icon"/>
+                    <div>System Settings</div>
+                </div>
+            </a>
+        </div>
+    </div>
+{% endblock content %}

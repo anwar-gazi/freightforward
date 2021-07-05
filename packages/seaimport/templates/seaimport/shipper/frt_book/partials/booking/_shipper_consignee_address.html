@@ -1,0 +1,283 @@
+<div class="row">
+        <div class="col-6">
+            <div class="card-header bg-flat-color-3">Shipper Address</div>
+            <div class="shippers_part" id="shipper">
+                <form>
+                    <div>
+{#                        <div class="sub_title"><b>shipper</b></div>#}
+
+                        <div class="form-group row"><label
+                                class="col-sm-4 col-xs-12 col-form-labels">Select address to
+                            load</label>
+                            <div class="col-sm-8 col-xs-12">
+                                <select class="form-control" name="shipper_select">
+                                    <option value="">--</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-xs-12 col-form-label">company name<i class="text-danger small">*</i>
+                            </label>
+                            <div class="col-sm-8 col-xs-12">
+                                <input type="text" class="form-control" placeholder="company name"
+                                       value="" name="shipper_name">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-xs-12 col-form-label">Address
+                                <i class="text-danger small">*</i>
+                            </label>
+                            <div class="col-sm-8 col-xs-12">
+                                <textarea class="form-control" name="shipper_address"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-xs-12 col-form-label">post code
+                                <i class="text-danger small">*</i>
+                            </label>
+                            <div class="col-sm-8 col-xs-12">
+                                <input type="number" class="form-control" value=""
+                                       name="shipper_postal_code">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-xs-12 col-form-label">city
+                                <i class="text-danger small">*</i>
+                            </label>
+                            <div class="col-sm-8 col-xs-12">
+                                <select class="form-control" name="shipper_city">
+                                    <option>--</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-xs-12 col-form-label">state</label>
+                            <div class="col-sm-8 col-xs-12">
+                                <input type="text" class="form-control" placeholder="state" value=""
+                                       name="shipper_state">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-xs-12 col-form-label">country
+                                <i class="text-danger small">*</i>
+                            </label>
+                            <div class="col-sm-8 col-xs-12">
+                                <select class="form-control" name="shipper_country">
+                                    <option>--</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-xs-12 col-form-label">contact
+                                <i class="text-danger small">*</i>
+                            </label>
+                            <div class="col-sm-8 col-xs-12">
+                                <input type="text" class="form-control" placeholder="contact" value=""
+                                       name="shipper_contact">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-xs-12 col-form-label">telephone number
+                                <i class="text-danger small">*</i>
+                            </label>
+                            <div class="col-sm-8 col-xs-12">
+                                <input type="text" class="form-control" value=""
+                                       name="shipper_telephone_number">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-xs-12 col-form-label">mobile number
+                                <i class="text-danger small">*</i>
+                            </label>
+                            <div class="col-sm-8 col-xs-12">
+                                <input type="text" class="form-control" value=""
+                                       name="shipper_mobile_number">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-xs-12 col-form-label">fax number
+                                <i class="text-danger small">*</i>
+                            </label>
+                            <div class="col-sm-8 col-xs-12">
+                                <input type="text" class="form-control" value="" name="shipper_fax">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-xs-12 col-form-label">e-mail address
+                                <i class="text-danger small">*</i>
+                            </label>
+                            <div class="col-sm-8 col-xs-12">
+                                <input type="email" class="form-control" placeholder="e-mail address"
+                                       value="" name="shipper_email">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-xs-12 col-form-label mr-2">
+                                <div class="checkbox">
+                                    <label><input type="checkbox" value=""> Notify Shipper</label>
+                                </div>
+                            </label>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+
+        </div>
+        {#        Field for consignee address#}
+
+        <div class="col-6">
+            <div class="card-header bg-flat-color-3">Consignee Address</div>
+            <div class="consignee_partstart" id="consignee">
+                <form>
+                    <div>
+{#                        <div class="sub_title"><b>consignee</b></div>#}
+
+                        <div class="form-group row">
+                            <label
+                                    class="col-sm-4 col-xs-12 col-form-labels">Select address to
+                                load
+                            </label>
+                            <div class="col-sm-8 col-xs-12">
+                                <select class="form-control" name="consignee_select">
+                                    <option value="">--</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-xs-12 col-form-label">company name<i
+                                    class="text-danger small">*</i>
+                            </label>
+                            <div class="col-sm-8 col-xs-12">
+                                <input type="text" class="form-control" placeholder="company name"
+                                       value="" name="consignee_name">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-xs-12 col-form-label">Address
+                                <i class="text-danger small">*</i>
+                            </label>
+                            <div class="col-sm-8 col-xs-12">
+                                <textarea class="form-control" name="consignee_address"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-xs-12 col-form-label">post code
+                                <i class="text-danger small">*</i>
+                            </label>
+                            <div class="col-sm-8 col-xs-12">
+                                <input type="number" class="form-control" value=""
+                                       name="consignee_postal_code">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-xs-12 col-form-label">city
+                                <i class="text-danger small">*</i>
+                            </label>
+                            <div class="col-sm-8 col-xs-12">
+                                <select class="form-control" name="consignee_city">
+                                    <option>--</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-xs-12 col-form-label">state</label>
+                            <div class="col-sm-8 col-xs-12">
+                                <input type="text" class="form-control" placeholder="state" value=""
+                                       name="consignee_state">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-xs-12 col-form-label">country
+                                <i class="text-danger small">*</i>
+                            </label>
+                            <div class="col-sm-8 col-xs-12">
+                                <select class="form-control" name="consignee_country">
+                                    <option>--</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-xs-12 col-form-label">contact
+                                <i class="text-danger small">*</i>
+                            </label>
+                            <div class="col-sm-8 col-xs-12">
+                                <input type="text" class="form-control" placeholder="contact"
+                                       value=""
+                                       name="consignee_contact">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-xs-12 col-form-label">telephone number
+                                <i class="text-danger small">*</i>
+                            </label>
+                            <div class="col-sm-8 col-xs-12">
+                                <input type="text" class="form-control" value=""
+                                       name="consignee_telephone_number">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-xs-12 col-form-label">mobile number
+                                <i class="text-danger small">*</i>
+                            </label>
+                            <div class="col-sm-8 col-xs-12">
+                                <input type="text" class="form-control" value=""
+                                       name="consignee_mobile_number">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-xs-12 col-form-label">fax number
+                                <i class="text-danger small">*</i>
+                            </label>
+                            <div class="col-sm-8 col-xs-12">
+                                <input type="text" class="form-control" value=""
+                                       name="consignee_fax">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-xs-12 col-form-label">e-mail address
+                                <i class="text-danger small">*</i>
+                            </label>
+                            <div class="col-sm-8 col-xs-12">
+                                <input type="email" class="form-control"
+                                       placeholder="e-mail address"
+                                       value="" name="consignee_email">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-6 col-xs-12 col-form-label mr-2">
+                                <div class="checkbox">
+                                    <label><input type="checkbox" value=""> Notify Consignee</label>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>

@@ -1,0 +1,47 @@
+{% extends 'intuit/fm/base.html' %}
+{% load i18n static %}
+{% block page_title %}
+    {% if public_id %}
+        <title>View/Edit Company Info</title>
+    {% else %}
+        <title>Register Supplier</title>
+    {% endif %}
+{% endblock %}
+{% block head_includes %}
+    {{ block.super }}
+{% endblock head_includes %}
+{% block left-nav %}
+    {% include 'intuit/fm/forwarder/left-nav/menu_grid_home_left_nav.html' %}
+{% endblock left-nav %}
+{% block breadcrumbs %}
+    <div class="row">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'forwarder_grid_menu_home' %}">Home</a></li>
+                    <li class="breadcrumb-item" aria-current="page"><a href="{% url 'supplier_menu' %}">Supplier Management</a></li>
+                    <li class="breadcrumb-item" aria-current="page"><a href="">Supplier Registration</a></li>
+                    <li class="position-absolute" style="right: 100px"><a href="{% url 'supplier_menu' %}"><i class="fa fa-times-circle text-danger"></i></a></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+{% endblock breadcrumbs %}
+{% block content %}
+    <div id="page_content">
+        <i class="fa fa-spin fa-spinner"></i> Page Loading
+    </div>
+{% endblock content %}
+{% block foot_includes %}
+    {{ block.super }}
+    <script type="text/babel">
+        window.urlfor_orgmanage_init_data = "{% url 'ajax-register_factory_init_data' %}";
+        window.urlfor_register_shipper = "{% url 'ajax-register_factory' %}";
+        window.urlfor_register_shipper_user = "{% url 'ajax-register_factory_user' %}";
+    </script>
+    <script type="text/babel" src="{% static 'js/factory_functions.react.js' %}"></script>
+    <script type="text/babel" src="{% static 'js/factory.react.js' %}"></script>
+    <script type="text/babel">
+        ReactDOM.render(<FactoryForm public_id="{{ public_id }}"/>, document.getElementById('page_content'));
+    </script>
+{% endblock foot_includes %}

@@ -1,0 +1,387 @@
+{% load i18n static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid #9a9a9a;
+            border-collapse: collapse;
+            padding: 10px;
+            font-family: sans-serif;
+            font-size: 14px;
+            text-transform: capitalize;
+            color: #000;
+        }
+
+        td {
+            vertical-align: -webkit-baseline-middle;
+        }
+
+        b {
+            font-size: 14px;
+        }
+
+        p {
+            padding: 5px 0px;
+            text-align: left;
+            line-height: 20px;
+            margin: 0px;
+            float: left;
+            width: 100%;
+        }
+
+        .pb-05 {
+            padding-bottom: 5px;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            margin: 0px;
+        }
+    </style>
+</head>
+
+<body>
+<table style="width:90%;vertical-align: middle;margin: 0 auto;margin-top: 50px;margin-bottom: 10px;border: none;">
+    <tbody>
+    <tr>
+        <td style="width: 25%;border: none;margin-left: 0px;padding-left: 0px;position: relative;">
+            <img src="{% static 'img/encore_logo.png' %}" alt="Dental Implants" class="responsive"
+                 style="height: 65px;background-size: cover;position: absolute;bottom: 24px;left: 5px;">
+
+        </td>
+        <td style="width: 50%;border: none;text-align: center;font-family: cursive;">
+            <h1 style="vertical-align: middle;font-size: 24px;">MALLICK FABRICS LTD.</h1>
+            <p style="font-size: 15px;font-weight: 100;padding: 5px;margin: 0px;width: 100%;text-align: center;">246 NAYAPARA, KASHIMPUR, KONABARI, GAZIPUR-1700, BANGLADESH.</p>
+            <b style="font-size: 20px;border-bottom: 2px solid black;">COMMERCIAL INVOICE</b>
+        </td>
+        <td style="width: 25%; border: none;text-align: right;font-size: 18px;font-weight: 600;"></td>
+    </tr>
+    </tbody>
+</table>
+<table style="width:90%;vertical-align: middle;margin: 0 auto;">
+    <!-- 1st  -->
+    <tr>
+        <td style="width: 50%; padding: 0px;">
+            <table style="width: 100%;border: hidden;">
+                <tbody>
+                <tr>
+                    <td style="width: 50%; position: relative;">
+                        <b style="float: left;font-size: 15px;padding: 2px 0px;border-bottom: 1px solid black;">Shipper:</b>
+                        <h3 style="width: 100%;display: inline-block;padding-top: 5px;">MALLICK FABRICS LTD.</h3>
+                        <p style="text-transform: uppercase;font-size: 14px;width: 100%;">246,NAYAPARA,KASHIMPUR,<br> GAZIPUR, BANGLADESH.</p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+        <td style="width: 50%;padding: 0px;">
+            <table style="width: 100%;border: hidden;">
+                <tbody>
+                <tr>
+                    <td colspan="2"><b style="float: left;font-size: 15px;padding: 2px 0px;border-bottom: 1px solid black;">No. &amp; Date of Invoice:</b></td>
+                </tr>
+                <tr>
+                    <td style="width: 75%;border-top: hidden;padding: 5px 10px;">MFL/EXP/HEL/SWE/2018/74</td>
+                    <td style="width: 25%;border-left: hidden; border-top: hidden;padding: 5px 10px;"><b>Date:</b> 11/22/2018</td>
+                </tr>
+                <tr>
+                    <td style="width: 75%;padding: 5px 10px;"><b>EXP. No.:</b> 0665-005135-18</td>
+                    <td style="width: 25%;border-left: hidden;padding: 5px 10px;"><b>Date:</b> 11/22/2018</td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="padding: 5px 10px;"><b>Export Regn. No. </b> RA-74720</td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="padding: 5px 10px;"><b>Terms Of Payment:</b> TT AFETR SHIPMENT</td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <!-- 2nd -->
+    <tr>
+        <td style="width: 50%; padding: 0px;">
+            <table style="width: 100%;border: hidden;">
+                <tbody>
+                <tr>
+                    <td style="width: 50%; position: relative;">
+                        <b style="float: left;font-size: 15px;padding: 2px 0px;border-bottom: 1px solid black;">For Account & Risk of</b>
+                        <p style="text-transform: uppercase;font-size: 14px;width: 100%;">HELLENIC SOURCING HONGKONG LTD<br>C/O.HELLENIC TRADING AB BJORKLUNDABACKEN 6<br>436 57
+                            HOVAS, SWEDEN</p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <table style="width: 100%;border: hidden; border-top: 1px solid black;">
+                <tbody>
+                <tr>
+                    <td style="width: 100%;">
+                        <b style="float: left;font-size: 15px;padding: 2px 0px;border-bottom: 1px solid black;">Notify Party:</b>
+                        <p style="text-transform: uppercase;font-size: 14px;width: 100%;">LAGER 157 LOGISTICS RONNASLIDEN 1A,<br>523 38 ULRICEHMAMN <br>SWEDEN</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 100%; border: hidden;">
+                        <b style="float: left;font-size: 15px;padding: 2px 0px;border-bottom: 1px solid black;">GSP ISSUE ADDRESS</b>
+                        <h3 style="width: 100%;display: inline-block;padding-top: 5px;">LAGER 157 AB</h3>
+                        <p style="text-transform: uppercase;font-size: 14px;width: 100%;">ULRICEHAMNSVAGEN 12,<br>523 60 GALLSTAD,SWEDEN</p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+        <td style="width: 50%;padding: 0px;">
+            <table style="width: 100%;border: hidden;">
+                <tbody>
+                <tr>
+                    <td colspan="2"><b style="float: left;font-size: 15px;padding: 2px 0px;border-bottom: 1px solid black;">SC No. & Date:</b></td>
+                </tr>
+                <tr>
+                    <td style="width: 75%;border-top: hidden;">MFL/Lag/2011/18</td>
+                    <td style="width: 25%;border-left: hidden;border-top: hidden;"><b>Date:</b> 10/16/2018</td>
+                </tr>
+                </tbody>
+            </table>
+            <table style="width: 100%;border: hidden; border-top: 1px solid black;">
+                <tbody>
+                <tr>
+                    <td style="width: 50%; position: relative;">
+                        <b style="float: left;font-size: 15px;padding: 2px 0px;border-bottom: 1px solid black;">Buyer Bank</b>
+                        <h3 style="width: 100%;display: inline-block;padding-top: 5px;">DANSKE BANK</h3>
+                        <p style="text-transform: uppercase;font-size: 14px;width: 100%;">SWEDEN BRANCH<br> OSTRA HAMNGATAN 45 <br>SE-411 10 GOTEBORG <br>SWEDEN</p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <table style="width: 100%;border: hidden; border-top: 1px solid black;">
+                <tbody>
+                <tr>
+                    <td style="width: 50%; position: relative;">
+                        <b style="float: left;font-size: 15px;padding: 2px 0px;border-bottom: 1px solid black;">Negotiating Bank</b>
+                        <h3 style="width: 100%;display: inline-block;padding-top: 5px;">AB BANK LIMITED</h3>
+                        <p style="text-transform: uppercase;font-size: 14px;width: 100%;">BDBL BUILDING, 8 RAJUK AVENUE<br>MOTIJHEEL C/A, DHAKA-1000<br>SWIFT: ABBLBDDH004<br>A/C
+                            NO: 4004-788360-000</p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <!-- 3rd -->
+    <tr>
+        <td style="width: 50%; padding: 0px;">
+            <table style="width: 100%;border-right: hidden;border-left: hidden;border-bottom: hidden;">
+                <tbody style="text-align: left;">
+                <tr>
+                    <th><b style="float: left;font-size: 15px;padding: 2px 0px;border-bottom: 1px solid black;">Port of Loading</b></th>
+                    <th><b style="float: left;font-size: 15px;padding: 2px 0px;border-bottom: 1px solid black;">Port of Discharge:</b></th>
+                </tr>
+                <tr>
+                    <td>DHAKA AIR PORT <br>BANGLADESH.</td>
+                    <td>GOTHENBURG AIR PORT</td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+        <td style="width: 50%;">
+        </td>
+    </tr>
+    <!-- 4th -->
+    <tr>
+        <td style="width: 50%; padding: 0px;">
+            <table style="width: 100%;border-right: hidden;border-left: hidden;border-bottom: hidden;">
+                <tbody style="text-align: left;">
+                <tr>
+                    <th><b style="float: left;font-size: 15px;padding: 2px 0px;border-bottom: 1px solid black;">Final Destination</b></th>
+                    <th><b style="float: left;font-size: 15px;padding: 2px 0px;border-bottom: 1px solid black;">TRAMS OF DELIVERY:</b></th>
+                </tr>
+                <tr>
+                    <td>GOTHENBURG, SWEDEN</td>
+                    <td> CFR GOTHENBURG,<br>SWEDEN</td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+        <td style="width: 50%;">
+            <table style="width: 100%;border: hidden;">
+                <tbody>
+                <tr>
+                    <td colspan="2" style="padding: 5px 0px;border: hidden;"><b>HAWB NO:</b> TEC-216</td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="padding: 5px 0px;border: hidden;"><b>DATE:</b> 27-Nov-18 SHIPMENT</td>
+                </tr>
+                </tbody>
+            </table>
+    </tr>
+    <!-- 5th -->
+    <tr>
+        <td style="width: 50%; padding: 0px;">
+            <table style="width: 100%;border-right: hidden;border-left: hidden;border-bottom: hidden;">
+                <tbody style="text-align: left;">
+                <tr>
+                    <th>Origin: BANGLADESH</th>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+        <td style="width: 50%;">
+        </td>
+    </tr>
+    <!-- 6th -->
+    <tr>
+        <td colspan="2" style="padding: 0px;">
+            <table style="width: 100%;border: hidden;">
+                <tbody>
+                <tr>
+                    <th style="width: 15%;">Shipping Marks &amp; No.</th>
+                    <th style="width: 40%;">Description of goods</th>
+                    <th>QTY IN PKS</th>
+                    <th>QTY IN PCS</th>
+                    <th>Unit Price</th>
+                    <th>Total Amount</th>
+                </tr>
+                <tr>
+                    <td style="text-align: left;">
+                        <strong style="border-bottom: 1px solid #000; text-align: left; width: 100%;">MAIN MARK</strong>
+                        <p>Order No</p>
+                        <p>Item No</p>
+                        <p>Style</p>
+                        <p>Qty</p>
+                        <p>Size</p>
+                        <p>Colour:</p>
+                        <p>Carton Measurement</p>
+                        <p>Net Weight</p>
+                        <p>Gross Weight</p>
+                    </td>
+                    <td style="padding: 0px;">
+                        <table style="width:100%; border: hidden;">
+                            <tbody>
+                            <tr>
+                                <th style="width: 80%">ITEM NAME</th>
+                                <th style="width: 20%">ORDER NO</th>
+                            </tr>
+                            <tr>
+                                <td style="padding: 0px;">
+                                    <table style="width:100%; height: 350px;">
+                                        <tbody>
+                                        <tr>
+                                            <td style="text-align: left;border: hidden;">
+                                                <table style="width: 100%;border: hidden;margin-top: 37px;">
+                                                    <tbody>
+                                                    <tr>
+                                                        <td style="width: 100%;padding: 0px;">
+                                                            <strong style="padding: 5px 0px;">BEBE BODY</strong>
+                                                            <p style="padding: 0px 0px;">100% ORGANIC COTTON S/J -200GM</p>
+                                                            <p style="padding: 0px 0px;"><b>STYLE NO.</b> FRANKIE STAR/ K BODY</p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width: 100%;padding: 30px 0px; border: hidden; ">
+                                                            <strong style="padding: 5px 0px;">BEBE PANT</strong>
+                                                            <p style="padding: 0px 0px;">100% ORGANIC COTTON S/J -200GM</p>
+                                                            <p style="padding: 0px 0px;"><b>STYLE NO. MILLER/ K PANTS</b></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width: 100%;padding: 30px 0px; border: hidden; ">
+                                                            <strong style="padding: 5px 0px;">HS CODE: 6111.20.90.00 CAT:68</strong>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                                <td style="padding: 0px;">
+                                    <table style="width:100%">
+                                        <tbody>
+                                        <tr>
+                                            <td style="border: hidden;">
+                                                <p style="margin-top: 30px;text-align: center;">13118</p>
+                                                <p style="margin-top: 55px;text-align: center;">13120</p>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                    <td></td>
+                    <td>
+                        <p style="margin-top: 65px;text-align: center;">4,840 PCS</p>
+                        <p style="margin-top: 55px;text-align: center;">4,048 PCS</p>
+                    </td>
+                    <td>
+                        <p style="margin-top: 65px;text-align: center;">0.94</p>
+                        <p style="margin-top: 55px;text-align: center;">0.94</p>
+                    </td>
+                    <td>
+                        <p style="margin-top: 65px;text-align: center;">$4,549.60</p>
+                        <p style="margin-top: 55px;text-align: center;">$3,805.12</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="2" style=" text-align: right;">TOTAL QUANTITY:</th>
+                    <th></th>
+                    <th>8888 PCS</th>
+                    <th></th>
+                    <th>$8,354.72</th>
+                </tr>
+                <tr>
+                    <th colspan="5" style=" text-align: right;">TOTAL INVOICE VALUE</th>
+                    <th>$8,354.72</th>
+                </tr>
+                <tr>
+                    <th colspan="6" style=" text-align: center;"><b>AMOUNT IN WORD: USD EIGHT THOUSAND THREE HUNDRED FIFTY FOUR AND CENTS SEVENTY TWO ONLY.</b></th>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <!-- 5th -->
+    <tr>
+        <td colspan="2">
+            <table style="width: 50%;margin-top: 10px;">
+                <strong style="border-bottom: 1px solid #000; text-align: left; width: 100%;">TOTAL SUMMARY </strong>
+                <tbody>
+                <tr>
+                    <td style="width: 50%;">TOTAL GARMENT QUANTITY</td>
+                    <td style="width: 50%;text-align: right;">8888 PCS</td>
+                </tr>
+                <tr>
+                    <td style="width: 50%;">TOTAL CARTON QUANTITY</td>
+                    <td style="width: 50%;text-align: right;">404 CTNS</td>
+                </tr>
+                <tr>
+                    <td style="width: 50%;">TOTAL NET WEIGHT</td>
+                    <td style="width: 50%;text-align: right;">789.60 KGS</td>
+                </tr>
+                <tr>
+                    <td style="width: 50%;">TOTAL GROSS WEIGHT</td>
+                    <td style="width: 50%;text-align: right;">1098.00 KGS</td>
+                </tr>
+                <tr>
+                    <td style="width: 50%;">TOTAL CBMS</td>
+                    <td style="width: 50%;text-align: right;">7.15 CBM</td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+</table>
+</body>
+
+</html>

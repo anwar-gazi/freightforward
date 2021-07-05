@@ -1,0 +1,5 @@
+<ul class="list-inline small">
+    <li class="list-inline-item">
+        <b>Welcome</b> <span class="small"><a title="profile">{{ request.user.username }}</a></span>
+        <a class="margin-left-20p" href="{% url 'logout' %}">Logout</a></li>
+</ul>

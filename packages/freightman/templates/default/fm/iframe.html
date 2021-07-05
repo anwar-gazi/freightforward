@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a id="result" href="{{ url }}"></a>
+
+<script src="{% static 'node_modules/jquery/dist/jquery.js' %}"></script>
+<script type="text/javascript">
+    const url = "{{ url }}";
+    jQuery('[name="uploaded_file_relpath"]', window.parent.document).val(url);
+    window.parent.jQuery(window.parent.document).trigger('uploadresulturlreceive', [url]);
+</script>
+</body>
+</html>

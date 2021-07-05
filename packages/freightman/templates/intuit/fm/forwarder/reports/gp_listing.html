@@ -1,0 +1,88 @@
+{% extends 'intuit/fm/base.html' %}
+{% load i18n static %}
+{% block page_title %}
+    <title>{{ report_name }}</title>
+{% endblock %}
+{% block head_includes %}
+    {{ block.super }}
+    <style>
+        .content {
+            margin-top: 0;
+        }
+    </style>
+{% endblock head_includes %}
+{% block breadcrumbs %}
+    <div class="row">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'forwarder_grid_menu_home' %}">Home</a></li>
+                    <li class="breadcrumb-item" aria-current="page"><a href="{% url 'airexport_apps_menu' %}">Air
+                        Export</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><a href="">Customer GP Listing</a></li>
+                    <li class="position-absolute" style="right: 100px"><a href="{% url 'airexport_apps_menu' %}"><i
+                            class="fa fa-times-circle text-danger"></i></a></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+{% endblock breadcrumbs %}
+{% block content %}
+    <div class="container">
+        <div class="text-center bg-success py-4">
+            <h2 class="">{{ report_name }}</h2>
+        </div>
+
+        <div>
+            <div class="search float-right p-3">
+                <form action="" method="GET" class="form-inline">
+                    <div class="form-group">
+                        <label for="from_date" class="mr-2 col-form-label">From</label>
+                        <input type="date" class="form-control mr-2" id="from_date" name="from_date" value="{{ from_date }}" required>
+
+                        <label for="to_date" class="mr-2 col-form-label">To</label>
+                        <input type="date" class="form-control mr-2" id="to_date" name="to_date" value="{{ to_date }}" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Go</button>
+                </form>
+            </div>
+
+            <div id="page_content" style="background: #FFFFFF">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Shipments</th>
+                        <th>Revenue</th>
+                        <th>Cost</th>
+                        <th>Gross Profit</th>
+                        <th>Total Weight/<br>Chargeable Weight</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for key, value in dict.items %}
+                        <tr style="border-bottom: 1px solid #000000; font-size: .8em;">
+                            <td>{{ value.name }}</td>
+                            <td>{{ value.total_shipments }}</td>
+                            <td>{{ value.revenue }}</td>
+                            <td>{{ value.cost }}</td>
+                            <td>{{ value.gross_profit }}</td>
+                            <td>{{ value.chargable_weight }}</td>
+                        </tr>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+                <form action="" type="GET" target="_blank">
+                    <input type="date" class="form-control mr-2" name="from_date" value="{{ from_date }}" hidden>
+                    <input type="date" class="form-control mr-2" name="to_date" value="{{ to_date }}" hidden>
+                    <input type="text" hidden name="print" value='True'>
+                    <button type="submit" class="btn btn-outline-secondary btn-sm float-right"><i
+                            class="fa fa-print"></i></button>
+                </form>
+            </div>
+        </div>
+        <div id="bottom_info">
+        </div>
+    </div>
+{% endblock content %}

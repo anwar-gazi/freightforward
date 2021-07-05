@@ -1,0 +1,301 @@
+{% load static %}
+<aside id="left-panel" class="left-panel">
+    <nav class="navbar navbar-expand-sm navbar-default">
+        <div id="main-menu" class="main-menu collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}">
+                    <a href="{% url 'home' %}">
+                        <img class="png-icon" src="{% static 'icons/home.png' %}" alt="icon"/>
+                        <span>Home</span>
+                    </a>
+                </li>
+
+                {% if user_authlevel_permission.can_access_anything_of_airexport %}
+                    <li class="menu-title">
+                        <img class="png-icon" src="{% static 'icons/air_export.png' %}" alt="icon"/>
+                        <span>Air Freight Export</span>
+                    </li>
+                {% endif %}
+
+                {% if user_authlevel_permission.can_do_airexport_frt_booking %}
+                    <li class="{% if request.resolver_match.url_name == 'forwarder-freight_booking' %}active{% endif %}">
+                        <a href="{% url 'forwarder-freight_booking' %}" class="whitespace-nr" title="">
+                            <img class="png-icon" src="{% static 'icons/airexport_online_frt_booking.png' %}" alt="icon"/>
+                            <span>Freight Booking</span>
+                        </a>
+                    </li>
+                {% endif %}
+
+                {% if user_authlevel_permission.can_access_airexport_frt_bookinglist %}
+                    <li class="{% if request.resolver_match.url_name == 'booking_list_registered' %}active{% endif %}">
+                        <a href="{% url 'booking_list_registered' %}" title="Registered Bookings">
+                            <img class="png-icon" src="{% static 'icons/registered_bookings.png' %}" alt="icon"/>
+                            <span>Registered bookings</span>
+                        </a>
+                    </li>
+                {% endif %}
+
+                {% if user_authlevel_permission.can_access_airexport_frt_bookinglist %}
+                    <li class="{% if request.resolver_match.url_name == 'booking_list_confirmed' %}active{% endif %}">
+                        <a href="{% url 'booking_list_confirmed' %}" title="Confirmed Bookings">
+                            <img class="png-icon" src="{% static 'icons/confirmed_bookings.png' %}" alt="icon"/>
+                            <span>Confirmed bookings</span>
+                        </a>
+                    </li>
+                {% endif %}
+
+                {% if user_authlevel_permission.can_access_airexport_mbl_list %}
+                    <li class="{% if request.resolver_match.url_name == 'forwarder-mawb_listing_page' %}active{% endif %}">
+                        <a href="{% url 'forwarder-mawb_listing_page' %}" title="Master Airway Bill List">
+                            <img class="png-icon" src="{% static 'icons/master_bill.png' %}" alt="icon"/>
+                            <span>List MAWB</span>
+                        </a>
+                    </li>
+                {% endif %}
+
+                {% if user_authlevel_permission.can_access_airexport_mbl_create %}
+                    <li class="{% if request.resolver_match.url_name == 'forwarder-mawb-input' %}active{% endif %}">
+                        <a href="{% url 'forwarder-mawb-input' %}" title="Master Airway Bill data entry">
+                            <img class="png-icon" src="{% static 'icons/master_bill.png' %}" alt="icon"/>
+                            <span>Create MAWB</span>
+                        </a>
+                    </li>
+                {% endif %}
+
+{#            {% if user_authlevel_permission.can_access_airexport_mbl_create %}#}
+{#                    <li class="{% if request.resolver_match.url_name == 'forwarder-mawb-input' %}active{% endif %}">#}
+{#                        <a href="{% url 'forwarder-mawb-edit' %}" title="Master Airway Bill data entry">#}
+{#                            <img class="png-icon" src="{% static 'icons/master_bill.png' %}" alt="icon"/>#}
+{#                            <span>EDIT MAWB</span>#}
+{#                        </a>#}
+{#                    </li>#}
+{#                {% endif %}#}
+
+                {% if user_authlevel_permission.can_access_airexport_hbl_create %}
+                    <li class="{% if request.resolver_match.url_name == 'forwarder-hawb-input' %}active{% endif %}">
+                        <a href="{% url 'forwarder-hawb-input' %}" title="House Airway Bill">
+                            <img class="png-icon" src="{% static 'icons/house_bill.png' %}" alt="icon"/>
+                            <span>Create HAWB</span>
+                        </a>
+                    </li>
+                {% endif %}
+
+                {% if user_authlevel_permission.can_access_airexport_hbl_create %}
+                    <li class="{% if request.resolver_match.url_name == 'forwarder-hawb-input' %}active{% endif %}">
+                        <a href="{% url 'forwarder-hawb-edit' %}" title="House Airway Bill">
+                            <img class="png-icon" src="{% static 'icons/master_bill.png' %}" alt="icon"/>
+                            <span>EDIT HAWB</span>
+                        </a>
+                    </li>
+                {% endif %}
+
+                {% if user_authlevel_permission.can_access_airexport_consolidation %}
+                    <li class="{% if request.resolver_match.url_name == 'forwarder-shipment-consol' %}active{% endif %}">
+                        <a href="{% url 'forwarder-shipment-consol' %}" title="">
+                            <img class="png-icon" src="{% static 'icons/consolidation.png' %}" alt="icon"/>
+                            <span>Consolidation</span>
+                        </a>
+                    </li>
+                {% endif %}
+
+                {% if user_authlevel_permission.can_access_airexport_invoice_list %}
+                    <li class="{% if request.resolver_match.url_name == 'forwarder-debit_note_listing' %}active{% endif %}">
+                        <a href="{% url 'forwarder-debit_note_listing' %}" title="">
+                            <img class="png-icon" src="{% static 'icons/job_costing.png' %}" alt="icon"/>
+                            <span>Debit Note listing</span>
+                        </a>
+                    </li>
+                {% endif %}
+
+                {% if user_authlevel_permission.can_access_airexport_invoice_create %}
+                    <li class="{% if request.resolver_match.url_name == 'forwarder-debit_note_page' or request.resolver_match.url_name == 'forwarder-debit_note_view' %}
+                active{% endif %}">
+                        <a href="{% url 'forwarder-debit_note_page' %}" title="">
+                            <img class="png-icon" src="{% static 'icons/job_costing.png' %}" alt="icon"/>
+                            <span>Debit Note create</span>
+                        </a>
+                    </li>
+                {% endif %}
+
+                {% if user_authlevel_permission.can_access_airexport_job_costing_create %}
+                    <li class="{% if request.resolver_match.url_name == 'forwarder-job_costing_page' %}active{% endif %}">
+                        <a href="{% url 'forwarder-job_costing_page' %}" title="Job costing">
+                            <img class="png-icon" src="{% static 'icons/job_costing.png' %}" alt="icon"/>
+                            <span>Job Costing</span>
+                        </a>
+                    </li>
+                {% endif %}
+
+                {% if user_authlevel_permission.can_access_airexport_gp_listing %}
+                    <li class="{% if request.resolver_match.url_name == 'forwarder-gp_listing_page' %}active{% endif %}">
+                        <a href="{% url 'forwarder-gp_listing_page' %}" title="">
+                            <img class="png-icon" src="{% static 'icons/gp_listing.png' %}" alt="icon"/>
+                            <span>GP Listing</span>
+                        </a>
+                    </li>
+                {% endif %}
+
+                {% if user_authlevel_permission.can_access_anything_of_seaexport %}
+                    <li class="menu-title">
+                        <img class="png-icon" src="{% static 'icons/sea_export.png' %}" alt="icon"/>
+                        <span>Sea Freight Export</span>
+                    </li>
+                {% endif %}
+
+                {% if user_authlevel_permission.can_do_seaexport_frt_booking %}
+                    <li class="{% if request.resolver_match.url_name == 'seaexport_forwarder_freight_booking_page' %}active{% endif %}">
+                        <a href="{% url 'seaexport:seaexport_forwarder_freight_booking_page' %}" class="whitespace-nr" title="">
+                            <img class="png-icon" src="{% static 'icons/airexport_online_frt_booking.png' %}" alt="icon"/>
+                            <span>Create Booking</span>
+                        </a>
+                    </li>
+                {% endif %}
+
+                {% if user_authlevel_permission.can_access_seaexport_frt_bookinglist %}
+                    <li class="{% if request.resolver_match.url_name == 'seaexport_forwarder_freight_bookinglist_page' %}active{% endif %}">
+                        <a href="{% url 'seaexport:seaexport_forwarder_freight_bookinglist_page' %}" class="whitespace-nr" title="">
+                            <img class="png-icon" src="{% static 'icons/airexport_online_frt_booking.png' %}" alt="icon"/>
+                            <span>Booking List</span>
+                        </a>
+                    </li>
+                {% endif %}
+
+                {% if user_authlevel_permission.can_access_seaexport_hbl_create %}
+                    <li class="{% if request.resolver_match.url_name == 'seaexport_forwarder_hbl_list_page' or request.resolver_match.url_name == 'seaexport_forwarder_view_hbl_page' %}active{% endif %}">
+                        <a href="{% url 'seaexport:seaexport_forwarder_hbl_list_page' %}" class="whitespace-nr" title="">
+                            <img class="png-icon" src="{% static 'icons/airexport_online_frt_booking.png' %}" alt="icon"/>
+                            <span>HBL listing</span>
+                        </a>
+                    </li>
+                {% endif %}
+
+                {% if user_authlevel_permission.can_access_seaexport_hbl_create %}
+                    <li class="{% if request.resolver_match.url_name == 'seaexport_forwarder_create_hbl_page' %}active{% endif %}">
+                        <a href="{% url 'seaexport:seaexport_forwarder_create_hbl_page' %}" class="whitespace-nr" title="">
+                            <img class="png-icon" src="{% static 'icons/airexport_online_frt_booking.png' %}" alt="icon"/>
+                            <span>HBL creation</span>
+                        </a>
+                    </li>
+                {% endif %}
+
+                {% if user_authlevel_permission.can_access_seaexport_mbl_create %}
+                    <li class="{% if request.resolver_match.url_name == 'seaexport_container_consol_page' %}active{% endif %}">
+                        <a href="{% url 'seaexport:seaexport_container_consol_page' %}" class="whitespace-nr" title="">
+                            <img class="png-icon" src="{% static 'icons/airexport_online_frt_booking.png' %}" alt="icon"/>
+                            <span>Container consolidation</span>
+                        </a>
+                    </li>
+                {% endif %}
+
+                {% if user_authlevel_permission.can_access_seaexport_mbl_create %}
+                    <li class="{% if request.resolver_match.url_name == 'seaexport_container_consol_listing_page' or request.resolver_match.url_name == 'seaexport_container_consol_shipment_advice_view' %}active{% endif %}">
+                        <a href="{% url 'seaexport:seaexport_container_consol_listing_page' %}" class="whitespace-nr" title="">
+                            <img class="png-icon" src="{% static 'icons/airexport_online_frt_booking.png' %}" alt="icon"/>
+                            <span>Consolidated shipment listing</span>
+                        </a>
+                    </li>
+                {% endif %}
+
+                {% if user_authlevel_permission.can_access_seaexport_mbl_create %}
+                    <li class="{% if request.resolver_match.url_name == 'seaexport_forwarder_add_mbl_page' %}active{% endif %}">
+                        <a href="{% url 'seaexport:seaexport_forwarder_add_mbl_page' %}" class="whitespace-nr" title="">
+                            <img class="png-icon" src="{% static 'icons/airexport_online_frt_booking.png' %}" alt="icon"/>
+                            <span>MBL add</span>
+                        </a>
+                    </li>
+                {% endif %}
+
+                {% if user_authlevel_permission.can_access_seaexport_mbl_create %}
+                    <li class="{% if request.resolver_match.url_name == 'seaexport_consol_job_costing_page' %}active{% endif %}">
+                        <a href="{% url 'seaexport:seaexport_consol_job_costing_page' %}" class="whitespace-nr" title="">
+                            <img class="png-icon" src="{% static 'icons/airexport_online_frt_booking.png' %}" alt="icon"/>
+                            <span>Consolidation Job Costing</span>
+                        </a>
+                    </li>
+                {% endif %}
+                {% if user_authlevel_permission.can_access_seaexport_mbl_create %}
+                    <li class="{% if request.resolver_match.url_name == 'seaexport_invoice_create_page' %}active{% endif %}">
+                        <a href="{% url 'seaexport:seaexport_invoice_create_page' %}" class="whitespace-nr" title="">
+                            <img class="png-icon" src="{% static 'icons/airexport_online_frt_booking.png' %}" alt="icon"/>
+                            <span>Invoice</span>
+                        </a>
+                    </li>
+                {% endif %}
+                {% if user_authlevel_permission.can_access_seaexport_mbl_create %}
+                    <li class="{% if request.resolver_match.url_name == 'seaexport_gp_listing_page' %}active{% endif %}">
+                        <a href="{% url 'seaexport:seaexport_gp_listing_page' %}" class="whitespace-nr" title="">
+                            <img class="png-icon" src="{% static 'icons/airexport_online_frt_booking.png' %}" alt="icon"/>
+                            <span>GP Listing</span>
+                        </a>
+                    </li>
+                {% endif %}
+
+                {% if user_authlevel_permission.can_access_anything_of_seaimport %}
+                    <li class="menu-title">
+                        <img class="png-icon" src="{% static 'icons/sea_import.png' %}" alt="icon"/>
+                        <span>Sea Freight Import</span>
+                    </li>
+                {% endif %}
+
+                {% if user_authlevel_permission.can_access_anything_of_seaimport %}
+                    <li class="{% if request.resolver_match.url_name == 'sea_import_admin_login' %}active{% endif %}">
+                        <a href="{% url 'seaimport:sea_import_admin_login' %}" class="whitespace-nr" title="">
+                            <img class="png-icon" src="{% static 'icons/sea_import.png' %}" alt="icon"/>
+                            <span>Sea import management</span>
+                        </a>
+                    </li>
+                {% endif %}
+
+                {% if user_authlevel_permission.can_access_anything_of_user_management %}
+                    <li class="menu-title">
+                        <img class="png-icon" src="{% static 'icons/user_management.png' %}" alt="icon"/>
+                        <span>User Management</span>
+                    </li>
+                {% endif %}
+
+                {% if user_authlevel_permission.can_create_user %}
+                    <li class="{% if request.resolver_match.url_name == 'add_forwarder_user_page' %}active{% endif %}">
+                        <a href="{% url 'add_forwarder_user_page' %}" title="">
+                            <img class="png-icon" src="{% static 'icons/add_user.png' %}" alt="icon"/>
+                            <span>Add User</span>
+                        </a>
+                    </li>
+                {% endif %}
+
+                {% if user_authlevel_permission.can_list_user %}
+                    <li class="{% if request.resolver_match.url_name == 'list_forwarder_users_page' %}active{% endif %}">
+                        <a href="{% url 'list_forwarder_users_page' %}" title="">
+                            <img class="png-icon" src="{% static 'icons/list_user.png' %}" alt="icon"/>
+                            <span>List Users</span>
+                        </a>
+                    </li>
+                {% endif %}
+
+                {% if user_authlevel_permission.can_access_anything_of_supplier_management %}
+                    <li class="menu-title">
+                        <img class="png-icon" src="{% static 'icons/shipper_registration.png' %}" alt="icon"/>
+                        <span>Supplier</span>
+                    </li>
+                {% endif %}
+
+                {% if user_authlevel_permission.can_list_supplier %}
+                    <li class="{% if request.resolver_match.url_name == 'shippers_listing_page' %}active{% endif %}">
+                        <a href="{% url 'shippers_listing_page' %}" title="List Shippers">
+                            <img class="png-icon" src="{% static 'icons/company_and_staff.png' %}" alt="icon"/>
+                            <span>List Supplier</span>
+                        </a>
+                    </li>
+                {% endif %}
+
+                {% if user_authlevel_permission.can_create_supplier %}
+                    <li class="{% if request.resolver_match.url_name == 'add_factory_page' %}active{% endif %}">
+                        <a href="{% url 'add_factory_page' %}" title="Add shipper">
+                            <img class="png-icon" src="{% static 'icons/factory.png' %}" alt="icon"/>
+                            <span>Register Supplier</span>
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </nav>
+</aside>

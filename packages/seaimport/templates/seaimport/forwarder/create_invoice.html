@@ -1,0 +1,127 @@
+{% extends 'seaimport/forwarder/base_template.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block page_title %}
+    Create Invoice
+{% endblock %}
+{% block dashboard_body %}
+    <div class="container mt-4 mb-4">
+    {% include 'seaimport/forwarder/partials/_alert_message.html' %}
+    {% include 'seaimport/forwarder/partials/_form_errors.html' with form=DollarRateForm %}
+    {% include 'seaimport/forwarder/partials/_form_errors.html' with form=ExpenseFormSet %}
+        <div class="card">
+            <div class="card-header text-center text-uppercase
+            {% if hbl.task.job_progress.progress == 100 %}
+                text-white bg-success
+            {% elif hbl.task.job_progress.progress > 0 %}
+                text-white bg-info
+            {% endif %}
+            ">
+                <h2 class="">HBL No - {{ hbl.hbl_number }} ({{ hbl.task.job_progress.progress }}% Completed)</h2>
+            </div>
+
+            <div class="card-body">
+                <div class="card">
+                    <div class="card-header text-uppercase">Goods Info</div>
+                    <div class="card-body">
+                        <div class="row">
+                            {% for good in goods %}
+                                <div class="col-4"><b>Type:</b> {{ good.type }}</div>
+                                <div class="col-4"><b>Container/Seal Number:</b> {{ good.container_seal_number }}</div>
+                                <div class="col-4"><b>Quantity:</b> {{ good.quantity }}</div>
+
+                                <div class="col-4"><b>Package Type:</b> {{ good.package_type }}</div>
+                                <div class="col-4"><b>Net Weight:</b> {{ good.net_weight }}</div>
+                                <div class="col-4"><b>Gross Weight:</b> {{ good.gross_weight }}</div>
+
+                                <div class="col-12 mt-2"><b>Description: <br></b> {{ good.description }}</div>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <div class="card">
+                    <div class="card-header text-uppercase">Create Invoice (Type: {{ mbl.freight_type }})</div>
+                    {% if not has_expense %}
+                        <center><p class="alert alert-info"><b>NOTE</b> No Invoice is created for this HBL. Using the last {{ mbl.freight_type }} types JOB as Template</p></center>
+                    {% endif %}
+
+                    <div class="card-body">
+                        <form action="{% url 'seaimport:sea_import_create_invoice' hbl.id %}" method="post">
+                            <div class="row">
+                                <div class="col-3">{{ DollarRateForm.dollar_rate | as_crispy_field }}</div>
+                                <div class="col-3">Click the update button to see changes</div>
+                            </div>
+
+                            <div class="expense_form">
+
+                                <div class="row">
+                                    <div class="col-6 align-middle">
+                                        <p>Add More Expense Type -
+                                            <a href="JavaScript:newPopup('{% url 'seaimport:sea_import_create_expensetype' %}');"><i
+                                                    class="far fa-plus-square fa-1x"></i>
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                {{ ExpenseForms.management_form }}
+                                {% for ExpenseForm in ExpenseForms %}
+                                    <div class="row expense_form_multiply form-inline mb-3">
+                                        <label for="type" class="ml-3">Expense Type </label>
+                                        <div class="col mr-1">{{ ExpenseForm.type | as_crispy_field }}</div>
+
+                                        <label for="amount">Amount </label>
+                                        <div class="col-1 amount_wrapper"><div>{{ ExpenseForm.amount | as_crispy_field }}</div></div>
+                                        <div class="col text-secondary">USD</div>
+
+                                        <div class="col-1">
+                                            <input type="number" class="form-control bdt">
+                                        </div>
+                                        <div class="col text-secondary">BDT</div>
+                                    </div>
+                                {% endfor %}
+                                <div class="row mb-3 mt-3">
+                                    <div class="col-2"><h3>Total</h3></div>
+                                    <div class="col-3"><h4>USD = <span id="total_usd"></span> $</h4></div>
+                                    <div class="col-3"><h4>BDT = <span id="total_bdt"></span> TK</h4></div>
+                                </div>
+                            </div>
+
+                            {% if not forwarder_bank %}
+
+                                <a href="JavaScript:newPopup('{% url 'seaimport:sea_import_create_agent_bank' %}');">
+                                    <div class="alert alert-danger" role="alert">
+                                        No Bank information found for {{ mbl.mbl_notifier }} (MBL Notifier) - Click to
+                                        Add
+                                    </div>
+                                </a>
+                            {% else %}
+                                <a href="{% url 'seaimport:sea_import_view_invoice' hbl.id %}"
+                                   class="btn btn-outline-success float-right">View Invoice</a>
+                            {% endif %}
+
+                            <button type="submit" class="btn btn-success float-right mr-2">Create/Update</button>
+
+                        <button type="reset" class="btn btn-warning float-left mr-2">Reset</button>
+                            <a href="javascript:close_window();"
+                               class="btn btn-danger float-left">Exit</a>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    </div>
+{% endblock %}
+
+{% block extraJs %}
+    <script type="text/javascript" src="{% static 'js/sea_import_invoice_creation.jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/extras.js' %}"></script>
+{% endblock %}

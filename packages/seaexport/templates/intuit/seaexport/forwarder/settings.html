@@ -1,0 +1,43 @@
+{% extends 'intuit/fm/base.html' %}
+{% load i18n static %}
+{% block page_title %}
+    <title>Sea-Export Settings Page</title>
+{% endblock %}
+{% block head_includes %}
+    {{ block.super }}
+    <style>
+        .content {
+            padding-top: 0;
+        }
+    </style>
+{% endblock head_includes %}
+{% block breadcrumbs %}
+    <div class="row">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'forwarder_grid_menu_home' %}">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><a href="">Settings</a></li>
+                    <li class="position-absolute" style="right: 100px"><a href="{% url 'seaexport:seaexport_apps_menu' %}"><i class="fa fa-times-circle text-danger"></i></a></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+{% endblock breadcrumbs %}
+{% block content %}
+    <div class="container">
+        <div class="py-4 text-center bg-success">
+            <h2>Settings</h2>
+        </div>
+        <div id="page_content">
+            <span id="page_content_spinner"><i class="fa fa-spin fa-spinner"></i> Page Loading</span>
+            {% include 'intuit/fm/forwarder/settings_page_partial.html' %}
+        </div>
+    </div>
+{% endblock content %}
+{% block foot_includes %}
+    {{ block.super }}
+    <script type="text/javascript">
+    </script>
+    <script type="text/javascript" src="{% static 'forwarder/settings_page/settings_page.jquery.js' %}"></script>
+{% endblock foot_includes %}

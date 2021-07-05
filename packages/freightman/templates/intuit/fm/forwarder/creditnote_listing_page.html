@@ -1,0 +1,55 @@
+{% extends 'intuit/fm/base.html' %}
+{% load i18n static %}
+{% block page_title %}
+    <title>Credit Note List</title>
+{% endblock %}
+{% block head_includes %}
+    {{ block.super }}
+    <style>
+        .content {
+            padding-top: 0;
+        }
+    </style>
+{% endblock head_includes %}
+{% block left-nav %}
+    {% include 'intuit/fm/forwarder/left-nav/menu_grid_home_left_nav.html' %}
+{% endblock left-nav %}
+{% block breadcrumbs %}
+    <div class="row">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'forwarder_grid_menu_home' %}">Home</a></li>
+                    <li class="breadcrumb-item" aria-current="page"><a href="{% url 'airexport_apps_menu' %}">Air Export</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><a href="">Credit Note Listing</a></li>
+                    <li class="position-absolute" style="right: 100px"><a href="{% url 'airexport_apps_menu' %}"><i class="fa fa-times-circle text-danger"></i></a></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+{% endblock breadcrumbs %}
+{% block content %}
+    <div class="container">
+        <div>
+            <div class="text-center py-4 bg-success">
+                <h4>Credit Note listing</h4>
+            </div>
+            <div id="page_content">
+                <span id="page_content_spinner"><i class="fa fa-spin fa-spinner"></i> Page Loading</span>
+            </div>
+        </div>
+        <div id="bottom_info">
+
+        </div>
+    </div>
+{% endblock content %}
+{% block foot_includes %}
+    {{ block.super }}
+    <script>
+        window.urlfor_creditnote_list = '{% url "airexport:get_creditnote_list" %}';
+    </script>
+    <script type="text/babel" src="{% static 'forwarder/credit_note/creditnote_list.babel.js' %}"></script>
+    <script type="text/babel">
+        ReactDOM.render(<CreditNoteList/>, document.getElementById('page_content'));
+    </script>
+{% endblock foot_includes %}

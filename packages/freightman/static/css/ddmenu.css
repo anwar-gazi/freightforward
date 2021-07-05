@@ -1,0 +1,24 @@
+.ddmenu-submenu {
+    margin-left: 20px;
+    /*display: none;*/
+}
+
+.ddmenu-title-icon {
+    display: inline-block !important;
+}
+
+.menu-title {
+    font-weight: bold;
+}
+
+.ddmenu-active .ddmenu-title-text {
+    background-color: gray;
+}
+
+.ddmenu-active .ddmenu-submenu {
+    display: block;
+}
+
+.wp-nr {
+    white-space: nowrap;
+}

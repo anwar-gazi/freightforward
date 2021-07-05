@@ -1,0 +1,86 @@
+{% extends 'seaimport/forwarder/base_template.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block page_title %}
+    Create Freight Certificate
+{% endblock %}
+
+{% block dashboard_body %}
+    <div class="container mt-4 mb-4">
+        <div class="card">
+            <div class="card-header text-center text-uppercase">
+                <h2 class="">MBL No - {{ mbl.mbl_number }}</h2>
+            </div>
+
+            {% include 'seaimport/forwarder/partials/_alert_message.html' %}
+            {% include 'seaimport/forwarder/partials/_form_errors.html' with form=fc_form %}
+
+            <div class="card-body p-5">
+                <form action="{% url 'seaimport:sea_import_create_fc' mbl.id %}" method="post">
+                    <div class="row">
+                        <div class="col-6">
+                            {{ fc_form.proforma_invoice_no|as_crispy_field }}
+                        </div>
+
+                        <div class="col-6">
+                            {{ fc_form.proforma_invoice_date|as_crispy_field }}
+                        </div>
+
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            {{ fc_form.port_of_loading|as_crispy_field }}
+                        </div>
+
+                        <div class="col-6">
+                            {{ fc_form.port_of_discharge|as_crispy_field }}
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            {{ fc_form.feeder_vessel|as_crispy_field }}
+                        </div>
+
+                        <div class="col-6">
+                            {{ fc_form.eta_destination_port|as_crispy_field }}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            {{ fc_form.ocean_freight_cost_per_container|as_crispy_field }}
+                        </div>
+
+                        {#                        <div class="col-6">#}
+                        {#                            {{ fc_form.container_type|as_crispy_field }}#}
+                        {#                        </div>#}
+                    </div>
+
+
+                    <button type="submit" class="btn btn-success float-right">Submit</button>
+                    {#                    <a href="{% url 'seaimport:sea_import_view_fc' mbl.id %}"#}
+                    {#                       class="btn btn-outline-success float-right mr-2">View Freight Certificate</a>#}
+
+                    <button type="reset" class="btn btn-warning float-left mr-2">Reset</button>
+                    <a href="javascript:close_window();"
+                       class="btn btn-danger float-left">Exit</a>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    </div>
+{% endblock %}
+
+
+
+{% block extraJs %}
+    <script type="application/javascript" src="{% static 'seaimport/assets/js/extras.js' %}"></script>
+{% endblock %}

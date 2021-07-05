@@ -1,0 +1,25 @@
+{% extends 'intuit/fm/base.shipper.html' %}
+{% load i18n static %}
+{% block page_title %}
+    <title>Freight Booking</title>
+{% endblock %}
+{% block head_includes %}
+    {{ block.super }}
+{% endblock head_includes %}
+{% block content %}
+    <div class="">
+        <h4>{% if type == 'registered' %}Registered Bookings{% elif type == 'confirmed' %}Confirmed Bookings{% endif %}</h4>
+    </div>
+    <div id="page_content">
+        <i class="fa fa-spin fa-spinner"></i> Page Loading
+    </div>
+{% endblock content %}
+{% block foot_includes %}
+    {{ block.super }}
+    <script type="text/babel">
+        window.urlfor_shipper_booking_list = "{% url 'ajax-shipper-get_booking_list' type %}";
+        window.urlfor_shipper_mark_as_booked = "{% url 'ajax-shipper_mark_as_booked' %}";
+        window.urlfor_shipper_registered_bookinglist_page = "{% url 'shipper-booking_list' 'confirmed' %}";
+    </script>
+    <script type="text/babel" src="{% static 'shipper/shipper_booking_list.babel.js' %}"></script>
+{% endblock foot_includes %}

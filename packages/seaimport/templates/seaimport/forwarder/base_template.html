@@ -1,0 +1,58 @@
+{% extends 'seaimport/forwarder/base.html' %}
+{% block page_title %}
+    Sea Import Dashboard
+{% endblock %}
+
+{% block body %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'seaimport:sea_import_admin_dashboard' %}">{{ system_owner.name }}</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'seaimport:sea_import_admin_dashboard' %}" role="button"
+                           aria-haspopup="true" aria-expanded="false">Home</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ request.user.get_full_name }}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{% url 'seaimport:sea_import_user_settings' %}">Settings</a>
+                            <a class="dropdown-item mt-2" href="{% url 'logout' %}" style="border-top: 1px solid #000">Logout</a>
+                        </div>
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container mt-2">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb bg-transparent" id="breadcrumb">
+                    <li class="breadcrumb-item"><a class="text-black-50" href="/">Home</a>
+                    <li class="breadcrumb-item text-light"><a class="text-black-50" href="{% url 'seaimport:sea_import_admin_dashboard' %}">Sea Import</a>
+                    </li>
+                    {% block breadcrumb %}
+
+                    {% endblock %}
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    {% block dashboard_body %}
+
+    {% endblock %}
+
+{% endblock %}

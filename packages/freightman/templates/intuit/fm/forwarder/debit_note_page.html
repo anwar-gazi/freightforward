@@ -1,0 +1,75 @@
+{% extends 'intuit/fm/base.html' %}
+{% load i18n static %}
+{% block page_title %}
+    <title>Debit Note</title>
+{% endblock %}
+{% block head_includes %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/debit_note.css' %}">
+    <style>
+        .content {
+            padding-top: 0;
+        }
+    </style>
+{% endblock head_includes %}
+{% block left-nav %}
+    {% include 'intuit/fm/forwarder/left-nav/menu_grid_home_left_nav.html' %}
+{% endblock left-nav %}
+{% block breadcrumbs %}
+    <div class="row">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'forwarder_grid_menu_home' %}">Home</a></li>
+                    <li class="breadcrumb-item" aria-current="page"><a href="{% url 'airexport_apps_menu' %}">Air Export</a></li>
+                    {% if debitnote_public_id %}
+                        <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'forwarder-debit_note_listing' %}">Debit Note Listing</a></li>
+                        <li class="breadcrumb-item active" aria-current="page"><a href="">View Debit Note {{ debitnote_public_id }}</a></li>
+                        <li class="position-absolute" style="right: 100px"><a href="{% url 'forwarder-debit_note_listing' %}"><i class="fa fa-times-circle text-danger"></i></a>
+                        </li>
+                    {% else %}
+                        <li class="breadcrumb-item active" aria-current="page"><a href="">Add Debit Note</a></li>
+                        <li class="position-absolute" style="right: 100px"><a href="{% url 'airexport_apps_menu' %}"><i class="fa fa-times-circle text-danger"></i></a></li>
+                    {% endif %}
+                </ol>
+            </nav>
+        </div>
+    </div>
+{% endblock breadcrumbs %}
+{% block content %}
+    <div class="container">
+        <div class="py-4 text-center bg-success">
+            {% if debitnote_public_id %}
+                <h2>View Debit Note {{ debitnote_public_id }}</h2>
+            {% else %}
+                <h2>Add Debit Note</h2>
+            {% endif %}
+        </div>
+        <div id="page_content">
+            <i class="fa fa-spin fa-spinner"></i> Page Loading
+        </div>
+    </div>
+    {% include 'intuit/fm/forwarder/debitnotepage_partial.html' %}
+{% endblock content %}
+{% block foot_includes %}
+    {{ block.super }}
+    <script type="text/babel">
+        window.urlfor_debitcreditnotepage_init_data = "{% url 'forwarder-debit_note_page_init_data' %}";
+        window.urlfor_get_mawb_info = "{% url 'forwarder_debit_note_get_mawb_info' %}";
+        window.urlfor_debit_note_save = "{% url 'forwarder-debit_note_save' %}";
+        window.urlfor_get_debotnote_info = "{% url 'forwarder_debit_note_get_debitnote_info' %}";
+    </script>
+    <script type="text/babel" src="{% static 'forwarder/debit_note/debit_note_state.babel.js' %}"></script>
+    <script type="text/babel" src="{% static 'forwarder/debit_note/debit_note_form.babel.js' %}"></script>
+    <script type="text/babel" src="{% static 'forwarder/debit_note/debit_note.babel.js' %}"></script>
+
+    {% if view_debit_note %}
+        <script type="text/babel">
+            ReactDOM.render(<DebitNote public_id='{{ debitnote_public_id }}'/>, document.getElementById('page_content'));
+        </script>
+    {% else %}
+        <script type="text/babel">
+            ReactDOM.render(<DebitNote public_id=""/>, document.getElementById('page_content'));
+        </script>
+    {% endif %}
+{% endblock foot_includes %}

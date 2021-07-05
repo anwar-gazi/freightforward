@@ -1,0 +1,119 @@
+{% extends 'seaimport/forwarder/base_template.html' %}
+{% block page_title %}Create New HBL{% endblock %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block breadcrumb %}
+    <li class="breadcrumb-item text-black-50"><strong>Create HBL</strong></li>
+{% endblock %}
+{% block dashboard_body %}
+
+    <div class="container mt-4">
+        <div class="">
+            <center><h1 class="text-uppercase text-dark">CREATE HOUSE BILL OF LEADING</h1></center>
+            {% include 'seaimport/forwarder/partials/_alert_message.html' %}
+            {% include 'seaimport/forwarder/partials/_form_errors.html' with form=HblForm %}
+            {% include 'seaimport/forwarder/partials/_form_errors.html' with form=GoodsForm %}
+
+            <div class="mt-4">
+                <div class="new-job" id="new-job">
+                    <form action="{% url 'seaimport:sea_import_create_hbl' %}" method="POST"
+                          enctype="multipart/form-data">
+                        <div class="row">
+
+                            {#                        MBL Basic Info#}
+                            <div class="hbl col-12">
+                                <div class="card">
+                                    <div class="card-header bg-secondary text-white">Shipper, Consignee and Notifier
+                                    </div>
+                                    <div class="card-body p-3">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                {{ HblForm.hbl_number|as_crispy_field }}
+                                            </div>
+                                            <div class="col-6">
+                                                {{ HblForm.hbl_consignor|as_crispy_field }}
+                                            </div>
+                                            <div class="col-6">
+                                                {{ HblForm.hbl_bank|as_crispy_field }}
+                                            </div>
+                                            <div class="col-6">
+                                                {{ HblForm.hbl_notifier|as_crispy_field }}
+                                            </div>
+                                            <div class="col-6">
+                                                {{ HblForm.file|as_crispy_field }}
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            {#                            Goods Informations#}
+                            <div class="col-12 mt-2">
+                                <div class="card">
+                                    <div class="goods_info_form_set mb-2">
+                                        <div class="card-header bg-secondary text-white">Goods Info</div>
+                                        <div class="card-body p-3">
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    {{ GoodsForm.type|as_crispy_field }}
+                                                </div>
+
+                                                <div class="col-6">
+                                                    {{ GoodsForm.container_seal_number|as_crispy_field }}
+                                                </div>
+
+                                                <div class="col-6">
+                                                    {{ GoodsForm.quantity|as_crispy_field }}
+                                                </div>
+
+                                                <div class="col-6">
+                                                    {{ GoodsForm.package_type|as_crispy_field }}
+                                                </div>
+
+                                                <div class="col-6">
+                                                    {{ GoodsForm.net_weight|as_crispy_field }}
+                                                </div>
+
+                                                <div class="col-6">
+                                                    {{ GoodsForm.gross_weight|as_crispy_field }}
+                                                </div>
+
+                                                <div class="col-12">
+                                                    {{ GoodsForm.container_size_type|as_crispy_field }}
+                                                </div>
+
+                                                <div class="col-12">
+                                                    {{ GoodsForm.description|as_crispy_field }}
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="mt-3 mb-5 float-right">
+                            <button type="submit" class="btn btn-success">Create</button>
+                            <button type="reset" class="btn btn-warning">Reset Form</button>
+                            <a href="{% url 'seaimport:sea_import_admin_dashboard' %}" class="btn btn-danger">Cancel</a>
+                        </div>
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block extraJs %}
+    <script type="text/javascript" src="{% static 'js/extras.js' %}"></script>
+{% endblock %}

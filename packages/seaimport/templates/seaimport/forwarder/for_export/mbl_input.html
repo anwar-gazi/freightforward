@@ -1,0 +1,26 @@
+{% extends 'intuit/fm/base.html' %}
+{% load i18n static %}
+{% block page_title %}
+    <title>MBL Input</title>
+{% endblock %}
+{% block head_includes %}
+    {{ block.super }}
+    <link href="{% static 'forwarder/shipment_booking_assets/css/style.css' %}" rel="stylesheet">
+{% endblock head_includes %}
+{% block content %}
+    <div>
+        <div class="box-title">
+            <h4>{{ page_title }}</h4>
+        </div>
+        <div id="page_content">
+            <span id="page_content_spinner"><i class="fa fa-spin fa-spinner"></i> Page Loading</span>
+            {% include 'seaimport/forwarder/for_export/_mbl_input_partials.html' %}
+        </div>
+    </div>
+    <div id="bottom_info">
+
+    </div>
+{% endblock content %}
+{% block foot_includes %}
+    {{ block.super }}
+{% endblock foot_includes %}

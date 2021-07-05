@@ -1,0 +1,40 @@
+{% extends 'intuit/fm/base.shipper.html' %}
+{% load i18n static %}
+{% block page_title %}
+    <title>Sea Export Freight Booking</title>
+{% endblock %}
+{% block head_includes %}
+    {{ block.super }}
+    <link href="{% static 'booking/assets/css/style.css' %}" rel="stylesheet">
+    <link href="https://unpkg.com/gijgo@1.9.11/css/gijgo.min.css" rel="stylesheet" type="text/css"/>
+{% endblock head_includes %}
+{% block content %}
+    <h2 class="text-center">Sea Export Freight Booking</h2>
+    <div id="page_content">
+        <i class="fa fa-spin fa-spinner"></i> Page Loading
+    </div>
+{% endblock content %}
+{% block foot_includes %}
+    {{ block.super }}
+    <script type="text/babel">
+        window.urlfor_init_data = "{% url 'ajax-get_shipper_booking_form_data' %}";
+        window.urlfor_save_shipper_address = "{% url 'ajax-shipper-save_address' %}";
+
+        window.urlfor_booking_mainentry = "{% url 'ajax-shipper-booking_main_entry' %}";
+        window.urlfor_booking_save_address = "{% url 'ajax-shipper-booking_save_address' %}";
+        window.urlfor_booking_save_bank_info = "{% url 'ajax-shipper-booking_save_bankinfo' %}";
+        window.urlfor_booking_portsinfo_entry = "{% url 'ajax-shipper-portsinfo_entry' %}";
+        window.urlfor_booking_goodsinfo_entry = "{% url 'ajax-shipper-goodsinfo_entry' %}";
+        window.urlfor_booking_goodsrefinfo_entry = "{% url 'ajax-shipper-goodsrefinfo_entry' %}";
+        window.urlfor_booking_shippingsrvc_entry = "{% url 'ajax-shipper-booking_shipping_entry' %}";
+        window.urlfor_booking_stakeholder_ref_entry = "{% url 'ajax-shipper-booking_save_stakeholder_ref' %}";
+        window.urlfor_booking_ordernotes_entry = "{% url 'ajax-shipper-booking_save_order_notes' %}";
+        window.urlfor_booking_pickupnotes_entry = "{% url 'ajax-shipper-booking_save_pickup_notes' %}";
+
+        window.urlfor_booking_entry_completion = "{% url 'ajax-shipper-booking_entry_completion' %}";
+    </script>
+    <script type="text/babel" src="{% static 'shipper/sea_export/frt_book/sea_export_bankinfo_mixin.babel.js' %}"></script>
+    <script type="text/babel" src="{% static 'shipper/sea_export/frt_book/sea_export_booking_mixin.babel.js' %}"></script>
+    <script type="text/babel" src="{% static 'shipper/sea_export/frt_book/sea_export_booking_functions.babel.js' %}"></script>
+    <script type="text/babel" src="{% static 'shipper/sea_export/frt_book/sea_export_booking.babel.js' %}"></script>
+{% endblock foot_includes %}

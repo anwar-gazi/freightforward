@@ -1,0 +1,307 @@
+{% extends 'seaimport/forwarder/base_template.html' %}
+{% load static %}
+{% block page_title %}
+    SI- DeConsole {{ job.id }}
+{% endblock %}
+{% block dashboard_body %}
+    <div class="container mt-4 mb-4">
+        {% include 'seaimport/forwarder/partials/_alert_message.html' %}
+        <div class="card">
+            <div class="card-header text-center text-uppercase
+            {% if job.task.job_progress.progress == 100 %}
+                text-white bg-success
+            {% elif job.task.job_progress.progress > 0 %}
+                text-white bg-info
+            {% endif %}
+            ">
+                <h2 class="">DeConsole No - {{ job.public_key }} ({{ job.task.job_progress.progress }}% Completed)</h2>
+                <p>Created on {{ job.created_at }}</p>
+                <p>{{ job.created_at | timesince }} ago</p>
+            </div>
+
+            <div class="card-body">
+                <center>
+                    {% if job.task.do_issued and not job.job_costing_done %}
+                        <p><strong>Job Costing</strong> left, <a
+                                href="{% url 'seaimport:sea_import_create_job_costing' job.id %}">Click Here</a> to
+                            create Job Costing</p>
+                    {% elif job.job_costing_done %}
+                        <p><strong>Job Costing:</strong> <a
+                                href="{% url 'seaimport:sea_import_create_job_costing' job.id %}">Click Here</a> to edit
+                            Job Costing</p>
+                    {% endif %}
+                </center>
+                <div class="card" id="sea_import_job_progress">
+                    <div class="card-header text-uppercase">Progress</div>
+                    <div class="card-body">
+                        <table class="table table-borderless">
+                            <thead>
+                            <tr class="text-center">
+                                <th>Pre-Alert</th>
+                                <th>Issue Forwarding Letter</th>
+                                <th>HBL MBL Confirmation</th>
+                                <th>IGM</th>
+                                <th>Bin No Confirmation</th>
+
+                                <th>Invoice</th>
+                                {% if mbl.freight_type.freight_certificate %}
+                                    <th>Freight Certificate</th>
+                                {% endif %}
+
+                                <th>Issue DO</th>
+                                <th>Job Costing</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+
+                                <td class="text-center">
+                                    {% if job.task.pre_alert %}
+                                        <i class="far fa-check-circle text-success"></i>
+                                    {% else %}
+                                        <i class="far fa-check-circle text-danger"></i>
+                                    {% endif %}
+                                </td>
+
+                                <td class="text-center">
+                                    {% if job.task.forwarding_letter_issued %}
+                                        <i class="far fa-check-circle text-success"></i>
+                                    {% else %}
+                                        <i class="far fa-check-circle text-danger"></i>
+                                    {% endif %}
+                                </td>
+
+                                <td class="text-center">
+                                    {% if job.task.hbl_mbl_confirmation %}
+                                        <i class="far fa-check-circle text-success"></i>
+                                    {% else %}
+                                        <i class="far fa-check-circle text-danger"></i>
+                                    {% endif %}
+                                </td>
+
+                                <td class="text-center">
+                                    {% if job.task.igm %}
+                                        <i class="far fa-check-circle text-success"></i>
+                                    {% else %}
+                                        <i class="far fa-check-circle text-danger"></i>
+                                    {% endif %}
+                                </td>
+
+                                <td class="text-center">
+                                    {% if job.task.bin_number %}
+                                        <i class="far fa-check-circle text-success"></i>
+                                    {% else %}
+                                        <i class="far fa-check-circle text-danger"></i>
+                                    {% endif %}
+                                </td>
+
+
+                                <td class="text-center">
+                                    {% if job.task.invoice %}
+                                        <i class="far fa-check-circle text-success"></i>
+                                    {% else %}
+                                        <i class="far fa-check-circle text-danger"></i>
+                                    {% endif %}
+                                </td>
+
+                                {% if mbl.freight_type.freight_certificate %}
+                                    <td class="text-center">
+                                        {% if job.task.freight_certificate %}
+                                            <i class="far fa-check-circle text-success"></i>
+                                        {% else %}
+                                            <i class="far fa-check-circle text-danger"></i>
+                                        {% endif %}
+                                    </td>
+                                {% endif %}
+
+                                <td class="text-center">
+                                    {% if job.task.do_issued %}
+                                        <i class="far fa-check-circle text-success"></i>
+                                    {% else %}
+                                        <i class="far fa-check-circle text-danger"></i>
+                                    {% endif %}
+                                </td>
+
+                                <td class="text-center">
+                                    {% if job.job_costing_done %}
+                                        <i class="far fa-check-circle text-success"></i>
+                                    {% else %}
+                                        <i class="far fa-check-circle text-danger"></i>
+                                    {% endif %}
+                                </td>
+
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="card-body text-uppercase">
+                <div class="row">
+                    <div id="mbl_info" class="mbl_info col-12">
+                        <div class="card">
+                            <div class="card-header">MASTER BILL OF LEADING(MBL)</div>
+                            <div class="card-body">
+                                <h4>MBL Number: <b>{{ mbl.mbl_number }}</b>
+                                    <a href="{% url 'seaimport:sea_import_update_mbl' mbl.id %}" target="_blank"
+                                       title="Click to edit this MBL" class="text-dark ml-4">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                </h4>
+
+                                <div class="row">
+                                    <div class="mbl_shipper_info mt-4 col-6" style="border-right: 1px solid #00000020">
+                                        <h5>Shipper: <b>{{ mbl.mbl_shipper }}</b></h5>
+                                        <small><b>ADDRESS:</b> {{ mbl.mbl_shipper.address }}</small>
+                                        <br>
+                                        <small><b>Postal Code:</b> {{ mbl.mbl_shipper.postal_code }}</small>
+                                        <br>
+                                        <small><b>City and Country:</b> {{ mbl.mbl_shipper.city }}</small>
+                                        <br>
+                                        <small><b>Phone:</b> {{ mbl.mbl_shipper.phone }}</small>
+                                        <br>
+                                        <small><b>Mobile:</b> {{ mbl.mbl_shipper.mobile }}</small>
+                                        <br>
+                                        <small><b>Email:</b> {{ mbl.mbl_shipper.email }}</small>
+                                    </div>
+
+                                    <div class="mbl_consignee_info mt-4  col-6">
+                                        <h5>Consignee: <b>{{ mbl.mbl_consignee }}</b></h5>
+                                        <small><b>ADDRESS:</b> {{ mbl.mbl_consignee.address }}</small>
+                                        <br>
+                                        <small><b>Postal Code:</b> {{ mbl.mbl_consignee.postal_code }}</small>
+                                        <br>
+                                        <small><b>City and Country:</b> {{ mbl.mbl_consignee.city }}</small>
+                                        <br>
+                                        <small><b>Phone:</b> {{ mbl.mbl_consignee.phone }}</small>
+                                        <br>
+                                        <small><b>Mobile:</b> {{ mbl.mbl_consignee.mobile }}</small>
+                                        <br>
+                                        <small><b>Email:</b> {{ mbl.mbl_consignee.email }}</small>
+                                    </div>
+                                </div>
+
+                                <div class="mbl_notifier mt-4">
+                                    <h5>Notify Address: <b>{{ mbl.mbl_notifier }}</b></h5>
+                                    <small><b>ADDRESS:</b> {{ mbl.mbl_notifier.address }}</small>
+                                    <br>
+                                    <small><b>Postal Code:</b> {{ mbl.mbl_notifier.postal_code }}</small>
+                                    <br>
+                                    <small><b>City and Country:</b> {{ mbl.mbl_notifier.city }}</small>
+                                    <br>
+                                    <small><b>Phone:</b> {{ mbl.mbl_notifier.phone }}</small>
+                                    <br>
+                                    <small><b>Mobile:</b> {{ mbl.mbl_notifier.mobile }}</small>
+                                    <br>
+                                    <small><b>Email:</b> {{ mbl.mbl_notifier.email }}</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {% include 'seaimport/forwarder/deconsole/partials/_single_job_hbl.html' %}
+
+
+                </div>
+            </div>
+
+            <div class="card-body">
+                <div class="card">
+                    <div class="card-header text-uppercase">Goods Info (Master Bill of Leading)</div>
+                    <div class="card-body">
+                        <div class="row">
+                            {% for good in goods %}
+                                <div class="col-4"><b>Type:</b> {{ good.type }}</div>
+                                <div class="col-4"><b>Container/Seal Number:</b> {{ good.container_seal_number }}</div>
+                                <div class="col-4"><b>Quantity:</b> {{ good.quantity }}</div>
+
+                                <div class="col-4"><b>Package Type:</b> {{ good.package_type }}</div>
+                                <div class="col-4"><b>Net Weight:</b> {{ good.net_weight }}</div>
+                                <div class="col-4"><b>Gross Weight:</b> {{ good.gross_weight }}</div>
+
+                                <div class="col-12 mt-2"><b>Description: <br></b> {{ good.description }}</div>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="card-body">
+                <div class="card">
+                    <div class="card-header text-uppercase">Documents</div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-4 mt-3">
+                                <div class="col-12"><b>MBL:</b>
+                                    <a href="{{ mbl.file.url }}" download="">(Click to Download)</a></div>
+                                <div class="col-12 mt-2"><a href="{{ mbl.file.url }}" target="_blank"><img
+                                        class="img-fluid" src="{{ mbl.file.url }}" alt=""></a></div>
+                            </div>
+
+                            {% for hbl in hbls %}
+                                <div class="col-4 mt-3">
+                                    <div class="col-12"><b>HBL:</b>
+                                        <a href="{{ hbl.file.url }}" download="">(Click to Download)</a></div>
+                                    <div class="col-12 mt-2"><a href="{{ hbl.file.url }}" target="_blank"><img
+                                            class="img-fluid" src="{{ hbl.file.url }}" alt=""></a></div>
+                                </div>
+                            {% endfor %}
+                            {% for document in documents %}
+                                <div class="col-4 mt-3">
+                                    <div class="col-12"><b>DOCUMENT:</b> {{ document.doc_type }} <a
+                                            href="{{ document.file.url }}" download="">(Click to Download)</a></div>
+                                    <div class="col-12 mt-2"><a href="{{ document.file.url }}" target="_blank"><img
+                                            class="img-fluid" src="{{ document.file.url }}" alt=""></a></div>
+                                </div>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        <div class="card-body">
+                <div class="card">
+                    <div class="card-header text-uppercase">Credit Notes
+                     <a href="{% url 'seaimport:sea_import_create_credit_note' job.id %}" target="_blank" ><span
+                        class="float-sm-right"><i class="fas fa-plus-square"></i></span></a>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            {% for credit_note in credit_notes %}
+                                <div class="col-3">
+                                <a target="_blank" href="{% url 'seaimport:sea_import_view_creditnote' credit_note.id %}" class="text-center btn btn-outline-dark credit-note-a">
+                                    <p>To {{ credit_note.agent.name }}</p>
+                                    <p>Date {{ credit_note.updated_at | date:"m-d-Y" }}</p>
+                                    <p>Credit -{{ credit_note.total_credit }}$</p>
+                                </a>
+                                </div>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    </div>
+{% endblock %}
+
+
+
+{% block extraJs %}
+    <script type="text/javascript">
+        window.sea_import_update_task_url = '{% url "seaimport:sea_import_update_task" 123%}';
+    </script>
+
+    <script type="text/javascript" src="{% static 'js/sea_import_single_job_update.jquery.js' %}"></script>
+{% endblock %}

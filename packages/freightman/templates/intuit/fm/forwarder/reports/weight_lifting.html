@@ -1,0 +1,130 @@
+{% extends 'intuit/fm/base.html' %}
+{% load i18n static %}
+{% block page_title %}
+    <title>{{ report_name }}</title>
+{% endblock %}
+{% block head_includes %}
+    {{ block.super }}
+    <style>
+        .content {
+            margin-top: 0;
+        }
+    </style>
+{% endblock head_includes %}
+{% block breadcrumbs %}
+    <div class="row">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'forwarder_grid_menu_home' %}">Home</a></li>
+                    <li class="breadcrumb-item" aria-current="page"><a href="{% url 'airexport_apps_menu' %}">Air Export</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><a href="">Weight Lifting Report(Destination)</a></li>
+                    <li class="position-absolute" style="right: 100px"><a href="{% url 'airexport_apps_menu' %}"><i class="fa fa-times-circle text-danger"></i></a></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+{% endblock breadcrumbs %}
+{% block content %}
+    <div class="container">
+        <div class="text-center bg-success py-4">
+            <h2 class="">{{ report_name }}</h2>
+        </div>
+        <nav class="navbar navbar-expand-lg bg-warning container">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="whitespace-nr" href="{% url 'airexport-report-weight-lift-destination' %}"> Weight Lifting Report by Destination</a>
+                </li>
+                <li class="nav-item">
+                    <a class="whitespace-nr" href="{% url 'airexport-report-weight-lift-agent' %}"> Weight Lifting Report by Agent</a>
+                </li>
+                <li class="nav-item">
+                    <a class="whitespace-nr" href="{% url 'airexport-report-weight-lift-customer' %}"> Weight Lifting Report by Customer</a>
+                </li>
+            </ul>
+        </nav>
+        <div>
+            <div class="search float-right p-3">
+                <form action="" method="GET" class="form-inline">
+                    <div class="form-group">
+                        <label for="sort_field" class="mr-2 col-form-label">Sort By</label>
+                        <select name="sort_field" id="sort_field" class="form-control mr-2">
+                            <option value="">-------------</option>
+                            <option value="total_gross_weight"
+                                    {% if order_by_field == 'total_gross_weight' %}
+                                    selected
+                                    {% endif %}
+                            >Total Gross Weight
+                            </option>
+                            <option value="total_chargableweight"
+                                    {% if order_by_field == 'total_chargableweight' %}
+                                    selected
+                                    {% endif %}
+                            >Total Chargeable Weight
+                            </option>
+
+                            <option value="total_shipments"
+                                    {% if order_by_field == 'total_shipments' %}
+                                    selected
+                                    {% endif %}
+                            >Total Shipments
+                            </option>
+
+                        </select>
+
+                        <select name="sort_order" id="sort_order" class="form-control mr-2">
+                            <option value=""
+                                    {% if order == '' %}
+                                    selected
+                                    {% endif %}
+                            >Ascending
+                            </option>
+                            <option value="-"
+                                    {% if order == '-' %}
+                                    selected
+                                    {% endif %}
+                            >Descending
+                            </option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Go</button>
+                </form>
+            </div>
+
+            <div id="page_content" style="background: #FFFFFF">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>No of Shipments</th>
+                        <th>Total Gross Weight</th>
+                        <th>Total Chargeable Weight</th>
+                        {#                    <th>Total Receivables</th>#}
+                        {#                    <th>Total Payable</th>#}
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for data in lists %}
+                        <tr style="border-bottom: 1px solid #000000; font-size: .8em;">
+                            <td>{{ data.name }}</td>
+                            <td>{{ data.total_shipments }}</td>
+                            <td>{{ data.total_gross_weight }}</td>
+                            <td>{{ data.total_chargableweight }}</td>
+                            {#                        <td>NA</td>#}
+                            {#                        <td>NA</td>#}
+                        </tr>
+                    {% endfor %}
+
+
+                    </tbody>
+                </table>
+                <form action="" type="GET" target="_blank">
+                    <input type="text" hidden name="print" value='True'>
+                    <button type="submit" class="btn btn-outline-secondary btn-sm float-right"><i class="fa fa-print"></i></button>
+                </form>
+            </div>
+        </div>
+        <div id="bottom_info">
+        </div>
+    </div>
+{% endblock content %}

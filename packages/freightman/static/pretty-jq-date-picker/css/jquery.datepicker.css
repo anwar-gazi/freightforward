@@ -1,0 +1,193 @@
+/*
+ * jquery.datepicker, a futuristic datepicker for web
+ *
+ * https://github.com/rohanrhu/jquery.datepicker
+ * http://oguzhaneroglu.com/projects/jquery.datepicker/
+ *
+ * Copyright (C) 2014, Oğuzhan Eroğlu <rohanrhu2@gmail.com>
+ * Licensed under MIT
+ * 
+ * version: 1.2.2
+ * build: 2017.09.15.00.00.00
+ */
+
+.jQueryDatepicker_table {
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+
+.jQueryDatepicker_table_td {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.jQueryDatepicker {
+    font-family: 'Arial';
+    width: 100%;
+    position: relative;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    color: #383838;
+    font-size: 13px;
+}
+
+.jQueryDatepicker_header {
+    height: 50px;
+    background: #DFDFDF;
+    text-align: center;
+    position: relative;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.jQueryDatepicker_header_bG {
+    width: 100%;
+    height: 100%;
+    content: ' ';
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    overflow: hidden;
+}
+
+.jQueryDatepicker_header_bG:after {
+    box-shadow: inset 0px 0px 50px 0px rgba(0, 0, 0, 0.15);
+    width: 200%;
+    height: 150%;
+    content: ' ';
+    position: absolute;
+    left: -50%;
+    top: 0px;
+}
+
+.jQueryDatepicker_header_sidebutton {
+    position: absolute;
+    top: 0px;
+    height: 100%;
+    padding: 0px 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 200ms;
+    color: rgb(86, 86, 86);
+    line-height: 18px;
+    z-index: 1000;
+
+}
+
+.jQueryDatepicker_header_sidebutton .jQueryDatepicker_rotationButton_iconImg {
+    height: 15px;
+    display: block;
+    margin: auto;
+}
+
+.jQueryDatepicker_header_sidebutton:hover {
+    opacity: 0.6;
+}
+
+.jQueryDatepicker_header_sidebutton__left {
+    left: 0px;
+}
+
+.jQueryDatepicker_header_sidebutton__right {
+    right: 0px;
+}
+
+.jQueryDatepicker_body {
+
+}
+
+.jQueryDatepicker_calendar {
+
+}
+
+.jQueryDatepicker_calendar_months {
+
+}
+
+.jQueryDatepicker_calendar_months_month {
+    display: none;
+}
+
+.jQueryDatepicker_calendar_months_month.jQueryDatepicker__current {
+    display: block;
+}
+
+.jQueryDatepicker_calendar_months_month_weekdays {
+    font-size: 0px;
+    background: #f1f1f1;
+}
+
+.jQueryDatepicker_calendar_months_month_weekdays_weekday {
+    font-size: 13px;
+    display: inline-block;
+    *display: inline;
+    vertical-align: top;
+    width: 14.28%;
+    min-height: 100px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.jQueryDatepicker_calendar_months_month_weekdays_weekday_title {
+    font-weight: bold;
+    padding: 5px 0px;
+    background: rgba(51, 174, 42, 0.5);
+    box-shadow: 0px 0px 50px 0px rgba(69, 177, 63, 0.68);
+    color: white;
+}
+
+.jQueryDatepicker_calendar_months_month_weekdays_weekday_days {
+
+}
+
+.jQueryDatepicker_calendar_months_month_weekdays_weekday_days_day {
+    height: 35px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.jQueryDatepicker_calendar_months_month_weekdays_weekday_days_day.jQueryDatepicker__previous_month {
+    cursor: initial;
+}
+
+.jQueryDatepicker_calendar_months_month_weekdays_weekday_days_day.jQueryDatepicker__current {
+    background: rgba(51, 174, 42, 0.5);
+    color: white;
+    font-weight: bold;
+}
+
+.jQueryDatepicker_calendar_months_month_weekdays_weekday_days_day:not(.jQueryDatepicker__selected):not(.jQueryDatepicker__current):not(.jQueryDatepicker__current_other):not(.jQueryDatepicker__current_other_diff):not(.jQueryDatepicker__previous_month):hover {
+    background: #D6D6D6;
+}
+
+.jQueryDatepicker_calendar_months_month_weekdays_weekday_days_day.jQueryDatepicker__current_other_diff:hover {
+    background: #6B6B6B;
+    color: white;
+}
+
+.jQueryDatepicker_calendar_months_month_weekdays_weekday_days_day.jQueryDatepicker__current_other {
+    background: #9F9F9F;
+    color: white;
+    font-weight: bold;
+}
+
+.jQueryDatepicker_calendar_months_month_weekdays_weekday_days_day.jQueryDatepicker__current_other_diff {
+    background: #B9B9B9;
+    color: white;
+}
+
+.jQueryDatepicker_disabledLayer {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255, 0.4);
+    display: none;
+}
+
+.jQueryDatepicker__proto {
+    display: none;
+}

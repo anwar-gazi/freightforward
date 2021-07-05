@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ shipper_address.company_name }} Booking</title>
+</head>
+<body style="margin: 0; padding: 30px; font:12px verdana, sans-serif;">
+<!-- title -->
+<h1>
+    <center>{{ shipper_address.company_name }} - Booking</center>
+</h1>
+
+<!-- heading and line -->
+<table style="font:14px verdana, sans-serif; width:100%;">
+    <tr>
+        <td style="margin: 0; padding: 0; font-size: 18px">{{ consignee_address_list.0.contact }}</td>
+    </tr>
+</table>
+<hr width="100%" ; style="border: 0; border-top: 2px solid #000;">
+
+
+<!-- Initial Address -->
+<table style="width:100%;">
+    <tr>
+        <td width="10%" style="text-align:left; vertical-align:top; padding:0">
+            <ul style="padding: 0; list-style: none; float: left; margin: 0 100px 0 0">
+                <li><b>From:</b></li>
+                {#					<li><b>Sent:</b></li>#}
+                <li><b>To:</b></li>
+                <li><b>Subject:</b></li>
+            </ul>
+        </td>
+
+        <td width="90%" style="text-align:left; vertical-align:top; padding:0">
+            <ul style="padding: 0; list-style: none; float: left; margin: 0 100px 0 0">
+                <li>{{ shipper_address.company_name }}</li>
+                {#					<li>Saturday, April 23, 2011 3:20 PM</li>#}
+                <li>{{ consignee_address_list.0.contact }}, {{ consignee_address_list.0.company_name }}</li>
+                <li>Shipment confirmation - From <b>{{ shipper_address.company_name }}</b> to
+                    <b>{{ consignee_address_list.0.company_name }}</b></li>
+            </ul>
+        </td>
+    </tr>
+</table>
+
+<!-- Booking table -->
+<table style="width:100%; margin-top: 30px; border: 2px solid #000">
+    <tr>
+        <td style="font-size: 14px">
+            <center>SLI:{{ sli }}</center>
+        </td>
+    </tr>
+
+    <tr>
+        <td style="font-size: 25px; padding: 25px">
+            <center><b>BOOKING</b></center>
+        </td>
+    </tr>
+
+    <tr>
+        <td style="font-size: 14px;">
+            <center>
+                <span style="padding: 10px">PLEASE NOTE: THIS E-MAIL HAS BEEN GENERATED AUTOMATICALLY.</span> <br>
+                <span style="padding: 50px">THE SENDER ADDRESS IS MANAGING ONLY OUTGOING, NOT INCOMING COMMUNICATION</span>
+                <br>
+            </center>
+        </td>
+    </tr>
+
+    <tr>
+        <td style="font-size: 14px; padding: 25px">
+            <center>
+            </center>
+        </td>
+    </tr>
+
+    <tr>
+        <td style="font-size: 14px;">
+            <center>
+                <b>Booking made by: {{ shipper_address.contact }}</b>
+            </center>
+        </td>
+    </tr>
+</table>
+
+<!-- shipper and consinee address -->
+<table style="width: 100%; margin: 0; padding: 0">
+    <tr>
+        <td style="border: 2px solid #000; margin:0; padding: 0px 0 10px 15px;">
+            <h2>SHIPPER</h2>
+            <pre style="font-size: 13px">
+{#Company ID: {{ shipper_address.id }}#}
+{{ shipper_address.company_name }}
+REF: TTL-851-11
+{{ shipper_address.address }}
+{{ shipper_address.city }}
+{{ shipper_address.postcode }} {{ shipper_address.state }}
+{{ shipper_address.country }}
+				</pre>
+
+            <pre>
+Contact person: {{ shipper_address.contact }}
+Phone: {{ shipper_address.phone }}
+Email: <a href="#">{{ shipper_address.email }}</a>
+<br>
+Origin Bank - {{ origin_bank.bank_branch }}
+				</pre>
+
+            {#				<p>Notes: </p>#}
+        </td>
+        <td style="border: 2px solid #000; margin:0; padding: 0px 0 10px 30px;">
+            <h2>CONSIGNEE</h2>
+            <pre style="font-size: 13px">
+{{ consignee_address_list.0.company_name }}
+REF: TTL-851-11
+{{ consignee_address_list.0.address }}
+{{ consignee_address_list.0.city }}
+{{ consignee_address_list.0.postcode }} {{ shipper_address.state }}
+{{ consignee_address_list.0.country }}
+				</pre>
+
+            <pre>
+Contact person: {{ consignee_address_list.0.contact }}
+Phone: {{ consignee_address_list.0.phone }}
+Email: <a href="#">{{ consignee_address_list.0.email }}</a>
+<br>
+Destination Bank - {{ destination_bank.bank_branch }}
+				</pre>
+
+            {#				<p>Notes: </p>#}
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 2px solid #000; padding: 5px"><b>Airport of destination</b>&nbsp &nbsp &nbsp
+            &nbsp {{ port_info.port_of_destination }}</td>
+        <td style="border: 2px solid #000; padding: 5px"><b>Airport of loading</b>&nbsp &nbsp &nbsp
+            &nbsp {{ port_info.port_of_loading }}</td>
+    </tr>
+    <tr>
+        <td style="border: 2px solid #000; padding: 5px"><b>Terms of delivery</b>&nbsp &nbsp &nbsp
+            &nbsp {{ port_info.terms_of_delivery }}</td>
+        <td style="border: 2px solid #000; padding: 5px"><b>Country of destination</b>&nbsp &nbsp &nbsp
+            &nbsp {{ consignee_address_list.0.country }}</td>
+    </tr>
+</table>
+
+
+<!-- shipment details -->
+<table style="width: 100%; margin: 0;">
+    <tr>
+        <td style="border: 2px solid #000; padding: 10px 15px;">
+            <h3 style="margin: 0; padding: 10px 0"><b>SHIPMENT DETAILS</b></h3>
+            <p>Requested Pickup date/time: {{ pickup_notes.pickup_date }}</p>
+            <p>Earliest Pickup time: {{ pickup_notes.pickup_time_early }} H</p>
+            <p>Latest Pickup time: {{ pickup_notes.pickup_time_latest }} H</p>
+            <p>Pickup instruction: - {{ pickup_notes.pickup_instruction }}</p><br>
+            <p><b>Goods rows</b></p>
+            {% for good_info in goods_info %}
+
+                <div>
+                    <b>Good {{ forloop.counter }}</b>
+                    <ul style="width: 100%; list-style: none; padding: 0; margin: 0 0 10px 0; float: left; border: 1px solid #000">
+                        <li style="float : left; width: 8%; padding: 1%">
+                            <center>Pkgs<br><br>{{ good_info.no_of_pieces }}</center>
+                        </li>
+                        <li style="float : left; width: 8%; padding: 1%">
+                            <center>Pkg type<br><br>{{ good_info.package_type }}</center>
+                        </li>
+                        <li style="float : left; width: 8%; padding: 1%">
+                            <center>Weight<br><br>{{ good_info.weight_kg }}</center>
+                        </li>
+                        <li style="float : left; width: 8%; padding: 1%">
+                            <center>Volumetric weight<br><br>{{ good_info.volumetric_weight }}</center>
+                        </li>
+                        <li style="float : left; width: 8%; padding: 1%">
+                            <center>Chargeable weight<br><br>{{ good_info.chargable_weight }}</center>
+                        </li>
+                        <li style="float : left; width: 8%; padding: 1%">
+                            <center>CBM<br><br>{{ good_info.cbm }}</center>
+                        </li>
+                        <li style="float : left; width: 8%; padding: 1%">
+                            <center>Quantity<br><br>{{ good_info.quantity }}</center>
+                        </li>
+                        <li style="float : left; width: 8%; padding: 1%">
+                            <center>Length<br><br>{{ good_info.length_cm }}</center>
+                        </li>
+                        <li style="float : left; width: 8%; padding: 1%">
+                            <center>Width<br><br>{{ good_info.width_cm }}</center>
+                        </li>
+                        <li style="float : left; width: 8%; padding: 1%">
+                            <center>Height<br><br>{{ good_info.height_cm }}</center>
+                        </li>
+                        <li style="float : left; width: 8%; padding: 1%">
+                            <center>Shipping mark<br><br>{{ good_info.shipping_mark }}</center>
+                        </li>
+                        <li style="float : left; width: 8%; padding: 1%">
+                            <center>Goods description<br><br>{{ good_info.goods_desc }}</center>
+                        </li>
+
+                    </ul>
+                    <p><b>Reference (Type and Number)</b></p>
+                    <ul style="list-style: none">
+                        {% for goods_reference in goods_references %}
+
+                            {% if goods_reference.goodsinfo == good_info %}
+                                <li>{{ goods_reference.reference_type }}
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ goods_reference.reference_number }}</li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+
+            {% endfor %}
+
+        </td>
+    </tr>
+</table>
+
+
+<!-- other details -->
+<table style="width: 100%; margin: 0;">
+    <tr>
+        <td style="border: 2px solid #000; padding: 10px 15px;">
+            <h3 style="margin: 0; padding: 10px 0"><b>SHIPMENT INFO</b></h3>
+
+            <p><b>Shipping Service </b>- {{ shipping_service.service }}</p>
+            <p><b>Stakeholders references</b>
+            <ul>
+                {% for reff in stakeholder_reference %}
+                    <li>{{ reff.reference_type }} - {{ reff.reference_number }}</li>
+                {% endfor %}
+            </ul>
+            </p>
+            <p><b>Order Notes -</b></p>
+            <ul style="list-style: none">
+                <li><b>Type -</b> {{ order_note.payment_instruction.name }}</li>
+                <li><b>Transport Agreement -</b>
+                    {% if order_note.transport_agreement %}{{ order_note.transport_agreement }}{% endif %}</li>
+            </ul>
+            <p><b>Delivery Instructions</b></p>
+            <p>{{ order_note.delivery_instruction }}</p>
+        </td>
+    </tr>
+</table>
+
+{#	<table style="width: 100%">#}
+{#		<tr>#}
+{#			<td style="border: 2px solid #000; padding: 10px 15px;">#}
+{#				<h2>FORWARDING AGENT:</h2>#}
+{#				<p>Geodis Wilson (Bangladesh) Ltd</p>#}
+{#				<p>BD</p>#}
+{##}
+{#				<br>#}
+{#				<h3>SERVICE AND DELIVERY CODE:BLUE A2A</h3>#}
+{#				<p>Terms of delivery:AA--, -, -</p>#}
+{#			</td>#}
+{#			<td style="border: 2px solid #000; padding: 10px 15px;">#}
+{#				<h2>RECEIVING AGENT:</h2>#}
+{#				<p>Geodis Wilson (Bangladesh) Ltd</p>#}
+{#				<p>BD</p>#}
+{##}
+{#				<br>#}
+{#				<h3>Estimated delivery date:-</h3>#}
+{#				<p>Delivery instruction:</p>#}
+{#			</td>#}
+{#		</tr>#}
+{##}
+{#		<tr>#}
+{#			<td style="border: 2px solid #000; padding: 5px 15px;">#}
+{#				<p>Payment Instruction : Collect</p> <br>#}
+{#				<p>CargoInsurance:-, -</p>#}
+{#			</td>#}
+{#			<td style="border: 2px solid #000; padding: 10px 15px;">#}
+{#				#}
+{#			</td>#}
+{#		</tr>#}
+{#	</table>#}
+
+<p>PLEASE NOTE: THIS E-MAIL HAS BEEN GENERATED AUTOMATICALLY. <br>
+    THE SENDER ADDRESS IS MANAGING ONLY OUTCOMING, NOT INCOMING COMMUNICATION.</p>
+
+
+</body>
+</html>

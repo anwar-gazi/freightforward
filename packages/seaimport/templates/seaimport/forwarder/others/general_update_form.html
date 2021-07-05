@@ -1,0 +1,30 @@
+{% extends 'seaimport/forwarder/base_template.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block page_title %}
+    SI-{{ form.form_name }}
+{% endblock %}
+{% block dashboard_body %}
+
+    <div class="container mt-4">
+        {% include 'seaimport/forwarder/partials/_alert_message.html' %}
+        {% include 'seaimport/forwarder/partials/_form_errors.html' with form=agent_form %}
+        <div class="card">
+            <div class="card-header">
+                <h4>{{ form.form_name }}</h4>
+            </div>
+            <form action="" method="post">
+                <div class="card-body">
+                    {% crispy form %}
+                    <button type="submit" class="btn btn-primary float-right">Update</button>
+                    <a href="{% url 'seaimport:sea_import_admin_dashboard'%}" class="btn btn-danger">Exit</a>
+{#                    <button type="reset" value='Reset' class="btn btn-warning">Reset</button>#}
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+{% block extraJs %}
+    <script type="text/javascript" src="{% static 'js/extras.js' %}"></script>
+{% endblock %}
+

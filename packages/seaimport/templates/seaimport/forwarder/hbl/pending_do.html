@@ -1,0 +1,79 @@
+{% extends 'seaimport/forwarder/base_template.html' %}
+{% load static %}
+{% block page_title %}
+    SI- Pending DO
+{% endblock %}
+
+{% block breadcrumb %}
+    <li class="breadcrumb-item text-black-50"><strong>Pending DOs</strong></li>
+{% endblock %}
+
+{% block dashboard_body %}
+    <div class="container mt-4">
+        <div class="card">
+            <div class="card-header">
+                <h4>HBLs with Pending DO</h4>
+            </div>
+
+            <div class="card-body">
+                <table class="table table-borderless text-center">
+                    <thead>
+                    <tr class="text-center" style="border-bottom: 1px solid rgba(14,14,14,0.5)">
+                        <th>HBL Number</th>
+                        <th>Shipper</th>
+                        <th>Consignee</th>
+                        <th>Notifier</th>
+                        <th>Origin / Destination</th>
+                        <th>Status</th>
+                        <th>Click for Details</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for hbl in hbls %}
+                        <tr>
+                            <td class="">
+                                <small>{{ hbl.hbl_number }}</small>
+                            </td>
+                            <td class="">
+                                <small>{{ hbl.hbl_consignor.name }}</small>
+                            </td>
+                            <td class="">
+                                <small>{{ hbl.hbl_bank.name }}</small>
+                            </td>
+                            <td class="">
+                                <small>{{ hbl.hbl_notifier.name }}</small>
+                            </td>
+                            <td class="">
+                                <small>{{ hbl.hbl_consignor.city }} - {{ hbl.hbl_notifier.city }}</small>
+                            </td>
+
+                            {% if not hbl.job.task.unlocked and hbl.job %}
+                                <td class="">
+                                    <small>Completed</small>
+                                <small><a href="{% url 'seaimport:sea_import_job_details' hbl.job %}">{{ hbl.job.public_key }}</a>
+                                    </small>
+                                </td>
+                            {% elif hbl.job %}
+                                <td class="">
+                                In Job -
+                                    <small><a href="{% url 'seaimport:sea_import_job_details' hbl.job %}">{{ hbl.job.public_key }}</a>
+                                    </small>
+                                </td>
+                            {% else %}
+                                <td class="">
+                                    <small>Pending</small>
+                                </td>
+                            {% endif %}
+
+                            <td class=""><a href="{% url 'seaimport:sea_import_create_do' hbl.id %}"><img
+                                    src="{% static 'seaimport/assets/images/icon/navicons/details.png' %}"
+                                    style="width: 50px"></a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

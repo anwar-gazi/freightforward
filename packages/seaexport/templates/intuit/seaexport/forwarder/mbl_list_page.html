@@ -1,0 +1,37 @@
+{% extends 'intuit/fm/base.html' %}
+{% load i18n static %}
+{% block page_title %}
+    <title>MBL Listing</title>
+{% endblock %}
+{% block breadcrumbs %}
+    <div class="row">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'forwarder_grid_menu_home' %}">Home</a></li>
+                    <li class="breadcrumb-item" aria-current="page"><a href="{% url 'seaexport:seaexport_apps_menu' %}">Ocean Export</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><a href="">List MBL</a></li>
+                    <li class="position-absolute" style="right: 100px"><a href="{% url 'seaexport:seaexport_apps_menu' %}"><i class="fa fa-times-circle text-danger"></i></a></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+{% endblock breadcrumbs %}
+{% block content %}
+    <div id="page_content">
+        <i class="fa fa-spin fa-spinner"></i> Page Loading
+    </div>
+{% endblock content %}
+{% block foot_includes %}
+    {{ block.super }}
+    <script type="text/babel">
+        window.urlfor_mbl_list = "{% url 'seaexport:seaexport_ajax_get_mbl_list' %}";
+        window.urlfor_date_update = '{% url "seaexport:ajax_update_job_dates" %}';
+        window.urlfor_get_job_dates = '{% url "seaexport:get_job_dates" %}';
+        window.urlfor_delete_job = '{% url "seaexport:delete_job" %}';
+    </script>
+    <script type="text/babel" src="{% static 'seaexport/forwarder/seaexport_mbl_list.babel.js' %}"></script>
+    <script type="text/babel">
+        ReactDOM.render(<SeaExportMBLList/>, document.getElementById('page_content'));
+    </script>
+{% endblock foot_includes %}

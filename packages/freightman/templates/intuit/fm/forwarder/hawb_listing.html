@@ -1,0 +1,105 @@
+{% extends 'intuit/fm/base.html' %}
+{% load i18n static %}
+{% block page_title %}
+    <title>House Airway Bill Listing</title>
+{% endblock %}
+{% block head_includes %}
+    {{ block.super }}
+    <style type="text/css">
+        .content {
+            padding-top: 0;
+        }
+    </style>
+{% endblock head_includes %}
+{% block breadcrumbs %}
+    <div class="row">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'forwarder_grid_menu_home' %}">Home</a></li>
+                    <li class="breadcrumb-item" aria-current="page"><a href="{% url 'airexport_apps_menu' %}">Air Export</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><a href="">HAWB listing</a></li>
+                    <li class="position-absolute" style="right: 100px"><a href="{% url 'airexport_apps_menu' %}"><i class="fa fa-times-circle text-danger"></i></a></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+{% endblock breadcrumbs %}
+{% block content %}
+    <div class="container">
+        <div>
+            <div class="text-center py-4 bg-success">
+                <h4>House Airway Bill Listing</h4>
+            </div>
+            <div id="page_content">
+                <span id="page_content_spinner"><i class="fa fa-spin fa-spinner"></i> Page Loading</span>
+            </div>
+        </div>
+        <div id="bottom_info">
+
+        </div>
+        <div class="d-none" id="job_dates_tpl">
+            <div>
+                <table>
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>Estimated Date</th>
+                        <th>Actual Date</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Booked</td>
+                        <td>
+                            <input type="date">
+                        </td>
+                        <td>
+                            <input type="date">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Received</td>
+                        <td>
+                            <input id="received_estimated" type="date">
+                        </td>
+                        <td>
+                            <input id="received_actual" type="date">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Departed</td>
+                        <td>
+                            <input type="date">
+                        </td>
+                        <td>
+                            <input type="date">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Delivery</td>
+                        <td>
+                            <input type="date">
+                        </td>
+                        <td>
+                            <input type="date">
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+{% block foot_includes %}
+    {{ block.super }}
+    <script>
+        window.urlfor_hawb_list = '{% url "airexport:ajax_get_hawb_list" %}';
+        window.urlfor_date_update = '{% url "airexport:ajax_update_job_dates" %}';
+        window.urlfor_get_job_dates = '{% url "airexport:get_job_dates" %}';
+    </script>
+    <script type="text/babel" src="{% static 'forwarder/hawb_listing.js' %}"></script>
+    <script type="text/babel">
+        ReactDOM.render(<HAWBList/>, document.getElementById('page_content'));
+    </script>
+{% endblock foot_includes %}

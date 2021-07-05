@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HAWB</title>
+    <style>
+        body {
+            font-size: 10px;
+            font-family: sans-serif;
+            padding: 0px;
+            margin: 0px;
+        }
+
+        table, th, td {
+            border: 1px solid #bdbdbd;
+            border-collapse: collapse;
+            padding: 2px 5px;
+            font-family: sans-serif;
+            font-size: 10px;
+            {#text-transform: capitalize;#}
+            text-transform: uppercase;
+        }
+
+        td {
+            /*width: 50%;*/
+            vertical-align: -webkit-baseline-middle;
+            text-transform: uppercase;
+        }
+
+        b {
+            font-size: 10px;
+            text-transform: uppercase;
+        }
+
+        p {
+            text-transform: uppercase;
+            width: -webkit-fill-available;
+            padding: 5px 0px;
+            text-align: left;
+            font-size: 10px;
+            margin: 0px;
+            float: left;
+        }
+
+        .pb-05 {
+            padding-bottom: 5px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            text-transform: uppercase;
+            margin: 0px;
+        }
+
+        #background {
+            position: absolute;
+            z-index: 0;
+            background: white;
+            display: block;
+            min-height: 50%;
+            min-width: 50%;
+            color: yellow;
+            top: 200px;
+            left: 300px;
+        }
+
+        #content {
+            position: absolute;
+            z-index: 1;
+        }
+
+        #bg-text {
+            color: lightgrey;
+            font-size: 60px;
+            transform: rotate(300deg);
+            -webkit-transform: rotate(300deg);
+        }
+    </style>
+</head>
+<body>
+
+
+{% if dummy %}
+    <div id="background">
+        <p id="bg-text">ONLY FOR E.P.B PURPOSE</p>
+    </div>
+{% endif %}
+
+
+<div id="content" style="width: 100%">
+
+    <table style="width:90%;vertical-align: middle;margin: 0 auto;margin-bottom: 1px;margin-top: 10px; border: none;">
+        <tbody>
+        <tr>
+            <td style="width: 50%; border: none;margin-left: 0px;padding-left: 0px;">
+                {% for c in hawb.public_id %}
+                    <b style="padding: 3px 8px;font-size: 10px;border: 1px solid #c1c1c1;margin: 0px;">{{ c }}</b>
+                {% endfor %}
+            </td>
+            <td style="width: 50%; border: none;text-align: right;font-size: 10px;font-weight: 600;">HAWB NO: {{ hawb.public_id }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <table style="width:90%;vertical-align: middle;margin: 0 auto;">
+        <!-- 1st  -->
+        <tr>
+
+            <td style="width: 50%; position: relative;">
+                <b style="float: left;">Shipper's Name and Address</b>
+                <b style="float: right;border: 1px solid #949494;padding: 2px 5px; min-height: 20px; position: absolute;right: 0px;text-align: center;top: 0px;border-top: 0px;border-right: 0px;width: 30%;font-size: 10px;">Shipper's
+                    Account Number<br> &nbsp</b>
+
+                <p style="text-transform: uppercase;font-weight: 600;font-size: 10px;line-height: normal;margin-top: 2px;width: -webkit-fill-available;width: 100%;">
+                    TO THE ORDER OF {{ hawb.shipper.company_name }},<br>
+                    {{ hawb.shipper.address }},<br>
+                    {{ hawb.shipper.city.name }} - {{ hawb.shipper.postcode }}, <br>
+                    {{ hawb.shipper.state }}<br>
+                    {{ hawb.shipper.country }}</p>
+            </td>
+            <td style="width: 50%;">
+                <!--   <img src="https://zapier.com/brand/assets/images/logos/zapier-logo.png" alt="logo" style="width: 133px;float: right;background-size: cover;"> -->
+                <h5 class="pb-05" style="font-size: 10px;">Not Negotiable</h5>
+                <h2 class="pb-05" style="font-size: 10px;">Air Waybill</h2>
+                <h5 class="pb-05" style="font-size: 10px;">Issued by</h5>
+                <h1 style="vertical-align: middle;text-align: center;font-size: 10px;width: -webkit-fill-available;display: grid;">
+                    {{ hawb.forwarder }}</h1>
+                <p style="text-align: center;width: 100%;font-size: 10px;">{{ forwarder_address.address }}, {{ forwarder_address.city.name }}-{{ forwarder_address.postcode }}</p>
+                <h6 style="border-top: 1px solid #bdbdbd;padding-top: 5px;margin: 0px;clear: both;text-transform: none;font-size: 10px;font-weight: normal;">
+                    Copies 1, 2 and 3 of this Air Waybill are originals and have same validity.</h6>
+            </td>
+
+        </tr>
+
+
+        <!-- 2nd -->
+        <tr>
+            <td style="position: relative; width: 50%;">
+                <b style="float: left; " style="font-size: 10px;">Consignee's Name and Address</b>
+                <b style="float: right;border: 1px solid #949494;padding: 2px 5px; min-height: 20px; position: absolute;right: 0px;text-align: center;top: 0px;border-top: 0px;border-right: 0px;width: 30%;font-size: 10px;">Consignee's
+                    Account Number <br> &nbsp</b>
+
+                <p style="text-transform: uppercase;font-weight: 600;font-size: 10px;line-height: normal;margin-top: 2px;width: -webkit-fill-available;width: 100%;">
+                    {{ hawb.consignee.company_name }}<br>
+                    {{ hawb.consignee.address }},<br>
+                    {{ hawb.consignee.city.name }} - {{ hawb.consignee.postcode }}, <br>
+                    {{ hawb.consignee.state }}<br>
+                    {{ hawb.consignee.country }}</p>
+
+
+            </td>
+            <td style="width: 50%;">
+                <p></p>
+            </td>
+
+        </tr>
+
+        <!-- 3rd -->
+        <tr>
+            <td style="width: 50%;">
+                <b style="float: left; font-size: 10px;">Issuing Carrier's Agent Name and City</b>
+
+                <p style="text-transform: uppercase;font-weight: 600;font-size: 10px;line-height: initial;margin-top: 0px;width: -webkit-fill-available;width: 100%;">
+                    {{ hawb.carrier_agent_name }}, {{ hawb.carrier_agent_country }} <br>LICENCE NO: {{ hawb.carrier_agent_ffl_no }}</p>
+                <table style="width: 100%;">
+                    <tr>
+                        <td style="width: 50%;font-size: 10px;">Agent's IATA Code - {{ hawb.carrier_agent_iata_code }}</td>
+                        <td style="width: 50%;font-size: 10px;">Account No - {{ hawb.carrier_agent_account_no }}</td>
+
+                    </tr>
+                </table>
+
+            </td>
+            <td style="width: 50%;">
+                <h5 class="pb-05" style="font-size: 10px;">Accounting Information</h5>
+                <h1 style="vertical-align: middle;text-align: center;font-size: 10px;padding-top: 5px;">{{ hawb.payment_type.name }}</h1>
+                {#            <p style="text-align: center;width: 100%;font-size: 10px;">NOTIFY PARTY: CNS GROUP A/S, TRIANGLEN 24,#}
+                {#                DK-6000, KOLDING, DENMARK</p>#}
+
+        <tr>
+
+
+        </tr>
+
+        </tr>
+
+        <!-- 4th -->
+        <tr>
+            <td style="width: 50%;">
+                <b style="float: left;width: -webkit-fill-available; font-size: 10px;">Airport of
+                    Departure (Addr. of First Carrier) and Requested Routing</b>
+                <p style="font-size: 10px;">{{ hawb.airport_of_departure | default_if_none:'' }} - {{ hawb.requested_routing  | default_if_none:'' }}</p>
+            </td>
+            <td style="width: 50%;">
+                <b style="width: 50%; float: left; font-size: 10px;">reference number</b> <b style="width: 50%;">Optional
+                shipping information</b>
+            </td>
+
+        </tr>
+
+        <!-- 5th -->
+        <tr>
+            <td style="padding: 0px; width: 50%;">
+                <table style="width: 100%;border: hidden;">
+                    <tbody style="">
+                    <tr style="height: 70px;">
+                        <td style="width: 10%;">
+                            <b style="float: left; width: 100%; font-size: 10px;">To</b>
+                            <h1 style="text-align: left;padding-top: 1%;font-size: 10px;clear: both;">{{ hawb.to_1_airport | default_if_none:'' }}</h1></td>
+                        <td style="position: relative; width: 55%;"><b style="float: left; width: 50%;font-size: 10px;">By
+                            First Carrier</b> <b
+                                style="float: right;border: 1px solid #949494;padding: 2px 10px 20px 10px;position: absolute;right: 0px;text-align: center;top: 0px;border-top: 0px;border-right: 0px;width: 40%;font-size: 10px;">Routing
+                            and Destination</b>
+                            <h1 style="text-align: left;padding-top: 1%;font-size: 10px;clear: both;">{{ hawb.to_1_airline | default_if_none:'' }}</h1></td>
+                        <td style="width: 5%;"><b style="float: left; width: 100%; font-size: 10px;">To</b>
+                            <h1 style="text-align: left;padding-top: 1%;font-size: 10px;clear: both;">{{ hawb.to_2_airport | default_if_none:'' }}</h1></td>
+                        <td style="width: 5%;"><b style="float: left; width: 100%; font-size: 10px;">By</b>
+                            <h1 style="text-align: left;padding-top: 1%;font-size: 10px;clear: both;">{{ hawb.to_2_airline | default_if_none:'' }}</h1></td>
+                        <td style="width: 5%;"><b style="float: left; width: 100%; font-size: 10px;">To</b>
+                            <h1 style="text-align: left;padding-top: 1%;font-size: 10px;clear: both;">{{ hawb.to_3_airport | default_if_none:'' }}</h1></td>
+                        <td style="width: 5%;"><b style="float: left; width: 100%; font-size: 10px;">By</b>
+                            <h1 style="text-align: left;padding-top: 1%;font-size: 10px;clear: both;">{{ hawb.to_3_airline | default_if_none:'' }}</h1></td>
+
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+            <td style="padding: 0px; width: 50%;">
+                <table style="width: 100%; border: hidden;">
+                    <tr>
+                        <td>
+                            <b style="font-size: 10px;">Currency <br> {{ hawb.currency.code }}</b>
+                        <td><b style="float: left; width: 100%; font-size: 10px;">CHGS</b><br>{{ hawb.cngs_code }}
+
+                        <td style="padding: 0px;">
+                            <table style="width:100%; border: hidden;">
+                                <tr>
+                                    <th style="font-size: 10px;">WT/VAL</th>
+                                    <th style="font-size: 10px;">Other</th>
+
+                                </tr>
+                                <tr>
+                                    <td style="padding: 5px;">
+
+                                        <table style="width:100%; padding: 5px;">
+
+                                            <tr>
+                                                {#                                            <td style="width:50%; font-size: 10px; padding: padding: 5px;">PPD</td>#}
+                                                {#                                            <td style="width:50%; font-size: 10px; ">COLL#}
+                                                {#                                                <p>XX</p>#}
+                                                {#                                            </td>#}
+                                                <td>{{ hawb.wt_val_payment_type.name }}</td>
+                                            </tr>
+
+
+                                        </table>
+                                    </td>
+                                    <td style="padding: 5px;">
+                                        <table style="width:100%">
+
+                                            <tr>
+                                                {#                                            <td style="width:50%; font-size: 10px;padding: 5px;">PPD</td>#}
+                                                {#                                            <td style="width:50%; font-size: 10px; padding: 5px;">COLL#}
+                                                {#                                                <p style="font-size: 10px; ">XX</p>#}
+                                                {#                                            </td>#}
+                                                <td>{{ hawb.other_payment_type.name }}</td>
+
+                                            </tr>
+
+
+                                        </table>
+                                    </td>
+
+                                </tr>
+
+
+                            </table>
+
+                        </td>
+                        </td>
+                        <td><b style="float: left; width: 100%; font-size: 10px;">Declared Value for Carriage</b>
+                            <h1 style="text-align: left;padding-top: 1%;font-size: 10px;clear: both;">{{ hawb.declared_val_for_carriage }}</h1>
+                        </td>
+                        <td><b style="float: left; width: 100%; font-size: 10px;">Declared Value for Customs</b>
+                            <h1 style="text-align: left;padding-top: 1%;font-size: 10px;clear: both;">{{ hawb.declared_val_for_customs }}</h1>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+
+        </tr>
+
+
+        <!-- 6th -->
+        <tr>
+            <td style="padding: 0px; width: 50%;">
+                <table style="width: 100%;">
+                    <tbody>
+                    <tr style="height: 55px;">
+                        <td style="width: 50%;text-align: center;border-top: hidden;border-left: hidden;border-bottom: hidden;">
+                            <b style="width: 100%; font-size: 10px;">airport of destination</b>
+                            <br>{{ hawb.airport_of_destination.name }} ({{ hawb.airport_of_destination }})
+                        </td>
+                        <td style="width: 50%;text-align: center;border-top: hidden;border-right: hidden;border-bottom: hidden;">
+
+                            <b style="width: 100%; font-size: 10px;">requested flight/date</b>
+                            <h1 style="padding-top: 1%;font-size: 10px;clear: both;">{{ hawb.requested_flight_date }}</h1>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+            <td style="padding: 0px; width: 50%;">
+                <table style="width: 100%;">
+                    <tbody>
+                    <tr style="height: 55px;">
+                        <td style="width: 30%;text-align: center;border-top: hidden;border-bottom: hidden;border-left: hidden;">
+                            <b style="width: 100%; font-size: 10px;">Amount of Insurance</b><br>{{ hawb.amt_of_insurance }}</td>
+                        <td style="width: 70%;text-align: center;padding: 0px;border-top: hidden;border-right: hidden;border-bottom: hidden;">
+                            <p style=" padding: 5px; font-size: 10px;"> INSURANCE - if carrier others Insurance, and such
+                                insurance is requested in accordance with the conditions the real, indicate amount to be
+                                insured in figures in box marked "Amount of Insurance".</p>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+            </td>
+
+
+            <!-- 7th -->
+        <tr>
+            <td colspan="2" style="position: relative;">
+                <b style="width: 100%; font-size: 10px; ">Handling Information</b>
+                <h1 style="vertical-align: middle;text-align: center;font-size: 12px;"> {{ hawb.handling_info }}</h1>
+
+                <table style="width: 20%; text-align: center; float: right;">
+                    <tr>
+                        <td>
+                            <b style="width: 100%; font-size: 10px;">SCI</b>
+                            <h1 style="vertical-align: middle;text-align: center;font-size: 10px;">{{ hawb.sci }}</h1>
+                        </td>
+                    </tr>
+                </table>
+
+            </td>
+
+        </tr>
+
+        <!-- 8th -->
+        <tr>
+
+            <td style="padding: 0px;width: 100%;" colspan="2">
+
+                <table style="width:100%; border: hidden;">
+                    <tbody>
+                    <tr>
+
+                        <td style="display: flex;width: -webkit-fill-available;padding: 0px;border: none;">
+
+                            <table style="margin-right: 10px; width: 15%; border-left: hidden;">
+                                <tbody>
+                                <tr style="text-align: left; border-top: hidden;">
+                                    <th style="height: 33px; font-size: 10px;">No. of <br>Pieces <br>RCP</th>
+                                    <th style="font-size: 10px;">Gross <br>Weight</th>
+                                    <th style="width: 5%; font-size: 10px;">kg <br>lb</th>
+                                </tr>
+                                <tr>
+                                    <td style="height: 109px; font-size: 10px;">{{ hawb.goods_noofpcsrcp }}</td>
+                                    <td style="height: 109px; font-size: 10px;">{{ hawb.goods_grossweight }}</td>
+                                    <td style="height: 109px; font-size: 10px;">{{ hawb.goods_weightunit }}</td>
+                                </tr>
+                                <tr>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" style="height: 15px;border-bottom: hidden;"></td>
+                                </tr>
+
+
+                                </tbody>
+                            </table>
+                            <table style="margin-right: 10px;width: 10%;text-align: left;border-top: hidden; border-bottom: hidden;">
+                                <tbody>
+                                <tr>
+                                    <th style="border-bottom: hidden;text-align: left;padding: 5px 10px; font-size: 10px;">
+                                        Rate Class
+                                    </th>
+
+
+                                </tr>
+                                <tr>
+                                    <td style="padding-top: 0px;margin-top: 0px;padding-right: 0px;margin-bottom: 0px;padding-bottom: 0px;">
+                                        <table style="margin-right: 10px;width: 100%;">
+                                            <tbody>
+                                            <tr>
+                                                <th style="border-right: hidden;padding: 5px 10px; font-size: 10px;">
+                                                    Commodity <br> Item No.
+                                                </th>
+                                            </tr>
+                                            <tr>
+                                                <td style="height: 118px;border-bottom: hidden; font-size: 10px;">{{ hawb.goods_commodityitemno }}</td>
+
+                                            </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </td>
+
+                                </tr>
+
+                                </tbody>
+                            </table>
+                            <table style="margin-right: 10px;width: 10%;border-top: hidden;">
+                                <tbody>
+                                <tr>
+                                    <th style="height: 33px; font-size: 10px;">Chargeable <br>Weight</th>
+
+                                </tr>
+                                <tr style="text-align: center;">
+                                    <td style="height: 135px;border-bottom: hidden; font-size: 10px;">{{ hawb.goods_chargableweight }}</td>
+
+                                </tr>
+
+                                </tbody>
+                            </table>
+                            <table style="margin-right: 10px;width: 10%; border-top: hidden;">
+                                <tbody>
+                                <tr>
+                                    <th style="height: 33px; font-size: 10px;">Rate / Charge</th>
+
+                                </tr>
+                                <tr style="text-align: center;">
+                                    <td style="height: 135px; border-bottom: hidden; font-size: 10px;">{{ hawb.goods_ratecharge }}</td>
+
+
+                                </tr>
+
+                                </tbody>
+                            </table>
+                            <table style="margin-right: 10px;width: 15.75%;border-top: hidden; text-align: left;">
+                                <tbody>
+                                <tr>
+                                    <th style="height: 33px; font-size: 10px;">Total</th>
+
+                                </tr>
+                                <tr>
+                                    <td style="height: 135px; border-bottom: hidden;">
+
+
+                                        {#                                    <p style="padding: 0px;font-size: 10px;font-weight: normal;width: 100%;">#}
+                                        {#                                        <b style="font-weight: normal;font-size: 10px;border-bottom: 1px solid #7b7b7b;">PO#}
+                                        {#                                            NUMBER:</b> <br>6178604EU</p>#}
+                                        {#                                    <p style="padding: 0px;font-size: 10px;font-weight: normal;margin-top: 5px;width: 100%;">#}
+                                        {#                                        <b style="font-weight: normal;font-size: 10px;border-bottom: 1px solid #7b7b7b;">DESCRIPTION</b>#}
+                                        {#                                        <br>MENS PANT</p>#}
+                                        {#                                    <p style="padding: 0px;font-size: 10px;font-weight: normal;margin-top: 5px;width: 100%;">#}
+                                        {#                                        <b style="font-weight: normal;font-size: 10px;border-bottom: 1px solid #7b7b7b;">STYLE#}
+                                        {#                                            NAME:</b> <br>6178604</p>#}
+                                        {{ hawb.goods_total }}
+
+                                    </td>
+
+
+                                </tr>
+
+                                </tbody>
+                            </table>
+                            <table style="border-right: hidden;">
+                                <tbody>
+                                <tr>
+                                    <th style="border-top: hidden;height: 33px; font-size: 10px;">Nature and Quantity of
+                                        Goods <br> <h5 style="font-size: 10px;
+">(incl. Dimensions or Volume)</h5>
+                                    </th>
+
+                                </tr>
+                                <tr>
+                                    <td style="height: 135px;border-bottom: hidden; white-space: nowrap;">
+
+                                        {#                                    <p style="width: 100%; padding: 0px; margin-top: 0px; font-size: 10px;">SAID TO#}
+                                        {#                                        CONTAIN OF 126 CTNS OF READY MADE GARMENTS <br>INV.NO: TSR/HELLENIC/135/2017#}
+                                        {#                                        <br>DT. 22.06.2017</p>#}
+                                        {##}
+                                        {##}
+                                        {#                                    <p style="width: 100%; padding: 0px; margin-top: 5px; font-size: 10px;">EXP NO:#}
+                                        {#                                        0465/00409/2017 <br> DT. 22.06.2017 <br>L/C NO: 3522-RIR1773572 <br>Date:#}
+                                        {#                                        12.05.2017 <br>VOL. 9.00 CBM <br>Cat: 6 <br>H.S.CODE: 6203.42.00</p>#}
+                                        {##}
+                                        {#                                    <p style="width: 100%; padding: 0px; margin-top: 5px; font-size: 10px;">SHIPPING#}
+                                        {#                                        MARK AS PER PACKING LIST</p>#}
+                                        {{ hawb.goods_natureandquantity }}
+
+
+                                    </td>
+
+                                </tr>
+
+                                </tbody>
+                            </table>
+
+                        </td>
+
+                    </tr>
+
+                    </tbody>
+                </table>
+
+            </td>
+
+        </tr>
+        <!-- 9th start -->
+        <tr>
+            <td style="padding: 0px; width: 50%;">
+
+
+                <table style="width: 100%;">
+                    <tbody style="border-right: hidden;border-left: hidden;border-top: hidden;">
+                    <tr>
+                        <th colspan="2"><b style="width: 33%;text-align: center;float: left; font-size: 10px;">Prepaid</b>
+                            <b style="width: 33%;text-align: center; font-size: 10px;">Weight Charge</b> <b
+                                    style="width: 33%;text-align: center;float: right; font-size: 10px;">Collect</b></th>
+
+                    </tr>
+                    <tr>
+
+                        <td style="width: 33%; font-size: 10px;padding: 1px 5px;">{{ hawb.weightcharge_prepaid|default_if_none:'AS ARRANGED' }}</td>
+                        <td style="width: 33%;font-size: 10px;padding: 1px 5px;">{{ hawb.weightcharge_collect|default_if_none:'AS ARRANGED' }}</td>
+
+                    </tr>
+                    </tbody>
+                </table>
+
+                <table style="width: 100%;">
+                    <tbody style="border-right: hidden;border-left: hidden;border-top: hidden;">
+                    <tr>
+                        <th colspan="2"><b style="width: 100%;text-align: center; font-size: 10px;">Valuation Charge</b>
+                        </th>
+
+                    </tr>
+                    <tr>
+
+                        <td style="width: 33%;font-size: 10px;padding: 1px 5px;">{{ hawb.valuationcharge_prepaid|default_if_none:'&nbsp' }}</td>
+                        <td style="width: 33%;font-size: 10px;padding: 1px 5px;">{{ hawb.weightcharge_collect|default_if_none:'&nbsp' }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <table style="width: 100%;">
+                    <tbody style="border-right: hidden;border-left: hidden;border-top: hidden;">
+                    <tr>
+                        <th colspan="2"><b style="width: 100%;text-align: center; font-size: 10px;">Tax</b></th>
+
+                    </tr>
+                    <tr>
+
+                        <td style="width: 33%;font-size: 10px;padding: 1px 5px;">{{ hawb.tax_prepaid|default_if_none:'&nbsp' }}</td>
+                        <td style="width: 33%;font-size: 10px;padding: 1px 5px;">{{ hawb.tax_collect|default_if_none:'&nbsp' }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </td>
+            <td style="width: 50%;">
+                <h5 class="pb-05" style="font-size: 10px;">Other Charges</h5>
+
+                <p style="margin-bottom: 10px;text-align: center;width: 100%; font-size: 10px;">{{ hawb.charges_other|default_if_none:'&nbsp' }}</p>
+
+            </td>
+        </tr>
+
+
+        <!-- 10th -->
+        <tr>
+            <td style="text-align: center;padding: 0px;border-top: hidden; width: 50%;">
+
+                <table style="width: 100%;">
+                    <tbody style="border-right: hidden;border-left: hidden;border-top: hidden;">
+                    <tr>
+                        <th colspan="2"><b style="width: 100%;text-align: center; font-size: 10px;">Total Other Charges Due
+                            Agent</b></th>
+
+                    </tr>
+                    <tr>
+
+                        <td style="width: 33%;font-size: 10px;padding: 1px 5px; text-align: left;">{{ hawb.totalotherchargesdueagent_prepaid|default_if_none:'&nbsp' }}</td>
+                        <td style="width: 33%;font-size: 10px;padding: 1px 5px;text-align: left;">{{ hawb.totalotherchargesdueagent_collect|default_if_none:'&nbsp' }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <table style="width: 100%;">
+                    <tbody style="border-right: hidden;border-left: hidden;border-top: hidden;">
+                    <tr>
+                        <th colspan="2"><b style="width: 100%;text-align: center; font-size: 10px;">Total Other Charges Due
+                            Carrier</b></th>
+
+                    </tr>
+                    <tr>
+
+                        <td style="width: 33%;font-size: 10px;padding: 1px 5px; text-align: left;">{{ hawb.totalotherchargesduecarrier_prepaid|default_if_none:'&nbsp' }}</td>
+                        <td style="width: 33%;font-size: 10px;padding: 1px 5px; text-align: left;">{{ hawb.totalotherchargesduecarrier_collect|default_if_none:'&nbsp' }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </td>
+
+            <td style="position: relative; width: 50%;">
+                <p style="font-size: 10px;">Shipper certifies that the particulars on the face hereof are correct and that
+                    insofar as any part of the consignment contains dangerous goods, such part is property described by name
+                    and is in proper condition for carriage by air according to the applicable Dangerous Goods
+                    Regulations.</p>
+
+                <h6 style="border-top: 1px dotted #bdbdbd;padding: 2px 5px;text-align: center;clear: both;font-size: 10px;font-weight: bold;bottom: 0px;width: 98%;">
+                    Signature of Shipper or his Agent</h6>
+            </td>
+        </tr>
+
+        <!-- 11th -->
+        <tr>
+            <td style="text-align: center;padding: 0px;border-top: hidden; width: 50%;">
+                <table style="width: 100%;">
+                    <tbody style="border-right: hidden;border-left: hidden;border-top: hidden;">
+                    <tr>
+                        <th colspan="2" style="padding: 3px;"><b
+                                style="width: 33%;text-align: center;float: left; font-size: 10px;">Prepaid</b> <b
+                                style="width: 33%;text-align: center; font-size: 10px;">Weight Charge</b> <b
+                                style="width: 33%;text-align: center;float: right; font-size: 10px;">Collect</b></th>
+
+                    </tr>
+                    <tr>
+
+                        <td style="width: 33%;font-size: 10px;padding: 1px 5px; text-align: left;">
+                            <center>{{ hawb.total_prepaid|default_if_none:'AS ARRANGED' }}</center>
+                        </td>
+                        <td style="text-align: left; width: 33%;font-size: 10px;padding: 1px 5px; text-align: left;">
+                            <center>{{ hawb.total_collect|default_if_none:'AS ARRANGED' }}</center>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <table style="width: 100%;">
+                    <tbody style="border-right: hidden;border-left: hidden;border-top: hidden;">
+                    <tr>
+                        <th colspan="2"><b style="width: 50%;text-align: center;float: left; font-size: 10px;">Currency
+                            Conversion Rates</b> <b style="width: 50%;text-align: center;float: right; font-size: 10px;">CC
+                            Charges in Dest. Currency</b></th>
+
+                    </tr>
+                    <tr>
+
+                        <td style="width: 33%;font-size: 10px;padding: 1px 5px;text-align: left;">{{ hawb.currencyconversionrate|default_if_none:'AS ARRANGED' }}</td>
+                        <td style="width: 33%;font-size: 10px;padding: 1px 5px;text-align: left;">{{ hawb.ccchargesindestcurrency|default_if_none:'AS ARRANGED' }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </td>
+
+            <td style="position: relative; width: 50%;">
+
+
+                <h6 style="padding-top: 10px;text-align: center;margin: 0px;clear: both;font-size: 10px;font-weight: bold; bottom: 0px;position: absolute;margin-bottom: 10px; width: 97%;">
+                    <b style="float: left;width: 33%;font-size: 10px;font-weight: normal;text-align: left;">{{ hawb.executed_on_date }}<br>
+                        <h4 style="padding-top: 5px;font-size: 10px;font-weight: normal;">Executed on (date)</h4></b>
+                    <b style="width: 33%;float: none;text-align: center;display: inline-block; font-size: 10px;font-weight: normal;text-align: left;">{{ hawb.executed_at_city }}
+                        <br><h4 style="padding-top: 5px;font-size: 10px;font-weight: normal;">at (place)</h4></b>
+                    <b style=" float: right; width: 33%; font-size: 10px;font-weight: normal;text-align: left;">{{ hawb.signature_issuingcarrieroragent }}<br>
+                        <h4 style="padding-top: 5px;font-size: 10px;font-weight: normal;">Signature of issuing Carrier or
+                            its Agent</h4></b>
+                </h6>
+            </td>
+        </tr>
+
+        <!-- 12th -->
+        <tr>
+
+            <td style="position: relative;padding: 0px;border-top: hidden;width: 50%;margin: 0px;">
+                <table style="width: 100%;">
+                    <tbody style="border-right: hidden;border-left: hidden;border-top: hidden;">
+                    <tr>
+                        <th colspan="2"><b style="width: 50%;text-align: center;float: left; font-size: 10px;"></b> <b
+                                style="width: 50%;text-align: center;float: right; font-size: 10px;">Charges at
+                            Destination</b></th>
+
+                    </tr>
+                    <tr style="
+    border-bottom: none;
+">
+
+                        <td style="width: 33%;border-bottom: hidden;font-size: 10px;padding: 1px 5px;text-align: left;">
+                        </td>
+                        <td style="width: 33%;font-size: 10px;border-bottom: hidden;padding: 1px 5px;text-align: left;">{{ hawb.chargesatdestination_collect|default_if_none:'AS ARRANGED' }}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </td>
+
+            <td style="position: relative;padding: 0px; width: 50%;">
+                <table style="width: 100%;">
+                    <tbody style="border-right: hidden;border-left: hidden;border-top: hidden;">
+                    <tr>
+                        <th><b style="width: 100%;text-align: center;float: left; font-size: 10px;">Total Collect
+                            Charges</b></th>
+
+                    </tr>
+                    <tr>
+
+                        <td style="width: 50%;font-size: 10px;padding: 1px 5px;border-bottom: hidden;text-align: left;border-bottom: hidden;">
+                            {{ hawb.totalcharges_collect|default_if_none:'AS ARRANGED' }}
+                        </td>
+
+
+                        <td style="width: 50%;padding: 5px 5px;text-align: left;border-right: hidden;border-bottom: hidden;border-top: hidden;">
+                            <h2 style="font-size: 10px;font-weight: normal;position: absolute;bottom: 10px;">HAWB :
+                                {{ hawb.public_id }}</h2></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </td>
+
+
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>

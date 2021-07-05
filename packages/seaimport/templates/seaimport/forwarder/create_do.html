@@ -1,0 +1,188 @@
+{% extends 'seaimport/forwarder/base_template.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block page_title %}
+    Create Delivery Order
+{% endblock %}
+
+{% block dashboard_body %}
+    <div class="container mt-4 mb-4">
+        {% include 'seaimport/forwarder/partials/_alert_message.html' %}
+        {% include 'seaimport/forwarder/partials/_form_errors.html' with form=DeliveryOrderForm %}
+        {% include 'seaimport/forwarder/partials/_form_errors.html' with form=GoodsForm %}
+        <div class="card">
+            <div class="card-header text-center text-uppercase
+            {% if hbl.task.job_progress.progress == 100 %}
+                text-white bg-success
+            {% elif hbl.task.job_progress.progress > 0 %}
+                text-white bg-info
+            {% endif %}
+            ">
+                <h2 class="">HBL No - {{ hbl.hbl_number }} ({{ hbl.task.job_progress.progress }}% Completed)</h2>
+            </div>
+
+
+            <div class="card-body">
+                <div class="card">
+                    <div class="card-header text-uppercase">Create Delivery Order (Type: {{ freightType }})</div>
+                    <div class="row">
+                        {% if delivery_order.bank_statement %}
+                            <div class="col-12 mt-3">
+                                <div class="col-12"><b>DOCUMENT:</b> Bank Statement <a
+                                        href="{{ delivery_order.bank_statement.url }}" download="">(Click to
+                                    Download)</a>
+                                </div>
+                                <div class="col-12 mt-2">
+                                    <img class="img-fluid" src="{{ delivery_order.bank_statement.url }}" alt="">
+                                </div>
+                            </div>
+                        {% endif %}
+                        <div class="card-body">
+                            <form action="" method="post" enctype="multipart/form-data">
+
+                                {#                                                        Marks and Numbers#}
+                                <center><h4>MARKS AND NUMBERS</h4></center>
+                                <div class="card">
+                                    <div class="card-header">BANK RELEASE
+                                    </div>
+                                    <div class="card-body">
+                                        {{ DeliveryOrderForm.bank_statement | as_crispy_field }}
+                                    </div>
+                                </div>
+
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-4">
+                                            {{ DeliveryOrderForm.to | as_crispy_field }}
+                                        </div>
+                                        <div class="col-4">
+                                            {{ DeliveryOrderForm.address | as_crispy_field }}
+                                        </div>
+
+                                        <div class="col-4">
+                                            {{ DeliveryOrderForm.city | as_crispy_field }}
+                                        </div>
+
+                                        <div class="col-3">
+                                            {{ DeliveryOrderForm.cargo_system | as_crispy_field }}
+                                        </div>
+                                        <div class="col-3">
+                                            {{ DeliveryOrderForm.vessel | as_crispy_field }}
+                                        </div>
+
+                                        <div class="col-3">
+                                            {{ DeliveryOrderForm.rotation_no | as_crispy_field }}
+                                        </div>
+
+                                        <div class="col-3">
+                                            {{ DeliveryOrderForm.line_no | as_crispy_field }}
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-4">
+                                            {{ DeliveryOrderForm.lc_number | as_crispy_field }}
+                                        </div>
+                                        <div class="col-4">
+                                            {{ DeliveryOrderForm.applicant_name | as_crispy_field }}
+                                        </div>
+                                        <div class="col-4">
+                                            {{ DeliveryOrderForm.applicant_address | as_crispy_field }}
+                                        </div>
+                                        <div class="col-3">
+                                            {{ DeliveryOrderForm.lcaf_number | as_crispy_field }}
+                                        </div>
+                                        <div class="col-3">
+                                            {{ DeliveryOrderForm.applicant_irc | as_crispy_field }}
+                                        </div>
+                                        <div class="col-3">
+                                            {{ DeliveryOrderForm.tin | as_crispy_field }}
+                                        </div>
+                                        <div class="col-3">
+                                            {{ DeliveryOrderForm.bin_no | as_crispy_field }}
+                                        </div>
+                                        <div class="col-12">
+                                            {{ DeliveryOrderForm.others | as_crispy_field }}
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                                {#                                                        Goods Information#}
+                                <center><h4>Goods Information</h4></center>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            {{ GoodsForm.type|as_crispy_field }}
+                                        </div>
+
+                                        <div class="col-6">
+                                            {{ GoodsForm.container_seal_number|as_crispy_field }}
+                                        </div>
+
+                                        <div class="col-6">
+                                            {{ GoodsForm.quantity|as_crispy_field }}
+                                        </div>
+
+                                        <div class="col-6">
+                                            {{ GoodsForm.package_type|as_crispy_field }}
+                                        </div>
+
+                                        <div class="col-6">
+                                            {{ GoodsForm.net_weight|as_crispy_field }}
+                                        </div>
+
+                                        <div class="col-6">
+                                            {{ GoodsForm.gross_weight|as_crispy_field }}
+                                        </div>
+
+                                        <div class="col-12">
+                                            {{ GoodsForm.container_size_type|as_crispy_field }}
+                                        </div>
+
+                                        <div class="col-12">
+                                            {{ GoodsForm.description|as_crispy_field }}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {% if request.user.is_superuser %}
+                                    <div id="hbl_info" task_id="{{ hbl.task.id }}">
+                                        <button type="button" class="btn btn-success float-right" prefix="do_issued">
+                                            Confirm
+                                        </button>
+                                    </div>
+                                {% endif %}
+
+                                <button type="submit" class="btn btn-primary float-right mr-2">Create/Update</button>
+                                {% if not hbl.task.unlocked or request.user.is_superuser %}
+                                    <a href="{% url 'seaimport:sea_import_view_do' hbl.id %}"
+                                       class="btn btn-outline-primary float-right mr-2">View DO</a>
+                                {% endif %}
+
+                                <button type="reset" class="btn btn-warning float-left mr-2">Reset</button>
+                                <a href="javascript:close_window();"
+                                   class="btn btn-danger float-left">Exit</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+
+
+
+{% block extraJs %}
+    <script type="text/javascript">
+        window.sea_import_update_task_url = '{% url "seaimport:sea_import_update_task" 123%}';
+    </script>
+
+    <script type="text/javascript" src="{% static 'js/sea_import_single_job_update.jquery.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,1330 @@
+<div>
+    <div class="container-fluid">
+        <div class="container">
+            <div class="btn-group">
+                <button class="btn btn-sm btn-outline-secondary" type="button"><i class="fa fa-refresh"></i> Reload
+                    Database
+                </button>
+            </div>
+            {#            <div class="">#}
+            {#                <div class="col-md-12 template_select">#}
+            {#                    <div class="template_selectpart near-hidden">#}
+            {#                        <div class="col-md-6 col-xs-12 template_prt">#}
+            {#                            <form>#}
+            {#                                <div class="form-group"><label>Available templates:</label><select#}
+            {#                                        class="form-control">#}
+            {#                                    <option>1</option>#}
+            {#                                    <option>2</option>#}
+            {#                                    <option>3</option>#}
+            {#                                    <option>4</option>#}
+            {#                                    <option>5</option>#}
+            {#                                </select></div>#}
+            {#                            </form>#}
+            {#                        </div>#}
+            {#                    </div>#}
+            {#                </div>#}
+            {#                <div class="col-md-12 shippers_ref">#}
+            {#                    <div class="shippers_refpartstat">#}
+            {#                        <div class="title"><b></b></div>#}
+            {#                        <div class="row">#}
+            {#                            <div class="col-md-6">#}
+            {#                                <form>#}
+            {#                                    <div class="form-group"><label>Shippers Reference Number</label><input#}
+            {#                                            type="text" class="form-control" readonly="" value="1902110000000021">#}
+            {#                                    </div>#}
+            {#                                </form>#}
+            {#                            </div>#}
+            {#                        </div>#}
+            {#                    </div>#}
+            {#                </div>#}
+            {#            </div>#}
+            <div class="col-md-12 senderpart_ref">
+                <div class="Shippers_partstart">
+                    <div class="title"><b>sender</b></div>
+                    <div class="row">
+                        <div class="col-md-6 leftpart">
+
+                            {#                            main shipper form starts from here#}
+                            <div class="shippers_part" id="shipper">
+                                <form>
+                                    <div>
+                                        <div class="sub_title"><b>shipper</b></div>
+
+                                        <div class="form-group row"><label
+                                                class="col-sm-4 col-xs-12 col-form-labels">Select address to
+                                            load</label>
+                                            <div class="col-sm-8 col-xs-12">
+                                                <select class="form-control" name="shipper_select">
+                                                    <option value="">--</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-sm-4 col-xs-12 col-form-label">company name
+                                                <i class="text-danger small">*</i>
+                                            </label>
+                                            <div class="col-sm-8 col-xs-12">
+                                                <input type="text" class="form-control" placeholder="company name"
+                                                       value="" name="shipper_name">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-sm-4 col-xs-12 col-form-label">Address
+                                                <i class="text-danger small">*</i>
+                                            </label>
+                                            <div class="col-sm-8 col-xs-12">
+                                                <textarea class="form-control" name="shipper_address"></textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-sm-4 col-xs-12 col-form-label">post code
+                                                <i class="text-danger small">*</i>
+                                            </label>
+                                            <div class="col-sm-8 col-xs-12">
+                                                <input type="number" class="form-control" value=""
+                                                       name="shipper_postal_code">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-sm-4 col-xs-12 col-form-label">city
+                                                <i class="text-danger small">*</i>
+                                            </label>
+                                            <div class="col-sm-8 col-xs-12">
+                                                <select class="form-control" name="shipper_city">
+                                                    <option>--</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-sm-4 col-xs-12 col-form-label">state</label>
+                                            <div class="col-sm-8 col-xs-12">
+                                                <input type="text" class="form-control" placeholder="state" value=""
+                                                       name="shipper_state">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-sm-4 col-xs-12 col-form-label">country
+                                                <i class="text-danger small">*</i>
+                                            </label>
+                                            <div class="col-sm-8 col-xs-12">
+                                                <select class="form-control" name="shipper_country">
+                                                    <option>--</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-sm-4 col-xs-12 col-form-label">contact
+                                                <i class="text-danger small">*</i>
+                                            </label>
+                                            <div class="col-sm-8 col-xs-12">
+                                                <input type="text" class="form-control" placeholder="contact" value=""
+                                                       name="shipper_contact">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-sm-4 col-xs-12 col-form-label">telephone number
+                                                <i class="text-danger small">*</i>
+                                            </label>
+                                            <div class="col-sm-8 col-xs-12">
+                                                <input type="text" class="form-control" value=""
+                                                       name="shipper_telephone_number">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-sm-4 col-xs-12 col-form-label">mobile number
+                                                <i class="text-danger small">*</i>
+                                            </label>
+                                            <div class="col-sm-8 col-xs-12">
+                                                <input type="text" class="form-control" value=""
+                                                       name="shipper_mobile_number">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-sm-4 col-xs-12 col-form-label">fax number
+                                                <i class="text-danger small">*</i>
+                                            </label>
+                                            <div class="col-sm-8 col-xs-12">
+                                                <input type="text" class="form-control" value="" name="shipper_fax">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-sm-4 col-xs-12 col-form-label">e-mail address
+                                                <i class="text-danger small">*</i>
+                                            </label>
+                                            <div class="col-sm-8 col-xs-12">
+                                                <input type="email" class="form-control" placeholder="e-mail address"
+                                                       value="" name="shipper_email">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-sm-4 col-xs-12 col-form-label mr-2">
+                                                <div class="checkbox">
+                                                    <label><input type="checkbox" value=""> Notify Shipper</label>
+                                                </div>
+                                            </label>
+                                        </div>
+
+                                    </div>
+                                </form>
+                            </div>
+
+
+                            {#                                Consignee form starts from here#}
+                            <div class="consignee_part">
+                                <div class="col-md-12 title">
+                                    <b>receiver</b>
+                                </div>
+
+                                <div class="consignee_partstart" id="consignee">
+                                    <form>
+                                        <div>
+                                            <div class="sub_title"><b>consignee</b></div>
+
+                                            <div class="form-group row">
+                                                <label
+                                                        class="col-sm-4 col-xs-12 col-form-labels">Select address to
+                                                    load
+                                                </label>
+                                                <div class="col-sm-8 col-xs-12">
+                                                    <select class="form-control" name="consignee_select">
+                                                        <option value="">--</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-sm-4 col-xs-12 col-form-label">company name<i
+                                                        class="text-danger small">*</i>
+                                                </label>
+                                                <div class="col-sm-8 col-xs-12">
+                                                    <input type="text" class="form-control" placeholder="company name"
+                                                           value="" name="consignee_name">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-sm-4 col-xs-12 col-form-label">Address
+                                                    <i class="text-danger small">*</i>
+                                                </label>
+                                                <div class="col-sm-8 col-xs-12">
+                                                    <textarea class="form-control" name="consignee_address"></textarea>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-sm-4 col-xs-12 col-form-label">post code
+                                                    <i class="text-danger small">*</i>
+                                                </label>
+                                                <div class="col-sm-8 col-xs-12">
+                                                    <input type="number" class="form-control" value=""
+                                                           name="consignee_postal_code">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-sm-4 col-xs-12 col-form-label">city
+                                                    <i class="text-danger small">*</i>
+                                                </label>
+                                                <div class="col-sm-8 col-xs-12">
+                                                    <select class="form-control" name="consignee_city">
+                                                        <option>--</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-sm-4 col-xs-12 col-form-label">state</label>
+                                                <div class="col-sm-8 col-xs-12">
+                                                    <input type="text" class="form-control" placeholder="state" value=""
+                                                           name="consignee_state">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-sm-4 col-xs-12 col-form-label">country
+                                                    <i class="text-danger small">*</i>
+                                                </label>
+                                                <div class="col-sm-8 col-xs-12">
+                                                    <select class="form-control" name="consignee_country">
+                                                        <option>--</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-sm-4 col-xs-12 col-form-label">contact
+                                                    <i class="text-danger small">*</i>
+                                                </label>
+                                                <div class="col-sm-8 col-xs-12">
+                                                    <input type="text" class="form-control" placeholder="contact"
+                                                           value=""
+                                                           name="consignee_contact">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-sm-4 col-xs-12 col-form-label">telephone number
+                                                    <i class="text-danger small">*</i>
+                                                </label>
+                                                <div class="col-sm-8 col-xs-12">
+                                                    <input type="text" class="form-control" value=""
+                                                           name="consignee_telephone_number">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-sm-4 col-xs-12 col-form-label">mobile number
+                                                    <i class="text-danger small">*</i>
+                                                </label>
+                                                <div class="col-sm-8 col-xs-12">
+                                                    <input type="text" class="form-control" value=""
+                                                           name="consignee_mobile_number">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-sm-4 col-xs-12 col-form-label">fax number
+                                                    <i class="text-danger small">*</i>
+                                                </label>
+                                                <div class="col-sm-8 col-xs-12">
+                                                    <input type="text" class="form-control" value=""
+                                                           name="consignee_fax">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-sm-4 col-xs-12 col-form-label">e-mail address
+                                                    <i class="text-danger small">*</i>
+                                                </label>
+                                                <div class="col-sm-8 col-xs-12">
+                                                    <input type="email" class="form-control"
+                                                           placeholder="e-mail address"
+                                                           value="" name="consignee_email">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-sm-6 col-xs-12 col-form-label mr-2">
+                                                    <div class="checkbox">
+                                                        <label><input type="checkbox" value=""> Notify Consignee</label>
+                                                    </div>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        {#This is the temporary address section#}
+                        <div class="col-md-6 tempoaddress_part">
+                            <div class="">
+                                <button id="add-more-address">
+                                    <i class="fa fa-plus"></i> add more address
+                                </button>
+
+                                <div id="temp_address" style="display: none">
+                                    <div class="temp_address_body"
+                                         style=" border-bottom: 1px solid #000; padding-bottom: 40px">
+
+                                        <div class="sub_title" style="margin: 30px 0;">
+                                            <b>Temporary Address</b>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-sm-4 col-xs-12 col-form-labels">Select
+                                                address to load
+                                            </label>
+                                            <div class="col-sm-8 col-xs-12">
+                                                <select class="form-control" name="temporary_address_select">
+                                                    <option value="">--</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-sm-4 col-xs-12 col-form-label">company name<i
+                                                    class="text-danger small">*</i></label>
+                                            <div class="col-sm-8 col-xs-12">
+                                                <input type="text" class="form-control" placeholder="company name"
+                                                       value=""
+                                                       name="temporary_address_name">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-sm-4 col-xs-12 col-form-label">Address
+                                                <i class="text-danger small">*</i>
+                                            </label>
+                                            <div class="col-sm-8 col-xs-12">
+                                                <textarea class="form-control"
+                                                          name="temporary_address_address"></textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-sm-4 col-xs-12 col-form-label">post code
+                                                <i class="text-danger small">*</i>
+                                            </label>
+                                            <div class="col-sm-8 col-xs-12">
+                                                <input type="number" class="form-control" value=""
+                                                       name="temporary_address_postal_code">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-sm-4 col-xs-12 col-form-label">city
+                                                <i class="text-danger small">*</i>
+                                            </label>
+                                            <div class="col-sm-8 col-xs-12">
+                                                <select class="form-control" name="temporary_address_city">
+                                                    <option>--</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-sm-4 col-xs-12 col-form-label">state</label>
+                                            <div class="col-sm-8 col-xs-12">
+                                                <input type="text" class="form-control" placeholder="state" value=""
+                                                       name="temporary_address_state">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-sm-4 col-xs-12 col-form-label">country
+                                                <i class="text-danger small">*</i>
+                                            </label>
+                                            <div class="col-sm-8 col-xs-12">
+                                                <select class="form-control" name="temporary_address_country">
+                                                    <option>--</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-sm-4 col-xs-12 col-form-label">contact
+                                                <i class="text-danger small">*</i>
+                                            </label>
+                                            <div class="col-sm-8 col-xs-12">
+                                                <input type="text" class="form-control" placeholder="contact" value=""
+                                                       name="temporary_address_contact">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-sm-4 col-xs-12 col-form-label">telephone number
+                                                <i class="text-danger small">*</i>
+                                            </label>
+                                            <div class="col-sm-8 col-xs-12">
+                                                <input type="text" class="form-control" value=""
+                                                       name="temporary_address_tel_num">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-sm-4 col-xs-12 col-form-label">mobile number<i
+                                                    class="text-danger small">*</i>
+                                            </label>
+                                            <div class="col-sm-8 col-xs-12">
+                                                <input type="text" class="form-control" value=""
+                                                       name="temporary_address_mobile_num">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-sm-4 col-xs-12 col-form-label">fax number
+                                                <i class="text-danger small">*</i>
+                                            </label>
+                                            <div class="col-sm-8 col-xs-12">
+                                                <input type="text" class="form-control" value=""
+                                                       name="temporary_address_fax">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-sm-4 col-xs-12 col-form-label">e-mail address<i
+                                                    class="text-danger small">*</i></label>
+                                            <div class="col-sm-8 col-xs-12">
+                                                <input type="email" class="form-control" placeholder="e-mail address"
+                                                       value="" name="temporary_address_email">
+                                            </div>
+                                        </div>
+
+                                        <div class="">
+                                            <div class="headline">
+                                                <strong>address type
+                                                    <i class="text-danger small">*</i>
+                                                </strong>
+                                            </div>
+
+                                            <div class="radio custom-control custom-radio">
+                                                <label><input type="radio" name="temporary_address_type"
+                                                              value="consignor">
+                                                    Consignor</label>
+                                            </div>
+
+                                            <div class="radio custom-control custom-radio">
+                                                <label><input type="radio" name="temporary_address_type" value="pickup">
+                                                    Pickup Address</label>
+                                            </div>
+
+                                            <div class="radio custom-control custom-radio">
+                                                <label><input type="radio" name="temporary_address_type"
+                                                              value="consignee">
+                                                    Consignee</label>
+                                            </div>
+
+                                            <div class="radio custom-control custom-radio">
+                                                <label><input type="radio" name="temporary_address_type"
+                                                              value="delivery">
+                                                    Delivery Address</label>
+                                            </div>
+
+                                            {#                                        <div>#}
+                                            {#                                            <div class="custom-control custom-radio">#}
+                                            {#                                                <input type="radio" class="custom-control-input" id="consignor"#}
+                                            {#                                                       name="tmpaddresstype" value="consignor">#}
+                                            {#                                                <label class="custom-control-label" for="consignor">consignor</label>#}
+                                            {#                                            </div>#}
+                                            {#                                        </div>#}
+
+                                            {#                                        <div class="">#}
+                                            {#                                            <div class="custom-control custom-radio">#}
+                                            {#                                                <input type="radio" class="custom-control-input" id="pickup"#}
+                                            {#                                                       name="tmpaddresstype" value="pickup">#}
+                                            {#                                                <label#}
+                                            {#                                                        class="custom-control-label" for="pickup">pickup address#}
+                                            {#                                                </label>#}
+                                            {#                                            </div>#}
+                                            {#                                        </div>#}
+
+                                            {#                                        <div class="">#}
+                                            {#                                            <div class="custom-control custom-radio">#}
+                                            {#                                                <input type="radio" class="custom-control-input" id="consignee"#}
+                                            {#                                                       name="tmpaddresstype" value="consignee">#}
+                                            {#                                                <label#}
+                                            {#                                                        class="custom-control-label" for="consignee">consignee#}
+                                            {#                                                </label>#}
+                                            {#                                            </div>#}
+                                            {#                                        </div>#}
+
+                                            {#                                        <div class="">#}
+                                            {#                                            <div class="custom-control custom-radio">#}
+                                            {#                                                <input type="radio" class="custom-control-input" id="delivery"#}
+                                            {#                                                       name="tmpaddresstype" value="delivery">#}
+                                            {#                                                <label class="custom-control-label" for="delivery">delivery#}
+                                            {#                                                    address</label>#}
+                                            {#                                            </div>#}
+                                            {#                                        </div>#}
+
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-sm-4 col-xs-12 col-form-label mr-2">
+                                                <div class="checkbox">
+                                                    <label><input type="checkbox" checked
+                                                                  name="temporary_address_notify">
+                                                        Notify</label>
+                                                </div>
+                                            </label>
+
+                                        </div>
+                                        <button type="button"
+                                                class="pull-right btn btn-xs btn-danger delete-temp-address">Delete form
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 notify_part">
+                    <div class="card">
+                        <div class="card-header">Bank Info</div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <div class="checkbox">
+                                                <label class="form-check-label">
+                                                    <input type="checkbox" class="form-check-input" value="on"
+                                                           data-toggle="collapse" href="#originBankInfo"
+                                                           aria-expanded="false" aria-controls="collapseExample">Origin
+                                                    Bank Info
+                                                </label>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="card-body collapse" id="originBankInfo">
+                                            <div>
+                                                <div class="sub_title"></div>
+                                                <div class="form-group row"><label
+                                                        class="col-sm-4 col-xs-12 col-form-labels">Select existing
+                                                    bank info from database</label>
+                                                    <div class="col-sm-8 col-xs-12"><select class="form-control"
+                                                                                            name="branch_id">
+                                                        <option value="">--</option>
+                                                        <option value="1">Dhaka Bank: Banani Branch</option>
+                                                        <option value="2">Lloyd Bank: London Branch</option>
+                                                    </select></div>
+                                                </div>
+                                                <div class="form-group row"><label
+                                                        class="col-sm-4 col-xs-12 col-form-label">bank name<i
+                                                        class="text-danger small">*</i></label>
+                                                    <div class="col-sm-8 col-xs-12"><input type="text"
+                                                                                           class="form-control"
+                                                                                           value=""></div>
+                                                </div>
+                                                <div class="form-group row"><label
+                                                        class="col-sm-4 col-xs-12 col-form-label">branch<i
+                                                        class="text-danger small">*</i></label>
+                                                    <div class="col-sm-8 col-xs-12"><input type="text"
+                                                                                           class="form-control"
+                                                                                           value=""></div>
+                                                </div>
+                                                <div class="form-group row"><label
+                                                        class="col-sm-4 col-xs-12 col-form-label">Address<i
+                                                        class="text-danger small">*</i></label>
+                                                    <div class="col-sm-8 col-xs-12"><textarea
+                                                            class="form-control"></textarea></div>
+                                                </div>
+                                                <div class="form-group row"><label
+                                                        class="col-sm-4 col-xs-12 col-form-label mr-2">notify<i
+                                                        class="text-danger small">*</i><i
+                                                        class="fa fa-times small ml-2"> no</i></label></div>
+                                                <div class="form-check">
+                                                    <div class="btn-group"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="card-footer"></div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <div class="checkbox">
+                                                <label class="form-check-label">
+                                                    <input type="checkbox" class="form-check-input" value="on"
+                                                           data-toggle="collapse" href="#destinationBankInfo"
+                                                           aria-expanded="false" aria-controls="collapseExample">
+                                                    Destination Bank Info
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="card-body collapse" id="destinationBankInfo">
+                                            <div>
+                                                <div class="sub_title"></div>
+                                                <div class="form-group row"><label
+                                                        class="col-sm-4 col-xs-12 col-form-labels">Select existing
+                                                    bank info from database</label>
+                                                    <div class="col-sm-8 col-xs-12"><select class="form-control"
+                                                                                            name="branch_id">
+                                                        <option value="">--</option>
+                                                        <option value="1">Dhaka Bank: Banani Branch</option>
+                                                        <option value="2">Lloyd Bank: London Branch</option>
+                                                    </select></div>
+                                                </div>
+                                                <div class="form-group row"><label
+                                                        class="col-sm-4 col-xs-12 col-form-label">bank name<i
+                                                        class="text-danger small">*</i></label>
+                                                    <div class="col-sm-8 col-xs-12"><input type="text"
+                                                                                           class="form-control"
+                                                                                           value=""></div>
+                                                </div>
+                                                <div class="form-group row"><label
+                                                        class="col-sm-4 col-xs-12 col-form-label">branch<i
+                                                        class="text-danger small">*</i></label>
+                                                    <div class="col-sm-8 col-xs-12"><input type="text"
+                                                                                           class="form-control"
+                                                                                           value=""></div>
+                                                </div>
+                                                <div class="form-group row"><label
+                                                        class="col-sm-4 col-xs-12 col-form-label">Address<i
+                                                        class="text-danger small">*</i></label>
+                                                    <div class="col-sm-8 col-xs-12"><textarea
+                                                            class="form-control"></textarea></div>
+                                                </div>
+                                                <div class="form-group row"><label
+                                                        class="col-sm-4 col-xs-12 col-form-label mr-2">notify<i
+                                                        class="text-danger small">*</i><i
+                                                        class="fa fa-times small ml-2"> no</i></label></div>
+                                                <div class="form-check">
+                                                    <div class="btn-group"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer"></div>
+                    </div>
+                </div>
+
+                {#                <div class="col-md-12 notify_part">#}
+                {#                    <div class="card">#}
+                {#                        <div class="card-header">Notify party</div>#}
+                {#                        <div class="card-body">#}
+                {#                            <div class="text-warning">Email Notification disabled.</div>#}
+                {#                        </div>#}
+                {#                    </div>#}
+                {#                </div>#}
+
+                <!-- Destination and loading -->
+                <div class="card" id="destination_loading">
+                    <div class="card-header">
+                        <div class="title"><b>Destination / Loading <i class="text-danger small">*</i></b></div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group"><label>Airport of destination <i
+                                        class="text-danger small">*</i></label>
+                                    <div class="input-group">
+                                        <select class="form-control" name="destination_loading_destination_airport">
+                                            <option>--</option>
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group"><label>Terms of delivery <i
+                                        class="text-danger small">*</i></label>
+                                    <div class="input-group">
+                                        <select class="custom-select" name="destination_loading_terms_of_delivery">
+                                            <option value=""></option>
+                                            <option id="1" value="1">CIF Cost Insurance and Freight</option>
+                                            <option id="2" value="2">CFR Cost And Freight</option>
+                                            <option id="3" value="3">FOB Free On Board</option>
+                                            <option id="4" value="4">FAS Free Alongside Ship</option>
+                                            <option id="5" value="5">DDP Delivered Duty Paid</option>
+                                            <option id="6" value="6">DAP Delivered At Place</option>
+                                            <option id="7" value="7">DAT Delivered At Terminal</option>
+                                            <option id="8" value="8">CIP Carriage and Insurance Paid To</option>
+                                            <option id="9" value="9">CPT Carriage Paid To</option>
+                                            <option id="10" value="10">FCA Free Carrier</option>
+                                            <option id="11" value="11">EXW Ex Works</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group"><label>Airport of loading <i
+                                        class="text-danger small">*</i></label>
+                                    <div class="input-group">
+                                        <select class="form-control" name="destination_loading_loading_airport">
+                                            <option>--</option>
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group"><label>Country of destination <i
+                                        class="text-danger small">*</i></label>
+                                    <div class="input-group">
+                                        <select class="form-control" name="destination_loading_destination_airport">
+                                            <option>--</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer small">
+                        <div class="text-danger">* Data not saved</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Goods info form starts from here -->
+            <div class="col-md-12 goods_part">
+                <div class="title goods_partcontain"><b>goods</b></div>
+
+                <div id="goods_info_body">
+                    <div class="card goods_info_body_single">
+                        <div class="card-header">
+                            <div class="pull-right">
+
+                            </div>
+                        </div>
+                        <div class="goods_info_body">
+                            <div class="card-body">
+                                <div class="goods_partcontain">
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-4 col-xs-12 ">
+                                                <div class="row">
+
+                                                    <div class="col-md-3 pd_all_5">
+                                                        <div class="form-group">
+                                                            <label class="small">No of PCS <i
+                                                                    class="text-danger small">*</i>
+                                                            </label>
+                                                            <div class="input-group">
+                                                                <input type="number" class="form-control" placeholder=""
+                                                                       name="goods_info_no_of_pieces">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-3 pd_all_5">
+                                                        <div class="form-group"><label class="small">Package Type <i
+                                                                class="text-danger small">*</i></label>
+                                                            <div class="input-group">
+                                                                <select class="form-control"
+                                                                        name="goods_info_package_type">
+                                                                    <option>--</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-3 pd_all_5">
+                                                        <div class="form-group">
+                                                            <label class="small">Weight (kg) <i
+                                                                    class="text-danger small">*</i>
+                                                            </label>
+                                                            <div class="input-group">
+                                                                <input type="number" step="0.1" class="form-control"
+                                                                       placeholder="" name="goods_info_weight">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-3 pd_all_5">
+                                                        <div class="form-group"><label class="small">Volumetric Weight
+                                                            KG (cbm <i class="fa fa-question-circle small"
+                                                                       title="l*b*h(all in cm)/6000=volumetric weight;"></i>)
+                                                        </label>
+                                                            <div class="input-group">
+                                                                <input type="text" disabled="" class="form-control"
+                                                                       value=""
+                                                                       name="goods_info_volumetric_weight">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-3 pd_all_5">
+                                                        <div class="form-group"><label class="small">Chargeable
+                                                            Weight</label>
+                                                            <div class="input-group">
+                                                                <input type="text" readonly="" class="form-control"
+                                                                       value=""
+                                                                       name="goods_info_chargeable_weight">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-3 col-xs-12 ">
+                                                <div class="row">
+                                                    <div class="col-md-4 pd_all_5">
+                                                        <div class="form-group">
+                                                            <label class="small">Lengh (cm) <i
+                                                                    class="text-danger small">*</i>
+                                                            </label>
+                                                            <div class="input-group">
+                                                                <input type="number" step="0.1" class="form-control"
+                                                                       placeholder="" name="goods_info_length">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-4 pd_all_5">
+                                                        <div class="form-group">
+                                                            <label class="small">Width (cm) <i
+                                                                    class="text-danger small">*</i>
+                                                            </label>
+                                                            <div class="input-group">
+                                                                <input type="number" step="0.1" class="form-control"
+                                                                       placeholder="" name="goods_info_width">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-4 pd_all_5">
+                                                        <div class="form-group">
+                                                            <label class="small">Height (cm) <i
+                                                                    class="text-danger small">*</i>
+                                                            </label>
+                                                            <div class="input-group">
+                                                                <input type="number" step="0.1" class="form-control"
+                                                                       placeholder="" name="goods_info_height">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-5 col-xs-12 ">
+                                                <div class="row">
+                                                    <div class="col-md-2 pd_all_5">
+                                                        <div class="form-group">
+                                                            <label class="small">Quantity <i
+                                                                    class="text-danger small">*</i>
+                                                            </label>
+                                                            <div class="input-group">
+                                                                <input type="number" class="form-control" placeholder=""
+                                                                       name="goods_info_quantity">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-2 pd_all_5">
+                                                        <div class="form-group">
+                                                            <label class="small">Unit price <i
+                                                                    class="text-danger small">*</i>
+                                                            </label>
+                                                            <div class="input-group">
+                                                                <input type="number" step="0.01" class="form-control"
+                                                                       placeholder="" name="goods_info_unit_price">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-2 pd_all_5">
+                                                        <div class="form-group">
+                                                            <label class="small">Currency <i
+                                                                    class="text-danger small">*</i>
+                                                            </label>
+                                                            <div class="input-group">
+                                                                <select class="form-control" name="goods_info_currency">
+                                                                    <option>--</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 goods_middle">
+                                        <div class="row">
+                                            <div class="col-md-6 pd_all_5">
+                                                <div class="form-group">
+                                                    <label class="small">Shipping Mark <i
+                                                            class="text-danger small">*</i>
+                                                    </label>
+                                                    <div class="input-group">
+                                                        <select class="form-control" name="goods_info_shipping_mark">
+                                                            <option value="">--</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 pd_all_5">
+                                                <div class="form-group">
+                                                    <label class="small">Goods Description <i
+                                                            class="text-danger small">*</i>
+                                                    </label>
+                                                    <div class="input-group">
+                                                    <textarea class="form-control" rows="6"
+                                                              name="goods_info_description"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {#                                <div class="goods_middle d-none"><strong>References</strong>#}
+                                    {#                                    <button class="margin-left-20p btn btn-sm btn-secondary small"><i#}
+                                    {#                                            class="fa fa-plus"></i> add#}
+                                    {#                                    </button>#}
+                                    {#                                    <div>#}
+                                    {#                                        <div class="row">#}
+                                    {#                                            <div class="col">#}
+                                    {#                                                <div class="form-group"><label class="form-control-label small">Reference#}
+                                    {#                                                    Type <i class="text-danger small">*</i></label><select#}
+                                    {#                                                        class="form-control">#}
+                                    {#                                                    <option>--</option>#}
+                                    {#                                                </select></div>#}
+                                    {#                                            </div>#}
+                                    {#                                            <div class="col">#}
+                                    {#                                                <div class="form-group"><label class="form-control-label small">Reference#}
+                                    {#                                                    Number <i class="text-danger small">*</i></label><input#}
+                                    {#                                                        type="text" class="form-control"></div>#}
+                                    {#                                            </div>#}
+                                    {#                                            <div class="">#}
+                                    {#                                                <button type="button" class="btn btn-sm"><i class="fa fa-times"></i>#}
+                                    {#                                                </button>#}
+                                    {#                                            </div>#}
+                                    {#                                        </div>#}
+                                    {#                                    </div>#}
+                                    {#                                    <div>#}
+                                    {#                                        <div class="row">#}
+                                    {#                                            <div class="col">#}
+                                    {#                                                <div class="form-group"><label class="form-control-label small">Reference#}
+                                    {#                                                    Type <i class="text-danger small">*</i></label><select#}
+                                    {#                                                        class="form-control">#}
+                                    {#                                                    <option>--</option>#}
+                                    {#                                                </select></div>#}
+                                    {#                                            </div>#}
+                                    {#                                            <div class="col">#}
+                                    {#                                                <div class="form-group"><label class="form-control-label small">Reference#}
+                                    {#                                                    Number <i class="text-danger small">*</i></label><input#}
+                                    {#                                                        type="text" class="form-control"></div>#}
+                                    {#                                            </div>#}
+                                    {#                                            <div class="">#}
+                                    {#                                                <button type="button" class="btn btn-sm"><i class="fa fa-times"></i>#}
+                                    {#                                                </button>#}
+                                    {#                                            </div>#}
+                                    {#                                        </div>#}
+                                    {#                                    </div>#}
+                                    {#                                    <div>#}
+                                    {#                                        <div class="row">#}
+                                    {#                                            <div class="col">#}
+                                    {#                                                <div class="form-group"><label class="form-control-label small">Reference#}
+                                    {#                                                    Type <i class="text-danger small">*</i></label><select#}
+                                    {#                                                        class="form-control">#}
+                                    {#                                                    <option>--</option>#}
+                                    {#                                                </select></div>#}
+                                    {#                                            </div>#}
+                                    {#                                            <div class="col">#}
+                                    {#                                                <div class="form-group"><label class="form-control-label small">Reference#}
+                                    {#                                                    Number <i class="text-danger small">*</i></label><input#}
+                                    {#                                                        type="text" class="form-control"></div>#}
+                                    {#                                            </div>#}
+                                    {#                                            <div class="">#}
+                                    {#                                                <button type="button" class="btn btn-sm"><i class="fa fa-times"></i>#}
+                                    {#                                                </button>#}
+                                    {#                                            </div>#}
+                                    {#                                        </div>#}
+                                    {#                                    </div>#}
+                                    {#                                </div>#}
+                                </div>
+                                <button type="button" class="btn btn-sm btn-danger delete_goods_info_form">Delete Form
+                                </button>
+                            </div>
+                        </div>
+
+
+                        <button type="button" class="btn btn-success add_goods_info_form" id="add_more_goods_info">Add
+                            more goods
+                        </button>
+
+                        <div class="card-footer">
+                            <div class="text-danger small">* Goods Info Data not saved</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-12 frt_globalpart">
+                <div class="frt_globalcontain">
+                    <div class="card">
+                        <div class="card-header">
+                            <strong>Shipping services <i
+                                    class="text-danger small">*</i>
+                            </strong>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-check">
+
+                                <div class="radio">
+                                    <label class="form-check-label" for="express">
+                                        <input type="radio" class="form-check-input" id="express" value="nex-dd"
+                                               name="shipping_service_selection">Navana
+                                        Express (NEX - Door - Door only)
+                                    </label>
+                                </div>
+
+                                <div class="radio">
+                                    <label class="form-check-label" for="nrd">
+                                        <input type="radio" class="form-check-input" id="nrd" value="nrd"
+                                               name="shipping_service_selection">Navana
+                                        Red (NRD)
+                                    </label>
+                                </div>
+
+                                <div class="radio">
+                                    <label class="form-check-label" for="nbl">
+                                        <input type="radio" class="form-check-input" id="nbl" value="nbl"
+                                               name="shipping_service_selection">Navana
+                                        Blue (NBL)
+                                    </label>
+                                </div>
+
+                                <div class="radio">
+                                    <label class="form-check-label" for="ngr">
+                                        <input type="radio" class="form-check-input" id="ngr" value="ngr"
+                                               name="shipping_service_selection">Navana
+                                        Green (NGR)
+                                    </label>
+                                </div>
+
+                                <div class="radio">
+                                    <label class="form-check-label" for="nsa">
+                                        <input type="radio" class="form-check-input" id="nsa" value="nsa"
+                                               name="shipping_service_selection">Navana
+                                        Sea/Air
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="text-danger small">* Data not saved</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {#            Stake holders references #}
+            <div class="col-md-12 frt_globalpart">
+                <div class="frt_globalcontain">
+                    <div class="card">
+
+                        <div class="card-header"><strong>Stakeholder references</strong>
+                            <button class="btn btn-sm small btn-secondary margin-left-20p add_stakeholder_reference"><i
+                                    class="fa fa-plus"></i> add more
+                            </button>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="">
+
+                                <div class="card stakeholder_reference_single">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label class="form-control-label small">Reference
+                                                        Type <i class="text-danger small">*</i>
+                                                    </label>
+                                                    <select class="form-control" name="stakeholder_reference_type">
+                                                        <option>--</option>
+                                                        <option value="1">HS Code</option>
+                                                        <option value="2">CAT number</option>
+                                                        <option value="3">EXP number</option>
+                                                        <option value="4">LC number</option>
+                                                        <option value="5">Invoice number</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label class="form-control-label small">Reference Number <i
+                                                            class="text-danger small">*</i>
+                                                    </label>
+                                                    <input type="text" class="form-control"
+                                                           name="stakeholder_reference_number">
+                                                </div>
+                                            </div>
+                                            <button style="margin: 20px 0" type="button"
+                                                    class="btn btn-danger btn-xs delete_stakeholder_reference ">X
+                                            </button>
+                                        </div>
+
+
+                                        <div class="text-danger small">* Data not saved</div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {#            order notes#}
+            <div class="col-md-12 order_notes">
+                <div class="card">
+                    <div class="card-header"><b>order notes</b></div>
+                    <div class="card-body">
+
+                        <div class="row">
+
+                            <div class="col-md-4">
+                                <div class="selectonclick">
+                                    <div class="subtitle">
+                                        <strong>Freight Payment Instructions <i
+                                                class="text-danger small">*</i>
+                                        </strong>
+                                    </div>
+                                    <div class="instructions_select">
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" class="custom-control-input"
+                                                   name="order_notes_freight_prepaid_instruction"
+                                                   id="frt_payment_ins_1" value="on">
+                                            <label class="custom-control-label" for="frt_payment_ins_1">Freight
+                                                Prepaid</label>
+                                        </div>
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" class="custom-control-input"
+                                                   name="order_notes_freight_prepaid_instruction"
+                                                   id="frt_payment_ins_2" value="on">
+                                            <label class="custom-control-label" for="frt_payment_ins_2">Freight
+                                                Collect</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="agreements_select">
+                                    <div class="form-group">
+                                        <label>available transport agreements <i
+                                                class="text-danger small">*</i>
+                                        </label>
+                                        <div class="input-group">
+                                            <select class="form-control" name="order_notes_transport_agreement">
+                                                <option value="">--</option>
+                                                <option value="1">default agreement</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="delivery_instructions">
+                                    <div class="form-group">
+                                        <label>delivery instructions <i
+                                                class="text-danger small">*</i>
+                                        </label>
+                                        <div class="input-group">
+                                            <textarea class="form-control"
+                                                      name="order_notes_delivery_instructions"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="text-danger small">* Data not saved</div>
+                    </div>
+                </div>
+            </div>
+
+            {#            pickup notes#}
+            <div class="col-md-12 pickup_notes ">
+                <div class="card">
+                    <div class="card-header"><b>pickup notes</b></div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6 pickup_datetimeinfo">
+                                <div class="form-group row"><label class="col-sm-4 col-xs-12 col-form-label">Pick-up
+                                    Date <i class="text-danger small">*</i></label>
+                                    <div class="col-sm-8 col-xs-12"><input type="date" class="form-control"></div>
+                                </div>
+
+                                <div class="form-group row"><label class="col-sm-4 col-xs-12 col-form-label">earliest
+                                    pick-up time <i class="text-danger small">*</i></label>
+                                    <div class="col-sm-8 col-xs-12">
+                                        <select class="form-control" name="pickup_notes_earliest_pickup_time">
+                                            <option value="">--</option>
+                                            <option value="0">12AM</option>
+                                            <option value="1">1AM</option>
+                                            <option value="2">2AM</option>
+                                            <option value="3">3AM</option>
+                                            <option value="4">4AM</option>
+                                            <option value="5">5AM</option>
+                                            <option value="6">6AM</option>
+                                            <option value="7">7AM</option>
+                                            <option value="8">8AM</option>
+                                            <option value="9">9AM</option>
+                                            <option value="10">10AM</option>
+                                            <option value="11">11AM</option>
+                                            <option value="12">12PM</option>
+                                            <option value="13">1PM</option>
+                                            <option value="14">2PM</option>
+                                            <option value="15">3PM</option>
+                                            <option value="16">4PM</option>
+                                            <option value="17">5PM</option>
+                                            <option value="18">6PM</option>
+                                            <option value="19">7PM</option>
+                                            <option value="20">8PM</option>
+                                            <option value="21">9PM</option>
+                                            <option value="22">10PM</option>
+                                            <option value="23">11PM</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-xs-12 col-form-label">latest
+                                        pick-up time <i class="text-danger small">*</i>
+                                    </label>
+                                    <div class="col-sm-8 col-xs-12">
+                                        <select class="form-control" name="pickup_notes_latest_pickup_time">
+                                            <option value="">--</option>
+                                            <option value="0">12AM</option>
+                                            <option value="1">1AM</option>
+                                            <option value="2">2AM</option>
+                                            <option value="3">3AM</option>
+                                            <option value="4">4AM</option>
+                                            <option value="5">5AM</option>
+                                            <option value="6">6AM</option>
+                                            <option value="7">7AM</option>
+                                            <option value="8">8AM</option>
+                                            <option value="9">9AM</option>
+                                            <option value="10">10AM</option>
+                                            <option value="11">11AM</option>
+                                            <option value="12">12PM</option>
+                                            <option value="13">1PM</option>
+                                            <option value="14">2PM</option>
+                                            <option value="15">3PM</option>
+                                            <option value="16">4PM</option>
+                                            <option value="17">5PM</option>
+                                            <option value="18">6PM</option>
+                                            <option value="19">7PM</option>
+                                            <option value="20">8PM</option>
+                                            <option value="21">9PM</option>
+                                            <option value="22">10PM</option>
+                                            <option value="23">11PM</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="subtitle">
+                                    <strong>Pick-up Instructions <i
+                                            class="text-danger small">*</i>
+                                    </strong>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-12">
+                                        <div class="input-group">
+                                            <textarea class="form-control" name="pickup_notes_instructions"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="text-danger small">* Data not saved</div>
+                    </div>
+                </div>
+            </div>
+            <div class="pickup_notes_footer">
+                <div class="col"></div>
+                <div class="col-md-12">
+                    <button type="button" class="btn btn-primary">save</button>
+                    <button type="button" class="btn btn-warning">book</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

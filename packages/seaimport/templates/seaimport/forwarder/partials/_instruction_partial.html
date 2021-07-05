@@ -1,0 +1,10 @@
+{% if settings.show_instruction %}
+    <div class="p3">
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+            <strong>Instruction: </strong> {{ instruction }}
+            <button type="button" class="close instruction" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
+{% endif %}

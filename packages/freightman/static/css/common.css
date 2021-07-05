@@ -1,0 +1,54 @@
+html, body {
+    height: 100%;
+}
+
+.height-600px {
+    height: 600px;
+}
+
+.height-fill-content {
+    height: fit-content;
+}
+
+.height-webkit-fill-available {
+    height: -webkit-fill-available;
+}
+
+.header-bgcolor {
+    background-color: #006eb3;
+}
+
+.logo-div:after {
+    content: " ";
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background: #006eb3;
+    transform-origin: bottom left;
+    -ms-transform: skew(-30deg, 0deg);
+    -webkit-transform: skew(-30deg, 0deg);
+    transform: skew(-30deg, 0deg);
+}
+
+.border-right-1p-gray {
+    border-right: 1px solid gray;
+}
+
+.div-title-1 {
+    background-color: white;
+    display: table;
+    padding: 0 10px;
+}
+
+.w20p {
+    width: 20px;
+}
+
+img {
+    max-height: 100%;
+    max-width: 100%;
+}

@@ -1,0 +1,42 @@
+{% extends 'intuit/fm/base.html' %}
+{% load i18n static %}
+{% block page_title %}
+    <title>BL Consol</title>
+{% endblock %}
+{% block head_includes %}
+    {{ block.super }}
+    <style>
+        label {
+            text-transform: uppercase;
+        }
+
+        p {
+            text-align: justify;
+        }
+
+        .card {
+            padding: 10px;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+    <div>
+        <div class="box-title">
+            <h4>BL Consol</h4>
+        </div>
+        <div id="page_content">
+            <span id="page_content_spinner"><i class="fa fa-spin fa-spinner"></i> Page Loading</span>
+            {% include 'intuit/seaexport/forwarder/bl_consol_page_partial.html' %}
+        </div>
+    </div>
+{% endblock content %}
+{% block foot_includes %}
+    {{ block.super }}
+    <script type="text/javascript">
+        window.urlfor_hbl_page_init_data = '';
+        window.urlfor_hbl_save = '';
+
+        window.urlfor_booking_info_load = "";
+    </script>
+    <script type="text/javascript" src="{% static 'seaexport/forwarder/seaexport_bl_consol.jquery.js' %}"></script>
+{% endblock foot_includes %}

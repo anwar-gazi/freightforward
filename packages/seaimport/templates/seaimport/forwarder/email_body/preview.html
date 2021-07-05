@@ -1,0 +1,61 @@
+{% extends 'seaimport/forwarder/base_template.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block page_title %}
+    SI- Forwarding Letter Preview
+{% endblock %}
+
+{% block dashboard_body %}
+    <div class="container mt-4 mb-4 p-3 bg-white">
+        {% include 'seaimport/forwarder/partials/_alert_message.html' %}
+        <div class="row">
+            <div class="col-8">
+                Hello, <strong>{{ hbl.hbl_notifier.name }}</strong> <br>
+                There is a shipment in your name from {{ hbl.hbl_consignor.name }}, {{ hbl.hbl_consignor.city }} <br>
+                The HBL copy is attached below <br>
+            </div>
+            <div class="col-4" id="hbl_info" task_id="{{ hbl.task }}">
+                {% if hbl.task.forwarding_letter_issued %}
+                    <button type="button" class="btn btn-primary  btn-sm " disabled prefix="forwarding_letter_issued">
+                        Resend Email
+                    </button>
+                {% else %}
+                    <button type="button" class="btn btn-warning  btn-sm" prefix="forwarding_letter_issued">
+                        Send As Email
+                    </button>
+                {% endif %}
+            </div>
+        </div>
+        <br>
+        <br>
+        For queries please contact <br>
+        <small>
+            <strong>{{ mbl.mbl_notifier.name }}</strong> <br>
+            <strong>Address: </strong>{{ mbl.mbl_notifier.address }} {{ mbl.mbl_notifier.postal_code }} <br>
+            <strong>City and Country: </strong>{{ mbl.mbl_notifier.city }} <br>
+            <strong>Email: </strong>{{ mbl.mbl_notifier.email }} <br>
+            <strong>Phone: </strong>{{ mbl.mbl_notifier.phone }} <br>
+            <strong>Mobile: </strong>{{ mbl.mbl_notifier.mobile }} <br>
+            <strong>Fax: </strong>{{ mbl.mbl_notifier.fax }}
+        </small>
+
+        <div class="card">
+            <div class="card-header">Attachment</div>
+            <div class="card-body p-5">
+                <img src="{{ hbl.file.url }}" alt="" style="width: 100%">
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+
+
+
+{% block extraJs %}
+    <script type="text/javascript">
+        window.sea_import_update_task_url = '{% url "seaimport:sea_import_update_task" 123%}';
+    </script>
+
+    <script type="text/javascript" src="{% static 'js/sea_import_single_job_update.jquery.js' %}"></script>
+{% endblock %}

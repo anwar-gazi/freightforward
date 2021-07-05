@@ -1,0 +1,24 @@
+{% extends 'seaimport/forwarder/base.html' %}
+
+{% block page_title %}
+    Sea Import Admin Login
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="text-center">Navana Logistics Sea Import</h1>
+        <div class="row" id="login_form">
+
+            <div class="form-group col-md-4">
+                <label for="email">Email address:</label>
+                <input type="email" class="form-control" id="email">
+                <br>
+                <label class="" for="pwd">Password:</label>
+                <input type="password" class="form-control" id="pwd">
+                <br>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

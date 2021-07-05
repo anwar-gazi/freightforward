@@ -1,0 +1,97 @@
+.custom-icon {
+    display: block;
+    color: #000000;
+    background: #FFFFFF;
+}
+
+.custom-icon a {
+    text-decoration: none;
+    color: #000000;
+    font-weight: bold;
+}
+
+.custom-icon img {
+    padding-top: 10px;
+}
+
+
+.custom-icon:hover {
+    background: rgba(255, 255, 255, 0.7);
+    color: #000000;
+
+    -webkit-transition: background 300ms; /* Safari */
+    transition: background 300ms;
+}
+
+.custom-icon-heading {
+    padding-top: 24px;
+}
+
+.custom-icon-innactive {
+    background: #FFFFFF;
+}
+
+.navigation-icon-set h4 {
+    color: #FFFFFF;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 5px black;
+    border-bottom: 1px solid #ffffff;
+    width: 100%;
+    box-shadow: 0 4px 2px -2px gray;
+}
+
+.navigation-icon-set a {
+    display: block;
+    padding: 18px 4px 2px 4px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    text-decoration: none;
+    color: #FFF;
+    /*font-weight: bold;*/
+}
+
+.navigation-icon-set a:hover {
+    box-shadow: 3px 3px 10px white;
+    background: rgba(0, 0, 0, 1);
+    -webkit-transition: background 500ms; /* Safari */
+    transition: background 500ms;
+
+    -webkit-transition: box-shadow 500ms; /* Safari */
+    transition: box-shadow 500ms;
+}
+
+.navigation-icon-set img{
+    width: 48px;
+}
+
+.navigation-icon-set-bg-dark {
+    background: rgba(14, 14, 14, 0.71);
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.navigation-icon-set-small img{
+    width: 30px;
+}
+
+.navigation-icon-set-small a{
+    background: none;
+    font-size: .7em;
+}
+
+.field-align-button{
+    margin-top: 37px;
+}
+
+.asteriskField{
+    margin-left: 3px;
+    color: red;
+}
+
+.credit-note-a{
+    width: 100%;
+    min-height: 125px;
+}
+.credit-note-a p{
+    margin-bottom: .25rem;
+}

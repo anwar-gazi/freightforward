@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+{% load qr_code %}
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Delivery Order</title>
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'seaimport/assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- font awesome css -->
+    <link href="{% static 'seaimport/assets/vendor/fonts/css/fontawesome-all.min.css' %}" rel="stylesheet"
+          type="text/css">
+    <!-- template css link -->
+    <link href="{% static 'seaimport/assets/css/style.css' %}" rel="stylesheet">
+
+    <link href="{% static 'seaimport/assets/css/printables.css' %}" rel="stylesheet" media="print">
+</head>
+
+<body>
+<div class="container-fluid">
+    <div class="container delivery_order_template">
+
+        <div class="row">
+            <div class="col-md-6 date_part">
+                <p><b>Date:</b>{{ hbl.job.created_at | date:"m-d-Y" }}</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 delivery_order_title">
+                <p><b>delivery order</b></p>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 submit_to">
+                <p>To</p>
+                <p>The {{ delivery_order.to }}</p>
+                <p>{{ delivery_order.address }},</p>
+                <p>{{ delivery_order.city.name }}</p>
+            </div>
+
+            <div class="col-md-12 text_body">
+                <p>Dear sir,</p>
+                <p>Please deliver to {{ delivery_order.cargo_system }} or order the under mentioned
+                    cargo {{ delivery_order.vessel }}
+                    arrived from {{ hbl.hbl_consignor.city }}
+                    to {{ delivery_order.city.name }} {{ hbl.hbl_notifier.city }}, Import Rotation No
+                    {{ delivery_order.rotation_no }} Line No. {{ delivery_order.line_no }} and take proper receipt.</p>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-12 delivery_order_table">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th style="width: 33.33%;">marks & numbers</th>
+                        <th style="width: 33.33%;">nos. of packages</th>
+                        <th style="width: 33.33%;">description of goods</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <p>L/C NO. {{ delivery_order.lc_number }}</p>
+                            <p>APPLICANT'S NAME AND ADDRESS:</p>
+                            <p>{{ delivery_order.applicant_name }};, {{ delivery_order.applicant_address }}</p>
+                            <p>LCAF No. {{ delivery_order.lcaf_number }}</p>
+                            <p>APPLICANT'S IRC NO.{{ delivery_order.applicant_irc }}</p>
+                            <p>TIN {{ delivery_order.tin }}</p>
+                            <p>BIN/VAT REGISTRATION NO {{ delivery_order.bin_no }}</p>
+                            <p>{{ delivery_order.others }}</p>
+                        </td>
+                        <td>
+                            <p>{{ good.container_size_type }}</p>
+                            <p>CONTAINER NO.{{ good.container_seal_number }}</p>
+                            <p>NUMBER OF QUANTITY TOTAL {{ good.quantity }} {{ good.package_type }}</p>
+                            <p>GROSS WEIGHT: {{ good.gross_weight }}</p>
+                        </td>
+                        <td>
+                            <p>{{ good.description }}</p>
+                        </td>
+                    </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <div class="row delivery_order_footer">
+
+            <div class="col-md-6 footer_left">
+                <p><span>note:</span>delivery upto</p>
+                <p><span>line no:</span>{{ delivery_order.line_no }}</p>
+                <p><span>hbl no:</span>{{ hbl.hbl_number }}</p>
+                <p><span>mbl no:</span>{{ mbl.mbl_number }}</p>
+                <p><span>b/e no:</span></p>
+
+            </div>
+            <div class="col-md-6 footer_right">
+                <p>for navana logistics ltd.</p>
+                <p class="signature"><span>authorized signatory</span></p>
+            </div>
+        </div>
+
+
+        <button onclick="printPage()" class="btn btn-outline-secondary float-right non-printable">Print</button>
+        {% if hbl.task.unlocked %}
+            <a href="{% url 'seaimport:sea_import_create_do' hbl.id %}"
+               class="btn btn-secondary float-right non-printable text-capitalize mr-2"
+            >Edit DO</a>
+        {% endif %}
+
+        <center class="non-printable text-danger">
+            <br><br><br><br>
+            {% if hbl.task.unlocked %}
+                <h2>DO Not Confirmed Yet</h2>
+            {% else %}
+                <p><strong>Notes: </strong>
+                    <br>The Job is completed and locked. To unlock it please contact authorised person</p>
+                <br>Texts in red will not be visible during printing</p>
+            {% endif %}
+
+        </center>
+
+        <div class="fixed-bottom-qr printable">
+            <div class="float-left">{% qr_from_text validity_url size="S" %}</div>
+            <p class="float-left mt-5">NAVANA LOGISTICS LIMITED <br>Scan This QR Code to Check Validity </p>
+
+{#            <div class="float-right">#}
+{##}
+{#                    <div class="row">#}
+{#                        <div class="col-5">#}
+{#                            <p class="text-justify">Scan This QR Code to Check Validity</p>#}
+{##}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+
+
+        </div>
+    </div>
+
+</div>
+</body>
+<script src="{% static 'js/printables.js' %}"></script>
+</html>

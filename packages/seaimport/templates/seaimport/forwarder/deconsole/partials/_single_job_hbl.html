@@ -1,0 +1,143 @@
+<div id="hbl_info" class="hbl_info col-12 mt-4">
+    <div class="card">
+        <div class="card-header">HOUSE BILL OF LEADING (HBL)</div>
+        {% for hbl in hbls %}
+            <div class="card-body{% if hbl.task.pre_alert and hbl.task.hbl_mbl_confirmation and hbl.task.igm and hbl.task.bin_number and hbl.task.forwarding_letter_issued and hbl.task.do_issued %}
+                bg-white text-dark
+                {% else %}
+                bg-secondary text-white
+            {% endif %}" style="border-bottom: 1px solid #00000050">
+                <h4>HBL Number: <b>{{ hbl.hbl_number }}</b>
+                    <a href="{% url 'seaimport:sea_import_update_hbl' hbl.id %}" target="_blank" title="Click to edit this HBL" class="text-white ml-4">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                </h4>
+
+                {#              Task buttons#}
+
+                <div id="hbl_progress_buttons" task_id="{{ hbl.task }}">
+                    {% if hbl.task.pre_alert %}
+                        <button type="button" class="btn btn-primary btn-sm" prefix="pre_alert">Pre-Alert</button>
+                    {% else %}
+                        <button type="button" class="btn btn-warning  btn-sm" prefix="pre_alert">Pre-Alert</button>
+                    {% endif %}
+
+                    {% if hbl.task.forwarding_letter_issued %}
+                        <button type="button" class="btn btn-primary  btn-sm" prefix="forwarding_letter_issued">Resend
+                            Forwarding
+                            Letter
+                        </button>
+                    {% else %}
+                        <a href="{% url 'seaimport:sea_import_preview_fl' hbl.id %}" class="btn btn-warning  btn-sm text-capitalize" target="_blank">Forwarding Letter</a>
+{#                        <button type="button" class="btn btn-warning  btn-sm" prefix="forwarding_letter_issued">Send#}
+{#                            Forwarding Letter#}
+{#                        </button>#}
+                    {% endif %}
+
+                    {% if hbl.task.hbl_mbl_confirmation %}
+                        <button type="button" class="btn btn-primary btn-sm" prefix="hbl_mbl_confirmation">HBL
+                            Validation
+                        </button>
+                    {% else %}
+                        <button type="button" class="btn btn-warning btn-sm" prefix="hbl_mbl_confirmation">HBL
+                            Validation
+                        </button>
+                    {% endif %}
+
+                    {% if hbl.task.igm %}
+                        <button type="button" class="btn btn-primary btn-sm" prefix="igm">IGM</button>
+                    {% else %}
+                        <button type="button" class="btn btn-warning btn-sm" prefix="igm">IGM</button>
+                    {% endif %}
+
+                    {% if hbl.task.bin_number %}
+                        <button type="button" class="btn btn-primary btn-sm" prefix="bin_number">BIN Confirmation
+                        </button>
+                    {% else %}
+                        <button type="button" class="btn btn-warning btn-sm" prefix="bin_number">BIN Confirmation
+                        </button>
+                    {% endif %}
+
+                    {% if hbl.task.invoice %}
+                        <a href="{% url 'seaimport:sea_import_view_invoice' hbl.id %}"
+                           class="btn btn-primary btn-sm text-capitalize"
+                           target="_blank">View Invoice</a>
+                    {% else %}
+                        <a href="{% url 'seaimport:sea_import_create_invoice' hbl.id %}"
+                           class="btn btn-warning  btn-sm text-capitalize"
+                           target="_blank">Create Invoice</a>
+                    {% endif %}
+
+                    {% if mbl.freight_type.freight_certificate %}
+                        <a href="{% url 'seaimport:sea_import_view_fc' hbl.id %}"
+                               class="btn btn-primary  btn-sm text-capitalize"
+                               target="_blank">View Freight Certificate</a>
+                    {% endif %}
+
+                    {% if hbl.task.do_issued %}
+                        <a href="{% url 'seaimport:sea_import_view_do' hbl.id %}"
+                           class="btn btn-primary  btn-sm text-capitalize"
+                           target="_blank">View Do</a>
+                    {% elif 1 %}
+                        <a href="{% url 'seaimport:sea_import_create_do' hbl.id %}"
+                           class="btn btn-warning btn-sm text-capitalize"
+                           target="_blank">Create Do</a>
+                    {% else %}
+                        <button type="button" class="btn btn-warning  btn-sm" disabled>Create Do</button>
+                    {% endif %}
+                </div>
+
+
+                {#                Details#}
+                <div class="row">
+                    <div class="hbl_consignor_info mt-4 col-6"
+                         style="border-right: 1px solid #00000020">
+                        <h5>Consignor: <b>{{ hbl.hbl_consignor }}</b></h5>
+                        <small><b>ADDRESS:</b> {{ hbl.hbl_consignor.address }}</small>
+                        <br>
+                        <small><b>Postal Code:</b> {{ hbl.hbl_consignor.postal_code }}</small>
+                        <br>
+                        <small><b>City and Country:</b> {{ hbl.hbl_consignor.city }}</small>
+                        <br>
+                        <small><b>Phone:</b> {{ hbl.hbl_consignor.phone }}</small>
+                        <br>
+                        <small><b>Mobile:</b> {{ hbl.hbl_consignor.mobile }}</small>
+                        <br>
+                        <small><b>Email:</b> {{ hbl.hbl_consignor.email }}</small>
+                    </div>
+
+                    <div class="hbl_bank_info mt-4 col-6">
+                        <h5>Bank: <b>{{ hbl.hbl_bank }}</b></h5>
+                        <small><b>ADDRESS:</b> {{ hbl.hbl_bank.address }}</small>
+                        <br>
+                        <small><b>Postal Code:</b> {{ hbl.hbl_bank.postal_code }}</small>
+                        <br>
+                        <small><b>City and Country:</b> {{ hbl.hbl_bank.city }}</small>
+                        <br>
+                        <small><b>Phone:</b> {{ hbl.hbl_bank.phone }}</small>
+                        <br>
+                        <small><b>Mobile:</b> {{ hbl.hbl_bank.mobile }}</small>
+                        <br>
+                        <small><b>Email:</b> {{ hbl.hbl_bank.email }}</small>
+                    </div>
+                </div>
+
+                <div class="hbl_notifier mt-4">
+                    <h5>Notify Address: <b>{{ hbl.hbl_notifier }}</b></h5>
+                    <small><b>ADDRESS:</b> {{ hbl.hbl_notifier.address }}</small>
+                    <br>
+                    <small><b>Postal Code:</b> {{ hbl.hbl_notifier.postal_code }}</small>
+                    <br>
+                    <small><b>City and Country:</b> {{ hbl.hbl_notifier.city }}</small>
+                    <br>
+                    <small><b>Phone:</b> {{ hbl.hbl_notifier.phone }}</small>
+                    <br>
+                    <small><b>Mobile:</b> {{ hbl.hbl_notifier.mobile }}</small>
+                    <br>
+                    <small><b>Email:</b> {{ hbl.hbl_notifier.email }}</small>
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+</div>

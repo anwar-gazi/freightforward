@@ -1,0 +1,91 @@
+{% extends 'intuit/fm/base.html' %}
+{% load i18n static %}
+{% block page_title %}
+    <title>HBL List</title>
+{% endblock %}
+{% block left-nav %}
+    {% include 'intuit/fm/forwarder/left-nav/menu_grid_home_left_nav.html' %}
+{% endblock left-nav %}
+{% block breadcrumbs %}
+    <div class="row">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'forwarder_grid_menu_home' %}">Home</a></li>
+                    <li class="breadcrumb-item" aria-current="page"><a href="{% url 'seaexport:seaexport_apps_menu' %}">Ocean Export</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><a href="">List HBL</a></li>
+                    <li class="position-absolute" style="right: 100px"><a href="{% url 'seaexport:seaexport_apps_menu' %}"><i class="fa fa-times-circle text-danger"></i></a></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+{% endblock breadcrumbs %}
+{% block content %}
+    <div id="page_content">
+        <i class="fa fa-spin fa-spinner"></i> Page Loading
+    </div>
+    <div class="d-none" id="job_dates_tpl">
+        <div>
+            <table>
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>Estimated Date</th>
+                    <th>Actual Date</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Booked</td>
+                    <td>
+                        <input type="date">
+                    </td>
+                    <td>
+                        <input type="date">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Received</td>
+                    <td>
+                        <input id="received_estimated" type="date">
+                    </td>
+                    <td>
+                        <input id="received_actual" type="date">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Departed</td>
+                    <td>
+                        <input type="date">
+                    </td>
+                    <td>
+                        <input type="date">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Delivery</td>
+                    <td>
+                        <input type="date">
+                    </td>
+                    <td>
+                        <input type="date">
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock content %}
+{% block foot_includes %}
+    {{ block.super }}
+    <script type="text/babel">
+        window.urlfor_hbl_list = "{% url 'seaexport:seaexport_ajax_get_hbl_list' %}";
+        window.urlfor_date_update = '{% url "seaexport:ajax_update_job_dates" %}';
+        window.urlfor_get_job_dates = '{% url "seaexport:get_job_dates" %}';
+        window.urlfor_delete_job = '{% url "seaexport:delete_job" %}';
+    </script>
+    <script type="text/babel" src="{% static 'seaexport/forwarder/seaexport_hbl_list.babel.js' %}"></script>
+    <script type="text/babel">
+        ReactDOM.render(<SeaExportHBLList/>, document.getElementById('page_content'));
+    </script>
+{% endblock foot_includes %}

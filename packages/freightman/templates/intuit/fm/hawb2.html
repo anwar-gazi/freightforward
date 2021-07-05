@@ -1,0 +1,56 @@
+{% extends 'intuit/fm/base.shipper.html' %}
+{% load i18n static %}
+{% block page_title %}
+    <title>HAWB</title>
+{% endblock %}
+{% block head_includes %}
+    {{ block.super }}
+    <style>
+        table, th, td {
+            border: 1px solid #bdbdbd;
+            border-collapse: collapse;
+            padding: 10px;
+            font-family: sans-serif;
+            font-size: 14px;
+            text-transform: capitalize;
+        }
+
+        td {
+            /*width: 50%;*/
+            vertical-align: -webkit-baseline-middle;
+        }
+
+        b {
+            font-size: 12px;
+        }
+
+        p {
+            padding: 5px 0px;
+            text-align: left;
+            line-height: 20px;
+            margin: 0px;
+            float: left;
+        }
+
+        .pb-05 {
+            padding-bottom: 5px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            margin: 0px;
+        }
+    </style>
+{% endblock head_includes %}
+{% block content %}
+    <div id="page_content">
+        <i class="fa fa-spin fa-spinner"></i> Page Loading
+    </div>
+{% endblock content %}
+{% block foot_includes %}
+    {{ block.super }}
+    <script type="text/babel">
+    </script>
+    <script type="text/babel" src="{% static 'js/hawb_functions.react.js' %}"></script>
+    <script type="text/babel" src="{% static 'js/hawb_mixins.react.js' %}"></script>
+    <script type="text/babel" src="{% static 'js/hawb.react.js' %}"></script>
+{% endblock foot_includes %}

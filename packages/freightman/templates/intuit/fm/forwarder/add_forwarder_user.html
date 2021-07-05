@@ -1,0 +1,52 @@
+{% extends 'intuit/fm/base.html' %}
+{% load i18n static %}
+{% block page_title %}
+    {% if user_id %}
+        <title>View/Update User</title>
+    {% else %}
+        <title>Register User</title>
+    {% endif %}
+{% endblock %}
+{% block left-nav %}
+    {% include 'intuit/fm/forwarder/left-nav/menu_grid_home_left_nav.html' %}
+{% endblock left-nav %}
+{% block breadcrumbs %}
+    <div class="row">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'forwarder_grid_menu_home' %}">Home</a></li>
+                    <li class="breadcrumb-item" aria-current="page"><a href="{% url 'user_menu' %}">User Management</a></li>
+                    <li class="breadcrumb-item" aria-current="page"><a href="">User Registration</a></li>
+                    <li class="position-absolute" style="right: 100px"><a href="{% url 'user_menu' %}"><i class="fa fa-times-circle text-danger"></i></a></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+{% endblock breadcrumbs %}
+{% block content %}
+    <div id="page_content">
+        <i class="fa fa-spin fa-spinner"></i> Page Loading
+    </div>
+    <div class="d-none" id="add_user_templates">
+        <div id="auth_add_template">
+            <div class="form-group">
+                <label></label>
+                <input/>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+{% block foot_includes %}
+    {{ block.super }}
+    <script type="text/babel">
+        window.urlfor_init_data = "{% url 'ajax_create_user_form_init_data' %}";
+        window.urlfor_register_forwarder_user = "{% url 'ajax_create_forwarder_user' %}";
+        window.urlfor_auth_level_create = "{% url 'admin:freightman_authlevelpermissions_add' %}";
+    </script>
+    <script type="text/babel" src="{% static 'forwarder/user/user_functions.babel.js' %}"></script>
+    <script type="text/babel" src="{% static 'forwarder/user/add_user.babel.js' %}"></script>
+    <script type="text/babel">
+        ReactDOM.render(<UserAddForm user_id="{{ user_id }}" org_id="{{ org_id }}"/>, document.getElementById('page_content'));
+    </script>
+{% endblock foot_includes %}

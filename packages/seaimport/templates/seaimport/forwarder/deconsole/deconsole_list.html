@@ -1,0 +1,54 @@
+{% extends 'seaimport/forwarder/base_template.html' %}
+{% load static %}
+{% block page_title %}
+    SI- De-Console List
+{% endblock %}
+{% block dashboard_body %}
+
+    <div class="container mt-4">
+
+        <div class="card">
+            <div class="card-header">
+                <h4>De-Console List <a href="{% url 'seaimport:sea_import_create_new_job' %}"><span class="float-sm-right"><i
+                        class="fas fa-plus-square"></i></span></a></h4>
+
+            </div>
+            <div class="card-body">
+                <table class="table table-borderless">
+                    <thead>
+                    <tr class="text-center" style="border-bottom: 1px solid rgba(14,14,14,0.5)">
+                        <th>De-Console ID</th>
+                        <th>Created at</th>
+                        <th>Origin / Destination Port</th>
+                        <th>Status</th>
+                        <th>Completed</th>
+                        <th>Click for Details</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for mbl in mbls %}
+                        {% if mbl.job.task.job_progress.progress == 100 %}
+                            <tr class="text-center bg-success" style="border-bottom: 1px solid rgba(14,14,14,0.2)">
+                                {% elif mbl.job.task.job_progress.progress > 0 %}
+                            <tr class="text-center bg-info" style="border-bottom: 1px solid rgba(14,14,14,0.2)">
+                                {% else %}
+                            <tr class="text-center bg-white" style="border-bottom: 1px solid rgba(14,14,14,0.2)">
+                        {% endif %}
+                    <td class="p-1"><b>{{ mbl.job.public_key }}</b></td>
+                    <td class="p-1"><b>{{ mbl.job.created_at | date:'Y-m-d' }}</b></td>
+                    <td class="p-1">{{ mbl.port_of_loading }}
+                        / {{ mbl.port_of_discharge }}</td>
+                    <td class="p-1">{{ mbl.job.task.job_progress.status }}</td>
+                    <td class="p-1">{{ mbl.job.task.job_progress.progress }}%</td>
+                    <td class="text-center text-primary"><a href="{% url 'seaimport:sea_import_job_details' mbl.job.id %}"
+                                                            title="Click to see details of this job"><i
+                            class="fas fa-door-open"></i></a></td>
+
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

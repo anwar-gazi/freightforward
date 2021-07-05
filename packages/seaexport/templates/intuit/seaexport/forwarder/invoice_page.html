@@ -1,0 +1,33 @@
+{% extends 'intuit/fm/base.html' %}
+{% load i18n static %}
+{% block page_title %}
+    <title>Invoice</title>
+{% endblock %}
+{% block head_includes %}
+    {{ block.super }}
+    <style>
+        label {
+            text-transform: uppercase;
+        }
+
+        p {
+            text-align: justify;
+        }
+
+        .card {
+            padding: 10px;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+    <div>
+        <div id="page_content">
+            <span id="page_content_spinner"><i class="fa fa-spin fa-spinner"></i> Page Loading</span>
+            Under construction
+        </div>
+    </div>
+{% endblock content %}
+
+{% block foot_includes %}
+    {{ block.super }}
+{% endblock foot_includes %}

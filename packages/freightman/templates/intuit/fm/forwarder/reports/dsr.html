@@ -1,0 +1,86 @@
+{% extends 'intuit/fm/base.html' %}
+{% load i18n static %}
+{% block page_title %}
+    <title>DSR Report</title>
+{% endblock %}
+{% block head_includes %}
+    {{ block.super }}
+    <link href="{% static 'forwarder/shipment_booking_assets/css/style.css' %}" rel="stylesheet">
+    <style>
+        .content {
+            padding-top: 0;
+        }
+    </style>
+{% endblock head_includes %}
+{% block left-nav %}
+    {% include 'intuit/fm/forwarder/left-nav/menu_grid_home_left_nav.html' %}
+{% endblock left-nav %}
+{% block breadcrumbs %}
+    <div class="row">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'forwarder_grid_menu_home' %}">Home</a></li>
+                    <li class="breadcrumb-item" aria-current="page"><a href="{% url 'airexport_apps_menu' %}">Air Export</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><a href="">Daily Status Report(DSR)</a></li>
+                    <li class="position-absolute" style="right: 100px"><a href="{% url 'airexport_apps_menu' %}"><i class="fa fa-times-circle text-danger"></i></a></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+{% endblock breadcrumbs %}
+{% block content %}
+    <h1 class="bg-dark text-xl-center p-4 mb-3">Daily Status Report</h1>
+    <div>
+        <div class="search float-right p-3">
+            <form action="" method="post" class="form-inline">
+                <div class="form-group">
+                    <label for="search_date" class="mr-2 col-form-label"><h4>Search</h4></label>
+                    <input class="form-control-lg mr-2" type="date" id="search_date" name="dsr_date" value="{{ date }}">
+                </div>
+                <button type="submit" class="btn btn-primary">Go</button>
+            </form>
+        </div>
+        <div id="page_content" style="background: #FFFFFF">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>Booking Reference</th>
+                    <th>Factory Name</th>
+                    <th>Consignee</th>
+                    <th>P.O Order Number</th>
+                    <th>Weight</th>
+                    <th>Volume CBM</th>
+                    <th>Destination</th>
+                    <th>Status</th>
+                    <th>Estimated Date</th>
+                    <th>Actual Date</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                {% for data in hawb %}
+                    <tr style="border-bottom: 1px solid #000000">
+                        <td>{{ data.booking.globalid }}</td>
+                        <td>{{ data.shipper.company_name }}</td>
+                        <td>{{ data.consignee.company_name }}</td>
+                        <td>NA</td>
+                        <td>{{ data.goods_grossweight }}</td>
+                        <td>{{ data.goods_chargableweight }}</td>
+                        <td>{{ data.consignee.country.name }}</td>
+                        <td>{{ data.dsr_report.status }}</td>
+                        <td>{{ data.dsr_report.estimated_date|date:"m/d/y" }}</td>
+                        <td>{{ data.dsr_report.actual_date|date:"m/d/y" }}</td>
+                    </tr>
+                {% endfor %}
+
+
+                </tbody>
+            </table>
+            <a target="_blank" href="{% url 'airexport-report-dsr-print' date %}" class="btn btn-outline-primary float-right p-3">Print Preview</a>
+        </div>
+    </div>
+    <div id="bottom_info">
+
+    </div>
+{% endblock content %}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cargo Manifest</title>
+    <style>
+        .border_1 {
+            border: 1px solid;
+        }
+
+        th {
+            padding: 10px;
+        }
+
+        td {
+            padding: 20px;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        .hawb_listing table, .hawb_listing th, .hawb_listing td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+<div style="">
+    <h1 style="text-align: center">{{ mawb.shipper.company_name }}</h1>
+    <p style="text-align: center;">{{ mawb.shipper.address }}<br/>
+        Tel/Mob: {{ mawb.shipper.phone }} {{ mawb.shipper.mobile }}</p>
+
+    <h3 style="text-align: center">Cargo Manifest</h3>
+
+    <table style="display: table; margin-left: auto; margin-right: auto;">
+        <tr>
+            <td><b>HAWB NO:</b> {{ hawb_public_id_cs }}</td>
+        </tr>
+        <tr>
+            <td><b>MAWB NO:</b> {{ mawb.public_id }}</td>
+        </tr>
+        <tr>
+            <td><b>FLIGHT NO:</b> {{ mawb.to_1_flight_num }} {{ mawb.to_2_flight_num }} {{ mawb.to_3_flight_num }}</td>
+        </tr>
+        <tr>
+            <td><b>MAWB CONSIGNED TO:</b> {{ mawb.consignee.company_name }}</td>
+        </tr>
+        <tr>
+            <td><b>AIRPORT OF DEPARTURE:</b> {{ mawb.airport_of_departure.name }}</td>
+        </tr>
+        <tr>
+            <td><b>AIRPORT OF DESTINATION:</b> {{ mawb.airport_of_destination.name }}</td>
+        </tr>
+        <tr>
+            <td>
+                <table class="hawb_listing">
+                    <thead>
+                    <tr>
+                        <th>HAWB NO</th>
+                        <th>NO OF CTNS</th>
+                        <th>AIRPORT OF DEPARTURE</th>
+                        <th>AIRPORT OF DESTINATION</th>
+                        <th>NATURE OF GOODS</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for hawb in hawb_list %}
+                        <tr>
+                            <td>{{ hawb.public_id }}</td>
+                            <td></td>
+                            <td>{{ hawb.airport_of_departure.name }}</td>
+                            <td>{{ hawb.airport_of_destination.name }}</td>
+                            <td>{{ hawb.goods_natureandquantity }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

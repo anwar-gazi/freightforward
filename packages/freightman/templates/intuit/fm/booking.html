@@ -1,0 +1,23 @@
+{% extends 'intuit/fm/base.html' %}
+{% load i18n static %}
+{% block page_title %}
+    <title>Freight Booking Form</title>
+{% endblock %}
+{% block head_includes %}
+    {{ block.super }}
+    <link href="{% static 'booking/assets/css/style.css' %}" rel="stylesheet">
+    <link href="https://unpkg.com/gijgo@1.9.11/css/gijgo.min.css" rel="stylesheet" type="text/css"/>
+{% endblock head_includes %}
+{% block content %}
+    <div id="page_content">
+        <i class="fa fa-spin fa-spinner"></i> Page Loading
+    </div>
+{% endblock content %}
+{% block foot_includes %}
+    {{ block.super }}
+    <script type="text/babel">
+        window.urlfor_save_shipper_address = "{% url 'ajax-save_shipper_address' %}";
+    </script>
+    <script type="text/babel" src="{% static 'js/booking_functions.react.js' %}"></script>
+    <script type="text/babel" src="{% static 'js/booking.react.js' %}"></script>
+{% endblock foot_includes %}

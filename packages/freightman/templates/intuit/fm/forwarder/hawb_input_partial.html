@@ -1,0 +1,780 @@
+<style>
+    p {
+        text-align: justify;
+    }
+
+    .card {
+        padding: 10px;
+    }
+</style>
+<div>
+    <div id="test_profile">
+    </div>
+    <div class="row">
+        <div class="col">
+            <div><span class="mawb_id_airline_iata_num"></span> <span class="mawb_id_airport_code"></span> <span class="mawb_id_awb_num"></span></div>
+        </div>
+        <div class="col">
+            <div class="float-right"><a href="" id="print_preview_anchor" target="_blank"><span id="hawb_reference_num"></span></a></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="card col">
+            <div class="card-header bg-dark text-white">
+                Freight Booking
+            </div>
+            <div class="card-body">
+                <div class="mb-4" id="booking_not_applicable_check">
+                    <label>Booking Not Applicable</label>
+                    <input type="checkbox" id="booking_not_applicable" checked>
+                </div>
+                <div id="freight_booking_selection" class="form-group" style="display: none">
+                    <label for="booking_globalid">Booking GlobalID {% if form.booking_globalid.field.required %}<i class="text-danger">*</i>{% endif %}</label>
+                    <select id="booking_globalid" class="form-control confirmed_booking_selection" style="width: 400px"></select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" id="all_inputs">
+
+        <div class="card col-12" id="house_selection">
+            <div class="card-header bg-dark text-white">
+                House/Supplier
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="house_id">House/Supplier {% if form.house_id.field.required %}<i class="text-danger">*</i>{% endif %}</label>
+                    <select id="house_id" class="form-control supplier_selection" style="width: 200px"></select>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================== MAWB INFO ============================= -->
+        <!-- ========================== SHIPPER INFO ============================= -->
+
+
+        <!-- ========================== SHIPPER INFO ============================= -->
+        <div class="card col-6 ">
+            <div class="card-header bg-dark text-white">
+                Shipper info
+            </div>
+            <div class="card-body">
+                <div class="form-group ">
+                    <label for="shipper_name">Name {% if form.shipper_name.field.required %}<i class="text-danger">*</i>{% endif %}</label>
+                    <input type="text" class="form-control" id="shipper_name" name="shipper_name" required>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-4 col-xs-12 col-form-label">Address
+                        {% if form.shipper_address.field.required %}<i class="text-danger">*</i>{% endif %}
+                    </label>
+                    <div class="col-sm-8 col-xs-12">
+                        <textarea class="form-control" id="shipper_address" required></textarea>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-xs-12 col-form-label">post code
+                        {% if form.shipper_po_code.field.required %}<i class="text-danger">*</i>{% endif %}
+                    </label>
+                    <div class="col-sm-8 col-xs-12">
+                        <input type="number" class="form-control" id="shipper_po_code"/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-xs-12 col-form-label">city
+                        {% if form.shipper_city.field.required %}<i class="text-danger">*</i>{% endif %}
+                    </label>
+                    <div class="col-sm-8 col-xs-12">
+                        <select class="form-control city_select" id="shipper_city">
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-xs-12 col-form-label">state
+                        {% if form.shipper_state.field.required %}<i class="text-danger">*</i>{% endif %}
+                    </label>
+                    <div class="col-sm-8 col-xs-12">
+                        <input type="text" class="form-control" id="shipper_state"/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-xs-12 col-form-label">country
+                        {% if form.shipper_country.field.required %}<i class="text-danger">*</i>{% endif %}
+                    </label>
+                    <div class="col-sm-8 col-xs-12">
+                        <select class="form-control country_select" id="shipper_country">
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-xs-12 col-form-label">contact
+                        {% if form.shipper_contact.field.required %}<i class="text-danger">*</i>{% endif %}
+                    </label>
+                    <div class="col-sm-8 col-xs-12">
+                        <input type="text" class="form-control" id="shipper_contact"/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-xs-12 col-form-label">telephone number
+                        {% if form.shipper_tel_number.field.required %}<i class="text-danger">*</i>{% endif %}
+                    </label>
+                    <div class="col-sm-8 col-xs-12">
+                        <input type="number" class="form-control" id="shipper_tel_number"/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-xs-12 col-form-label">mobile number
+                        {% if form.shipper_mob_num.field.required %}<i class="text-danger">*</i>{% endif %}
+                    </label>
+                    <div class="col-sm-8 col-xs-12">
+                        <input type="number" class="form-control" id="shipper_mob_num"/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-xs-12 col-form-label">fax number
+                        {% if form.shipper_fax_num.field.required %}<i class="text-danger">*</i>{% endif %}
+                    </label>
+                    <div class="col-sm-8 col-xs-12">
+                        <input type="number" class="form-control" id="shipper_fax_num"/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-xs-12 col-form-label">e-mail address
+                        {% if form.shipper_email.field.required %}<i class="text-danger">*</i>{% endif %}
+                    </label>
+                    <div class="col-sm-8 col-xs-12">
+                        <input type="email" class="form-control" id="shipper_email"/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-xs-12 col-form-label">
+                        reference {% if form.shipper_reference.field.required %}<i class="text-danger">*</i>{% endif %}
+                    </label>
+                    <div class="col-sm-8 col-xs-12">
+                        <input type="text" class="form-control"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="shipper_acc_no">Account Number {% if form.shipper_acc_no.field.required %}<i class="text-danger">*</i>{% endif %}</label>
+                    <input type="text" class="form-control" id="shipper_acc_no"
+                           name="shipper_acc_no">
+                </div>
+
+            </div>
+        </div>
+        <!-- ========================== SHIPPER INFO ============================= -->
+
+        <!-- ========================== CONSIGNEE INFO ============================= -->
+        <div class="card col-6">
+            <div class="card-header bg-dark text-white">
+                Consignee Info
+            </div>
+            <div class="card-body">
+                <div class="form-group ">
+                    <label for="consignee_name">Name {% if form.consignee_name.field.required %}<i class="text-danger">*</i>{% endif %}</label>
+                    <input type="text" class="form-control" id="consignee_name" required>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-xs-12 col-form-label">Address
+                        {% if form.consignee_address.field.required %}<i class="text-danger">*</i>{% endif %}
+                    </label>
+                    <div class="col-sm-8 col-xs-12">
+                        <textarea class="form-control" id="consignee_address" required></textarea>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-xs-12 col-form-label">post code
+                        {% if form.consignee_po_code.field.required %}<i class="text-danger">*</i>{% endif %}
+                    </label>
+                    <div class="col-sm-8 col-xs-12">
+                        <input type="number" class="form-control" id="consignee_po_code"/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-xs-12 col-form-label">city
+                        {% if form.consignee_city.field.required %}<i class="text-danger">*</i>{% endif %}
+                    </label>
+                    <div class="col-sm-8 col-xs-12">
+                        <select class="form-control city_select" id="consignee_city">
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-xs-12 col-form-label">state
+                        {% if form.consignee_state.field.required %}<i class="text-danger">*</i>{% endif %}
+                    </label>
+                    <div class="col-sm-8 col-xs-12">
+                        <input type="text" class="form-control" id="consignee_state"/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-xs-12 col-form-label">country
+                        {% if form.consignee_country.field.required %}<i class="text-danger">*</i>{% endif %}
+                    </label>
+                    <div class="col-sm-8 col-xs-12">
+                        <select class="form-control country_select" id="consignee_country">
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-xs-12 col-form-label">contact
+                        {% if form.consignee_contact.field.required %}<i class="text-danger">*</i>{% endif %}
+                    </label>
+                    <div class="col-sm-8 col-xs-12">
+                        <input type="text" class="form-control" id="consignee_contact"/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-xs-12 col-form-label">telephone number
+                        {% if form.consignee_tel_number.field.required %}<i class="text-danger">*</i>{% endif %}
+                    </label>
+                    <div class="col-sm-8 col-xs-12">
+                        <input type="number" class="form-control" id="consignee_tel_number"/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-xs-12 col-form-label">mobile number
+                        {% if form.consignee_mob_num.field.required %}<i class="text-danger">*</i>{% endif %}
+                    </label>
+                    <div class="col-sm-8 col-xs-12">
+                        <input type="number" class="form-control" id="consignee_mob_num"/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-xs-12 col-form-label">fax number
+                        {% if form.consignee_fax_num.field.required %}<i class="text-danger">*</i>{% endif %}
+                    </label>
+                    <div class="col-sm-8 col-xs-12">
+                        <input type="number" class="form-control" id="consignee_fax_num"/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-xs-12 col-form-label">e-mail address
+                        {% if form.consignee_email.field.required %}<i class="text-danger">*</i>{% endif %}
+                    </label>
+                    <div class="col-sm-8 col-xs-12">
+                        <input type="email" class="form-control" id="consignee_email"/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-xs-12 col-form-label" for="consignee_reference">
+                        reference {% if form.consignee_reference.field.required %}<i class="text-danger">*</i>{% endif %}</label>
+                    <div class="col-sm-8 col-xs-12">
+                        <input type="text" class="form-control" id="consignee_reference"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="consignee_acc_no">
+                        Account Number {% if form.consignee_acc_no.field.required %}<i class="text-danger">*</i>{% endif %}</label>
+                    <input type="text" class="form-control" id="consignee_acc_no"
+                           name="consignee_acc_no">
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================== ISSUING CARRIER INFO ============================= -->
+        <div class="card col-6">
+            <div class="card-header bg-dark text-white">
+                Issuing Carrier's Agent info
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    {#                    <div class="form-group col-12">#}
+                    {#                        <button id="apply_forwarder_info_in_issuing_carrier_info">Apply Forwarder Info</button>#}
+                    {#                    </div>#}
+                    <div class="form-group col-12">
+                        <label for="carrier_agent_selection_input">
+                            Select Agent {% if form.carrier_agent_selection_input.field.required %}<i class="text-danger">*</i>{% endif %}</label>
+                        <select class="form-control awb_agent_select" id="carrier_agent_selection_input"></select>
+                    </div>
+                    <div class="form-group col-6">
+                        <label for="carrier_agent_name">
+                            Name {% if form.carrier_agent_name.field.required %}<i class="text-danger">*</i>{% endif %}</label>
+                        <input type="text" class="form-control" name="carrier_agent_name" id="carrier_agent_name"
+                               readonly>
+                    </div>
+                    <div class="form-group  col-6">
+                        <label for="carrier_agent_city">
+                            City {% if form.carrier_agent_city.field.required %}<i class="text-danger">*</i>{% endif %}</label>
+                        <select class="form-control city_select" id="carrier_agent_city" readonly=""></select>
+                    </div>
+                    <div class="form-group  col-6">
+                        <label for="carrier_agent_state">
+                            State {% if form.carrier_agent_state.field.required %}<i class="text-danger">*</i>{% endif %}</label>
+                        <input class="form-control" id="carrier_agent_state" readonly>
+                    </div>
+                    <div class="form-group  col-6">
+                        <label for="carrier_agent_country">
+                            Country {% if form.carrier_agent_country.field.required %}<i class="text-danger">*</i>{% endif %}</label>
+                        <select class="form-control country_select" id="carrier_agent_country" readonly=""></select>
+                    </div>
+                </div>
+
+                {#                <div class="row">#}
+                {#                    <div class="form-group col-6">#}
+                {#                        <label for="carrier_agent_ffl">#}
+                {#                            FFL No {% if form.carrier_agent_ffl.field.required %}<i class="text-danger">*</i>{% endif %}</label>#}
+                {#                        <input type="number" class="form-control" id="carrier_agent_ffl" name="carrier_agent_ffl" readonly>#}
+                {#                    </div>#}
+                {#                    <div class="form-group  col-6">#}
+                {#                        <label for="carrier_agent_date">#}
+                {#                            Expiry Date {% if form.carrier_agent_date.field.required %}<i class="text-danger">*</i>{% endif %}</label>#}
+                {#                        <input type="date" class="form-control" id="carrier_agent_date" name="carrier_agent_date" readonly#}
+                {#                        >#}
+                {#                    </div>#}
+                {#                </div>#}
+
+                <div class="row">
+                    <div class="form-group col-6">
+                        <label for="carrier_agent_iata_code">
+                            IATA Code {% if form.carrier_agent_iata_code.field.required %}<i class="text-danger">*</i>{% endif %}</label>
+                        <input type="number" class="form-control" id="carrier_agent_iata_code" name="carrier_agent_iata_code" readonly
+                        >
+                    </div>
+                    {#                    <div class="form-group  col-6">#}
+                    {#                        <label for="carrier_agent_acc_no">#}
+                    {#                            Account No {% if form.carrier_agent_acc_no.field.required %}<i class="text-danger">*</i>{% endif %}</label>#}
+                    {#                        <input type="number" class="form-control" id="carrier_agent_acc_no" name="carrier_agent_acc_no" readonly#}
+                    {#                        >#}
+                    {#                    </div>#}
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================== ACCOUNTING INFORMATION ============================= -->
+        <div class="card col-6">
+            <div class="card-header bg-dark text-white">
+                Accounting Info
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="form-group col-12">
+                        <label for="payment_type">Payment type {% if form.payment_type.field.required %}<i class="text-danger">*</i>{% endif %}</label>
+                        <select class="form-control payment_type_select" id="payment_type">
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================== AIRPORT OF DEPARTURE AND REQUESTED ROUTING ============================= -->
+        <div class="card col-6">
+            <div class="card-header bg-dark text-white">
+                Airport of Departure and Requested Routing
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="form-group col-6">
+                        <label for="departure_airport">
+                            Airport of Departure {% if form.departure_airport.field.required %}<i class="text-danger">*</i>{% endif %}</label>
+                        <select id="departure_airport" class="form-control airport_select"></select>
+                    </div>
+                    <div class="form-group  col-6">
+                        <label for="requested_routing">
+                            Requested Routing {% if form.requested_routing.field.required %}<i class="text-danger">*</i>{% endif %}</label>
+                        <input type="text" class="form-control" id="requested_routing"
+                               required name="requested_routing">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label class="col-12 bg-dark text-white">Routing and Destination</label>
+                    <div class="form-group col-6">
+                        <label for="destination_to_1_airport">
+                            To {% if form.destination_to_1_airport.field.required %}<i class="text-danger">*</i>{% endif %}</label>
+                        <select id="destination_to_1_airport" class="form-control airport_select"></select>
+                    </div>
+                    <div class="form-group col-6">
+                        <label for="destination_to_1_airline">
+                            By First Carrier {% if form.destination_to_1_airline.field.required %}<i class="text-danger">*</i>{% endif %}</label>
+                        <select id="destination_to_1_airline" class="form-control airline_select"></select>
+                    </div>
+                    <div class="form-group  col-6">
+                        <label for="destination_to_1_flight_num">
+                            Flight number {% if form.destination_to_1_flight_num.field.required %}<i class="text-danger">*</i>{% endif %}</label>
+                        <input id="destination_to_1_flight_num" type="text" class="form-control">
+                    </div>
+                    <div class="form-group  col-6">
+                        <label for="destination_to_1_flight_date">
+                            Flight date {% if form.destination_to_1_flight_date.field.required %}<i class="text-danger">*</i>{% endif %}</label>
+                        <input id="destination_to_1_flight_date" type="date" class="form-control">
+                    </div>
+
+                    <div class="form-group col-6">
+                        <label for="destination_to_2_airport">
+                            To {% if form.destination_to_2_airport.field.required %}<i class="text-danger">*</i>{% endif %}</label>
+                        <select id="destination_to_2_airport" class="form-control airport_select"></select>
+                    </div>
+                    <div class="form-group col-6">
+                        <label for="destination_by_2_airline">
+                            By {% if form.destination_by_2_airline.field.required %}<i class="text-danger">*</i>{% endif %}</label>
+                        <select id="destination_by_2_airline" class="form-control airline_select"></select>
+                    </div>
+                    <div class="form-group  col-6">
+                        <label for="destination_to_2_flight_num">
+                            Flight number {% if form.destination_to_2_flight_num.field.required %}<i class="text-danger">*</i>{% endif %}</label>
+                        <input id="destination_to_2_flight_num" type="text" class="form-control">
+                    </div>
+                    <div class="form-group  col-6">
+                        <label for="destination_to_2_flight_date">
+                            Flight date {% if form.destination_to_2_flight_date.field.required %}<i class="text-danger">*</i>{% endif %}</label>
+                        <input id="destination_to_2_flight_date" type="date" class="form-control">
+                    </div>
+
+                    <div class="form-group col-6">
+                        <label for="destination_to_3_airport">
+                            To {% if form.destination_to_3_airport.field.required %}<i class="text-danger">*</i>{% endif %}</label>
+                        <select id="destination_to_3_airport" class="form-control airport_select"></select>
+                    </div>
+                    <div class="form-group col-6">
+                        <label for="destination_to_3_airline">
+                            By {% if form.destination_to_3_airline.field.required %}<i class="text-danger">*</i>{% endif %}</label>
+                        <select id="destination_to_3_airline" class="form-control airline_select"></select>
+                    </div>
+                    <div class="form-group  col-6">
+                        <label for="destination_to_3_flight_num">
+                            Flight number {% if form.destination_to_3_flight_num.field.required %}<i class="text-danger">*</i>{% endif %}</label>
+                        <input id="destination_to_3_flight_num" type="text" class="form-control">
+                    </div>
+                    <div class="form-group  col-6">
+                        <label for="destination_to_3_flight_date">
+                            Flight date {% if form.destination_to_3_flight_date.field.required %}<i class="text-danger">*</i>{% endif %}</label>
+                        <input id="destination_to_3_flight_date" type="date" class="form-control">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-12">
+                        <label for="dest_airport">
+                            Airport of Destination {% if form.dest_airport.field.required %}<i class="text-danger">*</i>{% endif %}</label>
+                        <select id="dest_airport" class="form-control airport_select"></select>
+                    </div>
+                    <div class="form-group col-12">
+                        <label for="requested_flight_date">
+                            Requested flight info {% if form.requested_flight_info.field.required %}<i class="text-danger">*</i>{% endif %}</label>
+                        <input type="text" class="form-control" id="requested_flight_info" name="requested_flight_date">
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+        <!-- ========================== AIRPORT OF DEPARTURE AND REQUESTED ROUTING ============================= -->
+
+
+        <!-- ========================== OPTIONAL SHIPPING INFO ============================= -->
+        <div class="card col-6">
+            <div class="card-header bg-dark text-white">
+                Optional Shipping Info
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <label class="col-12">Referance Number</label>
+                    {% if form.reff_no_1.field.required %}<i class="text-danger">*</i>{% endif %}
+                    <input type="text" class="form-control col-4" id="reff_no_1" name="reff_no_1">
+                    {% if form.reff_no_2.field.required %}<i class="text-danger">*</i>{% endif %}
+                    <input type="text" class="form-control col-4" id="reff_no_2" name="reff_no_2">
+                    {% if form.reff_no_3.field.required %}<i class="text-danger">*</i>{% endif %}
+                    <input type="text" class="form-control col-4" id="reff_no_3" name="reff_no_3">
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-6">
+                        <label for="currency">Currency {% if form.currency.field.required %}<i class="text-danger">*</i>{% endif %}</label>
+                        <select id="currency" class="form-control currency_select"></select>
+                    </div>
+                    <div class="col-6">
+                        <label for="cngs_code">CHGS Code {% if form.cngs_code.field.required %}<i class="text-danger">*</i>{% endif %}</label>
+                        <input type="text" class="form-control" id="cngs_code" name="cngs_code" value="N.D.V.">
+                    </div>
+                    <div class="col-6">
+                        <br>
+                        <label for="wt">WT/VAL {% if form.wt.field.required %}<i class="text-danger">*</i>{% endif %}</label>
+                        <select class="small payment_type_select" id="wt">
+                        </select>
+                    </div>
+
+                    <div class="col-6">
+                        <br>
+                        <label for="other_wt">Other {% if form.other_wt.field.required %}<i class="text-danger">*</i>{% endif %}</label>
+                        <select id="other_wt" class="small payment_type_select">
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <label for="carriage_value">
+                            Declared value for Carriage {% if form.carriage_value.field.required %}<i class="text-danger">*</i>{% endif %}</label>
+                        <input type="text" class="form-control" id="carriage_value" name="carriage_value" value="N.D.V.">
+                    </div>
+                    <div class="col-6">
+                        <label for="customs_value">
+                            Declared value for Customs {% if form.customs_value.field.required %}<i class="text-danger">*</i>{% endif %}</label>
+                        <input type="text" class="form-control" id="customs_value" name="customs_value" value="N.D.V.">
+                    </div>
+                </div>
+
+                <br>
+                <div class="row">
+                    <div class="col-12">
+                        <label for="insurance_amount">
+                            Amount of Insurance {% if form.insurance_amount.field.required %}<i class="text-danger">*</i>{% endif %}</label>
+                        <input type="text" class="form-control" id="insurance_amount" name="insurance_amount" value="N.D.V.">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <p>INSURANCE - If Carrier offers insurance, and such insurance is requested in accordance with the conditions thereof, indicate amount to be
+                            insured in box
+                            above</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ========================== OPTIONAL SHIPPING INFO ============================= -->
+
+
+        <!-- ========================== HEADING INFORMATION ============================= -->
+        <div class="card col-12">
+            <div class="card-header bg-dark text-white">
+                Handling Information
+            </div>
+            <div class="card-body">
+                <label for="handling_info">{% if form.handling_info.field.required %}<i class="text-danger">*</i>{% endif %}</label>
+                <textarea class="form-control" id="handling_info"></textarea>
+            </div>
+        </div>
+        <!-- ========================== HEADING INFORMATION ============================= -->
+
+        <!-- ========================== GOODS INFO ============================= -->
+        <div class="card col-12">
+            <div class="card-header bg-dark text-white">
+                Goods Information
+            </div>
+            <div class="card-body">
+                <table>
+                    <tr class="small">
+                        <th>No of <br>pieces RCP {% if form.goods_no_piece_rcp.field.required %}<i class="text-danger">*</i>{% endif %}</th>
+                        <th>Gross Weight {% if form.goods_gross_weight.field.required %}<i class="text-danger">*</i>{% endif %}</th>
+                        <th>kg/<br>lb {% if form.goods_weight_unit.field.required %}<i class="text-danger">*</i>{% endif %}</th>
+                        <th>Commodity <br/>item no {% if form.goods_commodity_item_no.field.required %}<i class="text-danger">*</i>{% endif %}</th>
+                        <th>chargable weight cbm {% if form.goods_chargeable_weight.field.required %}<i class="text-danger">*</i>{% endif %}</th>
+                        <th>rate/charge {% if form.goods_rate.field.required %}<i class="text-danger">*</i>{% endif %}</th>
+                        <th>Total {% if form.goods_total.field.required %}<i class="text-danger">*</i>{% endif %}</th>
+                    </tr>
+                    <tr class="small">
+                        <td><input type="number" id="goods_no_piece_rcp" name="goods_no_piece_rcp" class="form-control">
+                        </td>
+                        <td><input type="number" step="any" id="goods_gross_weight" name="goods_gross_weight" class="form-control"></td>
+                        <td>
+                            <select id="goods_weight_unit" class="form-control small" style="min-width: 70px">
+                                <option value="k">kg</option>
+                                <option value="l">lb</option>
+                            </select>
+                        </td>
+                        <td>
+                            <input type="text" id="goods_commodity_item_no" name="goods_commodity_item_no" class="form-control">
+                        </td>
+                        <td>
+                            <input type="number" step="any" id="goods_chargeable_weight" name="goods_chargeable_weight" class="form-control">
+                        </td>
+                        <td><input type="number" step="any" id="goods_rate" class="form-control"></td>
+                        <td><input type="number" step="any" id="goods_total" class="form-control"></td>
+                    </tr>
+                </table>
+                <div class="form-group">
+                    <label for="goods_nature">
+                        Nature and quanitty of goods {% if form.goods_nature.field.required %}<i class="text-danger">*</i>{% endif %}</label>
+                    <textarea name="goods_nature" id="goods_nature" cols="30" class="form-control"></textarea>
+                </div>
+            </div>
+        </div>
+        <!-- ========================== GOODS INFO ============================= -->
+
+        <!-- ========================== OTHER INFO ============================= -->
+        <div class="card col-12">
+            <div class="card-header bg-dark text-white">
+                Other Information
+            </div>
+            <div class="card-body">
+                <div class="card-title">Weight charges</div>
+                <div class="row">
+                    <div class="col-4">
+                        <label for="others_prepaid">Prepaid {% if form.weightcharge_prepaid.field.required %}<i class="text-danger">*</i>{% endif %}</label>
+                        <input type="number" id="weightcharge_prepaid" class="form-control prepaid_charge">
+                    </div>
+                    <div class="col-4">
+                        <label for="others_collect">Collect {% if form.weightcharge_collect.field.required %}<i class="text-danger">*</i>{% endif %}</label>
+                        <input type="number" name="others_collect" id="weightcharge_collect" class="form-control collect_charge">
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="card-title">Valuation charges</div>
+                <div class="row">
+                    <div class="col-4">
+                        <label for="others_prepaid">Prepaid {% if form.others_valuation_prepaid.field.required %}<i class="text-danger">*</i>{% endif %}</label>
+                        <input type="number" name="others_prepaid" id="others_valuation_prepaid" class="form-control prepaid_charge">
+                    </div>
+                    <div class="col-4">
+                        <label for="others_collect">Collect {% if form.others_valuation_collect.field.required %}<i class="text-danger">*</i>{% endif %}</label>
+                        <input type="number" name="others_collect" id="others_valuation_collect" class="form-control collect_charge">
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="card-title">Tax</div>
+                <div class="row">
+                    <div class="col-4">
+                        <label for="others_prepaid">Prepaid {% if form.others_tax_prepaid.field.required %}<i class="text-danger">*</i>{% endif %}</label>
+                        <input type="number" name="others_prepaid" id="others_tax_prepaid" class="form-control prepaid_charge">
+                    </div>
+                    <div class="col-4">
+                        <label for="others_collect">Collect {% if form.others_tax_collect.field.required %}<i class="text-danger">*</i>{% endif %}</label>
+                        <input type="number" name="others_collect" id="others_tax_collect" class="form-control collect_charge">
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="card-title">Total other charges due agent</div>
+                <div class="row">
+                    <div class="col-4">
+                        <label for="others_prepaid">Prepaid {% if form.others_cda_prepaid.field.required %}<i class="text-danger">*</i>{% endif %}</label>
+                        <input type="number" name="others_prepaid" id="others_cda_prepaid" class="form-control prepaid_charge">
+                    </div>
+                    <div class="col-4">
+                        <label for="others_collect">Collect {% if form.others_cda_collect.field.required %}<i class="text-danger">*</i>{% endif %}</label>
+                        <input type="number" name="others_collect" id="others_cda_collect" class="form-control collect_charge">
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="card-title">Total other charges due carrier</div>
+                <div class="row">
+                    <div class="col-4">
+                        <label for="others_prepaid">Prepaid {% if form.others_cdc_prepaid.field.required %}<i class="text-danger">*</i>{% endif %}</label>
+                        <input type="number" name="others_prepaid" id="others_cdc_prepaid" class="form-control prepaid_charge">
+                    </div>
+                    <div class="col-4">
+                        <label for="others_collect">Collect {% if form.others_cdc_collect.field.required %}<i class="text-danger">*</i>{% endif %}</label>
+                        <input type="number" name="others_collect" id="others_cdc_collect" class="form-control collect_charge">
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-4">
+                        <label for="others_prepaid">Total Prepaid {% if form.others_total_prepaid.field.required %}<i class="text-danger">*</i>{% endif %}</label>
+                        <div class="input-group">
+                            <input type="number" disabled="disabled" name="others_prepaid" id="others_total_prepaid" class="form-control">
+                            {#                            <button class="input-group-btn" id="calculate_total_prepaid">calculate</button>#}
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <label for="others_collect">Total Collect {% if form.others_total_collect.field.required %}<i class="text-danger">*</i>{% endif %}</label>
+                        <div class="input-group">
+                            <input type="number" disabled="disabled" name="others_total_collect" id="others_total_collect" class="form-control">
+                            {#                            <button class="input-group-btn" id="calculate_total_collect">calculate</button>#}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <div class="card-title"></div>
+                    <div class="row">
+                        <div class="col-4">
+                            <label for="others_prepaid">
+                                Currency conversion rates {% if form.others_ccr.field.required %}<i class="text-danger">*</i>{% endif %}</label>
+                            <input type="number" name="others_ccr" id="others_ccr" class="form-control prepaid_charge">
+                        </div>
+                        <div class="col-4">
+                            <label for="others_collect">
+                                CC charges in dest country {% if form.others_ccc_dest.field.required %}<i class="text-danger">*</i>{% endif %}</label>
+                            <input type="number" name="others_ccc_dest" id="others_ccc_dest" class="form-control collect_charge">
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">Charges at destination {% if form.others_cad.field.required %}<i class="text-danger">*</i>{% endif %}</div>
+                    <div class="row">
+                        <div class="col">
+                            <input type="number" name="others_cad" id="others_cad" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">Total collect charges {% if form.others_tcc.field.required %}<i class="text-danger">*</i>{% endif %}</div>
+                    <div class="row">
+                        <div class="col">
+                            <input type="number" name="others_tcc" id="others_tcc" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">Other charges {% if form.others_charges.field.required %}<i class="text-danger">*</i>{% endif %}</div>
+                    <div class="row">
+                        <div class="col">
+                            <input type="number" name="others_collect" id="others_charges" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body d-none">
+                    <div class="card-title">
+                        Signature of shipper or his agent {% if form.others_signature.field.required %}<i class="text-danger">*</i>{% endif %}</div>
+                    <div class="row">
+                        <div class="col">
+                            <input type="text" name="others_collect" id="others_signature" class="form-control">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="others_ex_date">
+                                Executed on (Date) {% if form.others_ex_date.field.required %}<i class="text-danger">*</i>{% endif %}</label>
+                            <div class="input-group">
+                                <input type="date" name="others_ex_date" id="others_ex_date" class="form-control">
+                                <button type="button" id="exec_date_today" class="input-group-append btn-sm">today</button>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <label for="others_ex_loc">
+                                Executed At (Place) {% if form.others_ex_loc.field.required %}<i class="text-danger">*</i>{% endif %}</label>
+                            <select class="form-control city_select" id="others_ex_loc"></select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body d-none">
+                    <div class="card-title">
+                        Signature of issueing carrier or its agent {% if form.others_sic.field.required %}<i class="text-danger">*</i>{% endif %}</div>
+                    <div class="row">
+                        <div class="col">
+                            <input type="text" name="others_collect" id="others_sic" class="form-control">
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- ========================== OTHER INFO ============================= -->
+
+        </div>
+        <div>
+            <div id="feedback_errors"></div>
+            <div id="feedback_msg"></div>
+        </div>
+        <button type="button" class="btn btn-primary" id="submit_button">Submit</button>
+    </div>
+
+    {#<div id="shortcut_for_forms">#}
+    {#    This is for form#}
+{#</div>#}

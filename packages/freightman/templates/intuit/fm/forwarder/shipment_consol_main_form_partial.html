@@ -1,0 +1,451 @@
+<div class="col-md-8 col-sm-8 col-xs-12">
+                    <div class="row">
+                        <div class="col-md-6 col-xs-12">
+                            <div class="form-group d-none">
+                                <label>Job Date</label>
+                                <div class="input-group">
+                                    <input id="job_date" type="date" class="form-control">
+                                </div>
+                            </div>
+                            {#                            <div class="form-group">#}
+                            {#                                <label>EXP/ IMP</label>#}
+                            {#                                <div class="input-group">#}
+                            {#                                    <input type="text" class="form-control" placeholder="">#}
+                            {#                                </div>#}
+                            {#                            </div>#}
+
+
+                        </div>
+                        <div class="col-md-6 col-xs-12 d-none">
+                            <div class="selectonclick pdt20">
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="shipment_type">
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" class="custom-control-input" id="shipment_typeair"
+                                                       name="shipmenttype" checked>
+                                                <label class="custom-control-label" for="shipment_typeair"><i
+                                                        class="fa fa-plane" aria-hidden="true"></i>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="selectonclick">
+                                            <div class="shipment_type">
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" class="custom-control-input"
+                                                           id="shipment_typeship" name="shipmenttype"
+                                                           disabled="disabled">
+                                                    <label class="custom-control-label" for="shipment_typeship"><i
+                                                            class="fa fa-ship" aria-hidden="true"></i>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {#                                        <div class="selectonclick">#}
+                                        {#                                            <div class="shipment_type">#}
+                                        {#                                                <div class="custom-control custom-radio">#}
+                                        {#                                                    <input type="radio" class="custom-control-input" id="shipment_typecar" name="defaultExampleRadios">#}
+                                        {#                                                    <label class="custom-control-label" for="shipment_typecar"><i class="fa fa-bus" aria-hidden="true"></i>#}
+                                        {#                                                    </label>#}
+                                        {#                                                </div>#}
+                                        {#                                            </div>#}
+                                        {#                                        </div>#}
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="shipment_type">
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" class="custom-control-input" id="shipment_export"
+                                                       name="export_or_import" checked>
+                                                <label class="custom-control-label type_export" for="shipment_export">Export</label>
+                                            </div>
+                                        </div>
+                                        <div class="selectonclick">
+                                            <div class="shipment_type">
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" class="custom-control-input"
+                                                           id="shipment_import" name="export_or_import"
+                                                           disabled="disabled">
+                                                    <label class="custom-control-label type_import"
+                                                           for="shipment_import">Import</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12 d-none">
+                    <div class="multi_buttons">
+                        <button id="console_button" type="button" class="btn btn-primary">Con-Atta</button>
+                        {#                        <button type="button" class="btn btn-success">Profit Center</button>#}
+                        <button type="button" class="btn btn-info" id="decon_button">De-Cons</button>
+                    </div>
+
+                    <div class="form-group pdt20 d-none">
+                        <label>Receipt Date</label>
+                        <div class="input-group">
+                            <input type="date" class="form-control" id="receipt_date">
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-12 d-none">
+
+                    <div class="form-group">
+                        <label>Country/Departure Port</label>
+
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="input-group">
+                                    <select class="form-control country_select" id="depart_country">
+                                        <option>--</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="input-group">
+                                    <select class="form-control airport_select" id="depart_port">
+                                        <option>--</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="input-group">
+                                    <select class="form-control city_select" id="depart_city">
+                                        <option>--</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group mrt-25">
+                                    <label>Departure Date</label>
+                                    <div class="input-group">
+                                        <input type="date" class="form-control" id="depart_date">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-md-12 d-none">
+
+                    <div class="form-group">
+                        <label for="shipper_name">Shipper</label>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <select class="form-control" id="shipper">
+                                        <option>Shipper 01</option>
+                                        <option>Shipper 02</option>
+                                        <option>Shipper 03</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="" id="shipper_other_field">
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-md-12 d-none">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Reference</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control width_100" placeholder="" id="reference">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Reference Date</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control width_100" placeholder="" id="reference_date">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+                <div class="col-md-12 d-none">
+
+                    <div class="form-group">
+                        <label>Country/Arrival Port</label>
+
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="input-group">
+                                    <select class="form-control country_select" id="arrival_country">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="input-group">
+                                    <select class="form-control airport_select" id="arrival_port">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="input-group">
+                                    <select class="form-control city_select" id="arrival_city"></select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group mrt-25">
+                                    <label>Arrival Date</label>
+                                    <div class="input-group">
+                                        <input type="date" class="form-control" id="arrival_date">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 d-none">
+                    <div class="form-group">
+                        <label>Consignee</label>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <select class="form-control" id="consignee">
+                                        <option>Consignee 01</option>
+                                        <option>Consignee 02</option>
+                                        <option>Consignee 03</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-group" id="consignee_other_field">
+                                    <input type="text" class="form-control" placeholder="" id="Consignee_others">
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-12 d-none">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="select_shack mrt25">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="house">
+                                    <label class="custom-control-label btn btn-secondary btn-sm" for="house">House</label>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Reference</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="" id="reference2">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Reference Date</label>
+                                <div class="input-group">
+                                    <input type="date" class="form-control" placeholder="28/01/2019" id="reference2_date">
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+                {#                <h1>Debug place</h1>#}
+                <div class="col-md-12 d-none">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <label>Schedule</label>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="select_shack">
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="air_transport_schedule">
+                                                <label class="custom-control-label btn btn-secondary btn-sm" for="air_transport_schedule">Air</label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 d-none">
+                                        <div class="select_shack">
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="sea">
+                                                <label class="custom-control-label" for="sea">Sea</label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 d-none">
+                                        <div class="select_shack">
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="road">
+                                                <label class="custom-control-label" for="road">Road</label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="col-md-4 d-none">
+                            <div class="form-group">
+                                <label>Conversion Factor</label>
+                                <div class="input-group">
+                                    <select class="form-control" id="conv_factor">
+                                        <option>6000.00</option>
+                                        <option>7000.00</option>
+                                        <option>8000.00</option>
+                                        <option>9000.00</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+                <div class="col-md-12 form-group d-none">
+                    <table>
+                        <tr>
+                            <th></th>
+                            <th class="small">number of packages</th>
+                            <th class="small">Gross weight</th>
+                            <th class="small">Volume</th>
+                            <th class="small">Chargeable Weight</th>
+                            <th class="small">No of Houses</th>
+                        </tr>
+                        <tr>
+                            <td>Console</td>
+                            <td><input id="num_of_packages_console" type="text"/></td>
+                            <td><input id="gross_weight_console" type="text"/></td>
+                            <td><input id="volume_console" type="text"/></td>
+                            <td><input id="chargeable_weight_console" type="text"/></td>
+                            <td><input id="no_of_houses_console" type="text"/></td>
+                        </tr>
+                        <tr>
+                            <td>House sum</td>
+                            <td><input id="num_of_packages_houseSum" type="text"/></td>
+                            <td><input id="gross_weight_houseSum" type="text"/></td>
+                            <td><input id="volume_houseSum" type="text"/></td>
+                            <td><input id="chargeable_weight_houseSum" type="text"/></td>
+                            <td><input id="no_of_houses_houseSum" type="text"/></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-md-12 d-none">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Customs warehouse</label>
+                                <div class="input-group">
+                                    <input type="text" id="customs_warehouse" class="form-control" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Title/Header Type</label>
+                                <div class="input-group">
+                                    <input type="text" id="header_type" class="form-control" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Title/Header Number</label>
+                                <div class="input-group">
+                                    <input type="number" id="header_number" class="form-control" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+                <div class="col-md-12 d-none">
+
+                    <div class="form-group">
+                        <label>Statistics</label>
+
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="select_shack">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="statistics_equipments">
+                                        <label class="custom-control-label btn btn-sm btn-secondary" for="statistics_equipments">Equipments</label>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="select_shack">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="statistics_transfers">
+                                        <label class="custom-control-label btn btn-sm btn-secondary" for="statistics_transfers">Transfers</label>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="select_shack">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="statistics_custom_permit">
+                                        <label class="custom-control-label btn btn-sm btn-secondary"
+                                               for="statistics_custom_permit">Custom permit</label>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="select_shack">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="statistics_assurance">
+                                        <label class="custom-control-label btn btn-sm btn-secondary" for="statistics_assurance">Assurance</label>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>

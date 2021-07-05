@@ -1,0 +1,64 @@
+{% extends 'intuit/fm/base.html' %}
+{% load i18n static %}
+{% block page_title %}
+    <title>GP Listing</title>
+{% endblock %}
+{% block head_includes %}
+    {{ block.super }}
+    <style>
+        .content {
+            padding-top: 0;
+        }
+    </style>
+{% endblock head_includes %}
+{% block left-nav %}
+    {% include 'intuit/fm/forwarder/left-nav/menu_grid_home_left_nav.html' %}
+{% endblock left-nav %}
+{% block breadcrumbs %}
+    <div class="row">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'forwarder_grid_menu_home' %}">Home</a></li>
+                    <li class="breadcrumb-item" aria-current="page"><a href="{% url 'airexport_apps_menu' %}">Air Export</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><a href="">Gross Profit(GP) Listing</a></li>
+                    <li class="position-absolute" style="right: 100px"><a href="{% url 'airexport_apps_menu' %}"><i class="fa fa-times-circle text-danger"></i></a></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+{% endblock breadcrumbs %}
+{% block content %}
+    <div class="container">
+        <div class="py-4 text-center bg-success">
+            <h2>GP Listing</h2>
+        </div>
+        <div id="page_content">
+            <div class="card">
+                <div class="card-header">
+                </div>
+                <div class="card-body">
+                    <div id="gp_listing">
+
+                    </div>
+                </div>
+                <div class="card-footer">
+
+                </div>
+            </div>
+
+            <div id="page_errors"></div>
+            <div id="page_msgs"></div>
+        </div>
+    </div>
+    <div id="bottom_info">
+
+    </div>
+{% endblock content %}
+{% block foot_includes %}
+    {{ block.super }}
+    <script>
+        window.urlfor_gp_listing_page_init_data = "{% url 'forwarder-gp_listing_page_init_data' %}";
+    </script>
+    <script type="text/javascript" src="{% static 'forwarder/gp_listing/gp_listing.jquery.js' %}"></script>
+{% endblock foot_includes %}

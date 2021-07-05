@@ -1,0 +1,58 @@
+{% extends 'intuit/fm/base.html' %}
+{% load i18n static %}
+{% block page_title %}
+    <title>Container consolidation</title>
+{% endblock %}
+{% block head_includes %}
+    {{ block.super }}
+    <style>
+        label {
+            text-transform: uppercase;
+        }
+
+        p {
+            text-align: justify;
+        }
+
+        .card {
+            padding: 10px;
+        }
+    </style>
+{% endblock %}
+{% block breadcrumbs %}
+    <div class="row">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'forwarder_grid_menu_home' %}">Home</a></li>
+                    <li class="breadcrumb-item" aria-current="page"><a href="{% url 'seaexport:seaexport_apps_menu' %}">Ocean Export</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><a href="">Container Consolidation</a></li>
+                    <li class="position-absolute" style="right: 100px"><a href="{% url 'seaexport:seaexport_apps_menu' %}"><i
+                            class="fa fa-times-circle text-danger"></i></a></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+{% endblock breadcrumbs %}
+{% block content %}
+    <div>
+        <div id="page_content">
+            <span id="page_content_spinner"><i class="fa fa-spin fa-spinner"></i> Page Loading</span>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block foot_includes %}
+    {{ block.super }}
+    <script type="text/javascript">
+        window.urlfor_container_consol_page_init_data = '{% url "seaexport:seaexport_get_container_consol_page_init_data" %}';
+        window.urlfor_container_consol_save = '{% url "seaexport:seaexport_container_consol_save" %}';
+    </script>
+    <script type="text/babel" src="{% static 'seaexport/forwarder/container/seaexport_container_mixin.babel.js' %}"></script>
+    <script type="text/babel" src="{% static 'seaexport/forwarder/container/seaexport_container_consol_state.babel.js' %}"></script>
+    <script type="text/babel" src="{% static 'seaexport/forwarder/container/seaexport_container_consol_form.babel.js' %}"></script>
+    <script type="text/babel" src="{% static 'seaexport/forwarder/container/seaexport_container_consol.babel.js' %}"></script>
+    <script type="text/babel">
+        ReactDOM.render(<SeaExportContainerConsolidationForm/>, document.getElementById('page_content'));
+    </script>
+{% endblock foot_includes %}

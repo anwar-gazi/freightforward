@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Freight Certificate</title>
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'seaimport/assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- font awesome css -->
+    <link href="{% static 'seaimport/assets/vendor/fonts/css/fontawesome-all.min.css' %}" rel="stylesheet"
+          type="text/css">
+    <!-- template css link -->
+    <link href="{% static 'seaimport/assets/css/style.css' %}" rel="stylesheet">
+
+    <link href="{% static 'seaimport/assets/css/printables.css' %}" rel="stylesheet">
+</head>
+
+<body>
+<div class="container-fluid">
+    <div class="container freight_certificate_template">
+
+        <div class="row">
+            <div class="col-md-12 freight_certificate_title">
+                <p><b>freight certificate</b></p>
+
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-12 freight_certificate_body_info">
+                <p><b>consignee:</b>{{ hbl.hbl_consignor.name }}</p>
+                <p><b>HBL No.</b>{{ hbl.hbl_number }}</p>
+                <p><b>Container No.</b>{{ good.container_seal_number }} / {{ mbl.container_type }}</p>
+                <p><b>Quantity:</b>{{ good.quantity }}{{ good.package_type }}</p>
+                <p><b>weight / volume:</b>{{ good.gross_weight }} {{ good.weight_unit }}.</p>
+                <p><b>Port of loading:</b>{{ mbl.port_of_loading }}</p>
+                <p><b>Port of discharge:</b>{{ mbl.port_of_discharge }}</p>
+                <p><b>Eta {{ hbl.hbl_notifier.city.name }}:</b>{{ mbl.eta_destination_port }}</p>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 freight_certificate_body">
+                <p><b>
+                    This is to certify that the ocean freight for the subject import shipment from
+                    {{ mbl.port_of_loading }} to {{ mbl.port_of_discharge }}
+                    is as follows:
+                </b></p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 freight_certificate_bottom">
+                <p><b>Ocean Freight:</b>US$ {{ mbl.ocean_freight_cost_per_container }} per {{ mbl_good.container_size_type }} Container.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 freight_certificate_footer">
+                <p><b>Thanking you</b></p>
+                <p><b>For NAVANA LOGISTICS LTD.</b></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 freight_certificate_footer_signature">
+                <p><span>AUTHORIZED SIGNATURE</span></p>
+            </div>
+        </div>
+        <button onclick="printPage()" class="btn btn-outline-secondary float-right non-printable">Print</button>
+{#        <a href="{% url 'seaimport:sea_import_create_fc' hbl.id %}" class="btn btn-secondary float-right non-printable mr-2">Edit</a>#}
+    </div>
+</div>
+<script src="{% static 'seaimport/assets/vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'seaimport/assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'js/printables.js' %}"></script>
+</body>
+
+</html>

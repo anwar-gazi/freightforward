@@ -1,0 +1,93 @@
+{% extends 'seaimport/forwarder/base_template.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block page_title %}
+    Create Credit Note
+{% endblock %}
+{% block dashboard_body %}
+    <div class="container mt-4 mb-4">
+        {% include 'seaimport/forwarder/partials/_alert_message.html' %}
+        {% include 'seaimport/forwarder/partials/_form_errors.html' with form=DollarRateForm %}
+        {% include 'seaimport/forwarder/partials/_form_errors.html' with form=ExpenseFormSet %}
+        <div class="card">
+            <div class="card-header text-center text-uppercase
+            {% if job.task.job_progress.progress == 100 %}
+                text-white bg-success
+            {% elif job.task.job_progress.progress > 0 %}
+                text-white bg-info
+            {% endif %}
+            ">
+                <h2 class="">DeConsole No - {{ job.public_key }} ({{ job.task.job_progress.progress }}% Completed)</h2>
+            </div>
+            <div class="card-body">
+                <form action="" method="post">
+                    <center><h1>Credit Note</h1></center>
+                    <br>
+                    <div class="expense_form">
+
+                        <div class="row mb-3">
+                            <div class="col-6 align-middle">
+                                <p>Add More Cost Type -
+                                    <a href="JavaScript:newPopup('{% url 'seaimport:sea_import_create_job_costing_expense_type' %}');"><i
+                                            class="far fa-plus-square fa-1x"></i>
+                                    </a>
+                                </p>
+                            </div>
+                            <div class="col-6">
+                                Issue Credit Note to <span class="text-danger">*</span>
+                                {{ credit_note_form.agent | as_crispy_field }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-3">Name <span class="text-danger -">*</span></label>
+                            <label class="col-3">Amount (USD) <span class="text-danger">*</span></label>
+{#                            <label class="col-2">Amount <span class="text-danger"></span>(BDT)</label>#}
+                        </div>
+                        {{ credit_note_cost_form_set.management_form }}
+                        {% for form in credit_note_cost_form_set %}
+                            <div class="row expense_form_multiply form-inline mb-3">
+                                <div class="col-3">
+                                    {{ form.name | as_crispy_field }}
+                                </div>
+                                {#                                        <div class="col-2 overflow-hidden" style="border-right: 1px solid #ced4da; border-radius: .25rem;">#}
+                                {#                                            <div>{{ form.type | as_crispy_field }}</div>#}
+                                {#                                        </div>#}
+                                <div class="col-3">
+                                    <div class="amount_wrapper">{{ form.amount | as_crispy_field }}</div>
+                                </div>
+{#                                <div class="col-2">#}
+{#                                    <input type="number" class="form-control bdt">#}
+{#                                </div>#}
+
+                                <div class="col-1">
+
+                                </div>
+                            </div>
+                        {% endfor %}
+{#                        <div class="row mb-3 mt-3">#}
+{#                            <div class="col-2"><h3>Total Credit</h3></div>#}
+{#                            <div class="col-3"><h4>USD = <span id=""></span>-{{ credit_note.total_credit | floatformat:2 }}$#}
+{#                            </h4></div>#}
+{#                            <div class="col-3"><h4>BDT = - <span id="total_bdt"></span> TK</h4></div>#}
+{#                        </div>#}
+                    </div>
+
+                    <button type="submit" class="btn btn-success float-right mr-2">Create</button>
+
+                    <button type="reset" class="btn btn-warning float-left mr-2">Reset</button>
+                    <a href="javascript:close_window();"
+                       class="btn btn-danger float-left">Exit</a>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    </div>
+{% endblock %}
+
+{% block extraJs %}
+    <script type="text/javascript" src="{% static 'js/sea_import_invoice_creation.jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/extras.js' %}"></script>
+{% endblock %}

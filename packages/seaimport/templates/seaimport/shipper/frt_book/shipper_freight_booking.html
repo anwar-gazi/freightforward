@@ -1,0 +1,25 @@
+{% extends 'intuit/fm/base.shipper.html' %}
+{% load i18n static %}
+
+{% block page_title %}
+    <title>Sea Import Booking Form</title>
+{% endblock %}
+
+{% block head_includes %}
+    {{ block.super }}
+    <link href="{% static 'seaimport/assets/css/style.css' %}" rel="stylesheet">
+    <link href="https://unpkg.com/gijgo@1.9.11/css/gijgo.min.css" rel="stylesheet" type="text/css"/>
+{% endblock head_includes %}
+
+{% block content %}
+    <div id="page_content">
+        <div class="page-loading"><i class="fa fa-spin fa-spinner"></i> Page Loading</div>
+        {% include 'seaimport/shipper/frt_book/partials/_sea_import_booking_body2.html' %}
+    </div>
+
+{% endblock content %}
+
+{#Extra includes for this page#}
+{% block foot_js %}
+    <script type="text/javascript" src="{% static 'js/sea_import_booking.jquery.js' %}"></script>
+{% endblock %}

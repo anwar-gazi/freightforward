@@ -1,0 +1,65 @@
+{% extends 'intuit/fm/base.html' %}
+{% load i18n static %}
+{% block page_title %}
+    <title>Freight Booking Form</title>
+{% endblock %}
+{% block head_includes %}
+    {{ block.super }}
+    <link href="{% static 'booking/assets/css/style.css' %}" rel="stylesheet">
+    <link href="https://unpkg.com/gijgo@1.9.11/css/gijgo.min.css" rel="stylesheet" type="text/css"/>
+    <style type="text/css">
+        .content {
+            background-image: url({% static 'img/aircargoap.jpg' %});
+            background-repeat: no-repeat, repeat;
+            background-position: center;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+    </style>
+{% endblock head_includes %}
+{% block breadcrumbs %}
+    <div class="row">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'forwarder_grid_menu_home' %}">Home</a></li>
+                    <li class="breadcrumb-item" aria-current="page"><a href="{% url 'airexport_apps_menu' %}">Air Export</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><a href="">Freight Booking (by Forwarder)</a></li>
+                    <li class="position-absolute" style="right: 100px"><a href="{% url 'airexport_apps_menu' %}"><i class="fa fa-times-circle text-danger"></i></a></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+{% endblock breadcrumbs %}
+{% block left-nav %}
+    {% include 'intuit/fm/forwarder/left-nav/menu_grid_home_left_nav.html' %}
+{% endblock left-nav %}
+{% block content %}
+    <div id="page_content">
+        <i class="fa fa-spin fa-spinner"></i> Page Loading
+    </div>
+{% endblock content %}
+{% block foot_includes %}
+    {{ block.super }}
+    <script type="text/babel">
+        window.urlfor_init_data = "{% url 'ajax-forwarder-get_airexport_frtbookingpage_init_data' %}";
+        {#window.urlfor_save_shipper_address = "{% url 'ajax-shipper-save_address' %}";#}
+
+        window.urlfor_booking_mainentry = "{% url 'ajax-shipper-booking_main_entry' %}";
+        window.urlfor_booking_save_address = "{% url 'ajax-shipper-booking_save_address' %}";
+        window.urlfor_booking_save_bank_info = "{% url 'ajax-shipper-booking_save_bankinfo' %}";
+        window.urlfor_booking_portsinfo_entry = "{% url 'ajax-shipper-portsinfo_entry' %}";
+        window.urlfor_booking_goodsinfo_entry = "{% url 'ajax-shipper-goodsinfo_entry' %}";
+        window.urlfor_booking_goodsrefinfo_entry = "{% url 'ajax-shipper-goodsrefinfo_entry' %}";
+        window.urlfor_booking_shippingsrvc_entry = "{% url 'ajax-shipper-booking_shipping_entry' %}";
+        window.urlfor_booking_stakeholder_ref_entry = "{% url 'ajax-shipper-booking_save_stakeholder_ref' %}";
+        window.urlfor_booking_ordernotes_entry = "{% url 'ajax-shipper-booking_save_order_notes' %}";
+        window.urlfor_booking_pickupnotes_entry = "{% url 'ajax-shipper-booking_save_pickup_notes' %}";
+
+        window.urlfor_booking_entry_completion = "{% url 'ajax-shipper-booking_entry_completion' %}";
+    </script>
+    <script type="text/babel" src="{% static 'shipper/bookingform/bankinfo_mixin.babel.js' %}"></script>
+    <script type="text/babel" src="{% static 'js/shipper_frt_book_mixin.babel.js' %}"></script>
+    <script type="text/babel" src="{% static 'js/booking_functions.react.js' %}"></script>
+    <script type="text/babel" src="{% static 'js/booking.react.js' %}"></script>
+{% endblock foot_includes %}

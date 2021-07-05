@@ -1,0 +1,36 @@
+<ul class="list-group">
+    <li class="list-group-item">
+        <a href="{% url 'admin:freightman_currency_changelist' %}" title="" target="_blank"> <i class="menu-icon "></i>
+            <i class="fas fa-dollar-sign"></i> Currency</a>
+    </li>
+    <li class="list-group-item">
+        <a href="{% url 'admin:freightman_city_changelist' %}" title="" target="_blank"> <i class="menu-icon "></i>
+            <i class="fas fa-city"></i> Cities</a>
+    </li>
+    <li class="list-group-item"><a href="{% url 'admin:freightman_country_changelist' %}" title="" target="_blank"> <i class="menu-icon "></i>
+        <i class="fas fa-flag"></i> Countries</a></li>
+    <li class="list-group-item"><a href="{% url 'admin:seaexport_seaport_changelist' %}" title="" target="_blank"> <i class="menu-icon "></i>
+        <i class="fas fa-plane-departure"></i> Sea Ports</a></li>
+    <li class="list-group-item"><a href="{% url 'admin:freightman_chargetype_changelist' %}" title="" target="_blank"> <i class="menu-icon "></i>
+        <i class="fas fa-hand-holding-usd"></i> Charges Type</a></li>
+    <li class="list-group-item"><a href="{% url 'admin:freightman_goodsreferencetypes_changelist' %}" title="" target="_blank"> <i class="menu-icon "></i>
+        <i class="fa fa-circle"></i> Goods Reference Types</a></li>
+    <li class="list-group-item"><a href="{% url 'admin:seaexport_seatermsofdelivery_changelist' %}" title="" target="_blank"> <i class="menu-icon "></i>
+        <i class="fa fa-hand-paper"></i> Terms of Delivery</a></li>
+</ul>
+
+<div class="row mt-3">
+    <div class="col">
+        <div class="card">
+            <div class="card-header">Company Default Address</div>
+            <div class="card-body">
+                {% if default_address %}
+                    <a href="{{ org_edit_url }}" target="_blank">View Default Address</a>
+                {% else %}
+                    <div><span class="text-danger">No default address found.</span>
+                        <a href="{{ org_edit_url }}" target="_blank"><i class="fa fa-external-link-alt small"></i> Add one</a></div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

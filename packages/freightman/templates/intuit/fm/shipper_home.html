@@ -1,0 +1,65 @@
+{% extends 'intuit/fm/base.shipper.html' %}
+{% load static %}
+{% block breadcrumbs %}
+    <div class="row">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+{% endblock breadcrumbs %}
+{% block content %}
+    <div>
+        <div>
+            <h2>Air Export</h2>
+            <hr/>
+        </div>
+        <div class="row" style="">
+            <div class="col-2"></div>
+            <div class="col-2">
+                <a href="{% url 'shipper-freight_booking' %}">
+                    <div class="menu-grid-item" style="background-color: skyblue">
+                        <img class="menu-grid-icon" src="{% static 'icons/plus.png' %}" alt="icon"/>
+                        <div>Air Export Freight Booking</div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-2">
+                <a href="{% url 'airexport_shipper_freight_booking_list' %}">
+                    <div class="menu-grid-item" style="background-color: skyblue">
+                        <img class="menu-grid-icon" src="{% static 'icons/booking_list.png' %}" alt="icon"/>
+                        <div>Freight Booking List</div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-2"></div>
+        </div>
+        <div style="margin-top: 100px">
+            <h2>Sea Export</h2>
+            <hr/>
+        </div>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-2">
+                <a href="{% url 'seaexport:seaexport_supplier_freight_booking_page' %}">
+                    <div class="menu-grid-item" style="background-color: skyblue">
+                        <img class="menu-grid-icon" src="{% static 'icons/plus.png' %}" alt="icon"/>
+                        <div>Sea Export Freight Booking</div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-2">
+                <a href="{% url 'seaexport:seaexport_supplier_freight_bookinglist_page' %}">
+                    <div class="menu-grid-item" style="background-color: skyblue">
+                        <img class="menu-grid-icon" src="{% static 'icons/sea_frt_book_list.png' %}" alt="icon"/>
+                        <div>Freight Booking List</div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-2"></div>
+        </div>
+    </div>
+{% endblock content %}

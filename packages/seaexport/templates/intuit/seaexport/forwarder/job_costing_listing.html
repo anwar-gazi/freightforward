@@ -1,0 +1,45 @@
+{% extends 'intuit/fm/base.html' %}
+{% load i18n static %}
+{% block page_title %}
+    <title>Job Costing</title>
+{% endblock %}
+{% block head_includes %}
+    {{ block.super }}
+{% endblock head_includes %}
+{% block breadcrumbs %}
+    <div class="row">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'forwarder_grid_menu_home' %}">Home</a></li>
+                    <li class="breadcrumb-item" aria-current="page"><a href="{% url 'seaexport:seaexport_apps_menu' %}">Sea Export</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><a href="">Consolidation Job List</a></li>
+                    <li class="position-absolute" style="right: 100px"><a href="{% url 'seaexport:seaexport_apps_menu' %}"><i class="fa fa-times-circle text-danger"></i></a></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+{% endblock breadcrumbs %}
+{% block content %}
+    <div class="container">
+        <div class="py-4 text-center bg-success">
+            <h2>Consolidation Job List</h2>
+        </div>
+        <div id="page_content">
+            <span id="page_content_spinner"><i class="fa fa-spin fa-spinner"></i> Page Loading</span>
+        </div>
+    </div>
+    <div id="bottom_info">
+
+    </div>
+{% endblock content %}
+{% block foot_includes %}
+    {{ block.super }}
+    <script>
+        window.urlfor_consol_list = '{% url "seaexport:get_consol_list_for_job_costing" %}';
+    </script>
+    <script type="text/babel" src="{% static 'seaexport/forwarder/consol_list_for_job_costing.babel.js' %}"></script>
+    <script type="text/babel">
+        ReactDOM.render(<ConsolJobCostingList/>, document.getElementById('page_content'));
+    </script>
+{% endblock foot_includes %}

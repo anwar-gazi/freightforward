@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% load static %}
+{% load humanize %}
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Invoice {{ hbl.hbl_number }}</title>
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'seaimport/assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- font awesome css -->
+    <link href="{% static 'seaimport/assets/vendor/fonts/css/fontawesome-all.min.css' %}" rel="stylesheet"
+          type="text/css">
+    <!-- template css link -->
+    <link href="{% static 'seaimport/assets/css/style.css' %}" rel="stylesheet">
+
+    <link href="{% static 'seaimport/assets/css/printables.css' %}" rel="stylesheet">
+</head>
+
+<body>
+<div class="container-fluid">
+    <div class="container invoice_template" id="printable">
+
+        <div class="row">
+            <div class="col-md-12 date_part">
+                <p><b>Date:</b>{{ hbl.job.created_at | date:"m-d-Y" }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 submit_to">
+                <p><b>To</b></p>
+                <p><b>{{ hbl.hbl_notifier.name }}</b></p>
+                <p><b>Address:</b>{{ hbl.hbl_notifier.address }}, {{ hbl.hbl_notifier.city }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 invoice_title">
+                <p><b>INVOICE</b></p>
+
+            </div>
+        </div>
+        {##}
+        <div class="row person_info">
+
+            <div class="col-md-6">
+                <p><b>SHIPER NAME: </b>{{ hbl.hbl_consignor.name }}</p>
+                <p><b>CONSIGNEE: </b>{{ hbl.hbl_notifier.name }}</p>
+                <p><b>ORIGIN: </b>{{ hbl.hbl_consignor.city.country }}</p>
+                <p><b>DESTINATION: </b>{{ hbl.hbl_notifier.city.country }}</p>
+            </div>
+            <div class="col-md-6 ">
+                <p><b>COMMODITY: </b>{{ good.type }}</p>
+                <p><b>PACKAGE / QNTY: </b>{{ good.package_type }} / {{ good.quantity }}</p>
+                <p><b>CONTAINER NO: </b>{{ good.container_seal_number }}</p>
+                <p><b>HBL NO: </b>{{ hbl.hbl_number }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 invoice_body_title">
+                <p><b>invoice against {{ hbl.hbl_notifier.name }}'s shipment from {{ hbl.hbl_consignor.city.name }}
+                    to {{ hbl.hbl_notifier.city }}</b></p>
+
+            </div>
+        </div>
+        {##}
+        <div class="row">
+            <div class="col-md-12 invoice_body_table">
+                <table class="table table-borderless">
+
+                    <tbody>
+                    {% for expense in expenses %}
+                        <tr>
+                            <td style="width: 60%;">{{ expense.type }}</td>
+                            <td style="width: 20%;"><span
+                                    class="usd_amount">{{ expense.amount |floatformat |intcomma }}</span> usd
+                            </td>
+                            <td style="width: 20%;"><span
+                                    class="bdt_amount">{% widthratio expense.amount 1 hbl.job.dollar_rate %}</span> bdt
+                            </td>
+                        </tr>
+                    {% endfor %}
+
+                    <tr class="tr_bg">
+                        <td style="width: 60%;">Total</td>
+                        <td style="width: 20%;"><span id="total_usd"></span> usd</td>
+                        <td style="width: 20%;"><span id="total_bdt"></span> bdt</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+        {##}
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 invoice_footer_info">
+                <p><b>exchange rate usd 1.00 = bdt tk. {{ hbl.job.dollar_rate }}</b></p>
+
+                <div class="row">
+                    <div class="col-md-6 footer_info_left">
+
+                        <p><b>company name:<span></span></b></p>
+                        <p><b>account no:<span></span></b></p>
+                        <p><b>bank name:<span></span></b></p>
+                        <p><b>swift codee:<span></span></b></p>
+                        <p><b>bank address:<span></span></b></p>
+                    </div>
+                    <div class="col-md-6 footer_info_right">
+                        <p><b>{{ forwarder_bank.company.name }}</b></p>
+                        <p><b>{{ forwarder_bank.account_no }}</b></p>
+                        <p><b>{{ forwarder_bank.bank_name }}</b></p>
+                        <p><b>{{ forwarder_bank.swift_code }}</b></p>
+                        <p><b>{{ forwarder_bank.bank_address }}</b></p>
+                    </div>
+                </div>
+                <p class="total_amount"><b>in word bdt <span>...............................................................................</span></b>
+                </p>
+            </div>
+
+        </div>
+        <div class="row invoice_footer_part">
+
+
+            <div class="col-md-6 footer_left"><b>prepared by: {{ user.first_name }} {{ user.last_name }}</b></div>
+            <div class="col-md-6 footer_right"><b>authorized signatory:</b></div>
+        </div>
+        <button onclick="printPage()" class="btn btn-outline-secondary float-right non-printable">Print</button>
+
+        <a href="{% url 'seaimport:sea_import_create_invoice' hbl.id %}"
+           class="btn btn-secondary float-right non-printable text-capitalize mr-2"
+        >Edit Invoice</a>
+    </div>
+</div>
+
+
+<!-- Bootstrap core JavaScript -->
+<script src="{% static 'seaimport/assets/vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'seaimport/assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<!-- project js link -->
+<script>
+    var total_usd = 0
+    $(".usd_amount").map(function () {
+        total_usd += parseFloat($(this).html())
+    });
+    $('#total_usd').html(total_usd)
+
+    var total_bdt = 0
+    $(".bdt_amount").map(function () {
+        total_bdt += parseFloat($(this).html())
+    });
+    $('#total_bdt').html(total_bdt)
+
+</script>
+<script src="{% static 'js/printables.js' %}"></script>
+
+</body>
+
+</html>

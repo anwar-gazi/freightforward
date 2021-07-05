@@ -1,0 +1,337 @@
+<div class="" role="dialog" id="con_att_modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            {#            <button type="button" class="close" data-dismiss="modal">&times;</button>#}
+            <h4 class="modal-title"></h4>
+        </div>
+        <div class="modal-body">
+            <div class="">
+                <div class="">
+                    <!-- consol part start -->
+                    <div class="col-md-12">
+
+                        <label for="select_hawb">Select Master Airway Bill</label>
+                        <table class="table table-bordered console_table" id="select_mawb">
+                            <thead>
+                            <tr>
+                                <th scope="col" style="width: 8%;">Type</th>
+                                <th scope="col" style="width: 24%;">Shipment Number</th>
+                                <th scope="col" style="width: 40%;">Shipper</th>
+                                <th scope="col" style="width: 20%;">Consignee</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><input type="text" class="form-control"></td>
+                                <td><select name="" id="mawb_public_id" class="form-control select_mawb_options">
+                                    <option value="">--</option>
+                                </select></td>
+                                <td><input type="text" class="form-control"></td>
+                                <td><input type="text" class="form-control"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        <label for="select_hawb">Select House Airway Bill</label>
+                        <table class="table table-bordered console_table" id="select_hawb">
+                            <thead>
+                            <tr>
+                                <th scope="col" style="width: 8%;">Type</th>
+                                <th scope="col" style="width: 24%;">Shipment Number</th>
+                                <th scope="col" style="width: 40%;">Shipper</th>
+                                <th scope="col" style="width: 20%;">Consignee</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><input type="text" class="form-control"></td>
+                                <td><select class="form-control select_hawb_options hawb_public_id">
+                                    <option value="">--</option>
+                                </select></td>
+                                <td><input type="text" class="form-control"></td>
+                                <td><input type="text" class="form-control" placeholder=""></td>
+                            </tr>
+                            </tbody>
+
+                        </table>
+                        <button type="button" class="btn btn-secondary" id="add_more_mawb">Add More Master Airway Bill</button>
+                    </div>
+                </div>
+                <!-- consol part end -->
+            </div>
+        </div>
+    </div>
+</div>
+
+{#<div class="modal" role="dialog" id="con_att_modal">#}
+{#    <div class="modal-content">#}
+{#        <div class="modal-header">#}
+{#            <button type="button" class="close" data-dismiss="modal">&times;</button>#}
+{#            <h4 class="modal-title"></h4>#}
+{#        </div>#}
+{#        <div class="modal-body">#}
+{#            <div class="">#}
+{#                <div class="">#}
+{#                    <!-- consol part start -->#}
+{#                    <div class="col-md-12 order_notes">#}
+{#                        <div class="order_notescontain">#}
+{#                        </div>#}
+{#                        <div class="row console_attach">#}
+{#                            <div class="col-md-8 col-sm-8 col-xs-12">#}
+{#                                <div class="row">#}
+{#                                    <div class="col-md-6 col-sm-6 col-xs-12">#}
+{#                                        <div class="form-group">#}
+{#                                            <label>Job No</label>#}
+{#                                            <div class="col-md-12 col-sm-12 col-xs-12 departure_select">#}
+{#                                                <div class="input-group">#}
+{#                                                    <label class="col-form-label symbol">G</label>#}
+{#                                                    <select class="form-control">#}
+{#                                                        <option>Job No 01</option>#}
+{#                                                        <option>Job No 02</option>#}
+{#                                                        <option>Job No 03</option>#}
+{#                                                        <option>Job No 04</option>#}
+{#                                                        <option>Job No 05</option>#}
+{#                                                    </select>#}
+{#                                                </div>#}
+{##}
+{#                                            </div>#}
+{#                                        </div>#}
+{##}
+{#                                    </div>#}
+{#                                    <div class="col-md-6 col-sm-6 col-xs-12">#}
+{#                                        <div class="selectonclick pdt20">#}
+{##}
+{#                                            <div class="row">#}
+{#                                                <div class="col-md-6">#}
+{#                                                    <div class="shipment_type">#}
+{#                                                        <div class="custom-control custom-radio">#}
+{#                                                            <input type="radio" class="custom-control-input" id="shipment_typeair" name="defaultExampleRadios">#}
+{#                                                            <label class="custom-control-label" for="shipment_typeair"><i class="fa fa-plane" aria-hidden="true"></i>#}
+{#                                                            </label>#}
+{#                                                        </div>#}
+{#                                                    </div>#}
+{#                                                    <div class="selectonclick">#}
+{#                                                        <div class="shipment_type">#}
+{#                                                            <div class="custom-control custom-radio">#}
+{#                                                                <input type="radio" class="custom-control-input" id="shipment_typeship" name="defaultExampleRadios">#}
+{#                                                                <label class="custom-control-label" for="shipment_typeship"><i class="fa fa-ship" aria-hidden="true"></i>#}
+{#                                                                </label>#}
+{#                                                            </div>#}
+{#                                                        </div>#}
+{#                                                    </div>#}
+{#                                                    <div class="selectonclick">#}
+{#                                                        <div class="shipment_type">#}
+{#                                                            <div class="custom-control custom-radio">#}
+{#                                                                <input type="radio" class="custom-control-input" id="shipment_typecar" name="defaultExampleRadios">#}
+{#                                                                <label class="custom-control-label" for="shipment_typecar"><i class="fa fa-bus" aria-hidden="true"></i>#}
+{#                                                                </label>#}
+{#                                                            </div>#}
+{#                                                        </div>#}
+{#                                                    </div>#}
+{#                                                </div>#}
+{#                                                <div class="col-md-6">#}
+{#                                                    <div class="shipment_type">#}
+{#                                                        <div class="custom-control custom-radio">#}
+{#                                                            <input type="radio" class="custom-control-input" id="shipment_export" name="defaultExampleRadios">#}
+{#                                                            <label class="custom-control-label type_export" for="shipment_export">Export</label>#}
+{#                                                        </div>#}
+{#                                                    </div>#}
+{#                                                    <div class="selectonclick">#}
+{#                                                        <div class="shipment_type">#}
+{#                                                            <div class="custom-control custom-radio">#}
+{#                                                                <input type="radio" class="custom-control-input" id="shipment_import" name="defaultExampleRadios">#}
+{#                                                                <label class="custom-control-label type_import" for="shipment_import">Import</label>#}
+{#                                                            </div>#}
+{#                                                        </div>#}
+{#                                                    </div>#}
+{#                                                </div>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{##}
+{##}
+{#                            </div>#}
+{#                            <div class="col-md-4 col-sm-12 col-xs-12">#}
+{#                                <div class="form-group">#}
+{#                                    <label>Shipper</label>#}
+{#                                    <div class="input-group">#}
+{#                                        <input type="text" class="form-control" placeholder="GEOWILSHA">#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                                <div class="form-group">#}
+{#                                    <label>Consignee</label>#}
+{#                                    <div class="input-group">#}
+{#                                        <input type="text" class="form-control" placeholder="GEOWILSHA01">#}
+{#                                    </div>#}
+{#                                </div>#}
+{##}
+{#                            </div>#}
+{##}
+{##}
+{#                            <div class="col-md-12">#}
+{##}
+{#                                <div class="form-group">#}
+{#                                    <div class="row">#}
+{#                                        <div class="col-md-6 attach_number">#}
+{##}
+{#                                            <div class="col-md-12 attach_numbertitle">#}
+{#                                                <div class="row">#}
+{#                                                    <label class="width_58 tit_left"><b>Consolidation</b></label>#}
+{#                                                    <label class="width_42 tit_right"><b>Sumary of Houses</b></label>#}
+{##}
+{#                                                </div>#}
+{##}
+{##}
+{#                                            </div>#}
+{##}
+{##}
+{#                                            <div class="form-group row">#}
+{#                                                <label class="col-sm-4 col-xs-12 col-form-label">No. of Pakage</label>#}
+{#                                                <div class="col-sm-8 col-xs-12">#}
+{#                                                    <div class="input-group">#}
+{##}
+{#                                                        <input type="number" class="form-control" placeholder="192">#}
+{#                                                        <label class="col-form-label symbol">#}
+{#                                                            <div class="custom-control custom-checkbox">#}
+{#                                                                <input type="checkbox" class="custom-control-input" id="Pakagenumber">#}
+{#                                                                <label class="custom-control-label" for="Pakagenumber"></label>#}
+{#                                                            </div>#}
+{#                                                        </label>#}
+{#                                                        <input type="number" class="form-control" placeholder="192">#}
+{#                                                    </div>#}
+{#                                                </div>#}
+{#                                            </div>#}
+{##}
+{##}
+{#                                            <div class="form-group row">#}
+{#                                                <label class="col-sm-4 col-xs-12 col-form-label ">Gross weight</label>#}
+{#                                                <div class="col-sm-8 col-xs-12">#}
+{#                                                    <div class="input-group">#}
+{##}
+{#                                                        <input type="number" class="form-control" placeholder="22294.00">#}
+{#                                                        <label class="col-form-label symbol">#}
+{#                                                            <div class="custom-control custom-checkbox">#}
+{#                                                                <input type="checkbox" class="custom-control-input" id="grosswe">#}
+{#                                                                <label class="custom-control-label" for="grosswe"></label>#}
+{#                                                            </div>#}
+{#                                                        </label>#}
+{#                                                        <input type="number" class="form-control" placeholder="22294.00">#}
+{#                                                    </div>#}
+{#                                                </div>#}
+{#                                            </div>#}
+{##}
+{#                                            <div class="form-group row">#}
+{#                                                <label class="col-sm-4 col-xs-12 col-form-label ">Chargable weight</label>#}
+{#                                                <div class="col-sm-8 col-xs-12">#}
+{#                                                    <div class="input-group">#}
+{##}
+{#                                                        <input type="number" class="form-control" placeholder="22294.00">#}
+{#                                                        <label class="col-form-label symbol">#}
+{#                                                            <div class="custom-control custom-checkbox">#}
+{#                                                                <input type="checkbox" class="custom-control-input" id="chargable">#}
+{#                                                                <label class="custom-control-label" for="chargable"></label>#}
+{#                                                            </div>#}
+{#                                                        </label>#}
+{#                                                        <input type="number" class="form-control" placeholder="22294.00">#}
+{#                                                    </div>#}
+{#                                                </div>#}
+{#                                            </div>#}
+{##}
+{#                                            <div class="form-group row">#}
+{#                                                <label class="col-sm-4 col-xs-12 col-form-label ">Volume</label>#}
+{#                                                <div class="col-sm-8 col-xs-12">#}
+{#                                                    <div class="input-group">#}
+{##}
+{#                                                        <input type="number" class="form-control" placeholder="22294.00">#}
+{#                                                        <label class="col-form-label symbol">#}
+{#                                                            <div class="custom-control custom-checkbox">#}
+{#                                                                <input type="checkbox" class="custom-control-input" id="volume">#}
+{#                                                                <label class="custom-control-label" for="vendorolume"></label>#}
+{#                                                            </div>#}
+{#                                                        </label>#}
+{#                                                        <input type="number" class="form-control" placeholder="22294.00">#}
+{#                                                    </div>#}
+{#                                                </div>#}
+{#                                            </div>#}
+{##}
+{##}
+{#                                        </div>#}
+{#                                        <div class="col-md-6">#}
+{#                                            <div class="form-group">#}
+{#                                                <label>Depature</label>#}
+{#                                                <div class="col-md-12 col-sm-12 col-xs-12 departure_select">#}
+{#                                                    <div class="input-group ">#}
+{#                                                        <input type="text" class="form-control" placeholder="CN">#}
+{#                                                        <input type="text" class="form-control" placeholder="SHA">#}
+{#                                                        <input type="date" class="form-control" placeholder="31/08/2019">#}
+{#                                                    </div>#}
+{##}
+{#                                                </div>#}
+{#                                            </div>#}
+{#                                            <div class="form-group">#}
+{#                                                <label>Arrival</label>#}
+{#                                                <div class="col-md-12 col-sm-12 col-xs-12 departure_select">#}
+{#                                                    <div class="input-group ">#}
+{#                                                        <input type="text" class="form-control" placeholder="IT">#}
+{#                                                        <input type="text" class="form-control" placeholder="MIL">#}
+{#                                                        <input type="date" class="form-control" placeholder="31/08/2019">#}
+{#                                                    </div>#}
+{##}
+{#                                                </div>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{##}
+{##}
+{#                                    </div>#}
+{##}
+{#                                </div>#}
+{#                            </div>#}
+{##}
+{#                            <div class="col-md-12">#}
+{##}
+{#                                <table class="table table-bordered console_table">#}
+{#                                    <thead>#}
+{#                                    <tr>#}
+{#                                        <th scope="col" style="width: 8%;">Seq.</th>#}
+{#                                        <th scope="col" style="width: 8%;">Type</th>#}
+{#                                        <th scope="col" style="width: 24%;">Shipment Number</th>#}
+{#                                        <th scope="col" style="width: 40%;">Shipper</th>#}
+{#                                        <th scope="col" style="width: 20%;">Consignee</th>#}
+{#                                    </tr>#}
+{#                                    </thead>#}
+{#                                    <tbody>#}
+{#                                    <tr>#}
+{#                                        <th scope="row"><input type="number" class="form-control" placeholder="01"></th>#}
+{#                                        <td><input type="text" class="form-control" placeholder="C"></td>#}
+{#                                        <td><input type="number" class="form-control" placeholder="SAES0801035"></td>#}
+{#                                        <td><input type="text" class="form-control" placeholder="ANHUI ANIMAL BY-PRODUCT DEVELOPMENT"></td>#}
+{#                                        <td><input type="text" class="form-control" placeholder="MIMOSKA"></td>#}
+{#                                    </tr>#}
+{#                                    <tr>#}
+{#                                        <th scope="row"><input type="number" class="form-control" placeholder="02"></th>#}
+{#                                        <td><input type="text" class="form-control" placeholder="B"></td>#}
+{#                                        <td><input type="number" class="form-control" placeholder="SAES0801036"></td>#}
+{#                                        <td><input type="text" class="form-control" placeholder="ANHUI ANIMAL BY-PRODUCT DEVELOPMENT"></td>#}
+{#                                        <td><input type="text" class="form-control" placeholder="MIMOSKA"></td>#}
+{#                                    </tr>#}
+{#                                    <tr>#}
+{#                                        <th scope="row"><input type="number" class="form-control" placeholder="03"></th>#}
+{#                                        <td><input type="text" class="form-control" placeholder="F"></td>#}
+{#                                        <td><input type="number" class="form-control" placeholder="SAES0801037"></td>#}
+{#                                        <td><input type="text" class="form-control" placeholder="ANHUI ANIMAL BY-PRODUCT DEVELOPMENT"></td>#}
+{#                                        <td><input type="text" class="form-control" placeholder="MIMOSKA"></td>#}
+{#                                    </tr>#}
+{#                                    </tbody>#}
+{#                                </table>#}
+{#                            </div>#}
+{#                        </div>#}
+{##}
+{##}
+{#                    </div>#}
+{#                </div>#}
+{#                <!-- consol part end -->#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{#</div>#}

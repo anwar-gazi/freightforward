@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Navana Logistics Limited</title>
+    <link rel="stylesheet" href="{% static 'seaimport/assets/vendor/bootstrap/css/bootstrap.css' %}">
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row bg-primary p-4 text-white">
+        <div class="col-12"><h1><strong>NAVANA LOGISTICS LIMITED</strong></h1></div>
+        <div class="col-12"><p>Enter Document ID to check validity</p></div>
+    </div>
+
+    <div class="container mt-4">
+        <form action="" method="get">
+            <div class="row mt-4">
+                <div class="col-5"><label for="document">Enter Document Number <span class="text-danger">*</span></label></div>
+                <div class="col-5"><label for="issue_date">Enter Issue Date <span class="text-danger">*</span></label></div>
+            </div>
+            <div class="row">
+                <div class="col-5">
+                    <input type="text" id="document" name="document" class="form-control" placeholder="Enter Document Number" required value="{{ document_number }}">
+                </div>
+                <div class="col-5">
+                    <input type="date" id="issue_date" name="issue_date" class="form-control" placeholder="Enter Issue Date" required value="{{ issue_date }}">
+                </div>
+                <div class="col-2">
+                    <button type="submit" class="btn btn-dark">Validate</button>
+                </div>
+            </div>
+
+            <div class="mt-4">{% include 'seaimport/forwarder/partials/_alert_message.html' %}</div>
+
+
+        </form>
+    </div>
+</div>
+</body>
+</html>

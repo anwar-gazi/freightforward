@@ -1,0 +1,200 @@
+{% extends 'intuit/fm/base.html' %}
+{% load static %}
+{% block head_includes %}
+    {{ block.super }}
+{% endblock head_includes %}
+{% block left-nav %}
+    {% include 'intuit/fm/forwarder/left-nav/menu_grid_home_left_nav.html' %}
+{% endblock left-nav %}
+{% block breadcrumbs %}
+    <div class="row">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'forwarder_grid_menu_home' %}">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><a href="">Sea Export</a></li>
+                    <li class="position-absolute" style="right: 100px"><a href="{% url 'forwarder_grid_menu_home' %}"><i class="fa fa-times-circle text-danger"></i></a></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+{% endblock breadcrumbs %}
+{% block content %}
+    <div>
+        <h4>Freight Booking and Shipment Job(HBL)</h4>
+        <hr/>
+    </div>
+    <div class="row" style="">
+        <div class="col-1"></div>
+        <div class="col-2">
+            <a href="{% url 'seaexport:seaexport_forwarder_freight_booking_page' %}">
+                <div class="menu-grid-item bg-lgreen">
+                    <img class="menu-grid-icon" src="{% static 'icons/seaexport/booking.png' %}" alt="icon"/>
+                    <div>Create Freight Booking</div>
+                </div>
+            </a>
+        </div>
+        <div class="col-2">
+            <a href="{% url 'seaexport:seaexport_forwarder_freight_bookinglist_page' %}">
+                <div class="menu-grid-item bg-lgreen">
+                    <img class="menu-grid-icon" src="{% static 'icons/seaexport/bookinglist.png' %}" alt="icon"/>
+                    <div>Freight Booking List</div>
+                </div>
+            </a>
+        </div>
+        <div class="col-2">
+            <a href="{% url 'seaexport:seaexport_forwarder_create_hbl_page' %}">
+                <div class="menu-grid-item bg-lgreen">
+                    <img class="menu-grid-icon" src="{% static 'icons/plus.png' %}" alt="icon"/>
+                    <div>Create Shipment Job(HBL)</div>
+                </div>
+            </a>
+        </div>
+        <div class="col-2">
+            <a href="{% url 'seaexport:seaexport_forwarder_hbl_list_page' %}">
+                <div class="menu-grid-item bg-lgreen">
+                    <img class="menu-grid-icon" src="{% static 'icons/seaexport/shipment_list.png' %}" alt="icon"/>
+                    <div>List Shipment Job(HBL)</div>
+                </div>
+            </a>
+        </div>
+        <div class="col">
+        </div>
+    </div>
+
+    <div style="margin-top: 100px">
+        <h4>MBL and Consolidation</h4>
+        <hr/>
+    </div>
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-2">
+            <a href="{% url 'seaexport:seaexport_forwarder_add_mbl_page' %}">
+                <div class="menu-grid-item bg-lgreen">
+                    <img class="menu-grid-icon" src="{% static 'icons/plus.png' %}" alt="icon"/>
+                    <div>Add MBL</div>
+                </div>
+            </a>
+        </div>
+        <div class="col-2">
+            <a href="{% url 'seaexport:mbl_list_page' %}">
+                <div class="menu-grid-item bg-lgreen">
+                    <img class="menu-grid-icon" src="{% static 'icons/seaexport/shipment_list.png' %}" alt="icon"/>
+                    <div>List MBL</div>
+                </div>
+            </a>
+        </div>
+        <div class="col-2">
+            <a href="{% url 'seaexport:seaexport_container_consol_page' %}">
+                <div class="menu-grid-item bg-lgreen">
+                    <img class="menu-grid-icon" src="{% static 'icons/plus.png' %}" alt="icon"/>
+                    <div>Container Consolidation</div>
+                </div>
+            </a>
+        </div>
+        <div class="col-2">
+            <a href="{% url 'seaexport:seaexport_container_consol_listing_page' %}">
+                <div class="menu-grid-item bg-lgreen">
+                    <img class="menu-grid-icon" src="{% static 'icons/seaexport/shipment_list.png' %}" alt="icon"/>
+                    <div>Consolidation Listing</div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div style="margin-top: 100px">
+        <h4>Job costing and invoice</h4>
+        <hr/>
+    </div>
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-2">
+            <a href="{% url 'seaexport:seaexport_job_costing_listing_page' %}">
+                <div class="menu-grid-item bg-lgreen">
+                    <img class="menu-grid-icon" src="{% static 'icons/seaexport/accounting.png' %}" alt="icon"/>
+                    <div>Job Costing</div>
+                </div>
+            </a>
+        </div>
+        <div class="col-2">
+            <a href="{% url 'seaexport:under_development' %}">
+                <div class="menu-grid-item bg-lgreen">
+                    <img class="menu-grid-icon" src="{% static 'icons/seaexport/shipment_list.png' %}" alt="icon"/>
+                    <div>Add debit note</div>
+                </div>
+            </a>
+        </div>
+        <div class="col-2">
+            <a href="{% url 'seaexport:under_development' %}">
+                <div class="menu-grid-item bg-lgreen">
+                    <img class="menu-grid-icon" src="{% static 'icons/seaexport/create_job.png' %}" alt="icon"/>
+                    <div>List debit note</div>
+                </div>
+            </a>
+        </div>
+        <div class="col-2">
+            <a href="{% url 'seaexport:under_development' %}">
+                <div class="menu-grid-item bg-lgreen">
+                    <img class="menu-grid-icon" src="{% static 'icons/seaexport/shipment_list.png' %}" alt="icon"/>
+                    <div>Add credit note</div>
+                </div>
+            </a>
+        </div>
+        <div class="col-2">
+            <a href="{% url 'seaexport:under_development' %}">
+                <div class="menu-grid-item bg-lgreen">
+                    <img class="menu-grid-icon" src="{% static 'icons/seaexport/create_job.png' %}" alt="icon"/>
+                    <div>List credit note</div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div style="margin-top: 100px">
+        <h4>Documentation</h4>
+        <hr/>
+    </div>
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-2">
+            <a href="{% url 'seaexport:seaexport_shipment_advice_listing_page' %}">
+                <div class="menu-grid-item bg-lgreen">
+                    <img class="menu-grid-icon" src="{% static 'icons/master_bill.png' %}" alt="icon"/>
+                    <div>Shipment advice</div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div style="margin-top: 100px">
+        <h4>Report</h4>
+        <hr/>
+    </div>
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-2">
+            <a href="{% url 'seaexport:dsr' %}">
+                <div class="menu-grid-item bg-lgreen">
+                    <img class="menu-grid-icon" src="{% static 'icons/cargo_manifest_listing.png' %}" alt="icon"/>
+                    <div>Daily Status Report (DSR)</div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div style="margin-top: 100px">
+        <h4>Settings</h4>
+        <hr/>
+    </div>
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-2">
+            <a href="{% url 'seaexport:forwarder_settings_page' %}">
+                <div class="menu-grid-item bg-lgreen">
+                    <img class="menu-grid-icon" src="{% static 'icons/settings.png' %}" alt="icon"/>
+                    <div>Settings</div>
+                </div>
+            </a>
+        </div>
+    </div>
+{% endblock content %}

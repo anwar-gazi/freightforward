@@ -1,0 +1,13 @@
+{
+  "name": "Flot Spline Plugin",
+  "version": "0.8.1",
+  "main": "jquery.flot.spline.js",
+  "dependencies": {
+    "jquery": ">= 1.2.6"
+  },
+  "homepage": "https://github.com/miloszfalinski/jquery.flot.spline",
+  "_release": "0.8.1",
+  "_source": "git://github.com/miloszfalinski/jquery.flot.spline.git",
+  "_target": "*",
+  "_originalSource": "git://github.com/miloszfalinski/jquery.flot.spline.git"
+}

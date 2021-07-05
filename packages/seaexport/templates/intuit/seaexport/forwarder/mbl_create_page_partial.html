@@ -1,0 +1,315 @@
+<div class="container">
+    <h1 class="text-center text-dark font-3xl">Master Bill of Leading</h1>
+    <p class="text-center">Please fill-up this from to create the MBL</p>
+    <div class="row">
+        <div class="col">
+            <div><span class="mawb_id_airline_iata_num"></span> <span class="mawb_id_airport_code"></span> <span
+                    class="mawb_id_awb_num"></span></div>
+        </div>
+        <div class="col">
+            <div class="pull-right"><span id="hawb_reference_num"></span></div>
+        </div>
+    </div>
+
+
+    <div class="row mt-3" id="all_inputs">
+
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-dark text-white text-uppercase">
+                    Seaway Bill Selection
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="form-group col-12">
+                            <label for="sea_way_bill">Select Seaway Bill<i class="text-danger">*</i></label>
+                            <select class="form-control" id="sea_way_bill" name="sea_way_bill"></select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================== SHIPPER INFO ============================= -->
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header bg-dark text-white text-uppercase">
+                    Shipper info
+                </div>
+                <div class="card-body">
+                    <div class="form-group ">
+                        <label for="shipper_name">Name {% if form.shipper_name.field.required %}
+                            <i class="text-danger">*</i>{% endif %}</label>
+                        <input type="text" class="form-control" id="shipper_name" name="shipper_name" required>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-xs-12 col-form-label">Address
+                            {% if form.shipper_address.field.required %}<i class="text-danger">*</i>{% endif %}
+                        </label>
+                        <div class="col-sm-8 col-xs-12">
+                            <textarea class="form-control" id="shipper_address" required></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ========================== SHIPPER INFO ============================= -->
+
+        <!-- ========================== CONSIGNEE INFO ============================= -->
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header bg-dark text-white text-uppercase">
+                    Consignee Info
+                </div>
+                <div class="card-body">
+                    <div class="form-group ">
+                        <label for="consignee_name">Name {% if form.consignee_name.field.required %}
+                            <i class="text-danger">*</i>{% endif %}</label>
+                        <input type="text" class="form-control" id="consignee_name" required>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-xs-12 col-form-label">Address
+                            {% if form.consignee_address.field.required %}<i class="text-danger">*</i>{% endif %}
+                        </label>
+                        <div class="col-sm-8 col-xs-12">
+                            <textarea class="form-control" id="consignee_address" required></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================== ISSUING CARRIER INFO ============================= -->
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header bg-dark text-white text-uppercase">
+                    Notify Party
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="form-group col-12">
+                            <label for="carrier_agent_selection_input">
+                                Select Notifier {% if form.carrier_agent_selection_input.field.required %}
+                                <i class="text-danger">*</i>{% endif %}</label>
+                            <select class="form-control awb_agent_select" id="carrier_agent_selection_input"></select>
+                        </div>
+                        <div class="form-group col-6">
+                            <label for="carrier_agent_name">
+                                Name {% if form.carrier_agent_name.field.required %}
+                                <i class="text-danger">*</i>{% endif %}
+                            </label>
+                            <input type="text" class="form-control" name="carrier_agent_name" id="carrier_agent_name">
+                        </div>
+                        <div class="form-group  col-6">
+                            <label for="carrier_agent_city">
+                                City {% if form.carrier_agent_city.field.required %}
+                                <i class="text-danger">*</i>{% endif %}
+                            </label>
+                            <select class="form-control city_select" id="carrier_agent_city"></select>
+                        </div>
+                        <div class="form-group  col-6">
+                            <label for="carrier_agent_state">
+                                State {% if form.carrier_agent_state.field.required %}
+                                <i class="text-danger">*</i>{% endif %}</label>
+                            <input class="form-control" id="carrier_agent_state">
+                        </div>
+                        <div class="form-group  col-6">
+                            <label for="carrier_agent_country">
+                                Country {% if form.carrier_agent_country.field.required %}
+                                <i class="text-danger">*</i>{% endif %}</label>
+                            <select class="form-control country_select" id="carrier_agent_country"></select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-6">
+                            <label for="carrier_agent_iata_code">
+                                IATA Code {% if form.carrier_agent_iata_code.field.required %}
+                                <i class="text-danger">*</i>{% endif %}</label>
+                            <input type="number" class="form-control" id="carrier_agent_iata_code"
+                                   name="carrier_agent_iata_code">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================== BOOKING INFORMATION ============================= -->
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header bg-dark text-white text-uppercase">
+                    Booking Information
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="booking_globalid" class="text-uppercase">Booking No
+                            {% if form.booking_globalid.field.required %}
+                                <i class="text-danger">*</i>{% endif %}</label>
+                        <select id="booking_globalid"
+                                class="form-control available_confirmed_booking_selection"></select>
+
+                        <label for="bl_no" class="mt-3 text-uppercase">B/L No {% if form.bl_no.field.required %}
+                            <i class="text-danger">*</i>{% endif %}
+                        </label>
+                        <input type="text" id="bl_no" class="form-control">
+
+                        <label for="for_delivery_appy_to_description" class="mt-3 text-uppercase">For Delivery of goods
+                            please apply to: {% if form.for_delivery_appy_to_description.field.required %}
+                                <i class="text-danger">*</i>{% endif %}
+                        </label>
+                        <textarea type="text" id="for_delivery_appy_to_description" class="form-control" cols="30"
+                                  rows="5"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================== Origin/Destination Port and information ============================= -->
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-dark text-white text-uppercase">
+                    Origin/Destination Port and information
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-3">
+                            <label for="place_of_receipt">Place of Receipt</label>
+                            <input type="text" class="form-control" id="place_of_receipt" name="place_of_receipt">
+                        </div>
+
+                        <div class="col-3">
+                            <label for="port_of_loading">Port of Loading</label>
+                            <input type="text" class="form-control" id="port_of_loading" name="port_of_loading">
+                        </div>
+
+                        <div class="col-3">
+                            <label for="feeder_vessel">Feeder Vessel</label>
+                            <input type="text" class="form-control" id="feeder_vessel" name="feeder_vessel">
+                        </div>
+
+                        <div class="col-3">
+                            <label for="voyage_no">Voyage No</label>
+                            <input type="text" class="form-control" id="voyage_no" name="voyage_no">
+                        </div>
+
+                        <div class="col-3 mt-3">
+                            <label for="tentative_mother_vessel">Tentative Mother Vessel</label>
+                            <input type="text" class="form-control" id="tentative_mother_vessel"
+                                   name="tentative_mother_vessel">
+                        </div>
+
+                        <div class="col-3 mt-3">
+                            <label for="voyage_no_2">Voyage No</label>
+                            <input type="text" class="form-control" id="voyage_no_2" name="voyage_no_2">
+                        </div>
+
+                        <div class="col-3 mt-3">
+                            <label for="port_of_discharge">Port of Discharge</label>
+                            <input type="text" class="form-control" id="port_of_discharge" name="port_of_discharge">
+                        </div>
+
+                        <div class="col-3 mt-3">
+                            <label for="final_destination">Final Destination</label>
+                            <input type="text" class="form-control" id="final_destination" name="final_destination">
+                        </div>
+
+                        <div class="col-12 mt-3">
+                            <label for="excess_value_declaration">Excess value declaration refers to clause 6(4) (8) &
+                                (C) on reverse side</label>
+                            <input type="text" class="form-control" id="excess_value_declaration"
+                                   name="excess_value_declaration">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ========================== Origin/Destination Port and information ============================= -->
+
+        <!-- ========================== GOODS INFO ============================= -->
+        <div class="card col-12">
+            <div class="card-header bg-dark text-white">
+                GOODS INFORMATION
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-3">
+                        <label for="goods_containers_and_seal_numbers">Marks and numbers <br>of container and <br>seal
+                            numbers</label>
+                        <input type="text" class="form-control" id="goods_containers_and_seal_numbers"
+                               name="goods_containers_and_seal_numbers">
+                    </div>
+
+                    <div class="col-3">
+                        <label for="goods_no_of_packages">Number <br>of <br>Packages</label>
+                        <input type="number" class="form-control" id="goods_no_of_packages" name="goods_no_of_packages">
+                    </div>
+
+                    <div class="col-3">
+                        <label for="goods_gross_weight">Gross <br>Weight <br>Kilo</label>
+                        <input type="text" class="form-control" id="goods_gross_weight" name="goods_gross_weight">
+                    </div>
+
+                    <div class="col-3">
+                        <label for="goods_measurement_cbm">Measurement <br>(CBM) <br>&nbsp;</label>
+                        <input type="text" class="form-control" id="goods_measurement_cbm" name="goods_measurement_cbm">
+                    </div>
+
+                    <div class="col-12">
+                        <label for="goods_description" class="mt-3">Description of packages goods particulars furnishing
+                            by shipper</label>
+                        <textarea class="form-control" id="goods_description" name="goods_description" cols="30"
+                                  rows="10"></textarea>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <!-- ========================== GOODS INFO ============================= -->
+
+        <!-- ========================== OTHER INFO ============================= -->
+        <div class="card col-12">
+            <div class="card-header bg-dark text-white">
+                OTHERS
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                        <label for="sea_freight_details">FREIGHT DETAILS, CHARGES, ETC.</label>
+                        <textarea class="form-control" id="sea_freight_details" name="sea_freight_details" cols="30"
+                                  rows="10"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ========================== OTHER INFO ============================= -->
+
+        <div class="card col-12">
+            <div class="card-header bg-dark text-white text-uppercase">
+                Notes
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                        <label for="sea_freight_details">FREIGHT DETAILS, CHARGES, ETC.</label>
+                        <textarea class="form-control" id="sea_freight_details" name="sea_freight_details" cols="30"
+                                  rows="10"></textarea>
+                    </div>
+
+                    <div class="col-6">
+                        <label for="place_of_issue">Place of Issue</label>
+                        <input type="text" class="form-control" id="place_of_issue" name="place_of_issue">
+                    </div>
+
+                    <div class="col-6">
+                        <label for="date_of_issue">Date of Issue</label>
+                        <input type="date" class="form-control" id="date_of_issue" name="date_of_issue">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button type="button" class="btn btn-primary" id="submit_button">Submit</button>
+    </div>
+</div>

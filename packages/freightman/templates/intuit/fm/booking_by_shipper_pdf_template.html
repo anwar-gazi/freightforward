@@ -1,0 +1,1075 @@
+{% load i18n static %}
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang=""> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <link rel="stylesheet" href="{% static 'bootstrap-4.1.3-dist/css/bootstrap.min.css' %}">
+
+
+    <link href="{% static 'booking/assets/css/style.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+<!-- Right Panel -->
+<h1 style="color:black;">Navana Freight Management System</h1>
+<div id="right-panel" class="container">
+
+
+
+    <!-- Content -->
+    <div class="content">
+
+        <div id="page_content">
+            <div class="col-md-12 senderpart_ref">
+                <div class="Shippers_partstart">
+                    <div class="title"><b>sender</b></div>
+                    <div class="row">
+                        <div class="col-md-6 leftpart">
+                            <div class="shippers_part">
+                                <form>
+                                    <div>
+                                        <div class="sub_title"><b>shipper</b></div>
+                                        <div class="form-group row"><label
+                                                class="col-sm-4 col-xs-12 col-form-label">id</label>
+                                            <div class="col-sm-8 col-xs-12"><input type="text" class="form-control"
+                                                                                   placeholder=""
+                                                                                   disabled="" value="7"></div>
+                                        </div>
+                                        <div class="form-group row"><label class="col-sm-4 col-xs-12 col-form-label">company
+                                            name<i
+                                                    class="text-danger small">*</i></label>
+                                            <div class="col-sm-8 col-xs-12"><input type="text" class="form-control"
+                                                                                   placeholder="company name"></div>
+                                        </div>
+                                        <div class="form-group row"><label class="col-sm-4 col-xs-12 col-form-label">Address<i
+                                                class="text-danger small">*</i></label>
+                                            <div class="col-sm-8 col-xs-12"><textarea class="form-control"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row"><label class="col-sm-4 col-xs-12 col-form-label">post
+                                            code<i
+                                                    class="text-danger small">*</i></label>
+                                            <div class="col-sm-8 col-xs-12"><input type="number" class="form-control"
+                                                                                   placeholder="post code"></div>
+                                        </div>
+                                        <div class="form-group row"><label class="col-sm-4 col-xs-12 col-form-label">city<i
+                                                class="text-danger small">*</i></label>
+                                            <div class="col-sm-8 col-xs-12"><input type="text" class="form-control"
+                                                                                   placeholder="city"></div>
+                                        </div>
+                                        <div class="form-group row"><label class="col-sm-4 col-xs-12 col-form-label">state<i
+                                                class="text-danger small">*</i></label>
+                                            <div class="col-sm-8 col-xs-12"><input type="text" class="form-control"
+                                                                                   placeholder="state"></div>
+                                        </div>
+                                        <div class="form-group row"><label class="col-sm-4 col-xs-12 col-form-label">country<i
+                                                class="text-danger small">*</i></label>
+                                            <div class="col-sm-8 col-xs-12"><input type="text" class="form-control"
+                                                                                   placeholder="country"></div>
+                                        </div>
+                                        <div class="form-group row"><label class="col-sm-4 col-xs-12 col-form-label">contact<i
+                                                class="text-danger small">*</i></label>
+                                            <div class="col-sm-8 col-xs-12"><input type="text" class="form-control"
+                                                                                   placeholder="contact"></div>
+                                        </div>
+                                        <div class="form-group row"><label class="col-sm-4 col-xs-12 col-form-label">telephone
+                                            number<i class="text-danger small">*</i></label>
+                                            <div class="col-sm-8 col-xs-12"><input type="number" class="form-control"
+                                                                                   placeholder="telephone number"></div>
+                                        </div>
+                                        <div class="form-group row"><label class="col-sm-4 col-xs-12 col-form-label">mobile
+                                            number<i
+                                                    class="text-danger small">*</i></label>
+                                            <div class="col-sm-8 col-xs-12"><input type="number" class="form-control"
+                                                                                   placeholder="mobile number"></div>
+                                        </div>
+                                        <div class="form-group row"><label class="col-sm-4 col-xs-12 col-form-label">fax
+                                            number<i
+                                                    class="text-danger small">*</i></label>
+                                            <div class="col-sm-8 col-xs-12"><input type="number" class="form-control"
+                                                                                   placeholder="fax number"></div>
+                                        </div>
+                                        <div class="form-group row"><label class="col-sm-4 col-xs-12 col-form-label">e-mail
+                                            address<i class="text-danger small">*</i></label>
+                                            <div class="col-sm-8 col-xs-12"><input type="email" class="form-control"
+                                                                                   placeholder="e-mail address"></div>
+                                        </div>
+
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="consignee_part">
+                                <div class="col-md-12 title"><b>receiver</b></div>
+                                <div class="consignee_partstart">
+                                    <form>
+                                        <div>
+                                            <div class="sub_title"><b>consignee</b></div>
+                                            <div class="form-group row"><label
+                                                    class="col-sm-4 col-xs-12 col-form-label">id</label>
+                                                <div class="col-sm-8 col-xs-12"><input type="text" class="form-control"
+                                                                                       placeholder="" disabled=""
+                                                                                       value=""></div>
+                                            </div>
+                                            <div class="form-group row"><label
+                                                    class="col-sm-4 col-xs-12 col-form-label">company
+                                                name<i class="text-danger small">*</i></label>
+                                                <div class="col-sm-8 col-xs-12"><input type="text" class="form-control"
+                                                                                       placeholder="company name"></div>
+                                            </div>
+                                            <div class="form-group row"><label
+                                                    class="col-sm-4 col-xs-12 col-form-label">Address<i
+                                                    class="text-danger small">*</i></label>
+                                                <div class="col-sm-8 col-xs-12"><textarea
+                                                        class="form-control"></textarea></div>
+                                            </div>
+                                            <div class="form-group row"><label
+                                                    class="col-sm-4 col-xs-12 col-form-label">post code<i
+                                                    class="text-danger small">*</i></label>
+                                                <div class="col-sm-8 col-xs-12"><input type="number"
+                                                                                       class="form-control"
+                                                                                       placeholder="post code"></div>
+                                            </div>
+                                            <div class="form-group row"><label
+                                                    class="col-sm-4 col-xs-12 col-form-label">city<i
+                                                    class="text-danger small">*</i></label>
+                                                <div class="col-sm-8 col-xs-12"><input type="text" class="form-control"
+                                                                                       placeholder="city"></div>
+                                            </div>
+                                            <div class="form-group row"><label
+                                                    class="col-sm-4 col-xs-12 col-form-label">state<i
+                                                    class="text-danger small">*</i></label>
+                                                <div class="col-sm-8 col-xs-12"><input type="text" class="form-control"
+                                                                                       placeholder="state"></div>
+                                            </div>
+                                            <div class="form-group row"><label
+                                                    class="col-sm-4 col-xs-12 col-form-label">country<i
+                                                    class="text-danger small">*</i></label>
+                                                <div class="col-sm-8 col-xs-12"><input type="text" class="form-control"
+                                                                                       placeholder="country"></div>
+                                            </div>
+                                            <div class="form-group row"><label
+                                                    class="col-sm-4 col-xs-12 col-form-label">contact<i
+                                                    class="text-danger small">*</i></label>
+                                                <div class="col-sm-8 col-xs-12"><input type="text" class="form-control"
+                                                                                       placeholder="contact"></div>
+                                            </div>
+                                            <div class="form-group row"><label
+                                                    class="col-sm-4 col-xs-12 col-form-label">telephone
+                                                number<i class="text-danger small">*</i></label>
+                                                <div class="col-sm-8 col-xs-12"><input type="number"
+                                                                                       class="form-control"
+                                                                                       placeholder="telephone number">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row"><label
+                                                    class="col-sm-4 col-xs-12 col-form-label">mobile
+                                                number<i class="text-danger small">*</i></label>
+                                                <div class="col-sm-8 col-xs-12"><input type="number"
+                                                                                       class="form-control"
+                                                                                       placeholder="mobile number">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row"><label
+                                                    class="col-sm-4 col-xs-12 col-form-label">fax
+                                                number<i class="text-danger small">*</i></label>
+                                                <div class="col-sm-8 col-xs-12"><input type="number"
+                                                                                       class="form-control"
+                                                                                       placeholder="fax number"></div>
+                                            </div>
+                                            <div class="form-group row"><label
+                                                    class="col-sm-4 col-xs-12 col-form-label">e-mail
+                                                address<i class="text-danger small">*</i></label>
+                                                <div class="col-sm-8 col-xs-12"><input type="email" class="form-control"
+                                                                                       placeholder="e-mail address">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row"><label
+                                                    class="col-sm-4 col-xs-12 col-form-label">notes
+                                                1</label>
+                                                <div class="col-sm-8 col-xs-12"><textarea class="form-control"
+                                                                                          placeholder="notes 1"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row"><label
+                                                    class="col-sm-4 col-xs-12 col-form-label">notes
+                                                2</label>
+                                                <div class="col-sm-8 col-xs-12"><textarea class="form-control"
+                                                                                          placeholder="notes 2"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row"><label
+                                                    class="col-sm-4 col-xs-12 col-form-label">notes
+                                                3</label>
+                                                <div class="col-sm-8 col-xs-12"><textarea class="form-control"
+                                                                                          placeholder="notes 3"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row"><label
+                                                    class="col-sm-4 col-xs-12 col-form-label">reference</label>
+                                                <div class="col-sm-8 col-xs-12"><input type="text" class="form-control"
+                                                                                       placeholder="reference"></div>
+                                            </div>
+                                            <div class="form-check">
+                                                <div class="btn-group">
+                                                    <button type="button" class="">save in address book for BRAC
+                                                        Univeristy
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 tempoaddress_part">
+                            <div class="">
+                                <button><i class="fa fa-plus"></i> add more address</button>
+                                <div class="card">
+                                    <div class="card-header"><b>temporary address</b></div>
+                                    <div class="card-body">
+                                        <div class="form-group row"><label
+                                                class="col-sm-4 col-xs-12 col-form-label">id</label>
+                                            <div class="col-sm-8 col-xs-12"><input type="text" class="form-control"
+                                                                                   placeholder=""
+                                                                                   disabled="" value=""></div>
+                                        </div>
+                                        <div class="form-group row"><label class="col-sm-4 col-xs-12 col-form-label">company
+                                            name<i
+                                                    class="text-danger small">*</i></label>
+                                            <div class="col-sm-8 col-xs-12"><input type="text" class="form-control"
+                                                                                   placeholder="company name"></div>
+                                        </div>
+                                        <div class="form-group row"><label class="col-sm-4 col-xs-12 col-form-label">Address<i
+                                                class="text-danger small">*</i></label>
+                                            <div class="col-sm-8 col-xs-12"><textarea class="form-control"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row"><label class="col-sm-4 col-xs-12 col-form-label">post
+                                            code<i
+                                                    class="text-danger small">*</i></label>
+                                            <div class="col-sm-8 col-xs-12"><input type="number" class="form-control"
+                                                                                   placeholder="post code"></div>
+                                        </div>
+                                        <div class="form-group row"><label class="col-sm-4 col-xs-12 col-form-label">city<i
+                                                class="text-danger small">*</i></label>
+                                            <div class="col-sm-8 col-xs-12"><input type="text" class="form-control"
+                                                                                   placeholder="city"></div>
+                                        </div>
+                                        <div class="form-group row"><label class="col-sm-4 col-xs-12 col-form-label">state<i
+                                                class="text-danger small">*</i></label>
+                                            <div class="col-sm-8 col-xs-12"><input type="text" class="form-control"
+                                                                                   placeholder="state"></div>
+                                        </div>
+                                        <div class="form-group row"><label class="col-sm-4 col-xs-12 col-form-label">country<i
+                                                class="text-danger small">*</i></label>
+                                            <div class="col-sm-8 col-xs-12"><input type="text" class="form-control"
+                                                                                   placeholder="country"></div>
+                                        </div>
+                                        <div class="form-group row"><label class="col-sm-4 col-xs-12 col-form-label">contact<i
+                                                class="text-danger small">*</i></label>
+                                            <div class="col-sm-8 col-xs-12"><input type="text" class="form-control"
+                                                                                   placeholder="contact"></div>
+                                        </div>
+                                        <div class="form-group row"><label class="col-sm-4 col-xs-12 col-form-label">telephone
+                                            number<i class="text-danger small">*</i></label>
+                                            <div class="col-sm-8 col-xs-12"><input type="number" class="form-control"
+                                                                                   placeholder="telephone number"></div>
+                                        </div>
+                                        <div class="form-group row"><label class="col-sm-4 col-xs-12 col-form-label">mobile
+                                            number<i
+                                                    class="text-danger small">*</i></label>
+                                            <div class="col-sm-8 col-xs-12"><input type="number" class="form-control"
+                                                                                   placeholder="mobile number"></div>
+                                        </div>
+                                        <div class="form-group row"><label class="col-sm-4 col-xs-12 col-form-label">fax
+                                            number<i
+                                                    class="text-danger small">*</i></label>
+                                            <div class="col-sm-8 col-xs-12"><input type="number" class="form-control"
+                                                                                   placeholder="fax number"></div>
+                                        </div>
+                                        <div class="form-group row"><label class="col-sm-4 col-xs-12 col-form-label">e-mail
+                                            address<i class="text-danger small">*</i></label>
+                                            <div class="col-sm-8 col-xs-12"><input type="email" class="form-control"
+                                                                                   placeholder="e-mail address"></div>
+                                        </div>
+                                        <div class="form-group row"><label class="col-sm-4 col-xs-12 col-form-label">notes
+                                            1</label>
+                                            <div class="col-sm-8 col-xs-12"><textarea class="form-control"
+                                                                                      placeholder="notes 1"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row"><label class="col-sm-4 col-xs-12 col-form-label">notes
+                                            2</label>
+                                            <div class="col-sm-8 col-xs-12"><textarea class="form-control"
+                                                                                      placeholder="notes 2"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row"><label class="col-sm-4 col-xs-12 col-form-label">notes
+                                            3</label>
+                                            <div class="col-sm-8 col-xs-12"><textarea class="form-control"
+                                                                                      placeholder="notes 3"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row"><label
+                                                class="col-sm-4 col-xs-12 col-form-label">reference</label>
+                                            <div class="col-sm-8 col-xs-12"><input type="text" class="form-control"
+                                                                                   placeholder="reference"></div>
+                                        </div>
+                                        <div class="">
+                                            <div class="headline"><strong>address type <i
+                                                    class="text-danger small">*</i></strong>
+                                            </div>
+                                            <div>
+                                                <div class="custom-control custom-radio"><input type="radio"
+                                                                                                class="custom-control-input"
+                                                                                                id="consignor"
+                                                                                                name="tmpaddresstype"
+                                                                                                value="consignor"><label
+                                                        class="custom-control-label" for="consignor">consignor</label>
+                                                </div>
+                                            </div>
+                                            <div class="">
+                                                <div class="custom-control custom-radio"><input type="radio"
+                                                                                                class="custom-control-input"
+                                                                                                id="pickup"
+                                                                                                name="tmpaddresstype"
+                                                                                                value="pickup"><label
+                                                        class="custom-control-label" for="pickup">pickup address</label>
+                                                </div>
+                                            </div>
+                                            <div class="">
+                                                <div class="custom-control custom-radio"><input type="radio"
+                                                                                                class="custom-control-input"
+                                                                                                id="consignee"
+                                                                                                name="tmpaddresstype"
+                                                                                                value="consignee"><label
+                                                        class="custom-control-label" for="consignee">consignee</label>
+                                                </div>
+                                            </div>
+                                            <div class="">
+                                                <div class="custom-control custom-radio"><input type="radio"
+                                                                                                class="custom-control-input"
+                                                                                                id="delivery"
+                                                                                                name="tmpaddresstype"
+                                                                                                value="delivery"><label
+                                                        class="custom-control-label" for="delivery">delivery
+                                                    address</label></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="">
+                                        <div class="btn-group">
+                                            <button type="button" class="">save in address book</button>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="margin-top-20p"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 notify_part">
+                    <div class="card">
+                        <div class="card-header">Notify party</div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <div class="form-check">
+                                    <div class="checkbox"><label class="form-check-label" for="notifyshipper"><input
+                                            type="checkbox"
+                                            class="form-check-input"
+                                            id="notifyshipper"
+                                            name="notify_address"
+                                            value="on">Shipper
+                                    </label></div>
+                                    <div class="checkbox"><label class="form-check-label" for="notifyconsignee"><input
+                                            type="checkbox" class="form-check-input" id="notifyconsignee"
+                                            name="notify_address"
+                                            value="on">Consignee </label></div>
+                                    <div class="checkbox"><label class="form-check-label" for="notifytmpaddr_1"><input
+                                            type="checkbox" class="form-check-input" id="notifytmpaddr_1"
+                                            name="notify_address"
+                                            value="on">Temporary Address 1 </label></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="title"><b>Destination / Loading <i class="text-danger small">*</i></b></div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group"><label>Port of destination </label>
+                                    <div class="input-group"><input type="text" class="form-control"></div>
+                                </div>
+                                <div class="form-group"><label>Terms of delivery</label>
+                                    <div class="input-group"><select class="custom-select">
+                                        <option value=""></option>
+                                        <option value="EXW">EXW Ex Works</option>
+                                        <option value="FCA">FCA Free Carrier</option>
+                                        <option value="CPT">CPT Carriage Paid To</option>
+                                        <option value="CIP">CIP Carriage and Insurance Paid To</option>
+                                        <option value="DAT">DAT Delivered at Terminal</option>
+                                        <option value="DAP">DAP Delivered at Place</option>
+                                        <option value="DDP">DDP Delivered Duty Paid</option>
+                                        <option value="FAS">FAS Free Alongside Ship</option>
+                                        <option value="FOB">FOB Free on Board</option>
+                                        <option value="CFR">CFR Cost and Freight</option>
+                                        <option value="CIF">CIF Cost, Insurance, and Freight</option>
+                                    </select></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group"><label>Port of loading</label>
+                                    <div class="input-group"><input type="text" class="form-control"></div>
+                                </div>
+                                <div class="form-group"><label>Country of destination</label>
+                                    <div class="input-group"><input type="text" class="form-control"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer"></div>
+                </div>
+            </div>
+
+            <div class="col-md-12 goods_part">
+                <div class="title goods_partcontain"><b>goods (3) <i class="fa fa-question-circle cursor-pointer"
+                                                                     title=""></i></b>
+                </div>
+                <div>
+                    <div class="card">
+                        <div class="card-header">Goods info</div>
+                        <div class="card-body">
+                            <div class="goods_partcontain">
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-4 col-xs-12 ">
+                                            <div class="row">
+                                                <div class="col-md-3 pd_all_5">
+                                                    <div class="form-group"><label class="small">No of PCS</label>
+                                                        <div class="input-group"><input type="number"
+                                                                                        class="form-control"
+                                                                                        placeholder=""></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 pd_all_5">
+                                                    <div class="form-group"><label class="small">Package Type</label>
+                                                        <div class="input-group"><select class="form-control">
+                                                            <option>--</option>
+                                                        </select></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 pd_all_5">
+                                                    <div class="form-group"><label class="small">Weight (kg)</label>
+                                                        <div class="input-group"><input type="text" class="form-control"
+                                                                                        placeholder=""></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 pd_all_5">
+                                                    <div class="form-group"><label class="small">Volume (m3)</label>
+                                                        <div class="input-group"><input type="text" class="form-control"
+                                                                                        placeholder=""></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-xs-12 ">
+                                            <div class="row">
+                                                <div class="col-md-4 pd_all_5">
+                                                    <div class="form-group"><label class="small">Lengh (cm)</label>
+                                                        <div class="input-group"><input type="text" class="form-control"
+                                                                                        placeholder=""></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 pd_all_5">
+                                                    <div class="form-group"><label class="small">Width (cm)</label>
+                                                        <div class="input-group"><input type="text" class="form-control"
+                                                                                        placeholder=""></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 pd_all_5">
+                                                    <div class="form-group"><label class="small">Height (cm)</label>
+                                                        <div class="input-group"><input type="text" class="form-control"
+                                                                                        placeholder=""></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5 col-xs-12 ">
+                                            <div class="row">
+                                                <div class="col-md-2 pd_all_5">
+                                                    <div class="form-group"><label class="small">Quantity</label>
+                                                        <div class="input-group"><input type="number"
+                                                                                        class="form-control"
+                                                                                        placeholder=""></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2 pd_all_5">
+                                                    <div class="form-group"><label class="small">Unit price</label>
+                                                        <div class="input-group"><input type="text" class="form-control"
+                                                                                        placeholder=""></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2 pd_all_5">
+                                                    <div class="form-group"><label class="small">Currency</label>
+                                                        <div class="input-group"><select class="form-control">
+                                                            <option>--</option>
+                                                        </select></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 goods_middle">
+                                    <div class="row">
+                                        <div class="col-md-6 pd_all_5">
+                                            <div class="form-group"><label class="small">Shipping Mark</label>
+                                                <div class="input-group"><input type="text" class="form-control"
+                                                                                placeholder="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 pd_all_5">
+                                            <div class="form-group"><label class="small">Goods Description</label>
+                                                <div class="input-group"><input type="text" class="form-control"
+                                                                                placeholder="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="goods_middle"><strong>References</strong>
+                                    <button class="margin-left-20p btn btn-sm"><i class="fa fa-plus"></i> add</button>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group"><label class="form-control-label small">Reference
+                                                Type</label><select class="form-control">
+                                                <option>--</option>
+                                            </select></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group"><label class="form-control-label small">Reference
+                                                Number</label><input
+                                                    type="text" class="form-control"></div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group"><label class="form-control-label small">Reference
+                                                Type</label><select class="form-control">
+                                                <option>--</option>
+                                            </select></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group"><label class="form-control-label small">Reference
+                                                Number</label><input
+                                                    type="text" class="form-control"></div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group"><label class="form-control-label small">Reference
+                                                Type</label><select class="form-control">
+                                                <option>--</option>
+                                            </select></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group"><label class="form-control-label small">Reference
+                                                Number</label><input
+                                                    type="text" class="form-control"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="col-md-12 "></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">Goods info</div>
+                        <div class="card-body">
+                            <div class="goods_partcontain">
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-4 col-xs-12 ">
+                                            <div class="row">
+                                                <div class="col-md-3 pd_all_5">
+                                                    <div class="form-group"><label class="small">No of PCS</label>
+                                                        <div class="input-group"><input type="number"
+                                                                                        class="form-control"
+                                                                                        placeholder=""></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 pd_all_5">
+                                                    <div class="form-group"><label class="small">Package Type</label>
+                                                        <div class="input-group"><select class="form-control">
+                                                            <option>--</option>
+                                                        </select></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 pd_all_5">
+                                                    <div class="form-group"><label class="small">Weight (kg)</label>
+                                                        <div class="input-group"><input type="text" class="form-control"
+                                                                                        placeholder=""></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 pd_all_5">
+                                                    <div class="form-group"><label class="small">Volume (m3)</label>
+                                                        <div class="input-group"><input type="text" class="form-control"
+                                                                                        placeholder=""></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-xs-12 ">
+                                            <div class="row">
+                                                <div class="col-md-4 pd_all_5">
+                                                    <div class="form-group"><label class="small">Lengh (cm)</label>
+                                                        <div class="input-group"><input type="text" class="form-control"
+                                                                                        placeholder=""></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 pd_all_5">
+                                                    <div class="form-group"><label class="small">Width (cm)</label>
+                                                        <div class="input-group"><input type="text" class="form-control"
+                                                                                        placeholder=""></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 pd_all_5">
+                                                    <div class="form-group"><label class="small">Height (cm)</label>
+                                                        <div class="input-group"><input type="text" class="form-control"
+                                                                                        placeholder=""></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5 col-xs-12 ">
+                                            <div class="row">
+                                                <div class="col-md-2 pd_all_5">
+                                                    <div class="form-group"><label class="small">Quantity</label>
+                                                        <div class="input-group"><input type="number"
+                                                                                        class="form-control"
+                                                                                        placeholder=""></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2 pd_all_5">
+                                                    <div class="form-group"><label class="small">Unit price</label>
+                                                        <div class="input-group"><input type="text" class="form-control"
+                                                                                        placeholder=""></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2 pd_all_5">
+                                                    <div class="form-group"><label class="small">Currency</label>
+                                                        <div class="input-group"><select class="form-control">
+                                                            <option>--</option>
+                                                        </select></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 goods_middle">
+                                    <div class="row">
+                                        <div class="col-md-6 pd_all_5">
+                                            <div class="form-group"><label class="small">Shipping Mark</label>
+                                                <div class="input-group"><input type="text" class="form-control"
+                                                                                placeholder="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 pd_all_5">
+                                            <div class="form-group"><label class="small">Goods Description</label>
+                                                <div class="input-group"><input type="text" class="form-control"
+                                                                                placeholder="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="goods_middle"><strong>References</strong>
+                                    <button class="margin-left-20p btn btn-sm"><i class="fa fa-plus"></i> add</button>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group"><label class="form-control-label small">Reference
+                                                Type</label><select class="form-control">
+                                                <option>--</option>
+                                            </select></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group"><label class="form-control-label small">Reference
+                                                Number</label><input
+                                                    type="text" class="form-control"></div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group"><label class="form-control-label small">Reference
+                                                Type</label><select class="form-control">
+                                                <option>--</option>
+                                            </select></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group"><label class="form-control-label small">Reference
+                                                Number</label><input
+                                                    type="text" class="form-control"></div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group"><label class="form-control-label small">Reference
+                                                Type</label><select class="form-control">
+                                                <option>--</option>
+                                            </select></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group"><label class="form-control-label small">Reference
+                                                Number</label><input
+                                                    type="text" class="form-control"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="col-md-12 "></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">Goods info</div>
+                        <div class="card-body">
+                            <div class="goods_partcontain">
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-4 col-xs-12 ">
+                                            <div class="row">
+                                                <div class="col-md-3 pd_all_5">
+                                                    <div class="form-group"><label class="small">No of PCS</label>
+                                                        <div class="input-group"><input type="number"
+                                                                                        class="form-control"
+                                                                                        placeholder=""></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 pd_all_5">
+                                                    <div class="form-group"><label class="small">Package Type</label>
+                                                        <div class="input-group"><select class="form-control">
+                                                            <option>--</option>
+                                                        </select></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 pd_all_5">
+                                                    <div class="form-group"><label class="small">Weight (kg)</label>
+                                                        <div class="input-group"><input type="text" class="form-control"
+                                                                                        placeholder=""></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 pd_all_5">
+                                                    <div class="form-group"><label class="small">Volume (m3)</label>
+                                                        <div class="input-group"><input type="text" class="form-control"
+                                                                                        placeholder=""></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-xs-12 ">
+                                            <div class="row">
+                                                <div class="col-md-4 pd_all_5">
+                                                    <div class="form-group"><label class="small">Lengh (cm)</label>
+                                                        <div class="input-group"><input type="text" class="form-control"
+                                                                                        placeholder=""></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 pd_all_5">
+                                                    <div class="form-group"><label class="small">Width (cm)</label>
+                                                        <div class="input-group"><input type="text" class="form-control"
+                                                                                        placeholder=""></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 pd_all_5">
+                                                    <div class="form-group"><label class="small">Height (cm)</label>
+                                                        <div class="input-group"><input type="text" class="form-control"
+                                                                                        placeholder=""></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5 col-xs-12 ">
+                                            <div class="row">
+                                                <div class="col-md-2 pd_all_5">
+                                                    <div class="form-group"><label class="small">Quantity</label>
+                                                        <div class="input-group"><input type="number"
+                                                                                        class="form-control"
+                                                                                        placeholder=""></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2 pd_all_5">
+                                                    <div class="form-group"><label class="small">Unit price</label>
+                                                        <div class="input-group"><input type="text" class="form-control"
+                                                                                        placeholder=""></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2 pd_all_5">
+                                                    <div class="form-group"><label class="small">Currency</label>
+                                                        <div class="input-group"><select class="form-control">
+                                                            <option>--</option>
+                                                        </select></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 goods_middle">
+                                    <div class="row">
+                                        <div class="col-md-6 pd_all_5">
+                                            <div class="form-group"><label class="small">Shipping Mark</label>
+                                                <div class="input-group"><input type="text" class="form-control"
+                                                                                placeholder="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 pd_all_5">
+                                            <div class="form-group"><label class="small">Goods Description</label>
+                                                <div class="input-group"><input type="text" class="form-control"
+                                                                                placeholder="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="goods_middle"><strong>References</strong>
+                                    <button class="margin-left-20p btn btn-sm"><i class="fa fa-plus"></i> add</button>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group"><label class="form-control-label small">Reference
+                                                Type</label><select class="form-control">
+                                                <option>--</option>
+                                            </select></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group"><label class="form-control-label small">Reference
+                                                Number</label><input
+                                                    type="text" class="form-control"></div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group"><label class="form-control-label small">Reference
+                                                Type</label><select class="form-control">
+                                                <option>--</option>
+                                            </select></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group"><label class="form-control-label small">Reference
+                                                Number</label><input
+                                                    type="text" class="form-control"></div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group"><label class="form-control-label small">Reference
+                                                Type</label><select class="form-control">
+                                                <option>--</option>
+                                            </select></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group"><label class="form-control-label small">Reference
+                                                Number</label><input
+                                                    type="text" class="form-control"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="col-md-12 "></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12 frt_globalpart">
+                <div class="frt_globalcontain">
+                    <div class="card">
+                        <div class="card-header"><strong>Shipping services</strong></div>
+                        <div class="card-body">
+                            <div class="form-check">
+                                <div class="radio"><label class="form-check-label" for="express"><input type="radio"
+                                                                                                        class="form-check-input"
+                                                                                                        id="express"
+                                                                                                        value="nex-dd"
+                                                                                                        name="shipping_service_selection">Navana
+                                    Express (NEX - Door - Door only)</label></div>
+                                <div class="radio"><label class="form-check-label" for="nrd"><input type="radio"
+                                                                                                    class="form-check-input"
+                                                                                                    id="nrd" value="nrd"
+                                                                                                    name="shipping_service_selection">Navana
+                                    Red (NRD)</label></div>
+                                <div class="radio"><label class="form-check-label" for="nbl"><input type="radio"
+                                                                                                    class="form-check-input"
+                                                                                                    id="nbl" value="nbl"
+                                                                                                    name="shipping_service_selection">Navana
+                                    Blue (NBL)</label></div>
+                                <div class="radio"><label class="form-check-label" for="ngr"><input type="radio"
+                                                                                                    class="form-check-input"
+                                                                                                    id="ngr" value="ngr"
+                                                                                                    name="shipping_service_selection">Navana
+                                    Green (NGR)</label></div>
+                                <div class="radio"><label class="form-check-label" for="nsa"><input type="radio"
+                                                                                                    class="form-check-input"
+                                                                                                    id="nsa" value="nsa"
+                                                                                                    name="shipping_service_selection">Navana
+                                    Sea/Air</label></div>
+                            </div>
+                        </div>
+                        <div class="card-footer"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12 order_notes">
+                <div class="order_notescontain">
+                    <div class="title"><b>order notes</b></div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="selectonclick">
+                                <div class="subtitle"><strong>Freight Payment Instructions</strong></div>
+                                <div class="instructions_select">
+                                    <div class="custom-control custom-radio"><input type="radio"
+                                                                                    class="custom-control-input"
+                                                                                    name="defaultExampleRadios"
+                                                                                    id="freight_prepaid"
+                                                                                    value="on"><label
+                                            class="custom-control-label"
+                                            for="freight_prepaid">Prepaid</label>
+                                    </div>
+                                    <div class="custom-control custom-radio"><input type="radio"
+                                                                                    class="custom-control-input"
+                                                                                    name="defaultExampleRadios"
+                                                                                    id="freight_collect"
+                                                                                    value="on"><label
+                                            class="custom-control-label"
+                                            for="freight_collect">Collect</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="agreements_select">
+                                <div class="form-group"><label>available transport agreements</label>
+                                    <div class="input-group"><select class="form-control">
+                                        <option>agreements 01</option>
+                                        <option>agreements 02</option>
+                                        <option>agreements 03</option>
+                                        <option>agreements 04</option>
+                                        <option>agreements 05</option>
+                                    </select></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="delivery_instructions">
+                                <div class="form-group"><label>delivery instructions</label>
+                                    <div class="input-group"><input type="text" class="form-control"
+                                                                    placeholder="delivery instructions"></div>
+                                    <div class="input-group"><input type="text" class="form-control"
+                                                                    placeholder="delivery instructions"></div>
+                                    <div class="input-group"><input type="text" class="form-control"
+                                                                    placeholder="delivery instructions"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12 pickup_notes ">
+                <div class="pickup_notescontain">
+                    <div class="title"><b>pickup notes</b></div>
+                    <div class="row">
+                        <div class="col-md-6 pickup_datetimeinfo">
+                            <div class="form-group row"><label class="col-sm-4 col-xs-12 col-form-label">Pick-up
+                                Date</label>
+                                <div class="col-sm-8 col-xs-12"><select class="form-control">
+                                    <option>18 january 2018</option>
+                                    <option>19 january 2018</option>
+                                    <option>20 january 2018</option>
+                                    <option>21 january 2018</option>
+                                    <option>22 january 2018</option>
+                                </select></div>
+                            </div>
+                            <div class="form-group row"><label class="col-sm-4 col-xs-12 col-form-label">earliest
+                                pick-up
+                                time</label>
+                                <div class="col-sm-8 col-xs-12"><select class="form-control">
+                                    <option>08:00am</option>
+                                    <option>09:00am</option>
+                                    <option>10:00am</option>
+                                    <option>11:00am</option>
+                                    <option>2:00pm</option>
+                                </select></div>
+                            </div>
+                            <div class="form-group row"><label class="col-sm-4 col-xs-12 col-form-label">latest pick-up
+                                time</label>
+                                <div class="col-sm-8 col-xs-12"><select class="form-control">
+                                    <option>12:00am</option>
+                                    <option>1:00pm</option>
+                                    <option>2:00pm</option>
+                                    <option>3:00pm</option>
+                                    <option>4:00pm</option>
+                                </select></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="subtitle"><strong>Pick-up Instructions</strong></div>
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <div class="input-group"><input type="text" class="form-control"
+                                                                    placeholder="Pick-up Instructions"></div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <div class="input-group"><input type="text" class="form-control"
+                                                                    placeholder="Pick-up Instructions"></div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <div class="input-group"><input type="text" class="form-control"
+                                                                    placeholder="Pick-up Instructions"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pickup_notes_footer">
+                <div class="col-md-12 pickup_notes_footerbtn">
+                    <button type="button" class="btn btn-secondary">book</button>
+                    <button type="button" class="btn btn-info">reset</button>
+                    <button type="button" class="btn btn-success">save</button>
+                    <button type="button" class="btn btn-primary">refresh</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

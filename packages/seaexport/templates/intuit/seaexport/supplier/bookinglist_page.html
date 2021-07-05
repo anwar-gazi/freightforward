@@ -1,0 +1,35 @@
+{% extends 'intuit/fm/base.html' %}
+{% load i18n static %}
+{% block page_title %}
+    <title>Sea Export Booking List</title>
+{% endblock %}
+{% block head_includes %}
+    {{ block.super }}
+{% endblock head_includes %}
+{% block breadcrumbs %}
+    <div class="row">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'shipper-home' %}">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'seaexport:seaexport_supplier_freight_bookinglist_page' %}">Freight Booking List</a>
+                    </li>
+                    <li class="position-absolute" style="right: 100px"><a href="{% url 'shipper-home' %}"><i class="fa fa-times-circle text-danger"></i></a></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+{% endblock breadcrumbs %}
+{% block content %}
+    <div id="page_content">
+        <i class="fa fa-spin fa-spinner"></i> Page Loading
+    </div>
+{% endblock content %}
+{% block foot_includes %}
+    {{ block.super }}
+    <script type="text/babel">
+        window.urlfor_bookinglist = "{% url 'seaexport:ajax_shipper_get_bookinglist' %}";
+        window.urlfor_booking_confirm = "{% url 'seaexport:seaexport_forwarder_confirm_booking' %}";
+    </script>
+    <script type="text/babel" src="{% static 'seaexport/shipper/seaexport_booking_list_by_shipper.babel.js' %}"></script>
+{% endblock foot_includes %}

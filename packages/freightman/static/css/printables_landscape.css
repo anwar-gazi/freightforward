@@ -1,0 +1,20 @@
+@media print {
+    .non-printable {
+        display: none;
+    }
+
+    .printable {
+        display: block;
+    }
+
+    @page {
+        margin: 0;
+        size: landscape;
+    }
+
+body { margin: 1.6cm; }
+
+}
+
+
+

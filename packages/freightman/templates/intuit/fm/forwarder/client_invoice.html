@@ -1,0 +1,297 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Client Invoice</title>
+</head>
+
+<style>
+    /* reset */
+
+    * {
+        border: 0;
+        box-sizing: content-box;
+        color: inherit;
+        font-family: inherit;
+        font-size: inherit;
+        font-style: inherit;
+        font-weight: inherit;
+        line-height: inherit;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        text-decoration: none;
+        vertical-align: top;
+    }
+
+    /* heading */
+
+    h1 {
+        font: bold 100% sans-serif;
+        letter-spacing: 0.5em;
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    .footer_left span {
+        font-weight: bold;
+        border-bottom: 1px solid #000;
+    }
+
+    .footer_left table, .footer_left th, .footer_left td {
+        border: transparent;
+    }
+
+    .footer_right table, .footer_right th, .footer_right td {
+
+        border-bottom: 2px solid #f1f1f1;
+        border-collapse: collapse;
+    }
+
+    .body_table tr:nth-child(odd) {
+        background: #e7e7e7;
+    }
+
+    .body_table th {
+        font-weight: bold;
+        background: #607D8B;
+        color: #fff;
+    }
+
+    .body_table table, .body_table th, .body_table td {
+        /* border: 1px solid black;*/
+        border-collapse: collapse;
+    }
+
+    .body_table th, .body_table td {
+        padding: 10px;
+        text-align: left;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: left;
+    }
+
+    /* page */
+
+    html {
+        font: 14px/1 'Open Sans', sans-serif;
+        overflow: auto;
+        padding: 0.5in;
+    }
+
+    html {
+        background: #999;
+        cursor: default;
+    }
+
+    body {
+        box-sizing: border-box;
+        height: 11in;
+        margin: 0 auto;
+        overflow: hidden;
+        padding: 10px;
+        width: 8.5in;
+        font-size: 10px;
+        background: #FFF;
+        box-shadow: 0 0 1in -0.25in rgba(0, 0, 0, 0.5);
+    }
+
+    header b,
+    .invoice_info b {
+        padding-right: 10px;
+        font-weight: bold;
+    }
+
+    b {
+        padding-right: 10px;
+        font-weight: bold;
+    }
+
+    p {
+        padding: 2px 0px;
+    }
+</style>
+
+<body>
+<header>
+    <h1 style="background: #828385;padding: 10px;margin-bottom: 10px;color: #ffffff;font-weight: 800;font-size: 16px;letter-spacing: 5px;">
+        Invoice</h1>
+    <div class="header_info" style="display: flex;padding: 10px;">
+        <span class="logo_part" style="width: 33%;"><img src="{% static 'img/navana_logistics_logo.jpg' %}" alt="logo" style="width: 150px;"></span>
+        <address style="width: 33%;">
+            <p>1/B Green Square</p>
+            <p>3rd Floor, Road No. 08, Gulshan-1</p>
+            <p>DHAKA</p>
+        </address>
+
+        <aside style="width: 33%;">
+            <p style="width: 100%;display: flex;"><b style="width: 25%;">Phone:</b> <span style="width: 75%;">017-XXX-XXXXX</span>
+            </p>
+            <p style="width: 100%;display: flex;"><b style="width: 25%;">Email:</b> <span style="width: 75%;">sales@navanalogistics.org</span>
+            </p>
+        </aside>
+
+    </div>
+
+</header>
+
+<div class="invoice_info" style="display: flex;padding: 10px;">
+    <aside style="width: 33%; padding: 0px 5px;">
+        <p style="width: 100%;display: flex;"><b style="width: 20%;">Bill To:</b> <span
+                style="width: 80%;">{{ hawb.shipper.company_name }}</span></p>
+
+        <p style="width: 100%;display: flex;"><b style="width: 20%;">Address:</b> <span
+                style="width: 80%;">{{ hawb.shipper.address }}, <br>{{ hawb.shipper.city.name }}, <br>{{ hawb.shipper.country }} {{ hawb.shipper.postcode }}</span>
+        </p>
+    </aside>
+
+    <aside style="width: 33%; padding: 0px 5px;">
+        <p style="width: 100%;display: flex;"><b style="width: 20%;">Phone:</b> <span
+                style="width: 80%;">{{ hawb.shipper.phone }}</span></p>
+
+        <p style="width: 100%;display: flex;"><b style="width: 20%;">Mobile:</b> <span
+                style="width: 80%;">{{ hawb.shipper.mobile }}</span></p>
+
+        <p style="width: 100%;display: flex;"><b style="width: 20%;">Email:</b> <span
+                style="width: 80%;">{{ hawb.shipper.email }}</span></p>
+    </aside>
+
+    <aside style="width: 33%; padding: 0px 5px;">
+        <p style="width: 100%;display: flex;"><b style="width: 28%;">Invoice #:</b> <span
+                style="width: 72%;">TEC{{ hawb.public_id|slice:"3:" }}</span></p>
+        <p style="width: 100%;display: flex;"><b style="width: 28%;">Invoice Date:</b> <span
+                style="width: 72%;">{{ hawb.executed_on_date }}</span></p>
+        <p style="width: 100%;display: flex;"><b style="width: 28%;">Contact:</b> <span
+                style="width: 72%;">{{ hawb.shipper.contact }}</span></p>
+        <p style="width: 100%;display: flex;"><b style="width: 28%;">MAWB NO:</b> <span
+                style="width: 72%;">{{ mawb_public_id }}</span></p>
+        <p style="width: 100%;display: flex;"><b style="width: 28%;">HAWB NO:</b> <span
+                style="width: 72%;">{{ hawb.public_id }}</span></p>
+    </aside>
+
+</div>
+
+<div class="shipper_info" style="display: flow-root;width: 100%;">
+    <aside style="width: 50%;float: right;right: 0px;padding: 5px;">
+        <p style="width: 100%;display: flex;"><b style="width: 20%;">SHIPPER: </b> <span style="width: 80%;">{{ hawb.house.title|upper }}</span></p>
+
+    </aside>
+</div>
+
+<aside style="padding: 10px;display: inline-block;width: -webkit-fill-available;">
+    <div class="invoice_info" style="width: 66%; display: -webkit-inline-box;padding: 10px;float: right;">
+
+        <aside style="width: 50%; padding: 0px 5px;">
+            <p style="width: 100%;display: flex;"><b style="width: 33%;">SALES:</b> <span style="width: 67%;"></span>
+            </p>
+
+        </aside>
+
+        <aside style="width: 50%; padding: 0px 5px;">
+            <p style="width: 100%;display: flex;"><b style="width: 33%;">ORDER NO:</b> <span style="width: 67%;"></span>
+            </p>
+
+        </aside>
+
+    </div>
+
+</aside>
+
+<aside class="body_table" style="margin-top: 10px;">
+    <table style="width:100%; background: #f8f8f8;">
+        <thead>
+        <tr>
+            <th>Due date</th>
+            <th>Reference</th>
+            <th>Description</th>
+            <th>Qty KG</th>
+            <th>Unit Price</th>
+            <th>Discount</th>
+            <th>Total</th>
+
+        </tr>
+
+        </thead>
+        <tbody>
+        {% for cost in unit_costs %}
+            <tr>
+                <td>{{ hawb.executed_on_date }}</td>
+                <td>{{ cost.reference }}</td>
+                <td>{{ cost.description }}</td>
+                <td>{{ cost.qty_kg }}</td>
+                <td>${{ cost.unit_price }}</td>
+                <td>${{ cost.discount }}</td>
+                <td>${{ cost.total }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</aside>
+
+<aside style="display: flex;">
+    <div class="footer_left" style="width: 70%; padding: 10px 0px;">
+        <aside style="padding: 10px;">
+            <p>CURRENCY IN USD</p>
+        </aside>
+
+        <aside>
+            <table style="width:100%;">
+
+                <tbody>
+                <tr>
+                    <td colspan="3" style="text-align: right;">{{ from_currency_code }} 1.00</td>
+                    <td>{{ to_currency_code }}</td>
+                    <td>{{ currency_conversion_rate }}</td>
+
+                </tr>
+
+                {#                <tr>#}
+                {#                    <td colspan="3" style="text-align: center;">IF CAF APPLICABLE PAYABLE WILL3</td>#}
+                {#                    <td>$</td>#}
+                {#                    <td>2,160.68</td>#}
+                {#                </tr>#}
+
+                <tr>
+                    <td colspan="3"><b>(SAY {{ total_converted_indian_spelling }})</b></td>
+                    <td><b>{{ to_currency_code }}</b></td>
+                    <td><b>{{ total_converted }}</b></td>
+                </tr>
+
+                </tbody>
+            </table>
+
+            <p style="padding: 10px 10px;">MAKE ALL CHEQUES PAYABLE TO THE {{ hawb.house.title|upper }}.</p>
+            <p style="padding: 10px 10px;">TOTAL DUE IN 30 DAYS. OVERDUE ACCOUNTS ARE SUBJECT TO AN INTEREST CHARGE OF
+                2% PER MONTH.</p>
+
+        </aside>
+    </div>
+    <div class="footer_right" style="width: 30%; background: #fff; padding: 10px 0px;">
+        <table style="width:100%">
+            <tr>
+                <td><b>Invoice Subtotal</b></td>
+                <td>${{ total_unit_cost }}</td>
+
+            </tr>
+
+            {% for costing in fixed_costs %}
+                <tr>
+                    <td><b>{{ costing.description }}</b></td>
+                    <td>{{ costing.total }}</td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td><b>Total</b></td>
+                <td><span>${{ total }}</span></td>
+            </tr>
+        </table>
+    </div>
+
+</aside>
+
+</body>
+
+</html>

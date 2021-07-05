@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid #bdbdbd;
+            border-collapse: collapse;
+            padding: 10px;
+            font-family: sans-serif;
+            font-size: 14px;
+            text-transform: capitalize;
+        }
+
+        td {
+            /*width: 50%;*/
+            vertical-align: -webkit-baseline-middle;
+        }
+
+        b {
+            font-size: 12px;
+        }
+
+        p {
+            padding: 5px 0px;
+            text-align: left;
+            line-height: 20px;
+            margin: 0px;
+            float: left;
+        }
+
+        .pb-05 {
+            padding-bottom: 5px;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            margin: 0px;
+        }
+    </style>
+</head>
+
+<body>
+
+<table style="width:90%;vertical-align: middle;margin: 0 auto;margin-top: 50px; border: none;">
+    <tbody>
+    <tr>
+        <td style="width: 50%; border: none;margin-left: 0px;padding-left: 0px;">
+            <b style="padding: 3px 8px;font-size: 18px;border: 1px solid #c1c1c1;margin: 0px;">217</b>
+            <b style="padding: 3px 8px;font-size: 18px;border: 1px solid #c1c1c1;margin: 0px;">DAC</b>
+            <b style="padding: 3px 8px;font-size: 18px;border: 1px solid #c1c1c1;margin: 0px;"> -5879 8585</b>
+        </td>
+        <td style="width: 50%; border: none;text-align: right;font-size: 18px;font-weight: 600;">217 -5879 8585</td>
+    </tr>
+    </tbody>
+</table>
+
+<table style="width:90%;vertical-align: middle;margin: 0 auto;">
+    <!-- 1st  -->
+    <tr>
+
+        <td style="width: 50%; position: relative;">
+            <b style="float: left;">Shipper's Name and Address</b> <b style="float: right;border: 1px solid #949494;padding: 2px 40px 30px 40px;position: absolute;right: 0px;top: 0px; border-top: 0px;
+    border-right: 0px;">Shipper's Account Number</b>
+            <p style="text-transform: uppercase;font-weight: 600;font-size: 14px;line-height: 23px;margin-top: 10px;    width: 100%;">
+                TO THE ORDER OF {{ mawb.shipper.company_name }},<br>
+                {{ mawb.shipper.address }},<br>
+                {{ mawb.shipper.city.name }} - {{ mawb.shipper.postcode }}, <br>
+                {{ mawb.shipper.state }}, {{ mawb.shipper.country }}</p>
+        </td>
+        <td style="width: 50%;">
+            <img src="http://www.wcaworld.com/logos/58238.jpg" alt="logo"
+                 style="width: 150px;float: right;background-size: cover;">
+            <h5 class="pb-05">Not Negotiable</h5>
+            <h2 class="pb-05">Air Waybill</h2>
+            <h5 class="pb-05">Issued by</h5>
+            <h1 style="vertical-align: middle;font-size: 20px;width: -webkit-fill-available;
+    display: grid;">Navana Logistics</h1>
+            <p style="margin-bottom: 10px;width: 100%;">Green Square (3rd Floor), Flat # C3, Suite # 1/B, 8 Rd 08, Dhaka 1212</p>
+            <h6 style="border-top: 1px solid #bdbdbd;padding-top: 10px;margin: 0px;clear: both; text-transform: none;font-size: 12px;font-weight: normal;">
+                Copies 1, 2 and 3 of this Air Waybill are originals and have h same validity.</h6>
+        </td>
+
+    </tr>
+
+    <!-- 2nd -->
+    <tr>
+        <td style="position: relative;">
+            <b style="float: left; text-transform: none;">Consignee's Name and Address</b> <b style="float: right;border: 1px solid #949494;padding: 2px 40px 30px 40px;position: absolute;right: 0px; top: 0px;border-top: 0px;
+    border-right: 0px;">Consignee's Account Number</b>
+            <p style="text-transform: uppercase;font-weight: 600;font-size: 14px;line-height: 23px;margin-top: 10px;    width: -webkit-fill-available;">
+                {{ mawb.consignee.company_name}}<br>
+                {{ mawb.consignee.address }},<br>
+                {{ mawb.consignee.city.name }} - {{ mawb.consignee.postcode }}, <br>
+                {{ mawb.consignee.state }}, {{ mawb.consignee.country }}</p>
+        </td>
+        <td>
+            <p></p>
+        </td>
+
+    </tr>
+
+    <!-- 3rd -->
+    <tr>
+        <td>
+            <b style="float: left;">Issuing Carrier's Agent Name and City</b>
+
+            <p style="text-transform: uppercase;font-weight: 600;font-size: 14px;line-height: 23px;margin-top: 10px;    width: -webkit-fill-available;">
+                {{ mawb.carrier_agent_name }}, {{ mawb.carrier_agent_country }}
+                <br>LICENCE NO: {{ mawb.carrier_agent_iata_code }} - This is IATA Code</p>
+            <table style="width: 100%;">
+                <tr>
+                    <td style="width: 50%; height: 50px;"><b>Agent's IATA Code</b> <br><br>{{ mawb.carrier_agent_iata_code }}</td>
+                    <td style="width: 50%; height: 50px;"><b>Account No.</b> <br><br>{{ mawb.carrier_agent_account_no }}</td>
+                </tr>
+            </table>
+
+        </td>
+        <td>
+            <h5 class="pb-05">Accounting Information</h5>
+            <h1 style="vertical-align: middle;text-align: center;padding-top: 7%;font-size: 20px;">{{ mawb.payment_type.name}}</h1>
+            <p style="margin-bottom: 10px;text-align: center;width: 100%;">NOTIFY PARTY: CNS GROUP A/S, TRIANGLEN 24,
+                DK-6000, KOLDING, DENMARK</p>
+
+    <tr>
+
+    </tr>
+
+    </tr>
+
+    <!-- 4th -->
+    <tr>
+        <td>
+            <b style="float: left; text-transform: none;">Airport of Departure (Addr. of First Carrier) and Requested
+                Routing</b>
+            <h1 style="vertical-align: middle;text-align: center;padding-top: 4%;font-size: 20px;">{{ mawb.requested_routing }}</h1>
+        </td>
+        <td>
+            <b style="width: 50%; float: left;">reference number</b> <b style="width: 50%;">Optional shipping
+            information</b>
+        </td>
+
+    </tr>
+
+    <!-- 5th -->
+    <tr>
+        <td style="padding: 0px;">
+            <table style="width: 100%;border: hidden;">
+                <tbody style="">
+                <tr style="height: 125px;">
+                    <td style="width: 10%;">
+                        <b style="float: left; width: 100%;">To</b>
+                        <h1 style="text-align: left;padding-top: 6%;font-size: 16px;clear: both;">{{ mawb.to_1_airport }}</h1></td>
+                    <td style="position: relative; width: 30%;"><b style="float: left; width: 50%;">By First Carrier</b>
+                        <b style="float: right;border: 1px solid #949494;padding: 2px 10px 20px 10px;position: absolute;right: 0px;top: 0px; border-top: 0px; border-right: 0px;font-size: 11px;">Routing
+                            and Destination</b>
+                        <h1 style="text-align: left;padding-top: 6%;font-size: 16px;clear: both;">{{ mawb.to_1_airline }} - {{ mawb.to_1_airline.prefix_number }} </h1></td>
+                    <td style="width: 10%;"><b style="float: left; width: 100%;">To</b>
+                        <h1 style="text-align: left;padding-top: 6%;font-size: 16px;clear: both;">{{ mawb.to_2_airport }}</h1></td>
+                    <td style="width: 10%;"><b style="float: left; width: 100%;">By</b>
+                        <h1 style="text-align: left;padding-top: 6%;font-size: 16px;clear: both;">{{ mawb.to_2_airline }} - {{ mawb.to_2_airline.prefix_number }} </h1></td>
+                    <td style="width: 10%;"><b style="float: left; width: 100%;">To</b>
+                        <h1 style="text-align: left;padding-top: 6%;font-size: 16px;clear: both;">{{ mawb.to_3_airport }}</h1></td>
+                    <td style="width: 10%;"><b style="float: left; width: 100%;">By</b>
+                        <h1 style="text-align: left;padding-top: 6%;font-size: 16px;clear: both;">{{ mawb.to_3_airline }} - {{ mawb.to_3_airline.prefix_number }}</h1></td>
+
+                </tr>
+                </tbody>
+            </table>
+        </td>
+        <td style="padding: 0px;">
+            <table style="width: 100%; border: hidden;">
+                <tr>
+                    <td>
+                        <b>Currency</b> <br><br> {{ mawb.currency.code }}
+                    <td><b style="float: left; width: 100%;">CHGS</b>
+                        <br><br> {{ mawb.cngs_code }}
+                    </td>
+
+                    <td style="padding: 0px;">
+                        <table style="width:100%; border: hidden;">
+                            <tr>
+                                <th>WT/VAL</th>
+                                <th>Other</th>
+
+                            </tr>
+                            <tr>
+                                <td>
+
+                                    <table style="width:100%">
+
+                                        <tr>
+{#                                            <td style="width:50%">PPD</td>#}
+{#                                            <td style="width:50%">COLL#}
+{#                                                <p>{{ mawb.wt_val_payment_type.name }}</p>#}
+{#                                            </td>#}
+                                            <td>{{ mawb.wt_val.name }}</td>
+                                        </tr>
+
+
+                                    </table>
+                                </td>
+                                <td>
+                                    <table style="width:100%">
+
+                                        <tr>
+{#                                            <td style="width:50%">PPD</td>#}
+{#                                            <td style="width:50%">COLL#}
+{#                                                <p>XX</p>#}
+{#                                            </td>#}
+                                            <td></td>
+
+                                        </tr>
+
+
+                                    </table>
+                                </td>
+
+                            </tr>
+
+
+                        </table>
+
+                    </td>
+                    </td>
+                    <td><b style="float: left; width: 100%;">Declared Value for Carriage</b> <br><br><br> {{ mawb.declared_val_for_carriage }}
+                        <h1 style="text-align: left;padding-top: 6%;font-size: 16px;clear: both;"><!-- N.V.D --></h1>
+                    </td>
+                    <td><b style="float: left; width: 100%;">Declared Value for Customs</b> <br><br><br> {{ mawb.declared_val_for_customs }}
+                        <h1 style="text-align: left;padding-top: 6%;font-size: 16px;clear: both;"><!-- Dhaka --></h1>
+                    </td>
+                </tr>
+            </table>
+        </td>
+
+    </tr>
+
+    <!-- 6th -->
+    <tr>
+        <td style="padding: 0px;">
+            <table style="width: 100%;">
+                <tbody>
+                <tr style="height: 92px;">
+                    <td style="width: 50%;text-align: center;border-top: hidden;border-left: hidden;border-bottom: hidden;">
+                        <b style="width: 100%; ">airport of destination</b> <br><br><br> {{ mawb.airport_of_destination }}
+                    </td>
+                    <td style="width: 50%;text-align: center;border-top: hidden;border-right: hidden;border-bottom: hidden;">
+
+                        <b style="width: 100%;">requested flight/date</b>
+                        <h1 style="padding-top: 6%;font-size: 16px;clear: both;">{{ mawb.requested_flight_date }}</h1>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+        <td style="padding: 0px;">
+            <table style="width: 100%;">
+                <tbody>
+                <tr style="height: 93px;">
+                    <td style="width: 30%;text-align: center;border-top: hidden;border-bottom: hidden;border-left: hidden;">
+                        <b style="width: 100%; ">Amount of Insurance</b><br><br>{{ mawb.amt_of_insurance }}</td>
+                    <td style="width: 70%;text-align: center;padding: 0px;border-top: hidden;border-right: hidden;border-bottom: hidden;">
+                        <p style=" padding: 5px"> INSURANCE - if carrier others Insurance, and such insurance is
+                            requested in accordance with the conditions the real, indicate amount to be insured in
+                            figures in box marked "Amount of Insurance".</p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+        </tr>
+
+        <!-- 7th -->
+    <tr>
+        <td colspan="2" style="position: relative;">
+            <b style="width: 100%; ">Handling Information</b>
+            <h1 style="vertical-align: middle;text-align: center;padding-top: 4%;font-size: 20px;">
+               {{ mawb.handling_info }}
+            </h1>
+            <b style="width: 60%;float: left;text-align: left;bottom: 0px;position: absolute;margin-bottom: 20px;">(for
+                U.S.A use only)</b>
+
+            <table style="width: 20%; text-align: center; float: right;">
+                <tr>
+                    <td>
+                        <b style="width: 100%;">SCI</b>
+                        <h1 style="vertical-align: middle;text-align: center;padding-top: 4%;font-size: 20px;height: 40px;"></h1>
+                    </td>
+                </tr>
+            </table>
+
+        </td>
+
+    </tr>
+
+    <!-- 8th -->
+    <tr>
+
+        <td style="padding: 0px;width: 100%;" colspan="2">
+
+            <table style="width:100%; border: hidden;">
+                <tbody>
+                <tr>
+
+                    <td style="display: flex;width: -webkit-fill-available;padding: 0px;border: none;">
+
+                        <table style="margin-right: 10px; width: 15%; border-left: hidden;">
+                            <tbody>
+                            <tr style="text-align: left; border-top: hidden;">
+                                <th style="
+    height: 50px;
+">No. of <br>Pieces <br>RCP
+                                </th>
+                                <th>Gross <br>Weight</th>
+                                <th style="width: 5%;">kg <br>lb</th>
+                            </tr>
+                            <tr>
+                                <td style="height: 398px;">{{ mawb.goods_noofpcsrcp }}</td>
+                                <td style="height: 398px;">{{ mawb.goods_grossweight }}</td>
+                                <td style="height: 398px;">{{ mawb.goods_weightunit }}</td>
+                            </tr>
+                            <tr>
+                            </tr>
+                            <tr>
+                                <td colspan="3" style="height: 60px;border-bottom: hidden;"></td>
+                            </tr>
+
+
+                            </tbody>
+                        </table>
+                        <table style="margin-right: 10px;width: 10%;text-align: left;border-top: hidden; border-bottom: hidden;">
+                            <tbody>
+                            <tr>
+                                <th style="border-bottom: hidden;text-align: left;padding: 5px 10px;">Rate Class</th>
+
+
+                            </tr>
+                            <tr>
+                                <td style="padding-top: 0px;margin-top: 0px;padding-right: 0px;margin-bottom: 0px;padding-bottom: 0px;">
+                                    <table style="margin-right: 10px;width: 100%;">
+                                        <tbody>
+                                        <tr>
+                                            <th style="border-right: hidden;padding: 5px 10px;">Commodity <br> Item No.
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <td style="height: 480px;border-bottom: hidden;">{{ mawb.goods_commodityitemno }}</td>
+
+                                        </tr>
+
+                                        </tbody>
+                                    </table>
+                                </td>
+
+                            </tr>
+
+                            </tbody>
+                        </table>
+                        <table style="margin-right: 10px;width: 10%;border-top: hidden;">
+                            <tbody>
+                            <tr>
+                                <th style="
+    height: 50px;
+">Chargeable <br>Weight
+                                </th>
+
+                            </tr>
+                            <tr style="text-align: center;">
+                                <td style="height: 480px;border-bottom: hidden;">{{ mawb.goods_chargableweight }} <br>(VOL)</td>
+
+                            </tr>
+
+                            </tbody>
+                        </table>
+                        <table style="margin-right: 10px;width: 10%; border-top: hidden;">
+                            <tbody>
+                            <tr>
+                                <th style="
+    height: 50px;
+">Rate / Charge
+                                </th>
+
+                            </tr>
+                            <tr style="text-align: center;">
+                                <td style="
+    height: 480px;
+    border-bottom: hidden;
+">{{ mawb.goods_ratecharge }}
+                                </td>
+
+                            </tr>
+
+                            </tbody>
+                        </table>
+                        <table style="margin-right: 10px;width: 15.75%;border-top: hidden; text-align: left;">
+                            <tbody>
+                            <tr>
+                                <th style="
+    height: 50px;
+">Total
+                                </th>
+
+                            </tr>
+                            <tr>
+                                <td style="
+    height: 480px;
+    border-bottom: hidden;
+">
+
+
+                                    <p style="padding: 0px;">{{ mawb.goods_to }}</p>
+
+
+                                </td>
+
+
+                            </tr>
+
+                            </tbody>
+                        </table>
+                        <table style="border-right: hidden; width: 29%;">
+                            <tbody>
+                            <tr>
+                                <th style="border-top: hidden; height: 50px;">Nature and Quantity of Goods <br> <h5
+                                        style="">(incl. Dimensions or Volume)</h5>
+                                </th>
+
+                            </tr>
+                            <tr>
+                                <td style="height: 480px;border-bottom: hidden;">
+
+{#                                    <p style="width: 100%; padding: 0px; margin-top: 10px;">SAID TO CONTAIN OF 126 CTNS#}
+{#                                        OF READY MADE GARMENTS <br>INV.NO: TSR/HELLENIC/135/2017 <br>DT. 22.06.2017</p>#}
+{##}
+{##}
+{#                                    <p style="width: 100%; padding: 0px; margin-top: 50px;">EXP NO: 0465/00409/2017 <br>#}
+{#                                        DT. 22.06.2017 <br>L/C NO: 3522-RIR1773572 <br>Date: 12.05.2017 <br>VOL. 9.00#}
+{#                                        CBM <br>Cat: 6 <br>H.S.CODE: 6203.42.00</p>#}
+{##}
+{#                                    <p style="width: 100%; padding: 0px; margin-top: 50px;">SHIPPING MARK AS PER PACKING#}
+{#                                        LIST</p>#}
+                                    {{ mawb.goods_natureandquantity}}
+
+
+                                </td>
+
+                            </tr>
+
+                            </tbody>
+                        </table>
+
+                    </td>
+
+                </tr>
+
+                </tbody>
+            </table>
+
+        </td>
+
+    </tr>
+    <!-- 9th start -->
+    <tr>
+        <td style="padding: 0px;">
+
+            <table style="width: 100%;">
+                <tbody style="border-right: hidden;border-left: hidden;border-top: hidden;">
+                <tr>
+                    <th colspan="2"><b style="width: 33%;text-align: center;float: left;">Prepaid</b> <b
+                            style="width: 33%;text-align: center;">Weight Charge</b> <b
+                            style="width: 33%;text-align: center;float: right;">Collect</b></th>
+
+                </tr>
+                <tr>
+
+                    <td style="width: 33%; height: 50px;">{{ mawb.weightcharge_prepaid }}</td>
+                    <td style="width: 33%; height: 50px;">{{ mawb.weightcharge_collect }}</td>
+
+                </tr>
+                </tbody>
+            </table>
+
+            <table style="width: 100%;">
+                <tbody style="border-right: hidden;border-left: hidden;border-top: hidden;">
+                <tr>
+                    <th colspan="2"><b style="width: 100%;text-align: center;">Valuation Charge</b></th>
+
+                </tr>
+                <tr>
+
+                    <td style="width: 50%; height: 50px;">{{ mawb.valuationcharge_prepaid }}</td>
+                    <td style="width: 50%; height: 50px;">{{ mawb.weightcharge_collect }}</td>
+                </tr>
+                </tbody>
+            </table>
+            <table style="width: 100%;">
+                <tbody style="border-right: hidden;border-left: hidden;border-top: hidden;">
+                <tr>
+                    <th colspan="2"><b style="width: 100%;text-align: center;">Tax</b></th>
+
+                </tr>
+                <tr>
+
+                    <td style="width: 50%; height: 50px;">{{ mawb.tax_prepaid }}</td>
+                    <td style="width: 50%; height: 50px;">{{ mawb.tax_collect }}</td>
+                </tr>
+                </tbody>
+            </table>
+
+        </td>
+        <td>
+            <h5 class="pb-05">Other Charges</h5>
+
+            <p style="margin-bottom: 10px;text-align: center;width: 100%;">{{ mawb.charges_other }}</p>
+
+        </td>
+    </tr>
+
+    <!-- 10th -->
+    <tr>
+        <td style="text-align: center;padding: 0px;border-top: hidden;">
+
+            <table style="width: 100%;">
+                <tbody style="border-right: hidden;border-left: hidden;border-top: hidden;">
+                <tr>
+                    <th colspan="2"><b style="width: 100%;text-align: center;">Total Other Charges Due Agent</b></th>
+
+                </tr>
+                <tr>
+
+                    <td style="width: 50%; height: 50px;">{{ mawb.totalotherchargesdueagent_prepaid }}</td>
+                    <td style="width: 50%; height: 50px;">{{ mawb.totalotherchargesdueagent_collect }}</td>
+                </tr>
+                </tbody>
+            </table>
+            <table style="width: 100%;">
+                <tbody style="border-right: hidden;border-left: hidden;border-top: hidden;">
+                <tr>
+                    <th colspan="2"><b style="width: 100%;text-align: center;">Total Other Charges Due Carrier</b></th>
+
+                </tr>
+                <tr>
+
+                    <td style="width: 50%; height: 50px;">{{ mawb.totalotherchargesduecarrier_prepaid }}</td>
+                    <td style="width: 50%; height: 50px;">{{ mawb.totalotherchargesduecarrier_collect }}</td>
+                </tr>
+                </tbody>
+            </table>
+
+        </td>
+
+        <td style="position: relative;">
+            <p style="margin-bottom: 10px;width: 100%;">Shipper certifies that the particulars on the face hereof are
+                correct and that insofar as any part of the consignment contains dangerous goods, such part is property
+                described by name and is in proper condition for carriage by air
+                according to the applicable Dangerous Goods Regulations.</p>
+
+            <h6 style="border-top: 1px dotted #bdbdbd;padding-top: 10px;text-align: center;margin: 0px;clear: both;font-size: 14px;font-weight: bold; bottom: 0px;position: absolute;margin-bottom: 10px; width: 98%;">
+                Signature of Shipper or his Agent</h6>
+        </td>
+    </tr>
+
+    <!-- 11th -->
+    <tr>
+        <td style="text-align: center;padding: 0px;border-top: hidden;">
+            <table style="width: 100%;">
+                <tbody style="border-right: hidden;border-left: hidden;border-top: hidden;">
+                <tr>
+                    <th colspan="2"><b style="width: 50%;text-align: center;float: left;">Total Prepaid</b> <b
+                            style="width: 50%;text-align: center;float: right;">Total Collect</b></th>
+
+                </tr>
+                <tr>
+
+                    <td style="width: 50%; height: 50px;text-align: left;">{{ mawb.total_prepaid }}</td>
+                    <td style="width: 50%; height: 50px; text-align: left;">{{ mawb.total_collect }}</td>
+                </tr>
+                </tbody>
+            </table>
+            <table style="width: 100%;">
+                <tbody style="border-right: hidden;border-left: hidden;border-top: hidden;">
+                <tr>
+                    <th colspan="2"><b style="width: 50%;text-align: center;float: left;">Currency Conversion Rates</b>
+                        <b style="width: 50%;text-align: center;float: right;">CC Charges in Dest. Currency</b></th>
+
+                </tr>
+                <tr>
+
+                    <td style="width: 50%; height: 50px;">{{ mawb.currencyconversionrate }}</td>
+                    <td style="width: 50%; height: 50px;">{{ mawb.ccchargesindestcurrency }}</td>
+                </tr>
+                </tbody>
+            </table>
+
+        </td>
+
+        <td style="position: relative;">
+
+            <h6 style="padding-top: 10px;text-align: center;margin: 0px;clear: both;font-size: 14px;font-weight: bold; bottom: 0px;position: absolute;margin-bottom: 10px; width: 97%;">
+                <b style="float: left;width: 33%;font-size: 16px;font-weight: normal;text-align: left;">{{ mawb.executed_on_date }}<br>
+                    <h4 style="padding-top: 5px;font-size: 14px;font-weight: normal;"><b>Executed on (date)</b></h4></b>
+                <b style="width: 33%;float: none;text-align: center;display: inline-block; font-size: 16px;font-weight: normal;text-align: left;">{{ mawb.executed_at_city }}
+                    <br><h4 style="padding-top: 5px;font-size: 14px;font-weight: normal;"><b>at (place)</b></h4></b>
+                <b style=" float: right; width: 33%; font-size: 16px;font-weight: normal;text-align: left;">{{ mawb.signature_issuingcarrieroragent }}<br>
+                    <h4 style="padding-top: 5px;font-size: 14px;font-weight: normal;"><b>Signature of issuing Carrier or
+                        its Agent</b></h4></b>
+            </h6>
+        </td>
+    </tr>
+
+    <!-- 12th -->
+    <tr>
+
+        <td style="position: relative;padding: 0px; border-top: hidden;">
+            <table style="width: 100%;">
+                <tbody style="border-right: hidden;border-left: hidden;border-top: hidden;">
+                <tr>
+                    <th colspan="2"><b style="width: 50%;text-align: center;float: left;"></b> <b
+                            style="width: 50%;text-align: center;float: right;">Charges at Destination</b></th>
+
+                </tr>
+                <tr>
+
+                    <td style="width: 50%;height: 50px;border-bottom: hidden;">
+                        <p style="text-align: center;width: -webkit-fill-available;">For Carrier's use only at
+                            destination</p>
+                    </td>
+                    <td style="width: 50%;height: 50px;border-bottom: hidden;"></td>
+                </tr>
+                </tbody>
+            </table>
+
+        </td>
+
+        <td style="position: relative;padding: 0px;">
+            <table style="width: 100%;">
+                <tbody style="border-right: hidden;border-left: hidden;border-top: hidden;">
+                <tr>
+                    <th><b style="width: 50%;text-align: center;float: left;">Total Collect Charges</b> <b
+                            style="width: 50%;text-align: center;float: right;"></b></th>
+
+                </tr>
+                <tr>
+
+                    <td style="width: 50%;height: 50px;text-align: left;border-bottom: hidden;"></td>
+                    <td style="width: 50%;border-right: hidden;border-bottom: hidden;border-top: hidden;text-align: center;">
+                        <img src="https://www.wpclipart.com/signs_symbol/business/barcodes/barcode_code39.png"
+                             alt="logo" style="height: 40px;background-size: cover;">
+
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+        </td>
+
+    </tr>
+</table>
+
+</body>
+
+</html>

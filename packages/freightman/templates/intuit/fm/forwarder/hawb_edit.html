@@ -1,0 +1,61 @@
+{% extends 'intuit/fm/base.html' %}
+{% load i18n static %}
+{% block page_title %}
+    <title>{% if copy %}Copy {% endif %}HAWB {{ hawb_public_id }}</title>
+{% endblock %}
+{% block head_includes %}
+    {{ block.super }}
+    <style type="text/css">
+        .content {
+            padding-top: 0;
+        }
+    </style>
+    <link href="{% static 'forwarder/shipment_booking_assets/css/style.css' %}" rel="stylesheet">
+{% endblock head_includes %}
+{% block left-nav %}
+    {% include 'intuit/fm/forwarder/left-nav/menu_grid_home_left_nav.html' %}
+{% endblock left-nav %}
+{% block breadcrumbs %}
+    <div class="row">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'forwarder_grid_menu_home' %}">Home</a></li>
+                    <li class="breadcrumb-item" aria-current="page"><a href="{% url 'airexport_apps_menu' %}">Air Export</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'airexport:hawb_listing' %}">House Airway Bill Listing</a></li>
+                    {% if hawb_public_id %}
+                        <li class="breadcrumb-item active" aria-current="page"><a href="">{% if copy %}Copy{% else %}Edit{% endif %} House Airway Bill
+                            #{{ hawb_public_id }}</a></li>
+                    {% endif %}
+                    <li class="position-absolute" style="right: 100px"><a href="{% url 'airexport:hawb_listing' %}"><i class="fa fa-times-circle text-danger"></i></a></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+{% endblock breadcrumbs %}
+{% block content %}
+    <div class="container">
+        <div class="text-center py-4 bg-success">
+            <h2>{% if copy %}Copy{% else %}Edit{% endif %} {{ hawb_public_id }}</h2>
+        </div>
+        <div id="page_content">
+            <span id="page_content_spinner"><i class="fa fa-spin fa-spinner"></i> Page Loading</span>
+            {% include 'intuit/fm/forwarder/hawb_input_partial.html' %}
+        </div>
+    </div>
+    <div id="bottom_info">
+    </div>
+{% endblock content %}
+{% block foot_includes %}
+    {{ block.super }}
+    <script>
+        window.copy_hawb = '{{ copy }}';
+        window.hawb_public_id = '{{ hawb_public_id }}';
+        window.urlfor_hawb_info_load = "{% url 'airexport:get_hawb_info' %}";
+        window.urlfor_hawb_save = "{% url 'ajax-forwarder-hawb-input-save' %}";
+        window.urlfor_hawb_page_init_data = "{% url 'ajax-hawb-page-init-data' %}";
+        window.urlfor_booking_info_load = "{% url 'ajax-forwarder-hawb-get_booking_info' %}";
+    </script>
+    <script type="text/javascript" src="{% static 'js/test.jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'forwarder/hawb_input_assets/js/hawb_input.jquery.js' %}"></script>
+{% endblock foot_includes %}

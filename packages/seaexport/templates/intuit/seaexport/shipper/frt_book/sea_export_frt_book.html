@@ -1,0 +1,109 @@
+{% extends 'intuit/fm/base.html' %}
+{% load i18n static %}
+{% block page_title %}
+    {% if public_id %}
+        <title>{% if copy %}Copy{% else %}Edit{% endif %} Booking {{ public_id }}</title>
+    {% else %}
+        <title>Sea Export Freight Booking</title>
+    {% endif %}
+{% endblock %}
+{% block head_includes %}
+    {{ block.super }}
+    <link href="{% static 'booking/assets/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'seaexport/booking.css' %}" rel="stylesheet">
+    <link href="https://unpkg.com/gijgo@1.9.11/css/gijgo.min.css" rel="stylesheet" type="text/css"/>
+    <style type="text/css">
+        .content {
+            background-image: url({% static 'img/containerdock.jpg' %});
+            background-repeat: no-repeat, repeat;
+            background-position: center;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+    </style>
+{% endblock head_includes %}
+{% block breadcrumbs %}
+    <div class="row">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'forwarder_grid_menu_home' %}">Home</a></li>
+                    <li class="breadcrumb-item" aria-current="page"><a href="{% url 'seaexport:seaexport_apps_menu' %}">Ocean Export</a></li>
+                    {% if public_id %}
+                        <li class="breadcrumb-item active" aria-current="page">
+                            <a href="{% url 'seaexport:seaexport_forwarder_freight_bookinglist_page' %}">Freight Booking List</a>
+                        </li>
+                        <li class="breadcrumb-item" aria-current="page"><a href="">{% if copy %}Copy{% else %}Edit{% endif %} Booking {{ public_id }}</a></li>
+                        <li class="position-absolute" style="right: 100px"><a href="{% url 'seaexport:seaexport_forwarder_freight_bookinglist_page' %}"><i
+                                class="fa fa-times-circle text-danger"></i></a>
+                        </li>
+                    {% else %}
+                        <li class="breadcrumb-item active" aria-current="page"><a href="">Freight Booking (by Forwarder)</a></li>
+                        <li class="position-absolute" style="right: 100px"><a href="{% url 'seaexport:seaexport_apps_menu' %}"><i class="fa fa-times-circle text-danger"></i></a>
+                        </li>
+                    {% endif %}
+                </ol>
+            </nav>
+        </div>
+    </div>
+{% endblock breadcrumbs %}
+{% block left-nav %}
+    {% include 'intuit/fm/forwarder/left-nav/menu_grid_home_left_nav.html' %}
+{% endblock left-nav %}
+{% block content %}
+    <div class="container">
+        <div class="text-center py-4 bg-success">
+            {% if public_id %}
+                <h2 class="">{% if copy %}Copy{% else %}Edit{% endif %} Freight Booking #{{ public_id }}</h2>
+            {% else %}
+                <h2 class="">Create Ocean Export Freight Booking</h2>
+            {% endif %}
+        </div>
+        <div id="page_content">
+            <i class="fa fa-spin fa-spinner"></i> Page Loading
+        </div>
+    </div>
+
+    <form id="genericfileuploadform" action="{% url "file_upload" %}" enctype="multipart/form-data" method="post" target="uploadtarget">
+        <div style="height: 0; width: 0; border: 0 white;" class="d-none">
+            <input class="" type="file" id="genericfileupload" name="file"/>
+        </div>
+    </form>
+    <iframe id="uploadtarget" name="uploadtarget" height="0" width="0" style="border: 0 white">
+    </iframe>
+
+    <div class="d-none">
+        <div></div>
+    </div>
+{% endblock content %}
+{% block foot_includes %}
+    {{ block.super }}
+    <script type="text/babel">
+        window.urlfor_forwarder_frt_book_init_data = "{% url 'seaexport:get_forwarder_freight_booking_page_init_data' %}";
+        window.urlfor_get_booking_info = "{% url 'seaexport:get_freight_booking_info' %}";
+        window.urlfor_booking_data_save = "{% url 'seaexport:ajax_forwarder_save_booking' %}";
+    </script>
+    <script type="text/babel" src="{% static 'seaexport/shipper/frt_book/sea_export_states.babel.js' %}"></script>
+    <script type="text/babel" src="{% static 'seaexport/shipper/frt_book/sea_export_booking_mixin.babel.js' %}"></script>
+    <script type="text/babel" src="{% static 'seaexport/shipper/frt_book/sea_export_booking_functions.babel.js' %}"></script>
+    <script type="text/babel" src="{% static 'seaexport/shipper/frt_book/sea_export_booking_form.babel.js' %}"></script>
+    <script type="text/babel" src="{% static 'seaexport/shipper/frt_book/sea_export_booking.babel.js' %}"></script>
+    <script type="text/babel">
+        jQuery('#genericfileupload').change((event) => {
+            const file = jQuery(event.target).prop('files')[0];
+            if (file) {
+                jQuery('#genericfileuploadform').submit();
+                jQuery(event.target).val('');
+            }
+        });
+
+        (function () {
+            const booking_public_id = '{{ public_id }}';
+            {% if copy %}
+                ReactDOM.render(<BookingForm public_id={booking_public_id} copy={true}/>, document.getElementById('page_content'));
+            {% else %}
+                ReactDOM.render(<BookingForm public_id={booking_public_id}/>, document.getElementById('page_content'));
+            {% endif %}
+        }());
+    </script>
+{% endblock foot_includes %}

@@ -1,0 +1,39 @@
+{% extends 'intuit/fm/base.html' %}
+{% load i18n static %}
+{% block page_title %}
+    <title>Sea Export Consolidated Shipment List</title>
+{% endblock %}
+{% block breadcrumbs %}
+    <div class="row">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'forwarder_grid_menu_home' %}">Home</a></li>
+                    <li class="breadcrumb-item" aria-current="page"><a href="{% url 'seaexport:seaexport_apps_menu' %}">Ocean Export</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><a href="">Container Consolidation Listing</a></li>
+                    <li class="position-absolute" style="right: 100px"><a href="{% url 'seaexport:seaexport_apps_menu' %}"><i class="fa fa-times-circle text-danger"></i></a></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+{% endblock breadcrumbs %}
+{% block content %}
+    <div class="container">
+        <div class="text-center py-4 bg-success">
+            <h2>Consolidated Shipment Listing</h2>
+        </div>
+        <div id="page_content">
+            <i class="fa fa-spin fa-spinner"></i> Page Loading
+        </div>
+    </div>
+{% endblock content %}
+{% block foot_includes %}
+    {{ block.super }}
+    <script type="text/babel">
+        window.urlfor_get_container_consol_list = "{% url 'seaexport:seaexport_get_container_consol_list' %}";
+    </script>
+    <script type="text/babel" src="{% static 'seaexport/forwarder/seaexport_container_consol_list.babel.js' %}"></script>
+    <script type="text/babel">
+        ReactDOM.render(<SeaExportContainerConsolidationList/>, document.getElementById('page_content'));
+    </script>
+{% endblock foot_includes %}

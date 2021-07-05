@@ -1,0 +1,190 @@
+{% extends 'seaimport/forwarder/base_template.html' %}
+{% load static %}
+{% load humanize %}
+{% block page_title %}
+    SI- MBL {{ mbl.mbl_number }}
+{% endblock %}
+{% block breadcrumb %}
+    <li class="breadcrumb-item text-black-50"><a class="text-black-50" href="{% url 'seaimport:sea_import_mbl_list_all' %}">MBL List</a></li>
+    <li class="breadcrumb-item text-black-50"><strong>MBL {{ mbl.mbl_number }}</strong></li>
+{% endblock %}
+{% block dashboard_body %}
+    <div class="container mt-4 mb-4">
+        {% include 'seaimport/forwarder/partials/_alert_message.html' %}
+        <div class="card">
+            <div class="card-header text-center text-uppercase">
+                <h2 class="">MBL No - {{ mbl.mbl_number }}</h2>
+            </div>
+
+            <div class="card-body">
+                <div class="card">
+                    <div class="card-header text-uppercase text-center">Basic Info</div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-4"><strong>De-Console Status: </strong></div>
+                            <div class="col-7">
+                                {% if mbl.job %}
+                                    Consolidated to <a target="_blank"
+                                                       href="{% url 'seaimport:sea_import_job_details' mbl.job.id %}">Job</a>
+                                {% else %}
+                                    Pending
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-4"><strong>Freight Type: </strong></div>
+                            <div class="col-7">{{ mbl.freight_type }}</div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-4"><strong>Estimated Time of Arrival: </strong></div>
+                            <div class="col-7">{{ mbl.eta_destination_port }},
+                                ({{ mbl.day_since_eta }})
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-4"><strong>Port of Loading: </strong></div>
+                            <div class="col-7">{{ mbl.port_of_loading }}</div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-4"><strong>Port of Destination: </strong></div>
+                            <div class="col-7">{{ mbl.port_of_discharge }}</div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-4"><strong>Feeder Vessel: </strong></div>
+                            <div class="col-7">{{ mbl.feeder_vessel }}</div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-4"><strong>Proforma Invoice No: </strong></div>
+                            <div class="col-7">{{ mbl.proforma_invoice_no }}</div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-4"><strong>Proforma Invoice Date:</strong></div>
+                            <div class="col-7">{{ mbl.proforma_invoice_date }}</div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-4"><strong>Ocean Freight Charge Per Container (USD):</strong></div>
+                            <div class="col-7">{{ mbl.ocean_freight_cost_per_container }}</div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <div class="card">
+                    <div class="card-header text-uppercase text-center">Shipper, Consignee and Notifier</div>
+                    <div class="card-body">
+                        <h4>MBL Number: <b>{{ mbl.mbl_number }}</b></h4>
+                        <div class="row">
+                            <div class="mbl_shipper_info mt-4 col-6" style="border-right: 1px solid #00000020">
+                                <h5>Shipper: <b>{{ mbl.mbl_shipper }}</b></h5>
+                                <small><b>ADDRESS:</b> {{ mbl.mbl_shipper.address }}</small>
+                                <br>
+                                <small><b>Postal Code:</b> {{ mbl.mbl_shipper.postal_code }}</small>
+                                <br>
+                                <small><b>City and Country:</b> {{ mbl.mbl_shipper.city }}</small>
+                                <br>
+                                <small><b>Phone:</b> {{ mbl.mbl_shipper.phone }}</small>
+                                <br>
+                                <small><b>Mobile:</b> {{ mbl.mbl_shipper.mobile }}</small>
+                                <br>
+                                <small><b>Email:</b> {{ mbl.mbl_shipper.email }}</small>
+                            </div>
+
+                            <div class="mbl_consignee_info mt-4  col-6">
+                                <h5>Consignee: <b>{{ mbl.mbl_consignee }}</b></h5>
+                                <small><b>ADDRESS:</b> {{ mbl.mbl_consignee.address }}</small>
+                                <br>
+                                <small><b>Postal Code:</b> {{ mbl.mbl_consignee.postal_code }}</small>
+                                <br>
+                                <small><b>City and Country:</b> {{ mbl.mbl_consignee.city }}</small>
+                                <br>
+                                <small><b>Phone:</b> {{ mbl.mbl_consignee.phone }}</small>
+                                <br>
+                                <small><b>Mobile:</b> {{ mbl.mbl_consignee.mobile }}</small>
+                                <br>
+                                <small><b>Email:</b> {{ mbl.mbl_consignee.email }}</small>
+                            </div>
+                        </div>
+
+                        <div class="mbl_notifier mt-4">
+                            <h5>Notify Address: <b>{{ mbl.mbl_notifier }}</b></h5>
+                            <small><b>ADDRESS:</b> {{ mbl.mbl_notifier.address }}</small>
+                            <br>
+                            <small><b>Postal Code:</b> {{ mbl.mbl_notifier.postal_code }}</small>
+                            <br>
+                            <small><b>City and Country:</b> {{ mbl.mbl_notifier.city }}</small>
+                            <br>
+                            <small><b>Phone:</b> {{ mbl.mbl_notifier.phone }}</small>
+                            <br>
+                            <small><b>Mobile:</b> {{ mbl.mbl_notifier.mobile }}</small>
+                            <br>
+                            <small><b>Email:</b> {{ mbl.mbl_notifier.email }}</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <div class="card">
+                    <div class="card-header text-uppercase text-center">Goods Info (Master Bill of Leading)</div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-4"><b>Type:</b> {{ good.type }}</div>
+                            <div class="col-4"><b>Container/Seal Number:</b> {{ good.container_seal_number }}</div>
+                            <div class="col-4"><b>Quantity:</b> {{ good.quantity }}</div>
+
+                            <div class="col-4"><b>Package Type:</b> {{ good.package_type }}</div>
+                            <div class="col-4"><b>Net Weight:</b> {{ good.net_weight }}</div>
+                            <div class="col-4"><b>Gross Weight:</b> {{ good.gross_weight }}</div>
+
+                            <div class="col-12 mt-2"><b>Description: <br></b> {{ good.description }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <div class="card">
+                    <div class="card-header text-uppercase text-center">Documents</div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-4 mt-3">
+                                <div class="col-12"><b>MBL:</b>
+                                    <a href="{{ mbl.file.url }}" download="">(Click to Download)</a></div>
+                                <div class="col-12 mt-2"><a href="{{ mbl.file.url }}" target="_blank"><img
+                                        class="img-fluid" src="{{ mbl.file.url }}" alt=""></a></div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-body">
+                {% if not mbl.unlocked %}
+                    <p class="text-center text-danger"><strong>Note - </strong>Job associated to this MBL has completed.
+                        So it cannot be edited.</p>
+                {% else %}
+                    <a href="{% url 'seaimport:sea_import_update_mbl' mbl.id %}"
+                       class="btn btn-primary float-right mr-2">EDIT</a>
+                {% endif %}
+                {#                <a href="#" class="btn btn-danger float-right delete-with-confirmation">DELETE</a>#}
+
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}
+

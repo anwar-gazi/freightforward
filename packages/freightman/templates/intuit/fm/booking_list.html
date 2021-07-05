@@ -1,0 +1,48 @@
+{% extends 'intuit/fm/base.html' %}
+{% load i18n static %}
+{% block page_title %}
+    <title>Booking List</title>
+{% endblock %}
+{% block head_includes %}
+    {{ block.super }}
+    <style type="text/css">
+        .content {
+            padding: 0;
+        }
+    </style>
+{% endblock head_includes %}
+{% block breadcrumbs %}
+    <div class="row">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'forwarder_grid_menu_home' %}">Home</a></li>
+                    <li class="breadcrumb-item" aria-current="page"><a href="{% url 'airexport_apps_menu' %}">Air Export</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><a href="">Freight Booking List</a></li>
+                    <li class="position-absolute" style="right: 100px"><a href="{% url 'airexport_apps_menu' %}"><i class="fa fa-times-circle text-danger"></i></a></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+{% endblock breadcrumbs %}
+{% block content %}
+    <div class="container">
+        <div class="py-4 text-center bg-success">
+            <h4>Freight Booking List</h4>
+        </div>
+        <div id="page_content">
+            <i class="fa fa-spin fa-spinner"></i> Page Loading
+        </div>
+    </div>
+{% endblock content %}
+{% block foot_includes %}
+    {{ block.super }}
+    <script type="text/babel">
+        window.urlfor_booking_list = "{% url 'ajax-booking_list' %}";
+        window.urlfor_mark_as_booked = "{% url 'ajax-mark_as_booked' %}";
+        window.urlfor_confirmed_bookinglist_page = "{% url 'booking_list_confirmed' %}";
+    </script>
+    <script type="text/babel" src="{% static 'js/booking_list_mixin.babel.js' %}"></script>
+    <script type="text/babel" src="{% static 'js/booking_list_functions.babel.js' %}"></script>
+    <script type="text/babel" src="{% static 'js/booking_list.babel.js' %}"></script>
+{% endblock foot_includes %}

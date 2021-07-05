@@ -1,0 +1,65 @@
+{% extends 'seaimport/forwarder/base_template.html' %}
+{% load static %}
+{% block page_title %}
+    SI- MBL List
+{% endblock %}
+{% block breadcrumb %}
+        <li class="breadcrumb-item text-black-50"><strong>MBL List</strong></li>
+{% endblock %}
+{% block dashboard_body %}
+    <div class="container mt-4">
+        <div class="card">
+            <div class="card-header">
+                <h4>Lists of Master Bill of Leading <a href="{% url 'seaimport:sea_import_create_mbl' %}"><span
+                        class="float-sm-right"><i class="fas fa-plus-square"></i></span></a></h4>
+            </div>
+
+            <div class="card-body">
+                <table class="table table-borderless text-center">
+                    <thead>
+                    <tr class="text-center" style="border-bottom: 1px solid rgba(14,14,14,0.5)">
+                        <th width="">MBL Number</th>
+                        <th width="">Shipper</th>
+                        <th width="">Consignee</th>
+                        <th width="">Notifier</th>
+                        <th width="">Origin / Destination</th>
+                        <th>Status</th>
+                        <th>Click for Details</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for mbl in mbls %}
+                        <tr>
+                            <td class=""><small>{{ mbl.mbl_number }}</small></td>
+                            <td class=""><small>{{ mbl.mbl_shipper.name }}</small></td>
+                            <td class=""><small>{{ mbl.mbl_consignee.name }}</small></td>
+                            <td class=""><small>{{ mbl.mbl_notifier.name }}</small></td>
+                            <td class=""><small>{{ mbl.mbl_shipper.city }} - {{ mbl.mbl_consignee.city }}</small></td>
+                            {% if not mbl.job.task.unlocked and mbl.job %}
+                                <td class="">
+                                    <small>Completed</small>
+                                <small><a href="{% url 'seaimport:sea_import_job_details' mbl.job %}">{{ mbl.job.public_key }}</a>
+                                    </small>
+                                </td>
+                            {% elif mbl.job %}
+                                <td class="">
+                                In Job -
+                                    <small><a href="{% url 'seaimport:sea_import_job_details' mbl.job %}">{{ mbl.job.public_key }}</a>
+                                    </small>
+                                </td>
+                            {% else %}
+                                <td class=""><small>Pending</small></td>
+                            {% endif %}
+
+                            <td class=""><a href="{% url 'seaimport:sea_import_view_mbl' mbl.id %}"><img
+                                    src="{% static 'seaimport/assets/images/icon/navicons/details.png' %}"
+                                    style="width: 50px"></a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'intuit/fm/base.html' %}
+{% load i18n static %}
+{% block page_title %}
+    <title>Job Costing for Consol #{{ consol_public_id }}</title>
+{% endblock %}
+{% block head_includes %}
+    {{ block.super }}
+{% endblock head_includes %}
+{% block breadcrumbs %}
+    <div class="row">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'forwarder_grid_menu_home' %}">Home</a></li>
+                    <li class="breadcrumb-item" aria-current="page"><a href="{% url 'airexport_apps_menu' %}">Air Export</a></li>
+                    <li class="breadcrumb-item" aria-current="page"><a href="{% url 'forwarder-job_costing_page' %}">Consolidation Job Listing</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><a href="">Consolidation Job #{{ consol_public_id }}</a></li>
+                    <li class="position-absolute" style="right: 100px"><a href="{% url 'forwarder-job_costing_page' %}"><i class="fa fa-times-circle text-danger"></i></a></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+{% endblock breadcrumbs %}
+{% block content %}
+    <div class="container">
+        <div class="py-4 text-center bg-success">
+            <h2>Job Costing for #{{ consol_public_id }}</h2>
+        </div>
+        <div id="page_content">
+            <span id="page_content_spinner"><i class="fa fa-spin fa-spinner"></i> Page Loading</span>
+        </div>
+    </div>
+    <div id="bottom_info">
+
+    </div>
+{% endblock content %}
+{% block foot_includes %}
+    {{ block.super }}
+    <script>
+        window.urlfor_job_costing_page_init_data = '{% url "forwarder-job_costing_page_init_data" %}';
+        window.urlfor_job_costing_save = '{% url "forwarder-job_costing_data_save" %}';
+        window.urlfor_charge_type_save = '{% url "forwarder_job_costing_save_charge_type" %}';
+    </script>
+    <script type="text/babel" src="{% static 'forwarder/job_costing/job_costing.babel.js' %}"></script>
+    <script type="text/babel">
+        ReactDOM.render(<JobCosting consol_public_id="{{ consol_public_id }}"/>, document.getElementById('page_content'));
+    </script>
+{% endblock foot_includes %}
