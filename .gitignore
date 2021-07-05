@@ -1,0 +1,14 @@
+/.idea/
+/env/
+*.git/
+/static/
+*.pyc
+
+/data/form_profiles/hawb/*
+!/data/form_profiles/hawb/.gitkeep
+
+/data/form_profiles/mawb/*
+!/data/form_profiles/mawb/.gitkeep
+
+/media/temp/*
+!/media/temp/.gitkeep
