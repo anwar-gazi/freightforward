@@ -1,14 +1,14 @@
-# Freightman - the open source software for Freight Forwarding Business
+# Open source software for Freight Forwarding Business
 ## Sea Freight, Air Freight
 
 Freight document generator. Milestone track.
 <br>Airway Bill, Bill of Lading, Delivery order, Shipment advice, Cargo Manifest, CFS document etc.
 
-## About Freightman
-We recommend starting with the **[Freightman website](https://minhajme.github.io/freightman/)**.
+## About 
+We recommend starting with the **[FreightForward website](https://minhajme.github.io/freightforward/)**.
 
-## Documentation
-This documentation can now be found on the [Freightman documentation site](https://minhajme.github.io/freightman/) 
+## Doc
+This documentation can now be found on the [FreightForward documentation site](https://minhajme.github.io/freightforward/) 
 
 ## Tutorial
 [Youtube channel](https://www.youtube.com/channel/UCLwOk0QXDgPk1_TWx63KeAw)
@@ -27,14 +27,14 @@ Minhajul Anwar, Lalbagh, Dhaka, Bangladesh.
 [Youtube](https://www.youtube.com/channel/UCLwOk0QXDgPk1_TWx63KeAw)
 
 ## License: FOSS, GPL-2.0
-**Freightman is free and open source. Licensed under [GPL-2.0](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html).**
+**Free and open source software, licensed under [GPL-2.0](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html).**
 <br>
-You can use it for both personal and professional use. 
-<br>You can modify and re-distribute the code, 
-**you must retain the same GPL-2.0 license.**
+* You can use it for both personal and professional use.
+* You can modify and re-distribute the code.
+* you must retain the same GPL-2.0 license.
 
 ## Questions or need help?
-Come talk to us on the [Freightman discussion at github](https://github.com/minhaj-me-bd/freightman/discussions)
+Come talk to us on the [FreightForward discussion at github](https://github.com/minhajme/freightforward/discussions)
 
 ## Social Media
 [Email](mailto:minhaj.me.bd@gmail.com) &nbsp;&nbsp; 
