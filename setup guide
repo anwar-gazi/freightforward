@@ -1,0 +1,30 @@
+
+
+Requirements:
+-
+- wkhtmltopdf (must install in system level with root user)
+
+Incoterms: 
+-
+Incoterms 2010 (not implemented)
+
+Test Email: GMAIL SMTP
+-
+to use gmail smtp, enable less secure app access: https://myaccount.google.com/lesssecureapps?utm_source=google-account&utm_medium=web
+
+Default Logins:
+-
+su: freightautomat@gmail.com:project19<br>
+Forwarder: ^su<br>
+Factory: khan@astrotex.com:project19<br>
+
+Health Check:
+-
+- default currency
+- default address for company
+- forwarder default agent profile
+
+Browser Compatibility:
+-
+-https://developer.mozilla.org/en-US/docs/Web/API/File
+
