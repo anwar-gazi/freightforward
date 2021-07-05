@@ -1,0 +1,10 @@
+pg_restore -h localhost -p 5432 -U postgres -d kanboard(database name) -v /home/resgef/works/old_pm/old_pm_db.dump(dump file)
+
+pg_restore -h localhost -p 5432 -U postgres -d freightman -v ~/works/navana_frt/data/freightman.pgdump
+
+
+psql -h localhost -d freightman -U postgres -f /home/rais/works/navana_frt/data/freightman.pgdump
+
+sudo -u postgres psql freightman < '/home/oneixchange/works/navana_frt/data/freightman.pgdump'
+
+sudo -u postgres psql freightman < '/home/rais/works/navana_frt/data/freightman.pgdump'

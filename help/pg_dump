@@ -1,0 +1,1 @@
+pg_dump freightman > /tmp/freightman.dump
