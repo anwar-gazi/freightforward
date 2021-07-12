@@ -1,8 +1,9 @@
-/.idea/
-/env/
+.idea/
+.venv/
 *.git/
 /static/
 *.pyc
+acknowledgement
 
 /data/form_profiles/hawb/*
 !/data/form_profiles/hawb/.gitkeep
