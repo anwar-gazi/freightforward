@@ -12,7 +12,7 @@ Sentry is great for capturing application errors and sending notifications in ap
 
 Install `sentry-sdk`
 
-```python
+```
 # in project shell
 pip install sentry_sdk
 ```
@@ -37,7 +37,7 @@ Now uncomment these lines in `settings.py`
 ```
 
 Now it looks like:
-```python
+```
 import sentry_sdk
 sentry_sdk.init(
     os.environ.get('FREIGHTAPP_SENTRY_DSN', ''),
