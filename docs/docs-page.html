@@ -577,9 +577,12 @@
 
                 <section class="docs-section" id="item-2-3">
                     <h2 class="section-heading">2.3: Dependency PIP packages</h2>
-                    <p>psycopg2 (dependency: python3-dev, libpq-dev)</p>
+                    <p>psycopg2, dj-database-url, sentry-sdk</p>
+                    <p>psycopg2 depends on python3-dev and libpq-dev. So install them.</p>
+                    <p>dj-database-url is a dsn parser. You can ignore it if you do not use dsn notation for database connection.</p>
+                    <p>sentry-sdk depends on(automatically installed) certifi and urllib3</p>
                     <pre>
-                        pip install psycopg2 dj-database-url
+                        apt install python3-dev libpq-dev && pip install psycopg2 dj-database-url sentry-sdk
                     </pre>
                     <br>
                     <p class="small">
