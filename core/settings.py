@@ -10,10 +10,19 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
-import os, dj_database_url, sentry_sdk
+import os
+import dj_database_url
+import sentry_sdk
 from django.contrib.messages import constants as messages
 
-sentry_sdk.init("")
+sentry_sdk.init(
+    os.environ.get('FreightForward.SENTRY_DSN', ''),
+
+    # Set traces_sample_rate to 1.0 to capture 100%
+    # of transactions for performance monitoring.
+    # We recommend adjusting this value in production.
+    traces_sample_rate=1.0
+)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -22,7 +31,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('FreightForward.SECRET_KEY', '')
+SECRET_KEY = os.environ.get('FreightForward.SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -92,11 +101,11 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.environ.get('FreightForward.DB_NAME', ''),
-            'USER': os.environ.get('FreightForward.DB_USER', ''),
-            'PASSWORD': os.environ.get('FreightForward.DB_PASS', ''),
-            'HOST': os.environ.get('FreightForward.DB_HOST', ''),
-            'PORT': os.environ.get('FreightForward.DB_PORT', ''),
+            'NAME': os.environ.get('FreightForward.DB_NAME'),
+            'USER': os.environ.get('FreightForward.DB_USER'),
+            'PASSWORD': os.environ.get('FreightForward.DB_PASS'),
+            'HOST': os.environ.get('FreightForward.DB_HOST'),
+            'PORT': os.environ.get('FreightForward.DB_PORT'),
         }
     }
 
@@ -148,25 +157,26 @@ LOGIN_URL = 'login'
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = 'static/'
+# STATIC_ROOT = 'static/'
 
-# to use gmail smtp, enable less secure app access: https://myaccount.google.com/lesssecureapps?utm_source=google-account&utm_medium=web
+# to use gmail smtp, enable less secure app access:
+# https://myaccount.google.com/lesssecureapps?utm_source=google-account&utm_medium=web
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = os.environ.get('FreightForward.EMAIL_HOST', 'smtp.gmail.com')
 EMAIL_HOST_USER = os.environ.get('FreightForward.EMAIL_HOST_USER', '')
 EMAIL_HOST_PASSWORD = os.environ.get('FreightForward.EMAIL_HOST_PASSWORD', '')
 EMAIL_PORT = os.environ.get('FreightForward.EMAIL_PORT', 587)
 EMAIL_USE_TLS = os.environ.get('FreightForward.EMAIL_USE_TLS', True)
-DEFAULT_FROM_EMAIL = os.environ.get('FreightForward.DEFAULT_FROM_EMAIL', 'smtp.gmail.com')
+DEFAULT_FROM_EMAIL = os.environ.get('FreightForward.DEFAULT_FROM_EMAIL', '')
 
 # test purpose settings
-SAVE_FORM_PROFILES = True
+# SAVE_FORM_PROFILES = True
 
 # Media Folder settings
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+# CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # This is added to the a common model can be passed to all the
 # templates for seaimport. The common model is a settings model individual for all user
