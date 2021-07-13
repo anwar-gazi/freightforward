@@ -22,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = ''
+SECRET_KEY = os.environ.get('FreightForward.SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -42,10 +42,10 @@ INSTALLED_APPS = [
     'airexport',
     'seaexport',
     'seaimport',
-    #'crispy_forms',
+    # 'crispy_forms',
     'django.contrib.humanize',
-    #'django_addanother',
-    #'qr_code',
+    # 'django_addanother',
+    # 'qr_code',
 ]
 
 MIDDLEWARE = [
@@ -83,7 +83,7 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-# to facilitate on dokku environment | by resgef
+# to facilitate on dokku environment
 if os.environ.get('DATABASE_URL', ''):
     DATABASES = {
         'default': dj_database_url.config()
@@ -92,11 +92,11 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'freightman',
-            'USER': 'freightman',
-            'PASSWORD': 'common',
-            'HOST': 'localhost',
-            'PORT': '',
+            'NAME': os.environ.get('FreightForward.DB_NAME', ''),
+            'USER': os.environ.get('FreightForward.DB_USER', ''),
+            'PASSWORD': os.environ.get('FreightForward.DB_PASS', ''),
+            'HOST': os.environ.get('FreightForward.DB_HOST', ''),
+            'PORT': os.environ.get('FreightForward.DB_PORT', ''),
         }
     }
 
@@ -152,12 +152,12 @@ STATIC_ROOT = 'static/'
 
 # to use gmail smtp, enable less secure app access: https://myaccount.google.com/lesssecureapps?utm_source=google-account&utm_medium=web
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = ''
-EMAIL_HOST_PASSWORD = ''
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = ''
+EMAIL_HOST = os.environ.get('FreightForward.EMAIL_HOST', 'smtp.gmail.com')
+EMAIL_HOST_USER = os.environ.get('FreightForward.EMAIL_HOST_USER', '')
+EMAIL_HOST_PASSWORD = os.environ.get('FreightForward.EMAIL_HOST_PASSWORD', '')
+EMAIL_PORT = os.environ.get('FreightForward.EMAIL_PORT', 587)
+EMAIL_USE_TLS = os.environ.get('FreightForward.EMAIL_USE_TLS', True)
+DEFAULT_FROM_EMAIL = os.environ.get('FreightForward.DEFAULT_FROM_EMAIL', 'smtp.gmail.com')
 
 # test purpose settings
 SAVE_FORM_PROFILES = True
@@ -176,4 +176,3 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 MESSAGE_TAGS = {
     messages.ERROR: 'alert alert-danger',
 }
-
