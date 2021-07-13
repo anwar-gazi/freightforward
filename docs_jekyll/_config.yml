@@ -25,7 +25,7 @@ description: >- # this means to ignore newlines until "baseurl:"
 baseurl: "/docs" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: MinhajulAnwar
-github_username:  minhajme
+github_username: minhajme
 
 # Build settings
 theme: just-the-docs
@@ -51,3 +51,28 @@ plugins:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+
+#https://pmarsceill.github.io/just-the-docs/docs/configuration/
+aux_links:
+  "FreightForward": https://github.com/minhajme/freightforward
+  "Developer(Minhajul Anwar)": https://github.com/minhajme
+  "Resgef Labs": https://resgef.com
+aux_links_new_tab: true
+
+ga_tracking: UA-202058120-1
+ga_tracking_anonymize_ip: true # Use GDPR compliant Google Analytics settings (true by default)
+
+collections:
+  install:
+    permalink: "/:collection/:path/"
+    output: true
+  tutorials:
+    permalink: "/:collection/:path/"
+    output: true
+
+just_the_docs:
+  collections:
+    install:
+      name: Install Notes
+    tutorials:
+      name: Tutorials
