@@ -42,10 +42,10 @@ INSTALLED_APPS = [
     'airexport',
     'seaexport',
     'seaimport',
-    'crispy_forms',
+    #'crispy_forms',
     'django.contrib.humanize',
-    'django_addanother',
-    'qr_code',
+    #'django_addanother',
+    #'qr_code',
 ]
 
 MIDDLEWARE = [
