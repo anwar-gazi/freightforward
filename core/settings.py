@@ -16,16 +16,13 @@ from django.contrib.messages import constants as messages
 # import dj_database_url
 
 # import sentry_sdk
-"""
-sentry_sdk.init(
-    os.environ.get('FREIGHTFORWARD.SENTRY_DSN', ''),
+# sentry_sdk.init(
+#    os.environ.get('FREIGHTAPP_SENTRY_DSN', ''),
 
-    # Set traces_sample_rate to 1.0 to capture 100%
-    # of transactions for performance monitoring.
-    # We recommend adjusting this value in production.
-    traces_sample_rate=1.0
-)
-"""
+# Set traces_sample_rate to 1.0 to capture 100% of transactions for performance monitoring.
+# We recommend adjusting this value in production.
+#    traces_sample_rate=1.0
+# )
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -34,7 +31,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('FREIGHTFORWARD.SECRET_KEY')
+SECRET_KEY = os.environ.get('FREIGHTAPP_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -42,7 +39,6 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -54,8 +50,8 @@ INSTALLED_APPS = [
     'airexport',
     'seaexport',
     'seaimport',
-    # 'crispy_forms',
     'django.contrib.humanize',
+    # 'crispy_forms',
     # 'django_addanother',
     # 'qr_code',
 ]
@@ -96,7 +92,7 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
 # to facilitate on dokku environment
-if os.environ.get('FREIGHTFORWARD.DATABASE_URL', ''):
+if os.environ.get('FREIGHTAPP_DATABASE_URL', ''):
     DATABASES = {
         # 'default': dj_database_url.config()
     }
@@ -104,11 +100,11 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.environ.get('FREIGHTFORWARD.DB_NAME'),
-            'USER': os.environ.get('FREIGHTFORWARD.DB_USER'),
-            'PASSWORD': os.environ.get('FREIGHTFORWARD.DB_PASS'),
-            'HOST': os.environ.get('FREIGHTFORWARD.DB_HOST'),
-            'PORT': os.environ.get('FREIGHTFORWARD.DB_PORT'),
+            'NAME': os.environ.get('FREIGHTAPP_DB_NAME'),
+            'USER': os.environ.get('FREIGHTAPP_DB_USER'),
+            'PASSWORD': os.environ.get('FREIGHTAPP_DB_PASS'),
+            'HOST': os.environ.get('FREIGHTAPP_DB_HOST'),
+            'PORT': os.environ.get('FREIGHTAPP_DB_PORT'),
         }
     }
 
@@ -165,12 +161,12 @@ STATIC_URL = '/static/'
 # to use gmail smtp, enable less secure app access:
 # https://myaccount.google.com/lesssecureapps?utm_source=google-account&utm_medium=web
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = os.environ.get('FREIGHTFORWARD.EMAIL_HOST', 'smtp.gmail.com')
-EMAIL_HOST_USER = os.environ.get('FREIGHTFORWARD.EMAIL_HOST_USER', '')
-EMAIL_HOST_PASSWORD = os.environ.get('FREIGHTFORWARD.EMAIL_HOST_PASSWORD', '')
-EMAIL_PORT = os.environ.get('FREIGHTFORWARD.EMAIL_PORT', 587)
-EMAIL_USE_TLS = os.environ.get('FREIGHTFORWARD.EMAIL_USE_TLS', True)
-DEFAULT_FROM_EMAIL = os.environ.get('FREIGHTFORWARD.DEFAULT_FROM_EMAIL', '')
+EMAIL_HOST = os.environ.get('FREIGHTAPP_EMAIL_HOST', 'smtp.gmail.com')
+EMAIL_HOST_USER = os.environ.get('FREIGHTAPP_EMAIL_HOST_USER', '')
+EMAIL_HOST_PASSWORD = os.environ.get('FREIGHTAPP_EMAIL_HOST_PASSWORD', '')
+EMAIL_PORT = os.environ.get('FREIGHTAPP_EMAIL_PORT', 587)
+EMAIL_USE_TLS = os.environ.get('FREIGHTAPP_EMAIL_USE_TLS', True)
+DEFAULT_FROM_EMAIL = os.environ.get('FREIGHTAPP_DEFAULT_FROM_EMAIL', '')
 
 # test purpose settings
 # SAVE_FORM_PROFILES = True
