@@ -63,6 +63,9 @@ apt install python3-dev libpq-dev
 pip install psycopg2
 ```
 
+### Environment Variables
+check in the related section.
+
 <sub><sup>
 [venv](https://docs.python.org/3/tutorial/venv.html)
 [django](https://docs.djangoproject.com/en/3.2/topics/install/#installing-official-release)
