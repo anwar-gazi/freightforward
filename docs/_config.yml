@@ -53,6 +53,7 @@ plugins:
 #   - vendor/ruby/
 
 #https://pmarsceill.github.io/just-the-docs/docs/configuration/
+search_enabled: false
 aux_links:
   "FreightForward": https://github.com/minhajme/freightforward
   "Developer(Minhajul Anwar)": https://github.com/minhajme
