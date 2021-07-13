@@ -28,7 +28,7 @@ twitter_username: MinhajulAnwar
 github_username:  minhajme
 
 # Build settings
-theme: minima
+theme: just-the-docs
 plugins:
   - jekyll-feed
 
