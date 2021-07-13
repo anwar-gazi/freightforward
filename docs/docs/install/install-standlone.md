@@ -1,12 +1,14 @@
 ---
 layout: default 
-title:  "Install Notes"
+title:  Standalone Installation
+parent: Installation
 nav_order: 1 
 has_children: false
 ---
 
-## Ubuntu-20.04, Python-3.8, Django-3.2.5, PostgreSql-12.7, PIP packages
+## Standalone Installation(no container)
 
+**Ubuntu-20.04, Python-3.8, Django-3.2.5, PostgreSql-12.7, PIP packages**
 <br>
 
 ### VENV the python virtual environment
@@ -20,7 +22,7 @@ convenient._
 <br>**Activate:** `source .venv/bin/activate`
 <br>**Install Django:** `python -m pip install Django`
 
-### Postgresql
+### Database: Postgresql
 
 ```shell
 apt update
@@ -51,15 +53,14 @@ When asked for password, we used a sample password `freightforward`
 sudo -u freightforward psql
 ```
 
-### PIP: psycopg2, dj-database-url, sentry-sdk
+### PostgreSQL driver: psycopg2
 
 psycopg2 depends on `python3-dev and libpq-dev`. So install them.
-`dj-database-url` is a dsn parser. You can ignore it if you do not use dsn notation for database connection.
 `sentry-sdk` depends on(automatically installed) `certifi and urllib3`
 
 ```shell
 apt install python3-dev libpq-dev 
-pip install psycopg2 dj-database-url sentry-sdk 
+pip install psycopg2
 ```
 
 <sub><sup>
