@@ -22,8 +22,8 @@ title: FreightForward Documentation
 email: contact@resgef.com
 description: >- # this means to ignore newlines until "baseurl:"
   FreightForward is a freight documents generator software, with integrated job costing and accounting. The software is FOSS and licensed under GPL-2.0
-baseurl: "/freightforward/docs" # the subpath of your site, e.g. /blog
-url: "https://minhajme.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/docs" # the subpath of your site, e.g. /blog
+url: "https://minhajme.github.io/freightforward" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: MinhajulAnwar
 github_username: minhajme
 
