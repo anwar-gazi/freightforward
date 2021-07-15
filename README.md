@@ -8,6 +8,7 @@
 - Cargo Manifest
 - CFS Report
 - C&F Agents
+- Consolidation
 - Job Costing
 
 ## Install
