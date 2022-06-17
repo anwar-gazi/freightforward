@@ -31,8 +31,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('FREIGHTAPP_SECRET_KEY')
-
+# SECRET_KEY = os.environ.get('FREIGHTAPP_SECRET_KEY')
+SECRET_KEY = 'django-insecure-az*e41uu0kgt15!mp=%cgjsmtbca%d7zmqe753ijtekw7md_$r'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -92,21 +92,28 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
 # to facilitate on dokku environment
-if os.environ.get('FREIGHTAPP_DATABASE_URL', ''):
-    DATABASES = {
-        # 'default': dj_database_url.config()
+# if os.environ.get('FREIGHTAPP_DATABASE_URL', ''):
+#     DATABASES = {
+#         # 'default': dj_database_url.config()
+#     }
+# else:
+#     DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.postgresql',
+#             'NAME': os.environ.get('FREIGHTAPP_DB_NAME'),
+#             'USER': os.environ.get('FREIGHTAPP_DB_USER'),
+#             'PASSWORD': os.environ.get('FREIGHTAPP_DB_PASS'),
+#             'HOST': os.environ.get('FREIGHTAPP_DB_HOST'),
+#             'PORT': os.environ.get('FREIGHTAPP_DB_PORT'),
+#         }
+#     }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR , 'db.sqlite3'),
     }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.environ.get('FREIGHTAPP_DB_NAME'),
-            'USER': os.environ.get('FREIGHTAPP_DB_USER'),
-            'PASSWORD': os.environ.get('FREIGHTAPP_DB_PASS'),
-            'HOST': os.environ.get('FREIGHTAPP_DB_HOST'),
-            'PORT': os.environ.get('FREIGHTAPP_DB_PORT'),
-        }
-    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
